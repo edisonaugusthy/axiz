@@ -1,0 +1,22 @@
+<section>
+  <div class="logo">
+    <img src="{{imageBase}}/assets/img/logo.svg">
+    <h6 *ngIf="isSuperAdmin">Super Admin mode</h6>
+  </div>
+  <ul>
+    <li *ngFor="let mainMenu of sideMenuList" class="{{mainMenu.class}}">
+      <div *ngIf="mainMenu.sub_menu">
+        <a class="nav-link dropdown-toggle" [ngClass]="{'menu-active':mainMenu.isOpen}" (click)="showMenu(mainMenu)">
+          <img src="{{imageBase}}/assets/img/{{mainMenu.img}}">{{mainMenu.name}}
+        </a>
+        <div class="dropdown-menu show" *ngIf="mainMenu.isOpen">
+          <a *ngFor="let subMenu of mainMenu.sub_menu" class="dropdown-item {{subMenu.class}}"
+            (click)="navigate(subMenu)">{{subMenu.name}}</a>
+        </div>
+      </div>
+      <div *ngIf="!mainMenu.sub_menu" (click)="navigate(mainMenu)">
+        <a> <img src="{{imageBase}}/assets/img/{{mainMenu.img}}"> {{mainMenu.name}}</a>
+      </div>
+    </li>
+  </ul>
+</section>

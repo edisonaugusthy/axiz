@@ -1,0 +1,97 @@
+<section class="content-wrap">
+  <!-- <button class=" float-right btn btn-green" (click)="openAdd()">Add New</button> -->
+  <h1>Company Access</h1>
+  <section class="table-wrap">
+    <table class="table table-striped" *ngIf="companyAccess&&companyAccess.length>0">
+      <thead>
+        <tr>
+          <th (click)="sort('UserID')">
+            <span class="sort-wrap">
+              Id
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
+          <th (click)="sort('user_name')">
+            <span class="sort-wrap">
+              Users
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
+          <th (click)="sort('CompanyID')">
+            <span class="sort-wrap">
+              Company Id
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
+          <th (click)="sort('CompanyName')">
+            <span class="sort-wrap">
+              Company Name
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
+          <!-- <th (click)="sort('head_office')">
+            <span class="sort-wrap">
+              Head Office
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
+          <th (click)="sort('headoffice_location')">
+            <span class="sort-wrap">
+              Head Office location
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th> -->
+          <th style="width: 20%;">Operation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of companyAccess| orderBy: {property: column, direction: direction};index as i">
+          <td>{{item.UserID}}</td>
+          <td>{{item.user_name}}</td>
+          <td>{{item.CompanyID}}</td>
+          <td>{{item.CompanyName}}</td>
+          <!-- <td>{{item.headoffice_location}}</td> -->
+          <td class="btn-wrap" style="width: 20%;">
+            <button class="btn btn-green" (click)="openEdit(item)">Edit</button>
+            <button class="btn btn-default" (click)="openDelete(item)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <app-no-data *ngIf="!companyAccess||companyAccess.length==0"></app-no-data>
+  </section>
+</section>
+
+
+<!-- edit popup -->
+<app-edit-popup *ngIf="showEdit" [fields]="editFormData" (formCancel)="cancelEdit($event)"
+  (formSubmitted)="submitEdit($event)">
+</app-edit-popup>
+
+
+<!-- delete popup -->
+<app-delete-popup *ngIf="showDelete" [details]="deleteData" (deleteCancel)="cancelDelete($event)"
+  (deleteSubmitted)="submitDelete($event)">
+</app-delete-popup>
+
+<!-- add popup -->
+<app-add-popup *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
+  (formSubmitted)="submitAdd($event)"></app-add-popup>

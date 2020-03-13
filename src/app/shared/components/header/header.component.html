@@ -1,0 +1,19 @@
+<header>
+  <section class="login">
+    <ul>
+      <li class="settings" *ngIf="!isSuperAdmin" (click)="openAdd()"><img
+          src="{{imageBase}}/assets/img/settings-icon.svg"></li>
+      <li *ngIf="!isSuperAdmin" class="user-name">Hello, {{userDetails.user_name}}</li>
+      <li *ngIf="isSuperAdmin" class="user-name">Super Admin</li>
+      <li class="user-img"><img src="{{imageBase}}/assets/img/user-img.png" alt=""></li>
+      <li class="logout" (click)="logout()">Logout <img src="{{imageBase}}/assets/img/logout.svg"></li>
+    </ul>
+  </section>
+</header>
+
+
+
+<!--super admin login -->
+
+<app-add-popup *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
+  (formSubmitted)="submitAdd($event)"></app-add-popup>

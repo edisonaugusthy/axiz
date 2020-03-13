@@ -1,0 +1,73 @@
+<section class="content-wrap" *ngIf="!isSuperAdmin">
+  <section class="dashboard-wrap">
+    <div class="flex-wrap">
+      <div class="box-wrap col-sm-4">
+        <h2>Company Details</h2>
+        <div class="box">
+          <ul>
+            <li>Chain</li>
+            <li>{{dashboardData?.chains[0]?.chains}}</li>
+          </ul>
+          <ul>
+            <li>Location</li>
+            <li>{{dashboardData?.locations[0]?.locations}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="box-wrap col-sm-4">
+        <h2>Number Of Users</h2>
+        <div class="box">
+          <ul>
+            <li>Chain</li>
+            <li>{{dashboardData?.chains[0]?.chains}}</li>
+          </ul>
+          <ul>
+            <li>Location</li>
+            <li>{{dashboardData?.locations[0]?.locations}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="box-wrap col-sm-4">
+        <h2>Head Office</h2>
+        <p>Wadia International Centre, Pandurang Budhkar Marg, Worli, Mumbai - 400 025.</p>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section class="content-wrap" *ngIf="isSuperAdmin">
+  <section class="dashboard-wrap">
+    <div class="flex-wrap">
+      <div class="box-wrap col-sm-4">
+        <h2>Company Details</h2>
+        <div class="box">
+          <ul>
+            <li>Chain</li>
+            <li>{{dashboardData?.chains}}</li>
+          </ul>
+          <ul>
+            <li>Companies</li>
+            <li>{{dashboardData?.companies}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="box-wrap col-sm-4">
+        <h2>Number Of Users</h2>
+        <div class="box">
+          <ul>
+            <li>Users</li>
+            <li>{{dashboardData?.users}}</li>
+          </ul>
+          <ul>
+            <li>Location</li>
+            <li>{{dashboardData?.locations}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="box-wrap col-sm-4">
+        <h2>Head Office</h2>
+        <p>Wadia International Centre, Pandurang Budhkar Marg, Worli, Mumbai - 400 025.</p>
+      </div>
+    </div>
+  </section>
+</section>

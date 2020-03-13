@@ -1,0 +1,69 @@
+<section class="content-wrap">
+  <button class=" float-right btn btn-green" (click)="openAdd()">Add New Chain</button>
+  <h1>Chain</h1>
+  <section class="table-wrap">
+    <table class="table table-striped" *ngIf="addedChains&&addedChains.length>0">
+      <thead>
+        <tr>
+          <th (click)="sort('id')">
+            <span class="sort-wrap">
+              Id
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
+          <th (click)="sort('ChainId')">
+            <span class="sort-wrap">
+              Chain Code
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span></th>
+          <th (click)="sort('ChainName')">
+            <span class="sort-wrap">
+              Chain Name
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span></th>
+          <th style="width: 20%;">Operation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of addedChains | orderBy: {property: column, direction: direction}">
+          <td>{{item.id}}</td>
+          <td>{{item.ChainId}}</td>
+          <td>{{item.ChainName}}</td>
+          <td class="btn-wrap" style="width: 20%;">
+            <button class="btn btn-green" (click)="openEdit(item)">Edit</button>
+            <button class="btn btn-default" (click)="openDelete(item)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <app-no-data *ngIf="!addedChains||addedChains.length==0"></app-no-data>
+  </section>
+</section>
+
+
+
+
+
+<!-- delete popup -->
+
+<app-delete-popup *ngIf="showDelete" [details]="deleteData" (deleteCancel)="cancelDelete($event)"
+  (deleteSubmitted)="submitDelete($event)">
+</app-delete-popup>
+
+<!-- add popup -->
+<app-add-chain-popup *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
+  (formSubmitted)="submitAdd($event)"></app-add-chain-popup>
+
+<!-- edit chain -->
+<app-add-chain-popup *ngIf="showEdit" [fields]="editFormData" (formCancel)="cancelEdit($event)"
+  (formSubmitted)="submitEdit($event)">
+</app-add-chain-popup>

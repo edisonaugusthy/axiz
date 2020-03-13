@@ -1,0 +1,16 @@
+<ng-template #deleteModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title">{{deleteItem.header}}</h4>
+    <button type="button" class="close" aria-describedby="modal-title" (click)="popupClose()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p><strong>{{deleteItem.message}}</strong></p>
+    <!-- <span class="text-danger">This operation can not be undone.</span> -->
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="popupClose()">Cancel</button>
+    <button type="button" class="btn btn-danger" (click)="onSubmit()">Delete</button>
+  </div>
+</ng-template>

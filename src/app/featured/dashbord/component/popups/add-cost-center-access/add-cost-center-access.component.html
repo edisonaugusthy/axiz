@@ -1,0 +1,102 @@
+<ng-template #addUserModal let-modal>
+    <form (ngSubmit)="onSubmit()" [formGroup]="addUserForm">
+        <div>
+            <div class="modal-content modal-content-area modal-md">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">COST CENTER ACCESS</h4>
+                    <img class="btn-close" (click)="popupClose()" src="{{imageBase}}/assets/img/close-icon.svg">
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group-wrap row">
+                        <div class="col col-sm-4 label">
+                            User ID
+                        </div>
+                        <div class="col col-sm-5">
+                            <div class="form-group">
+                                <input type="text" formControlName="userid" class="form-control" [disabled]="!isEdit">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-wrap row">
+                        <div class="col col-sm-4 label">
+                            User Name
+                        </div>
+                        <div class="col col-sm-5">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName="username" [disabled]="!isEdit">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radio-wrap" style="margin-bottom: 8px;">
+                        <label class="radio">
+                            Full Access
+                            <input type="radio" [value]="1" (change)="disableSelection(1)" formControlName="Fullaccess">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio">
+                            Custom
+                            <input type="radio" [value]="0" (change)="disableSelection(2)" formControlName="Fullaccess">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <section class="table-wrap">
+                        <div class="table-head">Business Divisions/Chains</div>
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 20%">Chain ID</th>
+                                    <th style="width: 40%">Description</th>
+                                    <th style="width: 40%">Select Locations</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of chainsList; index as i">
+                                    <td>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" (change)="update(item)" [checked]="item.checked"
+                                                    [value]="item.chainid" [disabled]="disableItem">
+                                                <span></span>
+                                                {{item.chainid}}
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>{{item.chainname}}</td>
+                                    <td class="dropdown-select">SELECT LOCATIONS <span><i class="sort-down"
+                                                (click)="item.showSub = !item.showSub"></i></span>
+                                        <div class="multi-select" [style.display]="item.showSub ? 'block' : 'none'">
+                                            <ul>
+                                                <li *ngFor="let x of item.locations; index as j">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" [checked]="item.checked"
+                                                                (change)="update(x)" [value]="x.id"
+                                                                [disabled]="disableItem">
+                                                            <span></span>
+                                                            {{x.Name}}
+                                                        </label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="popupClose()">Close</button>
+                    <button type="button" class="btn btn-green" (click)="onSubmit()">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</ng-template>

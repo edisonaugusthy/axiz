@@ -1,0 +1,6 @@
+{
+    "/api/*": {
+        "target": "http://iroidtechnologies.in/axis_laravel/api/",
+        "secure": false
+    }
+}

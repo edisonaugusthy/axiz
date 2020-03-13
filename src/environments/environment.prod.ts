@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  baseUrl: 'http://iroidtechnologies.in/axis_laravel/api/',
+  imageBase: 'http://realartdubai.com'
 };

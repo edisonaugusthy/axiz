@@ -1,0 +1,79 @@
+<section class="content-wrap">
+  <button class=" float-right btn btn-green" (click)="openAdd()">Add New</button>
+  <h1>Currency</h1>
+  <section class="table-wrap">
+    <table class="table table-striped" *ngIf="addedCurrency&&addedCurrency.length>0">
+      <thead>
+        <tr>
+          <th (click)="sort('id')">
+            <span class="sort-wrap">
+              Id
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
+          <th (click)="sort('CurrencyName')">
+            <span class="sort-wrap">
+              Name
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
+          <th (click)="sort('CurrencySymbol')">
+            <span class="sort-wrap">
+              Symbol
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
+          <th (click)="sort('CurrencyUnit')">
+            <span class="sort-wrap">
+              Unit
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
+          <th style="width: 20%;">Operation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of addedCurrency  | orderBy: {property: column, direction: direction}">
+          <td>{{item.id}}</td>
+          <td>{{item.CurrencyName}}</td>
+          <td>{{item.CurrencySymbol}}</td>
+          <td>{{item.CurrencyUnit}}</td>
+          <td class="btn-wrap" style="width: 20%;">
+            <button class="btn btn-green" (click)="openEdit(item)">Edit</button>
+            <button class="btn btn-default" (click)="openDelete(item)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <app-no-data *ngIf="!addedCurrency||addedCurrency.length==0"></app-no-data>
+  </section>
+</section>
+
+
+
+
+
+<!-- delete popup -->
+<app-delete-popup *ngIf="showDelete" [details]="deleteData" (deleteCancel)="cancelDelete($event)"
+  (deleteSubmitted)="submitDelete($event)">
+</app-delete-popup>
+
+<app-add-currency-popup *ngIf="showEdit" [fields]="editFormData" (formCancel)="cancelEdit($event)"
+  (formSubmitted)="submitEdit($event)">
+</app-add-currency-popup>
+
+<app-add-currency-popup *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
+  (formSubmitted)="submitAdd($event)">
+</app-add-currency-popup>

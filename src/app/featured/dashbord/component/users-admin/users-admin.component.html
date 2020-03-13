@@ -1,0 +1,86 @@
+<!--component html goes here -->
+<section class="content-wrap">
+  <button class=" float-right btn btn-green" (click)="openAdd()">Add User</button>
+  <h1>User</h1>
+  <section class="table-wrap">
+    <table datatable class="table table-striped" *ngIf="allUsers&&allUsers.length>0">
+      <thead>
+        <tr>
+          <th (click)="sort('id')">
+            <span class="sort-wrap">
+              Id
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
+          <th (click)="sort('user_name')">
+            <span class="sort-wrap">
+              Name
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
+          <th (click)="sort('companyid')">
+            <span class="sort-wrap">
+              Company
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
+          <th (click)="sort('email')">
+            <span class="sort-wrap">
+              Email
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
+          <th (click)="sort('password')">
+            <span class="sort-wrap">
+              Password
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
+          <th>Operation</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="allUsers&&allUsers.length>0">
+        <tr *ngFor="let item of allUsers| orderBy: {property: column, direction: direction}">
+          <td>{{item.id}}</td>
+          <td>{{item.user_name}}</td>
+          <td>{{item.companyid}}</td>
+          <td>{{item.email}}</td>
+          <td> {{item.password_ref}} </td>
+
+          <td class="btn-wrap" style="width: 20%;">
+            <button class="btn btn-green" (click)="openEdit(item)">Edit</button>
+            <button class="btn btn-default" (click)="openDelete(item)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <app-no-data *ngIf="!allUsers||allUsers.length==0"></app-no-data>
+  </section>
+</section>
+
+<!-- edit popup -->
+<app-add-user *ngIf="showEdit" [Edit]="true" [fields]="editFormData" [companyList]="allCompanies"
+  (formCancel)="cancelEdit($event)" (formSubmitted)="submitEdit($event)"></app-add-user>
+
+<!-- delete popup -->
+<app-delete-popup *ngIf="showDelete" [details]="deleteData" (deleteCancel)="cancelDelete($event)"
+  (deleteSubmitted)="submitDelete($event)">
+</app-delete-popup>
+
+<app-add-user *ngIf="showAdd" [Edit]="false" [fields]="addFormData" [companyList]="allCompanies"
+  (formCancel)="cancelAdd($event)" (formSubmitted)="submitAdd($event)"></app-add-user>

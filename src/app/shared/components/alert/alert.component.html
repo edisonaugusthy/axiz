@@ -1,0 +1,7 @@
+<!-- <ngb-alert *ngIf="showAlert" [type]="alerts.type" (close)="close()">{{ alerts.message }}</ngb-alert> -->
+
+<div *ngIf="showAlert" class="toast {{alerts.class}}" [style.top.px]="0">
+    <h4 class="toast-heading">{{alerts.title}}</h4>
+    <p>{{alerts.message}}</p>
+    <a class="close" (click)="close()">&times;</a>
+</div>

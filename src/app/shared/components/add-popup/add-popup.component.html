@@ -1,0 +1,49 @@
+<!-- edit popup -->
+<ng-template #addModal let-modal>
+  <!-- Modal Header -->
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div class="modal-header">
+      <h4 class="modal-title">{{header}}</h4>
+      <img class="btn-close" src="{{imageBase}}/assets/img/close-icon.svg" (click)="popupClose()" />
+    </div>
+    <!-- Modal body -->
+    <div class="modal-body">
+      <div class="form-group" *ngFor="let item of fields.fields">
+        <div [ngSwitch]="item.controlType" [formGroup]="form">
+          <input type="text" class="form-control" placeholder="{{ item.label }}" *ngSwitchCase="'textbox'"
+            [formControlName]="item.key" [id]="item.key" [ngClass]="{
+              'has-error': isSubmitted && formControls[item.key].errors
+            }" />
+
+          <input type="number" class="form-control" placeholder="{{ item.label }}" *ngSwitchCase="'number'"
+            [formControlName]="item.key" [id]="item.key" [ngClass]="{
+                          'has-error': isSubmitted && formControls[item.key].errors
+                        }" />
+
+          <input type="password" class="form-control" placeholder="{{ item.label }}" *ngSwitchCase="'password'"
+            [formControlName]="item.key" [id]="item.key" [ngClass]="{
+                                      'has-error': isSubmitted && formControls[item.key].errors
+                                    }" />
+
+          <select [id]="item.key" *ngSwitchCase="'dropdown'" [formControlName]="item.key" [ngClass]="{
+              'has-error': isSubmitted && formControls[item.key].errors
+            }">
+            <option *ngFor="let opt of item.options" [value]="opt.key">{{
+              opt.value
+            }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal footer -->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" (click)="popupClose()">
+        Close
+      </button>
+      <button type="button" class="btn btn-green" (click)="onSubmit()">
+        {{buttonStr}}
+      </button>
+    </div>
+  </form>
+</ng-template>

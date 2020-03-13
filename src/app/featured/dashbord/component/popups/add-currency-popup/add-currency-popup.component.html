@@ -1,0 +1,136 @@
+<ng-template #addUserModal let-modal>
+    <form (ngSubmit)="onSubmit()" [formGroup]="addUserForm">
+        <div class="currency-popup">
+            <div class="modal-content modal-content-area modal-md">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">ADD CURRENCY</h4>
+                    <img class="btn-close" (click)="popupClose()" src="{{imageBase}}/assets/img/close-icon.svg">
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group-wrap row">
+                        <div class="col col-sm-4 label">
+                            Currency ID
+                        </div>
+                        <div class="col col-sm-5">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName="currencyid"
+                                    [ngClass]="{ 'has-error': isSubmitted && formControls.currencyid.errors }">
+                            </div>
+                        </div>
+                        <div class="col col-sm-3">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" [value]="1" formControlName="currencydefault">
+                                    <span></span>
+                                    Default Currency
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-wrap row">
+                        <div class="col col-sm-4 label">
+                            Description
+                        </div>
+                        <div class="col col-sm-5">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName="description"
+                                    [ngClass]="{ 'has-error': isSubmitted && formControls.description.errors }">
+                            </div>
+                        </div>
+                        <div class="col col-sm-3">
+                        </div>
+                    </div>
+                    <div class="form-group-wrap row">
+                        <div class="col col-sm-4 label">
+                            Currency Symbol
+                        </div>
+                        <div class="col col-sm-5">
+                            <div class="form-group">
+                                <input type="text" maxlength="3" class="form-control" formControlName="symbol"
+                                    [ngClass]="{ 'has-error': isSubmitted && formControls.symbol.errors }">
+                            </div>
+                        </div>
+                        <div class="col col-sm-3">
+                        </div>
+                    </div>
+                    <div class="form-group-wrap row">
+                        <div class="col col-sm-4 label">
+                            Currency Unit
+                        </div>
+                        <div class="col col-sm-5">
+                            <div class="form-group">
+                                <input type="text" maxlength="10" class="form-control" formControlName="currencyunit"
+                                    [ngClass]="{ 'has-error': isSubmitted && formControls.currencyunit.errors }">
+                            </div>
+                        </div>
+                        <div class="col col-sm-3">
+                        </div>
+                    </div>
+                    <div class="form-group-wrap row">
+                        <div class="col col-sm-4 label">
+                            Unit-Subunit Connector
+                        </div>
+                        <div class="col col-sm-5">
+                            <div class="form-group">
+                                <input type="text" maxlength="10" class="form-control" formControlName="currencyconnect"
+                                    [ngClass]="{ 'has-error': isSubmitted && formControls.currencyconnect.errors }">
+                            </div>
+                        </div>
+                        <div class="col col-sm-3">
+                        </div>
+                    </div>
+                    <div class="form-group-wrap row">
+                        <div class="col col-sm-4 label">
+                            Currency Subunit
+                        </div>
+                        <div class="col col-sm-5">
+                            <div class="form-group">
+                                <input type="text" maxlength="10" class="form-control" formControlName="currencysubunit"
+                                    [ngClass]="{ 'has-error': isSubmitted && formControls.currencysubunit.errors }">
+                            </div>
+                        </div>
+                        <div class="col col-sm-3">
+                        </div>
+                    </div>
+                    <div class="form-group-wrap row">
+                        <div class="col col-sm-4 label">
+                            Rate of Default Currency
+                        </div>
+                        <div class="col col-sm-5">
+                            <div class="form-group">
+                                <input type="number" class="form-control" formControlName="currencyrate"
+                                    [ngClass]="{ 'has-error': isSubmitted && formControls.currencyrate.errors }">
+                            </div>
+                        </div>
+                        <div class="col col-sm-3">
+                        </div>
+                    </div>
+                    <div class="form-group-wrap row">
+                        <div class="col col-sm-4 label">
+                            Currency Decimals
+                        </div>
+                        <div class="col col-sm-5">
+                            <div class="form-group">
+                                <input type="number" maxlength="2" class="form-control"
+                                    formControlName="currencydecimals"
+                                    [ngClass]="{ 'has-error': isSubmitted && formControls.currencydecimals.errors }">
+                            </div>
+                        </div>
+                        <div class="col col-sm-3">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="popupClose()">Close</button>
+                    <button type="button" class="btn btn-green" (click)="onSubmit()">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</ng-template>
