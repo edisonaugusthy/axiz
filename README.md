@@ -3,10 +3,8 @@
 
 ## Built with 🔧
 
-* [Chromium](https://github.com/chromium/chromium) - Thanks for being so fast!
 * HTML - For the web framework
 * CSS - For styling components
-* JavaScript - For magic!
 * [Angular](https://angular.io/) - To add to the JavaScript magic!
 * [Laraval](https://laravel.com/) - To add to the Server magic!
 
