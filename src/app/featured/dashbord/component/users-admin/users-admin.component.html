@@ -31,6 +31,15 @@
               </span>
             </span>
           </th>
+          <th (click)="sort('user_name')">
+            <span class="sort-wrap">
+              Status
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
           <th (click)="sort('companyid')">
             <span class="sort-wrap">
               Company
@@ -65,6 +74,7 @@
         <tr *ngFor="let item of allUsers| orderBy: {property: column, direction: direction}|filter:searchText">
           <td>{{item.id}}</td>
           <td>{{item.user_name}}</td>
+          <td>Active</td>
           <td>{{item.companyid}}</td>
           <td>{{item.email}}</td>
           <td> {{item.password_ref}} </td>
