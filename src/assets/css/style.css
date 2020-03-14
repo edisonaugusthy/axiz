@@ -324,9 +324,9 @@ label.radio {
     width: 90px;
     height: 34px;
   }
-  
+
   .switch-wrap .switch input {display:none;}
-  
+
   .switch-wrap .slider {
     position: absolute;
     cursor: pointer;
@@ -338,7 +338,7 @@ label.radio {
     -webkit-transition: .4s;
     transition: .4s;
   }
-  
+
   .switch-wrap .slider:before {
     position: absolute;
     content: "";
@@ -350,21 +350,21 @@ label.radio {
     -webkit-transition: .4s;
     transition: .4s;
   }
-  
+
   .switch-wrap input:checked + .slider {
     background-color: #1976d2;
   }
-  
+
   .switch-wrap input:focus + .slider {
     box-shadow: 0 0 1px #2196F3;
   }
-  
+
   .switch-wrap input:checked + .slider:before {
     -webkit-transform: translateX(55px);
     -ms-transform: translateX(55px);
     transform: translateX(55px);
   }
-  
+
   /*------ ADDED CSS ---------*/
   .switch-wrap .on
   {
@@ -393,20 +393,20 @@ label.radio {
     font-weight: 600;
     font-family: Verdana, sans-serif;
   }
-  
+
   .switch-wrap input:checked+ .slider .on
   {display: block;}
-  
+
   .switch-wrap input:checked + .slider .off
   {display: none;}
-  
+
   /*--------- END --------*/
-  
+
   /* Rounded sliders */
   .slider.round {
     border-radius: 34px;
   }
-  
+
   .slider.round:before {
     border-radius: 50%;}
 
@@ -496,16 +496,18 @@ label.radio {
     color: #1976d2 !important;
 }
 .dropdown-menu.show a.active {
-    color: #1976d2;
+    /* background: #dbdbdb !important; */
+    color: #1976d2 !important;
 }
 .sidebar .menu-active{
     /* background: #6FA330; */
+    color: #1976d2 !important;
     border-radius: 5px;
-    padding-left: 10px;
+    /* padding-left: 10px; */
 }
 .sidebar .menu-active{
     list-style-type: none;
-    padding: 10px 15px;
+    /* padding: 10px 15px; */
     font-weight: 500;
     font-size: 14px;
     border-radius: 0;
@@ -813,7 +815,7 @@ td.dropdown-select .multi-select{
 }
 .edit-user .switch-wrap .label{
     margin-right: 10px;
-   
+
 }
 .company-logo .radio-wrap{
     display: inline-block;
