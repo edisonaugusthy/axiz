@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   showAdd: boolean;
   addFormData: any;
   imageBase = environment.imageBase;
+  showSideBar = false;
   constructor(
     private router: Router,
     private StorageService: NgStorageService,
@@ -36,6 +37,7 @@ export class HeaderComponent implements OnInit {
       this.isSuperAdmin = false;
     }
     this.userDetails = this.StorageService.getData('user_details');
+    this.openNav();
   }
 
   logout() {
@@ -45,6 +47,15 @@ export class HeaderComponent implements OnInit {
       this.router.navigateByUrl('/login');
       this.loaderSvc.hideLoader();
     });
+
+  }
+  openNav() {
+    this.showSideBar = !this.showSideBar;
+    if (this.showSideBar) {
+      document.getElementById("mySidebar").style.display = "block";
+    } else {
+      document.getElementById("mySidebar").style.display = "none";
+    }
 
   }
 
