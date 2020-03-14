@@ -22,6 +22,7 @@ import { AddCompanyPopupComponent } from './component/popups/add-company-popup/a
 import { AddCostCenterAccessComponent } from './component/popups/add-cost-center-access/add-cost-center-access.component';
 import { AddLocationPopupComponent } from './component/popups/add-location-popup/add-location-popup.component';
 import { AddCurrencyPopupComponent } from './component/popups/add-currency-popup/add-currency-popup.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   imports: [
     CommonModule,
@@ -29,7 +30,8 @@ import { AddCurrencyPopupComponent } from './component/popups/add-currency-popup
     ReactiveFormsModule,
     SharedModule,
     NgbModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    Ng2SearchPipeModule
   ],
   declarations: [
     HomeComponent,

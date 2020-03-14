@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
   column: string = 'user_id';
   direction: number;
   allUsers: any;
-
+  searchText: any;
   constructor(
     private dashboardSvc: DashbordService,
     private loaderSvc: LoaderService,

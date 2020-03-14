@@ -20,6 +20,7 @@ export class LocationComponent implements OnInit {
   column: string = 'id';
   direction: number;
   addedlocations: any;
+  searchText: any;
   constructor(
     private dashboardSvc: DashbordService,
     private deleteMessageSvc: DeleteMessageService,

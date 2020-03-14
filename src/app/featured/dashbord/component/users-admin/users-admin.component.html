@@ -1,7 +1,14 @@
 <!--component html goes here -->
 <section class="content-wrap">
-  <button class=" float-right btn btn-green" (click)="openAdd()">Add User</button>
-  <h1>User</h1>
+  <section class="table-heading">
+    <button class=" float-right btn btn-green" (click)="openAdd()">Add User</button>
+    <div class="flex-wrap">
+      <h1>User</h1>
+      <div class="form-group search-box search">
+        <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search here...">
+      </div>
+    </div>
+  </section>
   <section class="table-wrap">
     <table datatable class="table table-striped" *ngIf="allUsers&&allUsers.length>0">
       <thead>
@@ -55,7 +62,7 @@
         </tr>
       </thead>
       <tbody *ngIf="allUsers&&allUsers.length>0">
-        <tr *ngFor="let item of allUsers| orderBy: {property: column, direction: direction}">
+        <tr *ngFor="let item of allUsers| orderBy: {property: column, direction: direction}|filter:searchText">
           <td>{{item.id}}</td>
           <td>{{item.user_name}}</td>
           <td>{{item.companyid}}</td>

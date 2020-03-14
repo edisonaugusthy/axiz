@@ -130,6 +130,25 @@ body{
 header{
     background: #343a40;
     padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.logo{
+    cursor: pointer;
+}
+.left-wrap{
+    display: flex;
+    align-items: center;
+}
+header .menu-icon{
+    float: left;
+    width: 48px;
+    height: auto;
+    padding-right: 15px;
+    cursor: pointer;
+}
+header .menu-icon img{
+    width:100%;
 }
 header ul{
     display: flex;
@@ -157,6 +176,7 @@ header li.logout{
 }
 header li.logout img{
     padding-left: 5px
+
 }
 
 .pad-lef-non{
@@ -339,11 +359,11 @@ label.radio {
     display: flex;
 }
 .sidebar{
-    width: 15%;
+    width: 20%;
     height: 100vh;
     background: #343a40;
     color: #fff;
-    padding: 15px;
+    /* padding: 15px; */
 }
 .sidebar .logo{
     font-size: 35px;
@@ -362,41 +382,48 @@ label.radio {
 }
 .sidebar ul li{
     list-style-type: none;
-    padding: 10px;
+    padding: 10px 15px;
     font-weight: 500;
     font-size: 14px;
     cursor: pointer;
 }
+.sidebar ul li:hover{
+    background: #dbdbdb;
+}
 .dropdown-menu.show a.active {
-    color: #6FA330;
+    color: #1976d2;
 }
 .sidebar .menu-active{
-    background: #6FA330;
+    /* background: #6FA330; */
     border-radius: 5px;
     padding-left: 10px;
 }
 .sidebar .menu-active{
     list-style-type: none;
-    padding: 10px 5px;
+    padding: 10px 15px;
     font-weight: 500;
     font-size: 14px;
+    border-radius: 0;
     cursor: pointer;
     display: block;
     color: #fff;
     text-decoration: none;
 }
+li.menu-active a {
+    color: #1976d2 !important;
+}
 .sidebar a{
-    color: #fff;
+    color: #444 !important;
 }
 .sidebar .dropdown-menu {
     background: transparent;
     border: 0;
-    color: #fff;
+    color: #fff !important;
 }
 .sidebar .dropdown-menu a{
     background: transparent;
     border: 0;
-    color: #fff;
+    color: #444 !important;
     position: relative;
 }
 .sidebar .dropdown-menu.active a{
@@ -444,7 +471,7 @@ a.dropdown-item.active:before {
     color: #fff;
 }
 .content-area{
-    width: 85%;
+    width: 100%;
     background: #F1F1F1;
 }
 .content-wrap{
@@ -454,6 +481,10 @@ a.dropdown-item.active:before {
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 30px;
+}
+.table-heading .search-box{
+    width: 40%;
+    margin: 0 15px;
 }
 .table-bordered td, .table-bordered th {
     border: 1px solid #dee2e6 !important;

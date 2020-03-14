@@ -21,6 +21,7 @@ export class CompanyComponent implements OnInit {
   column: string = 'id';
   direction: number;
   AllCurrency: any;
+  searchText: any;
   constructor(
     private dashboardSvc: DashbordService,
     private loaderSvc: LoaderService,

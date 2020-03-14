@@ -22,6 +22,7 @@ export class UsersAdminComponent implements OnInit {
   column: string = 'user_id';
   direction: number;
   allCompanies: any;
+  searchText: any;
   constructor(
     private dashboardSvc: DashbordService,
     private formGeneratorService: FormGeneratorService,

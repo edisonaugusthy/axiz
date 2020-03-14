@@ -21,6 +21,7 @@ export class ChainComponent implements OnInit {
   column: string = 'id';
   direction: number;
   addedChains: any;
+  searchText: any;
   constructor(
     private formGeneratorService: FormGeneratorService,
     private deleteMessageSvc: DeleteMessageService,

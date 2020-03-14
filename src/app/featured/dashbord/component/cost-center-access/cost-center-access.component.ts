@@ -20,6 +20,7 @@ export class CostCenterAccessComponent implements OnInit {
   column = 'id';
   direction: number;
   allCostAccess: any;
+  searchText: any;
   constructor(
     private dashboardSvc: DashbordService,
     private formGeneratorService: FormGeneratorService,

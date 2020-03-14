@@ -1,4 +1,12 @@
 <header>
+  <div class="left-wrap">
+    <div class="menu-icon">
+      <img src="../assets/img/menu-icon.png" class="openbtn" onclick="openNav()" alt="">
+    </div>
+    <div class="logo">
+      <img src="{{imageBase}}/assets/img/logo.svg">
+    </div>
+  </div>
   <section class="login">
     <ul>
       <li class="settings" *ngIf="!isSuperAdmin" (click)="openAdd()"><img

@@ -21,6 +21,7 @@ export class CompanyAccessComponent implements OnInit {
   isDesc: boolean = true;
   column: string = 'user_id';
   direction: number;
+  searchText: any;
   constructor(
     private dashboardSvc: DashbordService,
     private loaderSvc: LoaderService,

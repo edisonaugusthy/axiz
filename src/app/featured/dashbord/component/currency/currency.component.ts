@@ -21,6 +21,7 @@ export class CurrencyComponent implements OnInit {
   column: string = 'id';
   direction: number;
   addedCurrency: any;
+  searchText: any;
   constructor(
     private formGeneratorService: FormGeneratorService,
     private deleteMessageSvc: DeleteMessageService,
