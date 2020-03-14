@@ -1,7 +1,6 @@
 <section class="content-wrap">
   <section class="table-heading">
     <button class=" float-right btn btn-green" (click)="openAdd()">Add New</button>
-
     <div class="flex-wrap">
       <h1>Currency</h1>
       <div class="form-group search-box search">
@@ -9,6 +8,7 @@
       </div>
     </div>
   </section>
+
   <section class="table-wrap">
     <table class="table table-striped" *ngIf="addedCurrency&&addedCurrency.length>0">
       <thead>

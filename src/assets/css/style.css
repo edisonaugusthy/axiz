@@ -183,12 +183,12 @@ header li.logout img{
     padding-left: 0;
 }
 .btn-green {
-    background: #7AAA30;
+    background: #1a73e8;
     color: #fff;
     padding: 5px 25px;
     font-size: 14px;
     line-height: 18px;
-    box-shadow: 0px 3px 0px #5E8B18;
+    box-shadow: 0px 3px 0px #1669d5;
     border-radius: 5px;
 }
 .btn-default {
@@ -317,10 +317,107 @@ label.radio {
 
 /* radio-btn-wrap */
 
+/* Switch Btn */
+.switch-wrap .switch {
+    position: relative;
+    display: inline-block;
+    width: 90px;
+    height: 34px;
+  }
+  
+  .switch-wrap .switch input {display:none;}
+  
+  .switch-wrap .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #7d7c7c;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .switch-wrap .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .switch-wrap input:checked + .slider {
+    background-color: #1976d2;
+  }
+  
+  .switch-wrap input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  .switch-wrap input:checked + .slider:before {
+    -webkit-transform: translateX(55px);
+    -ms-transform: translateX(55px);
+    transform: translateX(55px);
+  }
+  
+  /*------ ADDED CSS ---------*/
+  .switch-wrap .on
+  {
+    display: none;
+  }
+  .switch-wrap .on{
+    color: white;
+    position: absolute;
+    transform: translate(28%,-50%);
+    top: 50%;
+    left: 0;
+    /* right: 0; */
+    font-size: 10px;
+    font-weight: 600;
+    font-family: Verdana, sans-serif;
+  }
+ .switch-wrap .off
+  {
+    color: white;
+    position: absolute;
+    transform: translate(-20%,-50%);
+    top: 50%;
+    /* left: 50%; */
+    right: 0;
+    font-size: 10px;
+    font-weight: 600;
+    font-family: Verdana, sans-serif;
+  }
+  
+  .switch-wrap input:checked+ .slider .on
+  {display: block;}
+  
+  .switch-wrap input:checked + .slider .off
+  {display: none;}
+  
+  /*--------- END --------*/
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;}
+
+/* swith end */
+
+
 
 .form-control:focus{
     outline: none !important;
     box-shadow: none !important;
+    border-color: #1976d2 !important;
 }
 .form-control{
     position: relative;
@@ -361,8 +458,8 @@ label.radio {
 .sidebar{
     width: 20%;
     height: 100vh;
-    background: #343a40;
-    color: #fff;
+    background: #fff;
+    color: #444;
     /* padding: 15px; */
 }
 .sidebar .logo{
@@ -382,13 +479,21 @@ label.radio {
 }
 .sidebar ul li{
     list-style-type: none;
+    /* padding: 10px 15px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer; */
+}
+.sidebar ul li a{
     padding: 10px 15px;
     font-weight: 500;
     font-size: 14px;
     cursor: pointer;
+    display: block;
 }
-.sidebar ul li:hover{
+.sidebar ul li a:hover{
     background: #dbdbdb;
+    color: #1976d2 !important;
 }
 .dropdown-menu.show a.active {
     color: #1976d2;
@@ -429,7 +534,7 @@ li.menu-active a {
 .sidebar .dropdown-menu.active a{
     color: #6FA330;
 }
-a.dropdown-item.active:before {
+/* a.dropdown-item.active:before {
     content: '';
     width: 8px;
     height: 8px;
@@ -438,19 +543,19 @@ a.dropdown-item.active:before {
     position: absolute;
     left: 10px;
     top: 6px;
-}
+} */
 .sidebar li img{
     padding-right: 10px;
 }
-.nav-link.dropdown-toggle{
+/* .nav-link.dropdown-toggle{
     padding: 0 !important;
 }
 .nav-link.dropdown-toggle{
     padding: 0 !important;
-}
-.nav-link.dropdown-toggle.menu-active{
+} */
+/* .nav-link.dropdown-toggle.menu-active{
     padding: 10px 5px !important;
-}
+} */
 .dropdown-menu.show{
     position: relative !important;
     transform: inherit !important;
@@ -462,7 +567,7 @@ a.dropdown-item.active:before {
     color: #fff;
     font-size: 14px;
     padding-bottom: 10px;
-    padding-left: 28px;
+    padding-left: 40px;
 }
 .nav-link {
     color: #fff;
@@ -510,12 +615,12 @@ a.dropdown-item.active:before {
     font-weight: 500;
     border-bottom: 1px solid #CCD0D4;
     word-break: break-all;
-    padding: 10px;
+    padding: 15px 10px;
 }
 .table td{
     font-size: 14px;
     font-weight: 500;
-    color: #6FA330;
+    color: #7aaa30;
     vertical-align: middle;
     border: 0;
     padding: 10px;
@@ -539,7 +644,13 @@ td.dropdown-select {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-    background-color: #F9F9F9;
+    background-color: #fff;
+}
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: rgba(25, 118, 210, 0.18);
+}
+.table-striped tbody tr:nth-of-type(odd) td {
+    /* color: #fff; */
 }
 /* multiselect */
 td.dropdown-select .multi-select{
@@ -688,7 +799,22 @@ td.dropdown-select .multi-select{
 .add-user-popup .table.table-striped{
     margin-top: 0;
 }
-
+.edit-user .switch-wrap .label{
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.edit-user .switch-wrap{
+    position: absolute;
+    right: 6%;
+    top: 5%;
+    display: flex;
+    align-items: flex-end;
+}
+.edit-user .switch-wrap .label{
+    margin-right: 10px;
+   
+}
 .company-logo .radio-wrap{
     display: inline-block;
 }

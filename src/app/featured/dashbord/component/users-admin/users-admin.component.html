@@ -1,7 +1,7 @@
 <!--component html goes here -->
 <section class="content-wrap">
   <section class="table-heading">
-    <button class=" float-right btn btn-green" (click)="openAdd()">Add User</button>
+    <button class=" float-right btn btn-green" (click)="openAdd()">Add New</button>
     <div class="flex-wrap">
       <h1>User</h1>
       <div class="form-group search-box search">
@@ -9,6 +9,7 @@
       </div>
     </div>
   </section>
+
   <section class="table-wrap">
     <table datatable class="table table-striped" *ngIf="allUsers&&allUsers.length>0">
       <thead>
@@ -74,11 +75,10 @@
         <tr *ngFor="let item of allUsers| orderBy: {property: column, direction: direction}|filter:searchText">
           <td>{{item.id}}</td>
           <td>{{item.user_name}}</td>
-          <td>Active</td>
           <td>{{item.companyid}}</td>
+          <td>Active</td>
           <td>{{item.email}}</td>
           <td> {{item.password_ref}} </td>
-
           <td class="btn-wrap" style="width: 20%;">
             <button class="btn btn-green" (click)="openEdit(item)">Edit</button>
             <button class="btn btn-default" (click)="openDelete(item)">Remove</button>

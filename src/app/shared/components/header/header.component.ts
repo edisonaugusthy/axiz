@@ -49,6 +49,7 @@ export class HeaderComponent implements OnInit {
     });
 
   }
+
   openNav() {
     this.showSideBar = !this.showSideBar;
     if (this.showSideBar) {
@@ -56,9 +57,7 @@ export class HeaderComponent implements OnInit {
     } else {
       document.getElementById("mySidebar").style.display = "none";
     }
-
   }
-
   openAdd() {
     this.showAdd = true;
     this.addFormData = this.formGeneratorService.SuperAdminLoginForm(this.userDetails);

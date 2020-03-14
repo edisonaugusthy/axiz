@@ -12,7 +12,7 @@ import { StorageModule } from 'ng7-storage';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InterCeptor } from './shared/services/interCeptor';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +29,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     NgbModule,
     StorageModule,
     NgxSpinnerModule,
-    Ng2SearchPipeModule,
     AppRoutingModule,
   ],
   providers: [{

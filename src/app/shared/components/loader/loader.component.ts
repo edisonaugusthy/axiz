@@ -8,16 +8,18 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class LoaderComponent implements OnInit {
 
-  constructor(private LoaderSvc: LoaderService,private spinner: NgxSpinnerService) { }
+  constructor(private LoaderSvc: LoaderService, private spinner: NgxSpinnerService) { }
   showLoader: boolean = false;
   ngOnInit() {
-    // this.LoaderSvc.getLoaderStatus().subscribe((val: boolean) => {
-    //   if (val) {
-    //     this.spinner.show()
-    //   } else {
-    //     this.spinner.hide();
-    //   }
-    // });
+    this.LoaderSvc.loaderState.subscribe((val: boolean) => {
+      if (val) {
+        this.showLoader = true;
+        // this.spinner.show()
+      } else {
+        this.showLoader = false;
+        // this.spinner.hide();
+      }
+    });
   }
- 
+
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 @Injectable({
   providedIn: 'root'
@@ -7,13 +7,14 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class LoaderService {
 
   constructor(private spinner: NgxSpinnerService) { }
-
+  isloading = new Subject<any>();
+  loaderState = this.isloading.asObservable();
   showLoader() {
-    this.spinner.show();
+    this.isloading.next(true);
   }
 
   hideLoader() {
-    this.spinner.hide();
+    this.isloading.next(false);
   }
 
 }

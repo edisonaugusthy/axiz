@@ -2,7 +2,7 @@
     <form (ngSubmit)="onSubmit()" [formGroup]="addUserForm">
         <div class="main-popup currency-popup">
             <!-- <div class="modal-dialog"> -->
-            <div class="modal-content modal-content-area modal-lg">
+            <div class="modal-content edit-user modal-content-area modal-lg">
                 <div class="add-user-popup">
                     <!-- Modal Header -->
                     <div class="modal-header black-header">
@@ -72,6 +72,16 @@
                                         [ngClass]="{ 'has-error': isSubmitted && formControls.confirmpassword.errors }">
                                 </div>
                             </div>
+                        </div>
+                        <div class="switch-wrap">
+                            <label type="text" class="label">Status</label>
+                            <label class="switch">
+                                <input type="checkbox" id="togBtn">
+                                <div class="slider round">
+                                    <span class="on">Active</span>
+                                    <span class="off">Inactive</span>
+                                </div>
+                            </label>
                         </div>
                         <div class="table-head">Company Access</div>
                         <table class="table table-striped">

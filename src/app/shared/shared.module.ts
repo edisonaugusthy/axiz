@@ -1,3 +1,4 @@
+import { MaterialModuleModule } from './material-module.module';
 import { HeaderComponent } from "./components/header/header.component";
 import { LoaderComponent } from "./components/loader/loader.component";
 import { NgModule } from "@angular/core";
@@ -12,7 +13,7 @@ import { OrderrByPipe } from './pipes/orderr-by.pipe';
 import { NoDataComponent } from './components/no-data/no-data.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbModule, MaterialModuleModule],
   declarations: [
     LoaderComponent,
     HeaderComponent,
