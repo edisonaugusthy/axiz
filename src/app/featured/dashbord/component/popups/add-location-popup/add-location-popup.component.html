@@ -5,8 +5,9 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">ADD LOCATION</h4>
-                    <img class="btn-close" (click)="popupClose()" src="{{imageBase}}/assets/img/close-icon.svg">
+                    <h4 class="modal-title" *ngIf="!isEdit">ADD LOCATION</h4>
+                    <h4 class="modal-title" *ngIf="isEdit">EDIT LOCATION</h4>
+                    <img class="btn-close" (click)="popupClose()" src="../assets/img/close-icon.svg">
                 </div>
 
                 <!-- Modal body -->

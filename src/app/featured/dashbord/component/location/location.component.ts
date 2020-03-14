@@ -78,7 +78,7 @@ export class LocationComponent implements OnInit {
 
   openAdd() {
     this.showAdd = true;
-    this.addFormData = this.formGeneratorService.addLocation();
+    // this.addFormData = this.formGeneratorService.addLocation();
   }
 
   cancelAdd(val) {

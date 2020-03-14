@@ -66,7 +66,7 @@ export class AddCompanyPopupComponent implements OnInit {
       comm: [(this.fields?.CommPath || ''), Validators.required],
       postingtype: [(this.fields?.SopPostingType || ''), Validators.required],
       qtyminor: [(this.fields?.SopQtyMinor || ''), Validators.required],
-      Image: [('')],
+      Image: [(this.fields?.Image) || '../assets/img/upload.png'],
     });
     this.open(this.input);
 
@@ -75,7 +75,13 @@ export class AddCompanyPopupComponent implements OnInit {
   open(content) {
     this.isEdit = this.Edit;
     if (this.isEdit) {
-      this.addUserForm.patchValue({ qtyminor: this.fields.SopQtyMinor, currency: this.fields.CurrencyId });
+      this.addUserForm.patchValue(
+        {
+          qtyminor: this.fields.SopQtyMinor,
+          currency: this.fields.CurrencyId,
+          postingtype: this.fields.SopPostingType
+        }
+      );
     }
     this.modalRef = this.modalService.open(content, { size: 'lg' });
   }
@@ -114,6 +120,7 @@ export class AddCompanyPopupComponent implements OnInit {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
       reader.onload = () => {
+        console.log(reader.result)
         this.addUserForm.patchValue({
           Image: reader.result,
         });

@@ -79,7 +79,7 @@ export class ChainComponent implements OnInit {
 
   openAdd() {
     this.showAdd = true;
-    this.addFormData = this.formGeneratorService.AddChain();
+    // this.addFormData = this.formGeneratorService.AddChain();
   }
 
   cancelAdd(val) {

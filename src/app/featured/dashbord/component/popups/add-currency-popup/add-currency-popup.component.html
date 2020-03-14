@@ -5,14 +5,15 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">ADD CURRENCY</h4>
-                    <img class="btn-close" (click)="popupClose()" src="{{imageBase}}/assets/img/close-icon.svg">
+                    <h4 class="modal-title" *ngIf="!isEdit">ADD CURRENCY</h4>
+                    <h4 class="modal-title" *ngIf="isEdit">EDIT CURRENCY</h4>
+                    <img class="btn-close" (click)="popupClose()" src="../assets/img/close-icon.svg">
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label">
+                        <div class="col col-sm-4 label astrick">
                             Currency ID
                         </div>
                         <div class="col col-sm-5">
@@ -32,7 +33,7 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label">
+                        <div class="col col-sm-4 label astrick">
                             Description
                         </div>
                         <div class="col col-sm-5">
@@ -45,7 +46,7 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label">
+                        <div class="col col-sm-4 label astrick">
                             Currency Symbol
                         </div>
                         <div class="col col-sm-5">
@@ -58,7 +59,7 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label">
+                        <div class="col col-sm-4 label astrick">
                             Currency Unit
                         </div>
                         <div class="col col-sm-5">
@@ -71,7 +72,7 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label">
+                        <div class="col col-sm-4 label astrick">
                             Unit-Subunit Connector
                         </div>
                         <div class="col col-sm-5">
@@ -84,7 +85,7 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label">
+                        <div class="col col-sm-4 label astrick">
                             Currency Subunit
                         </div>
                         <div class="col col-sm-5">
@@ -97,7 +98,7 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label">
+                        <div class="col col-sm-4 label astrick">
                             Rate of Default Currency
                         </div>
                         <div class="col col-sm-5">
@@ -110,7 +111,7 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label">
+                        <div class="col col-sm-4 label astrick">
                             Currency Decimals
                         </div>
                         <div class="col col-sm-5">

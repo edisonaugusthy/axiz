@@ -260,7 +260,7 @@ export class FormGeneratorService {
         disabled: true
       },
       {
-        value: currentValuse ? currentValuse['company_code'] : '',
+        value: currentValuse ? currentValuse['CompanyID'] : '',
         key: 'companyid',
         label: 'Company',
         required: true,

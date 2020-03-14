@@ -7,8 +7,9 @@
                 <div class="add-chain-popup">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h4 class="modal-title">ADD CHAIN</h4>
-                        <img class="btn-close" src="{{imageBase}}/assets/img/close-icon.svg" (click)="popupClose()">
+                        <h4 class="modal-title" *ngIf="!isEdit">ADD CHAIN</h4>
+                        <h4 class="modal-title" *ngIf="isEdit">EDIT CHAIN</h4>
+                        <img class="btn-close" src="../assets/img/close-icon.svg" (click)="popupClose()">
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
