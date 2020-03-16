@@ -22,6 +22,8 @@ export class CurrencyComponent implements OnInit {
   direction: number;
   addedCurrency: any;
   searchText: any;
+  detailsData: any;
+  showDetaisl: boolean;
   constructor(
     private formGeneratorService: FormGeneratorService,
     private deleteMessageSvc: DeleteMessageService,
@@ -57,7 +59,14 @@ export class CurrencyComponent implements OnInit {
   cancelEdit(val) {
     this.showEdit = false;
   }
-
+  openView(item) {
+    this.showDetaisl = true;
+    this.detailsData = item;
+  }
+  cancelView(item) {
+    this.showDetaisl = false;
+    this.detailsData = null;
+  }
   openDelete(item?) {
     this.showDelete = true;
     this.deleteData = this.deleteMessageSvc.deleteChain(item);

@@ -782,7 +782,7 @@ export class FormGeneratorService {
         label: 'Code',
         required: true,
         order: 2,
-        controlType: 'number',
+        controlType: 'textbox',
         type: '',
         options: ''
       },

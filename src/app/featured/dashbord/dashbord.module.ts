@@ -1,3 +1,4 @@
+import { CurrencyDetailsComponent } from './component/popups/currency-details/currency-details.component';
 import { CurrencyComponent } from './component/currency/currency.component';
 import { DashboardRoutingModule } from './dashbord-routing.module';
 import { HomeComponent } from './component/home/home.component';
@@ -51,7 +52,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AddCostCenterAccessComponent,
     AddLocationPopupComponent,
     AddCurrencyPopupComponent,
-    CurrencyComponent
+    CurrencyComponent,
+    CurrencyDetailsComponent
   ],
   exports: [DashboardRoutingModule],
 })

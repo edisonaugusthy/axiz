@@ -51,7 +51,8 @@ export class AddUserComponent implements OnInit {
       username: [(this.fields?.user_name || ''), Validators.required],
       email: [(this.fields?.email || ''), [Validators.required, Validators.email]],
       password: [(this.fields?.password_ref || ''), Validators.required],
-      confirmpassword: ['', Validators.required]
+      confirmpassword: ['', Validators.required],
+      status: [(this.fields?.status), Validators.required]
     },
       {
         validator: MustMatch('password', 'confirmpassword')

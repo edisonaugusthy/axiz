@@ -234,11 +234,12 @@
                         </div>
                         <div class="col-sm-7">
                             <div class="flex-wrap">
-                                <div class="upload">
+                                <div class="upload file-upload-wrap">
                                     <label class="btn-upload">
                                         <input type="file" name="fileupload" (change)="fileProgress($event)">
                                         <img class="btn" src="../assets/img/upload.png">
                                     </label>
+                                    <p class="file-name" *ngIf="imageName">{{imageName}}</p>
                                 </div>
                                 <div class="radio-wrap">
                                     <div class="labal astrick">Sales Posting Based On</div>

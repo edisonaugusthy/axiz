@@ -13,24 +13,31 @@
                 <div class="modal-body">
                     <div class="form-group-wrap row">
                         <div class="col col-sm-4 label">
-                            User ID
+                            User Name
                         </div>
                         <div class="col col-sm-5">
                             <div class="form-group">
-                                <input type="text" formControlName="userid" class="form-control" [disabled]="!isEdit">
+                                <select class="form-control" formControlName="userid" [ngClass]="{
+                                              'has-error': isSubmitted && formControls.userid.errors
+                                            }">
+                                    <option *ngFor="let opt of users" [value]="opt.user_id">
+                                        {{opt.user_name}}
+                                    </option>
+                                </select>
+                                <!-- <input type="text" formControlName="userid" class="form-control" [disabled]="!isEdit"> -->
                             </div>
                         </div>
                     </div>
-                    <div class="form-group-wrap row">
+                    <!-- <div class="form-group-wrap row">
                         <div class="col col-sm-4 label">
                             User Name
                         </div>
                         <div class="col col-sm-5">
                             <div class="form-group">
-                                <input type="text" class="form-control" formControlName="username" [disabled]="!isEdit">
+                                <input type="text" class="form-control" formControlName="username" disabled>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="radio-wrap" style="margin-bottom: 8px;">
                         <label class="radio">
                             Full Access
@@ -54,28 +61,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of chainsList; index as i">
+                                <tr *ngFor="let item of addUserForm.get('selectedLocations')['controls']; let i=index;">
                                     <td>
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" (change)="update(item)" [checked]="item.checked"
-                                                    [value]="item.chainid" [disabled]="disableItem">
+                                                <input type="checkbox" [formControl]="item">
                                                 <span></span>
-                                                {{item.chainid}}
+                                                {{chainsList[i].chainid}}
                                             </label>
                                         </div>
                                     </td>
-                                    <td>{{item.chainname}}</td>
+                                    <td>{{chainsList[i].chainname}}</td>
                                     <td class="dropdown-select">SELECT LOCATIONS <span><i class="sort-down"
-                                                (click)="item.showSub = !item.showSub"></i></span>
-                                        <div class="multi-select" [style.display]="item.showSub ? 'block' : 'none'">
+                                                (click)="chainsList[i].showSub = !chainsList[i].showSub"></i></span>
+                                        <div class="multi-select"
+                                            [style.display]="chainsList[i].showSub ? 'block' : 'none'">
                                             <ul>
-                                                <li *ngFor="let x of item.locations; index as j">
+                                                <li *ngFor="let x of chainsList[i].locations; index as j">
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox" [checked]="item.checked"
-                                                                (change)="update(x)" [value]="x.id"
-                                                                [disabled]="disableItem">
+                                                            <input type="checkbox">
                                                             <span></span>
                                                             {{x.Name}}
                                                         </label>
@@ -85,8 +90,41 @@
                                         </div>
                                     </td>
                                 </tr>
-
                             </tbody>
+
+                            <!--  -->
+                            <!-- <tr *ngFor="let item of addUserForm.get('stackDetails')['controls']; let i=index;">
+                                    <td>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" [formControl]="item">
+                                                <span></span>
+                                                {{chainsList[i].chainid}}
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>{{chainsList[i].chainname}}</td>
+                                    <td class="dropdown-select">SELECT LOCATIONS <span><i class="sort-down"
+                                                (click)="chainsList[i].showSub = !chainsList[i].showSub"></i></span>
+                                        <div class="multi-select"
+                                            [style.display]="chainsList[i].showSub ? 'block' : 'none'">
+                                            <ul>
+                                                <li *ngFor="let x of chainsList[i].locations; index as j">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox">
+                                                            <span></span>
+                                                            {{x.Name}}
+                                                        </label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody> -->
+
+                            <!--  -->
                         </table>
                     </section>
                 </div>

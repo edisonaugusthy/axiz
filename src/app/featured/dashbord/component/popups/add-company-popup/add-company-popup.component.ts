@@ -33,6 +33,7 @@ export class AddCompanyPopupComponent implements OnInit {
   isSubmitted: boolean;
   isEdit: boolean;
   selectedCompany: any;
+  imageName: any;
   constructor(
     config: NgbModalConfig,
     private modalService: NgbModal,
@@ -118,6 +119,7 @@ export class AddCompanyPopupComponent implements OnInit {
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
+      this.imageName = file.name;
       reader.readAsDataURL(file);
       reader.onload = () => {
         console.log(reader.result)

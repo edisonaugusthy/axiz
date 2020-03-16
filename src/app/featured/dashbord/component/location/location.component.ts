@@ -89,8 +89,12 @@ export class LocationComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.createLocation(val).subscribe((res: any) => {
       this.loaderSvc.hideLoader();
-      this.alert.showAlert({ message: res.message, type: 'success' });
-      this.getAllLocation();
+      if (res && res.status) {
+        this.alert.showAlert({ message: res.message, type: 'success' });
+        this.getAllLocation();
+      } else {
+        this.alert.showAlert({ message: res.message, type: 'danger' });
+      }
     });
   }
 

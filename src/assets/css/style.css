@@ -142,7 +142,7 @@ header{
 }
 header .menu-icon{
     float: left;
-    width: 48px;
+    width: 42px;
     height: auto;
     padding-right: 15px;
     cursor: pointer;
@@ -434,7 +434,7 @@ label.radio {
     left: 5px;
     top: 8px;
     background-size: contain;
-    z-index: 9999;
+    z-index: 4;
 }
 .form-group.search .form-control{
     padding: 5px 10px 5px 28px !important;
@@ -597,11 +597,21 @@ li.menu-active a {
     border: 1px solid #dee2e6 !important;
 }
 .table-wrap {
-    height: 420px;
-    overflow: auto;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 30px;
+    /* border-bottom: 1px solid #ddd; */
 }
+.table-scroll-wrap{
+    height: 430px;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+table.table.table-striped.table-main-body {
+    margin-top: -1px;
+}
+table.table.table-main-head {
+    margin-bottom: 0 !important;
+}
+
+
 
 .table{
     margin-top: 10px;
@@ -617,7 +627,7 @@ li.menu-active a {
     font-weight: 500;
     border-bottom: 1px solid #CCD0D4;
     word-break: break-all;
-    padding: 15px 10px;
+    padding: 15px 2px  !important;
 }
 .table td{
     font-size: 14px;
@@ -649,7 +659,7 @@ td.dropdown-select {
     background-color: #fff;
 }
 .table-striped tbody tr:nth-of-type(even) {
-    background-color: rgba(25, 118, 210, 0.18);
+    background-color: rgba(25, 118, 210, 0.08)
 }
 .table-striped tbody tr:nth-of-type(odd) td {
     /* color: #fff; */
@@ -766,8 +776,11 @@ td.dropdown-select .multi-select{
     margin-top: 30px;
 }
 .currency-popup .modal-body .col{
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: flex-end; */
+}
+.currency-popup .modal-body .file-upload-wrap .file-name{
+    font-size: 12px;
 }
 .currency-popup .form-group-wrap{
     margin-bottom: 10px;

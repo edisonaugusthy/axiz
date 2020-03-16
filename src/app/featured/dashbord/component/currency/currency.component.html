@@ -10,10 +10,10 @@
   </section>
 
   <section class="table-wrap">
-    <table class="table table-striped" *ngIf="addedCurrency&&addedCurrency.length>0">
+    <table class="table table-main-head">
       <thead>
         <tr>
-          <th (click)="sort('id')">
+          <th style="width: 10%;" (click)="sort('id')">
             <span class="sort-wrap">
               Id
               <span class="sort-icons">
@@ -22,7 +22,7 @@
               </span>
             </span>
           </th>
-          <th (click)="sort('CurrencyName')">
+          <th style="width: 20%;" (click)="sort('CurrencyName')">
             <span class="sort-wrap">
               Name
               <span class="sort-icons">
@@ -31,7 +31,7 @@
               </span>
             </span>
           </th>
-          <th (click)="sort('CurrencySymbol')">
+          <th style="width: 10%;" (click)="sort('CurrencySymbol')">
             <span class="sort-wrap">
               Symbol
               <span class="sort-icons">
@@ -40,7 +40,7 @@
               </span>
             </span>
           </th>
-          <th (click)="sort('CurrencyUnit')">
+          <th style="width: 20%;" (click)="sort('CurrencyUnit')">
             <span class="sort-wrap">
               Unit
               <span class="sort-icons">
@@ -49,23 +49,33 @@
               </span>
             </span>
           </th>
-          <th style="width: 20%;">Operation</th>
+          <th style="width: 10%">
+            <span class="sort-wrap">
+              View
+            </span>
+          </th>
+          <th>Operation</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let item of addedCurrency  | orderBy: {property: column, direction: direction}|filter:searchText">
-          <td>{{item.id}}</td>
-          <td>{{item.CurrencyName}}</td>
-          <td>{{item.CurrencySymbol}}</td>
-          <td>{{item.CurrencyUnit}}</td>
-          <td class="btn-wrap" style="width: 20%;">
-            <button class="btn btn-green" (click)="openEdit(item)">Edit</button>
-            <button class="btn btn-default" (click)="openDelete(item)">Remove</button>
-          </td>
-        </tr>
-      </tbody>
     </table>
-    <app-no-data *ngIf="!addedCurrency||addedCurrency.length==0"></app-no-data>
+    <div class="table-scroll-wrap">
+      <table class="table table-striped table-main-body" *ngIf="addedCurrency&&addedCurrency.length>0">
+        <tbody>
+          <tr *ngFor="let item of addedCurrency  | orderBy: {property: column, direction: direction}|filter:searchText">
+            <td style="width: 10%;">{{item.id}}</td>
+            <td style="width: 20%;">{{item.CurrencyName}}</td>
+            <td style="width: 10%;">{{item.CurrencySymbol}}</td>
+            <td style="width: 20%;">{{item.CurrencyUnit}}</td>
+            <td style="width: 10%;" (click)="openView(item)"><img src="../assets/img/view-icon.png"></td>
+            <td class="btn-wrap">
+              <button class="btn btn-green" (click)="openEdit(item)">Edit</button>
+              <button class="btn btn-default" (click)="openDelete(item)">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <app-no-data *ngIf="!addedCurrency||addedCurrency.length==0"></app-no-data>
+    </div>
   </section>
 </section>
 
@@ -85,3 +95,7 @@
 <app-add-currency-popup *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
   (formSubmitted)="submitAdd($event)">
 </app-add-currency-popup>
+
+<app-currency-details *ngIf="showDetaisl" [fields]="detailsData" (formCancel)="cancelView($event)"
+  (formSubmitted)="cancelView($event)">
+</app-currency-details>

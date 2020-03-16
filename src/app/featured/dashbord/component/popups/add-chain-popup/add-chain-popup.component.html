@@ -94,12 +94,12 @@
                             <div class="col col-sm-5 label flex-top">
                                 Chain Logo
                             </div>
-                            <div class="col col-sm-5">
+                            <div class="col col-sm-5 file-upload-wrap">
                                 <label class="btn-upload">
                                     <input type="file" name="fileupload" (change)="fileProgress($event)">
                                     <img class="btn" [src]="imgUrl">
                                 </label>
-
+                                <p class="file-name" *ngIf="imageName">{{imageName}}</p>
                             </div>
                             <div class="col col-sm-3">
                             </div>

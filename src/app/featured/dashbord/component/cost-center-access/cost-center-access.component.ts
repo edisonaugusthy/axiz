@@ -21,6 +21,7 @@ export class CostCenterAccessComponent implements OnInit {
   direction: number;
   allCostAccess: any;
   searchText: any;
+  allusers: any;
   constructor(
     private dashboardSvc: DashbordService,
     private formGeneratorService: FormGeneratorService,
@@ -31,6 +32,7 @@ export class CostCenterAccessComponent implements OnInit {
 
   ngOnInit() {
     this.getAllCenters();
+    this.getAllUsers();
   }
 
   sort(property) {
@@ -95,8 +97,15 @@ export class CostCenterAccessComponent implements OnInit {
   getAllCenters() {
     this.loaderSvc.showLoader();
     this.dashboardSvc.gerAllCostAccess(null).subscribe((res: any) => {
-      this.allCostAccess = res.data;
+      this.allCostAccess = res;
       this.loaderSvc.hideLoader();
+    });
+  }
+
+
+  getAllUsers() {
+    this.dashboardSvc.gerAllNormalUser(null).subscribe((res: any) => {
+      this.allusers = res.location_data;
     });
   }
 

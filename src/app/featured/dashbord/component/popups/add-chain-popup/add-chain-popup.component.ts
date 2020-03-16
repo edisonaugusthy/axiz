@@ -33,6 +33,7 @@ export class AddChainPopupComponent implements OnInit {
   isEdit: boolean;
   fileData: any;
   imgUrl = `${environment.imageBase}/assets/img/upload.png`;
+  imageName: string;
   constructor(config: NgbModalConfig, private modalService: NgbModal, private formBuilder: FormBuilder) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -86,6 +87,7 @@ export class AddChainPopupComponent implements OnInit {
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
+      this.imageName = file.name;
       reader.readAsDataURL(file);
 
       reader.onload = () => {
