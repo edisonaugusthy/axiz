@@ -28,6 +28,7 @@
     "ng7-storage": "^1.1.1",
     "ngx-spinner": "^8.1.0",
     "rxjs": "~6.5.4",
+    "subsink": "^1.0.1",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },

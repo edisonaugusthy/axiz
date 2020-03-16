@@ -61,70 +61,45 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of addUserForm.get('selectedLocations')['controls']; let i=index;">
-                                    <td>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" [formControl]="item">
-                                                <span></span>
-                                                {{chainsList[i].chainid}}
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>{{chainsList[i].chainname}}</td>
-                                    <td class="dropdown-select">SELECT LOCATIONS <span><i class="sort-down"
-                                                (click)="chainsList[i].showSub = !chainsList[i].showSub"></i></span>
-                                        <div class="multi-select"
-                                            [style.display]="chainsList[i].showSub ? 'block' : 'none'">
-                                            <ul>
-                                                <li *ngFor="let x of chainsList[i].locations; index as j">
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox">
-                                                            <span></span>
-                                                            {{x.Name}}
-                                                        </label>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
+
+                                <tr *ngFor=" let group of formData.controls; let i=index;">
+                                    <ng-container [formGroup]="group">
+                                        <td>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" [formControl]="group.get('check')">
+                                                    <span></span>
+                                                    {{ group.get('chainname').value }}
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>{{chainsList[i].chainname}}</td>
+                                        <td class="dropdown-select">SELECT LOCATIONS <span
+                                                *ngIf="group.get('locations').controls.length > 0"><i class="sort-down"
+                                                    (click)="chainsList[i].showSub = !chainsList[i].showSub"></i></span>
+                                            <div class="multi-select"
+                                                [style.display]="chainsList[i].showSub ? 'block' : 'none'">
+                                                <ul>
+                                                    <li
+                                                        *ngFor="let item of group.get('locations').controls; index as j">
+                                                        <ng-container [formGroup]="item">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"
+                                                                        [formControl]="item.get('check')">
+                                                                    <span></span>
+                                                                    {{ item.get('Name').value }}
+                                                                </label>
+                                                            </div>
+                                                        </ng-container>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </ng-container>
                                 </tr>
+
                             </tbody>
-
-                            <!--  -->
-                            <!-- <tr *ngFor="let item of addUserForm.get('stackDetails')['controls']; let i=index;">
-                                    <td>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" [formControl]="item">
-                                                <span></span>
-                                                {{chainsList[i].chainid}}
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>{{chainsList[i].chainname}}</td>
-                                    <td class="dropdown-select">SELECT LOCATIONS <span><i class="sort-down"
-                                                (click)="chainsList[i].showSub = !chainsList[i].showSub"></i></span>
-                                        <div class="multi-select"
-                                            [style.display]="chainsList[i].showSub ? 'block' : 'none'">
-                                            <ul>
-                                                <li *ngFor="let x of chainsList[i].locations; index as j">
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox">
-                                                            <span></span>
-                                                            {{x.Name}}
-                                                        </label>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody> -->
-
-                            <!--  -->
                         </table>
                     </section>
                 </div>

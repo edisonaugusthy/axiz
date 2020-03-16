@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { NgbModal, NgbModalRef, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray, ValidatorFn } from '@angular/forms';
-
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-add-cost-center-access',
@@ -37,6 +37,8 @@ export class AddCostCenterAccessComponent implements OnInit {
   chainsList: any;
   selectedChains: Array<object> = [];
   disableItem: boolean;
+  private subs = new SubSink();
+  formData: any;
   constructor(
     config: NgbModalConfig,
     private modalService: NgbModal,
@@ -51,54 +53,79 @@ export class AddCostCenterAccessComponent implements OnInit {
   ngOnInit() {
     this.loadData();
 
+
   }
   activate() {
+    this.formData = new FormArray(this.addControls(this.chainsList));
     this.addUserForm = this.formBuilder.group({
       userid: [(this.fields?.userid || ''), Validators.required],
       username: ['', Validators.required],
       Fullaccess: [1, Validators.required],
-      selectedLocations: this.createcheckForm(),
     });
     this.open(this.input);
-  }
-  createcheckForm() {
-    const arr = this.chainsList.map(x => {
-      return new FormControl(false);
-    });
-    return new FormArray(arr);
+    this.disableSelection(1);
   }
 
-  createasmcheckForm() {
-    const arr = this.chainsList.map(x => {
-      return new FormGroup({
-        chain: new FormControl(false),
-        location: this.formBuilder.array([this.createItem(x.locations)])
-      })
-    });
-    return new FormArray(arr);
+
+  parentCheckBoxSelect(control) {
+    if (!this.canDoParentCheckBoxSelect(control)) return;
+    const parent = control.parent.parent; // FormArray
+    const markCheck = Object.keys(parent.controls).reduce((result, key) => {
+      return [...result, parent.get(`${key}.check`).value];
+    }, []).some(t => t);
+
+    const grantParent = Object.keys(parent.parent.controls).find(x => parent.parent.controls[x] === parent);
+    parent.parent.get('check').patchValue(markCheck, { emitEvent: false });
+    this.parentCheckBoxSelect(parent);
   }
 
-  createItem(val) {
-    if (val && val.length > 0) {
-      const arr = val.map(x => {
-        return new FormControl(false);
+  childCheckBoxSelect(control, value) {
+    const children = control.parent.get('locations') as FormArray;
+    children.controls.forEach(group => {
+      group.get('check').patchValue(value, { emitEvent: false });
+      this.childCheckBoxSelect(group.get('check'), value);
+    })
+  }
+
+  addControls(data) {
+    return data.reduce((array, item) => {
+      const group = new FormGroup({
+        locations: new FormArray([])
       });
-      return new FormArray(arr);
+      const { locations = [], ...info } = item;
+      this.addControls(locations)
+        .forEach(t => (group.get('locations') as FormArray).push(t));
+
+      Object.keys(info)
+        .forEach(name => group.registerControl(name, this.generateControl(name, item[name])))
+
+      return [...array, group];
+    }, []);
+  }
+
+
+  private generateControl(name, defaultValue) {
+    const control = new FormControl(defaultValue);
+    if (name === 'check') {
+      this.subs.add(
+        control.valueChanges.subscribe(value => {
+          this.childCheckBoxSelect(control, value);
+          this.parentCheckBoxSelect(control);
+        })
+      );
     }
-
+    return control;
   }
 
-  getSelectedHobbies() {
-    let selectedHobbies = this.addUserForm.get('selectedLocations')['controls'].map((hobby, i) => {
-      return hobby.value && this.chainsList[i].chainid;
-    });
-    selectedHobbies = selectedHobbies.filter(val => {
-      if (val !== false) {
-        return val;
-      }
-    });
-    return selectedHobbies;
+  private canDoParentCheckBoxSelect(control) {
+    const parent = control.parent.parent;
+    return (parent && parent.parent);
   }
+  ngOnDestroy() {
+    this.subs.unsubscribe();
+  }
+
+
   open(content) {
     if (this.Edit) {
       this.isEdit = true;
@@ -109,18 +136,17 @@ export class AddCostCenterAccessComponent implements OnInit {
     this.modalRef = this.modalService.open(content, { size: 'lg' });
   }
   onSubmit() {
-    this.getSelectedHobbies();
     this.addUsername();
-    // this.isSubmitted = true;
-    // this.getChains();
-    // if (this.addUserForm.valid && (this.addUserForm.value.Fullaccess == 1 || (this.addUserForm.value.Fullaccess == 0 &&
-    //   this.selectedChains.length > 0))) {
-    //   let val = this.addUserForm.getRawValue();
-    //   val.selected = this.selectedChains;
-    //   this.formSubmitted.emit(val);
-    //   this.modalRef.close();
-    //   this.isSubmitted = false;
-    // }
+    this.selectedChains = this.getFinalCheckboxValues();
+    this.isSubmitted = true;
+    if (this.addUserForm.valid && (this.addUserForm.value.Fullaccess == 1 || (this.addUserForm.value.Fullaccess == 0 &&
+      this.selectedChains.length > 0))) {
+      let val = this.addUserForm.getRawValue();
+      val.selected = this.selectedChains;
+      this.formSubmitted.emit(val);
+      this.modalRef.close();
+      this.isSubmitted = false;
+    }
   }
 
   get formControls() {
@@ -132,7 +158,9 @@ export class AddCostCenterAccessComponent implements OnInit {
       const user = this.users.filter(val => {
         return val.user_id == this.addUserForm.value.userid;
       })
-      user ? this.addUserForm.patchValue({ username: user[0].user_name }) : '';
+      if (user && user.length > 0) {
+        this.addUserForm.patchValue({ username: user[0].user_name })
+      }
     }
   }
 
@@ -147,75 +175,96 @@ export class AddCostCenterAccessComponent implements OnInit {
     this.dashboardSvc.getUserChainList(null).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       this.chainsList = val;
-      this.onClick();
+      this.setinitialStatus();
       this.activate();
     });
   }
 
 
-  onClick() {
-    this.chainsList.forEach(element => {
-      element.check = false;
-      if (element.locations) {
-        element.locations.forEach(val => {
-          val.check = false;
-        });
-      }
-    });
-
-  }
-
-  disableSelection(id) {
-    if (id == 1) {
-      this.addUserForm.get('selectedLocations')['controls'].forEach((element, i) => {
-        this.addUserForm.get('selectedLocations')['controls'][i].patchValue(false)
-        element.disable();
+  setinitialStatus() {
+    if (this.fields) {
+      this.chainsList.forEach(element => {
+        element = this.getSelectedChain(element);
       });
     } else {
-      this.addUserForm.get('selectedLocations')['controls'].forEach(element => {
-        element.enable();
+      this.chainsList.forEach(element => {
+        element.check = false;
+        if (element.locations) {
+          element.locations.forEach(val => {
+            val.check = false;
+          });
+        }
       });
     }
   }
+  getSelectedChain(item) {
+    const selected = this.fields.selected || []
+    let data = selected.filter(element => {
+      return element.chain['Chain Id'] == item.chainid
+    });
+    data = data[0];
+    if (data && data) {
+      item.check = true;
+      if (item.locations && item.locations.length > 0) {
+        item.locations.map(val => {
+          if (Array.isArray(data.chain['location Id'])) {
+            data.chain['location Id'].includes(val.id) ? val.check = true : val.check = false
+          } else {
+            val.check = false;
+          }
+        })
+      }
+      return item;
+    } else {
 
-  // update(item) {
-  //   item.check = !item.check
-  // }
-  // getChains() {
-  //   let item: any = {};
-  //   for (let i = 0; i < this.chainsList.length; i++) {
-  //     const element = this.chainsList[i];
-  //     if (element.check) {
-  //       item.chain = element.chainid
-  //       item.locations = []
-  //       for (let j = 0; j < element.locations.length; j++) {
-  //         const innerItem = element.locations[j];
-  //         if (innerItem.check) {
-  //           item.locations.push(innerItem.id);
-  //         }
+      item.check = false;
+      if (item.locations && item.locations.length > 0) {
+        item.locations.forEach(val => {
+          val.check = false;
+        })
+      }
+      return item;
+    }
 
-  //       }
-  //       this.selectedChains.push(item);
-  //     }
-
-  //   }
-
-  // }
-}
+  }
 
 
 
-function minSelectedCheckboxes(min = 1) {
-  const validator: ValidatorFn = (formArray: FormArray) => {
-    const totalSelected = formArray.controls
-      // get a list of checkbox values (boolean)
-      .map(control => control.value)
-      // total up the number of checked checkboxes
-      .reduce((prev, next) => next ? prev + next : prev, 0);
+  disableSelection(id) {
+    if (id == 1) {
+      this.formData.controls.forEach((element, i) => {
+        element.get('check').patchValue(false);
+        element.disable();
+        element.get('locations').controls.forEach((val, i) => {
+          val.get('check').patchValue(false);
+          val.disable();
+        })
+      })
+    } else {
+      this.formData.controls.forEach((element, i) => {
+        element.enable();
+        element.get('locations').controls.forEach((val, i) => {
+          val.enable();
+        })
+      })
+    }
+  }
 
-    // if the total is not greater than the minimum, return the error message
-    return totalSelected >= min ? null : { required: true };
-  };
 
-  return validator;
+  getFinalCheckboxValues() {
+    const selected = [];
+    this.formData.value.forEach(element => {
+      if (element.check) {
+        let item = { chain: element.chainid, locations: '' }
+        if (element.locations && element.locations.length > 0) {
+          let loc = element.locations.filter(val => {
+            return val.check == true;
+          }).map(obj => obj.id);
+          item.locations = loc;
+        }
+        selected.push(item);
+      }
+    });
+    return selected;
+  }
 }
