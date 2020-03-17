@@ -1,6 +1,6 @@
 <section class="content-wrap">
   <section class="table-heading">
-    <button class=" float-right btn btn-green" (click)="openAdd()">Add New</button>
+    <button mat-flat-button color="primary" class="float-right btn" (click)="openAdd()">Add New</button>
     <div class="flex-wrap">
       <h1>Currency</h1>
       <div class="form-group search-box search">
@@ -68,8 +68,8 @@
             <td style="width: 20%;">{{item.CurrencyUnit}}</td>
             <td style="width: 10%;" (click)="openView(item)"><img src="../assets/img/view-icon.png"></td>
             <td class="btn-wrap">
-              <button class="btn btn-green" (click)="openEdit(item)">Edit</button>
-              <button class="btn btn-default" (click)="openDelete(item)">Remove</button>
+              <button mat-flat-button color="primary" class="btn" (click)="openEdit(item)">Edit</button>
+              <button mat-flat-button class="btn btn-default" (click)="openDelete(item)">Remove</button>
             </td>
           </tr>
         </tbody>

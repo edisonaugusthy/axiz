@@ -18,7 +18,7 @@ export class SideMenuOptions {
     public static SUPER_ADMIN_MENU = [
         { name: 'Dashboard', path: 'dashbord', sub_menu: false, img: 'dashboard-icon.png' },
         {
-            name: 'Licensing', path: 'company', img: 'licensing-icon.jpeg',
+            name: 'Licensing', path: 'company', img: 'licensing-icon.png',
             sub_menu: [
                 { name: 'Company', path: 'company', img: 'dimension-icon.png', },
                 { name: 'User', path: 'admin-user', img: 'dimension-icon.png' },
