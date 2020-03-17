@@ -23,7 +23,7 @@
               </span>
             </span>
           </th>
-          <th (click)="sort('username')" style="width: 20%;">
+          <th (click)="sort('username')" style="width: 30%;">
             <span class="sort-wrap">
               Name
               <span class="sort-icons">
@@ -32,24 +32,16 @@
               </span>
             </span>
           </th>
-          <th (click)="sort('ChainName')" style="width: 20%;">
+          <th (click)="sort('fullaccess')" style="width: 30%;">
             <span class="sort-wrap">
-              Chain
+              Access Type
               <span class="sort-icons">
                 <i class="sort-up"></i>
                 <i class="sort-down"></i>
               </span>
             </span>
           </th>
-          <th (click)="sort('LocationName')" style="width: 20%;">
-            <span class="sort-wrap">
-              Location
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
+
           <th style="width: 20%;">Operation</th>
         </tr>
       </thead>
@@ -59,9 +51,9 @@
         <tbody>
           <tr *ngFor="let item of allCostAccess  | orderBy: {property: column, direction: direction}|filter:searchText">
             <td class="curser-point" (click)="openView(item)" style="width: 20%;">{{item.userid}}</td>
-            <td class="curser-point" (click)="openView(item)" style="width: 20%;">{{item.username}}</td>
-            <td style="width: 20%;">{{item.ChainName}}</td>
-            <td style="width: 20%;">{{item.LocationName}}</td>
+            <td class="curser-point" (click)="openView(item)" style="width: 30%;">{{item.username}}</td>
+            <td class="curser-point" (click)="openView(item)" style="width: 30%;">
+              {{item.fullaccess ==0 ?'Custom Access':'Full Access'}}</td>
             <td class="btn-wrap">
               <button mat-flat-button color="primary" class="btn" (click)="openEdit(item)">Edit</button>
               <button mat-flat-button class="btn btn-default" (click)="openDelete(item)">Remove</button>

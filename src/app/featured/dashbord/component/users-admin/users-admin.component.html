@@ -82,7 +82,9 @@
             <td style="width: 10%;">{{item.companyid}}</td>
             <td style="width: 20%;">{{item.email}}</td>
             <td style="width: 10%;"> {{item.password_ref}} </td>
-            <td style="width: 10%;">{{item.status==0?'Suspended':'Active'}}</td>
+            <td style="width: 10%;" [ngStyle]="{'color':item.status==1 ? 'green' : '#c0bbc7'}">
+              {{item.status==0?'Suspended':'Active'}}
+            </td>
             <td class="btn-wrap">
               <button mat-flat-button color="primary" class="btn" (click)="openEdit(item)">Edit</button>
               <button mat-flat-button class="btn btn-default" (click)="openDelete(item)">Remove</button>

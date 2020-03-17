@@ -7,16 +7,15 @@
       </div>
       <div class="form-group">
         <img src="../assets/img/email-icon.svg">
-
         <input type="email" class="form-control" placeholder="Email address" formControlName="email"
           [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
       </div>
       <div class="form-group">
         <img src="../assets/img/lock-icon.svg">
-        <input type="password" matInput class="form-control" formControlName="password" placeholder="Password"
+        <input type="password" class="form-control" formControlName="password" placeholder="Password"
           [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
       </div>
-      <button mat-flat-button color="primary" class="btn btn-green">Login</button>
+      <button mat-flat-button color="primary">Login</button>
     </form>
   </div>
 </div>

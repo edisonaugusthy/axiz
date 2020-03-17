@@ -12,7 +12,7 @@ import { StorageModule } from 'ng7-storage';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InterCeptor } from './shared/services/interCeptor';
-
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +30,7 @@ import { InterCeptor } from './shared/services/interCeptor';
     StorageModule,
     NgxSpinnerModule,
     AppRoutingModule,
+    MatButtonModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
