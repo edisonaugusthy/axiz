@@ -127,6 +127,14 @@ body{
 .form-flex-wrap .form-group:last-child{
     padding-right: 0 !important;
 }
+.btn {
+    line-height: 28px !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}
+.btn.btn-default{
+    background: #c3c3c3 !important;
+}
 header{
     background: #343a40;
     padding: 0 15px;

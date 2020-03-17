@@ -1,0 +1,112 @@
+<!-- edit popup -->
+<ng-template #addUserModal let-modal>
+  <form (ngSubmit)="onSubmit()" [formGroup]="addUserForm">
+    <div class="main-popup currency-popup">
+      <!-- <div class="modal-dialog"> -->
+      <div class="modal-content modal-content-area modal-lg">
+        <div class="add-chain-popup">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">CHAIN</h4>
+            <img class="btn-close" src="../assets/img/close-icon.svg" (click)="popupClose()">
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="form-group-wrap row">
+              <div class="col col-sm-5 label astrick">
+                Chain ID
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="chainid" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="form-group-wrap row">
+              <div class="col col-sm-5 label astrick">
+                Description
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <textarea type="text" class="form-control" formControlName="description" disabled></textarea>
+                </div>
+              </div>
+              <div class="col col-sm-3">
+              </div>
+            </div>
+            <div class="form-group-wrap row">
+              <div class="col col-sm-5 label astrick">
+                Email
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="email" disabled>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="form-group-wrap row">
+              <div class="col-6 col-md-4">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" value="1" formControlName="isvirtual" disabled>
+                    <span></span>
+                    Is virtual Chain
+                  </label>
+                </div>
+              </div>
+              <div class="col-6 col-md-8"></div>
+
+            </div>
+
+            <div class="form-group-wrap row">
+              <div class="col-6 col-md-8">
+
+              </div>
+              <div class="col-6 col-md-4"></div>
+            </div>
+            <div class="form-group-wrap row">
+              <div class="col-6 col-md-8">
+                <div class="radio-wrap">
+                  <label class="radio">
+                    GCA Based on Guest Count
+                    <input type="radio" [value]="1" disabled formControlName="gcaonguestcount">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="radio-wrap">
+                  <label class="radio">
+                    CGA Based on transacions
+                    <input type="radio" [value]="1" disabled formControlName="cgaontransac">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="col-6 col-md-4"></div>
+            </div>
+
+            <div class="form-group-wrap chain-logo row">
+              <div class="col col-sm-5 label flex-top">
+                Chain Logo
+              </div>
+              <div class="col col-sm-5 file-upload-wrap">
+                <label class="btn-upload">
+                  <!-- <input type="file" name="fileupload" disabled> -->
+                  <img class="btn" [src]="imgUrl">
+                </label>
+                <p class="file-name" *ngIf="imageName">{{imageName}}</p>
+              </div>
+              <div class="col col-sm-3">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="popupClose()">Close</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-template>

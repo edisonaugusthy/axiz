@@ -1,5 +1,6 @@
+import { ChainDetailsComponent } from './component/details-popups/chain-details/chain-details.component';
 import { MaterialModuleModule } from './../../shared/material-module.module';
-import { CurrencyDetailsComponent } from './component/popups/currency-details/currency-details.component';
+import { CurrencyDetailsComponent } from './component/details-popups/currency-details/currency-details.component';
 import { CurrencyComponent } from './component/currency/currency.component';
 import { DashboardRoutingModule } from './dashbord-routing.module';
 import { HomeComponent } from './component/home/home.component';
@@ -55,7 +56,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AddLocationPopupComponent,
     AddCurrencyPopupComponent,
     CurrencyComponent,
-    CurrencyDetailsComponent
+    CurrencyDetailsComponent,
+    ChainDetailsComponent
   ],
   exports: [DashboardRoutingModule],
 })

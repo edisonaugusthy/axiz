@@ -22,6 +22,8 @@ export class ChainComponent implements OnInit {
   direction: number;
   addedChains: any;
   searchText: any;
+  showDetails: boolean;
+  detailsData: any;
   constructor(
     private formGeneratorService: FormGeneratorService,
     private deleteMessageSvc: DeleteMessageService,
@@ -38,6 +40,15 @@ export class ChainComponent implements OnInit {
     this.isDesc = !this.isDesc; //change the direction
     this.column = property;
     this.direction = this.isDesc ? 1 : -1;
+  }
+
+  openView(item) {
+    this.showDetails = true;
+    this.detailsData = item;
+  }
+  cancelView(item) {
+    this.showDetails = false;
+    this.detailsData = null;
   }
 
   openEdit(item?) {

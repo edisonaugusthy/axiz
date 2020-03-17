@@ -1,4 +1,4 @@
-import { environment } from './../../../../../../environments/environment.prod';
+import { environment } from '../../../../../../environments/environment.prod';
 import { Component, OnInit, ViewChild, ElementRef, Input, EventEmitter, Output } from '@angular/core';
 import { NgbModalRef, NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
