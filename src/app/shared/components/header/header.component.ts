@@ -53,9 +53,11 @@ export class HeaderComponent implements OnInit {
   openNav() {
     this.showSideBar = !this.showSideBar;
     if (this.showSideBar) {
-      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("mySidebar").style.width = "250px";
+      document.getElementById("content-area").style.marginLeft = "0px";
     } else {
-      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("content-area").style.marginLeft = "0";
     }
   }
   openAdd() {

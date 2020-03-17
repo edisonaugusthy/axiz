@@ -32,15 +32,7 @@
               </span>
             </span>
           </th>
-          <th (click)="sort('status')" style="width: 10%;">
-            <span class="sort-wrap">
-              Status
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
+
           <th (click)="sort('companyid')" style="width: 10%;">
             <span class="sort-wrap">
               Company
@@ -68,6 +60,15 @@
               </span>
             </span>
           </th>
+          <th (click)="sort('status')" style="width: 10%;">
+            <span class="sort-wrap">
+              Status
+              <span class="sort-icons">
+                <i class="sort-up"></i>
+                <i class="sort-down"></i>
+              </span>
+            </span>
+          </th>
           <th style="width: 20%;">Operation</th>
         </tr>
       </thead>
@@ -78,10 +79,10 @@
           <tr *ngFor="let item of allUsers| orderBy: {property: column, direction: direction}|filter:searchText">
             <td style="width: 10%;">{{item.id}}</td>
             <td style="width: 20%;">{{item.user_name}}</td>
-            <td style="width: 10%;">{{item.status==0?'Suspended':'Active'}}</td>
             <td style="width: 10%;">{{item.companyid}}</td>
             <td style="width: 20%;">{{item.email}}</td>
             <td style="width: 10%;"> {{item.password_ref}} </td>
+            <td style="width: 10%;">{{item.status==0?'Suspended':'Active'}}</td>
             <td class="btn-wrap" style="width: 20%;">
               <button class="btn btn-green" (click)="openEdit(item)">Edit</button>
               <button class="btn btn-default" (click)="openDelete(item)">Remove</button>
