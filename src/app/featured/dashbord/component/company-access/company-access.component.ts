@@ -75,7 +75,11 @@ export class CompanyAccessComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.deleteCompanyAccess({ userid: val.UserID }).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
-      this.alert.showAlert({ message: val.message, type: 'success' });
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      } else {
+        this.alert.showAlert({ message: val.message, type: 'danger' });
+      }
       this.getAllCompany();
     });
   }
@@ -96,7 +100,11 @@ export class CompanyAccessComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.createCompanyAccess(val).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
-      this.alert.showAlert({ message: val.message, type: 'success' });
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      } else {
+        this.alert.showAlert({ message: val.message, type: 'danger' });
+      }
       this.getAllCompany();
     });
   }
@@ -108,7 +116,11 @@ export class CompanyAccessComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.updateCompanyAccess(val).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
-      this.alert.showAlert({ message: val.message, type: 'success' });
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      } else {
+        this.alert.showAlert({ message: val.message, type: 'danger' });
+      }
       this.getAllCompany();
     });
   }

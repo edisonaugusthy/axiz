@@ -61,7 +61,11 @@ export class ChainComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.updateChain(val).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
-      this.alert.showAlert({ message: val.message, type: 'success' });
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      } else {
+        this.alert.showAlert({ message: val.message, type: 'danger' });
+      }
       this.getAllChains();
     });
   }
@@ -79,7 +83,11 @@ export class ChainComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.deleteChain({ chainid: val.ChainId }).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
-      this.alert.showAlert({ message: val.message, type: 'success' });
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      } else {
+        this.alert.showAlert({ message: val.message, type: 'danger' });
+      }
       this.getAllChains();
     });
   }
@@ -101,7 +109,11 @@ export class ChainComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.createChain(val).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
-      this.alert.showAlert({ message: val.message, type: 'success' });
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      } else {
+        this.alert.showAlert({ message: val.message, type: 'danger' });
+      }
       this.getAllChains();
     });
   }

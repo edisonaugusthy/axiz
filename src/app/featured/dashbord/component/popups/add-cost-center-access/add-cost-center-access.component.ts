@@ -59,7 +59,7 @@ export class AddCostCenterAccessComponent implements OnInit {
     this.formData = new FormArray(this.addControls(this.chainsList));
     this.addUserForm = this.formBuilder.group({
       userid: [{ value: (this.fields?.userid || ''), disabled: this.Edit }, Validators.required],
-      username: ['', Validators.required],
+      username: [(this.fields?.username), Validators.required],
       Fullaccess: [1, Validators.required],
     });
     this.open(this.input);

@@ -16,7 +16,7 @@ export class LoaderComponent implements OnInit {
         this.showLoader = true;
         // this.spinner.show()
       } else {
-        this.showLoader = false;
+        // this.showLoader = false;
         // this.spinner.hide();
       }
     });

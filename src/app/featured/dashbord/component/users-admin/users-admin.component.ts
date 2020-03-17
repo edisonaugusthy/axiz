@@ -52,7 +52,11 @@ export class UsersAdminComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.updateUser(val).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
-      this.alert.showAlert({ message: val.message, type: 'success' });
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      } else {
+        this.alert.showAlert({ message: val.message, type: 'danger' });
+      }
       this.getAllUsers();
     });
   }
@@ -72,7 +76,11 @@ export class UsersAdminComponent implements OnInit {
     this.dashboardSvc.deleteUser({ userid: val.user_id }).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       this.getAllUsers();
-      this.alert.showAlert({ message: val.message, type: 'success' });
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      } else {
+        this.alert.showAlert({ message: val.message, type: 'danger' });
+      }
     });
   }
   cancelDelete(val) {
@@ -102,7 +110,11 @@ export class UsersAdminComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.createUser(val).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
-      this.alert.showAlert({ message: val.message, type: 'success' });
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      } else {
+        this.alert.showAlert({ message: val.message, type: 'danger' });
+      }
       this.getAllUsers();
     });
   }

@@ -49,7 +49,11 @@ export class LocationComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.updateLocation(val).subscribe((res: any) => {
       this.loaderSvc.hideLoader();
-      this.alert.showAlert({ message: res.message, type: 'success' });
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      } else {
+        this.alert.showAlert({ message: val.message, type: 'danger' });
+      }
       this.getAllLocation();
     });
 
@@ -79,7 +83,11 @@ export class LocationComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.deleteLocation({ locationid: val.LocationId }).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
-      this.alert.showAlert({ message: val.message, type: 'success' });
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      } else {
+        this.alert.showAlert({ message: val.message, type: 'danger' });
+      }
       this.getAllLocation();
     });
   }
@@ -101,12 +109,13 @@ export class LocationComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.createLocation(val).subscribe((res: any) => {
       this.loaderSvc.hideLoader();
-      if (res && res.status) {
-        this.alert.showAlert({ message: res.message, type: 'success' });
-        this.getAllLocation();
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
       } else {
-        this.alert.showAlert({ message: res.message, type: 'danger' });
+        this.alert.showAlert({ message: val.message, type: 'danger' });
       }
+      this.getAllLocation();
+
     });
   }
 

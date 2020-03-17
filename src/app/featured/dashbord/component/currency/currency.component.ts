@@ -77,7 +77,11 @@ export class CurrencyComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.DeleteCurrency({ id: val.id }).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
-      this.alert.showAlert({ message: val.message, type: 'success' });
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      } else {
+        this.alert.showAlert({ message: val.message, type: 'danger' });
+      }
       this.getAllcurrency();
     });
   }
@@ -99,7 +103,11 @@ export class CurrencyComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.AddCurrency(val).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
-      this.alert.showAlert({ message: 'Currency Added Successfully', type: 'success' });
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      } else {
+        this.alert.showAlert({ message: val.message, type: 'danger' });
+      }
       this.getAllcurrency();
     });
   }

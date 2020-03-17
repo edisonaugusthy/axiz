@@ -41,7 +41,7 @@ export class AddChainPopupComponent implements OnInit {
 
   ngOnInit() {
     this.addUserForm = this.formBuilder.group({
-      id: [(this.fields?.ChainId || '')],
+      id: [(this.fields?.id || '')],
       chainid: [(this.fields?.ChainId || ''), Validators.required],
       description: [(this.fields?.ChainName || ''), Validators.required],
       email: [(this.fields?.Email || ''), [Validators.required, Validators.email]],

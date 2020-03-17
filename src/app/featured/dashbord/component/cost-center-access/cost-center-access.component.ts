@@ -52,7 +52,11 @@ export class CostCenterAccessComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.updateCostAccess(val).subscribe((res: any) => {
       this.loaderSvc.hideLoader();
-      this.alert.showAlert({ message: res.message, type: 'success' });
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      } else {
+        this.alert.showAlert({ message: val.message, type: 'danger' });
+      }
       this.getAllCenters();
     });
   }
@@ -79,7 +83,11 @@ export class CostCenterAccessComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.deleteCostAccess(val).subscribe((res: any) => {
       this.loaderSvc.hideLoader();
-      this.alert.showAlert({ message: res.message, type: 'success' });
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      } else {
+        this.alert.showAlert({ message: val.message, type: 'danger' });
+      }
       this.getAllCenters();
     });
   }
@@ -100,7 +108,11 @@ export class CostCenterAccessComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.addCostAccess(val).subscribe((res: any) => {
       this.loaderSvc.hideLoader();
-      this.alert.showAlert({ message: res.message, type: 'success' });
+      if (val && val.status) {
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      } else {
+        this.alert.showAlert({ message: val.message, type: 'danger' });
+      }
       this.getAllCenters();
     });
   }
