@@ -4,7 +4,7 @@ import { DashbordService } from './../../../featured/dashbord/services/dashbord.
 import { FormGeneratorService } from './../../services/form-generator.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { UserType } from 'src/app/featured/authentication/models/user-type.enum';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgStorageService } from 'ng7-storage';
 import { AuthService } from 'src/app/featured/authentication/service/auth.service';
@@ -21,6 +21,10 @@ export class HeaderComponent implements OnInit {
   addFormData: any;
   imageBase = environment.imageBase;
   showSideBar = false;
+  @Output() toggleSideBar = new EventEmitter<any>();
+
+
+
   constructor(
     private router: Router,
     private StorageService: NgStorageService,
@@ -51,14 +55,15 @@ export class HeaderComponent implements OnInit {
   }
 
   openNav() {
-    this.showSideBar = !this.showSideBar;
-    if (this.showSideBar) {
-      document.getElementById("mySidebar").style.width = "250px";
-      document.getElementById("content-area").style.marginLeft = "0px";
-    } else {
-      document.getElementById("mySidebar").style.width = "0";
-      document.getElementById("content-area").style.marginLeft = "0";
-    }
+    this.toggleSideBar.emit(true);
+    // this.showSideBar = !this.showSideBar;
+    // if (this.showSideBar) {
+    //   document.getElementById("mySidebar").style.width = "250px";
+    //   document.getElementById("content-area").style.marginLeft = "0px";
+    // } else {
+    //   document.getElementById("mySidebar").style.width = "0";
+    //   document.getElementById("content-area").style.marginLeft = "0";
+    // }
   }
   openAdd() {
     this.showAdd = true;

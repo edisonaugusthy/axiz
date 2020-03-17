@@ -9,8 +9,9 @@ import { LoaderService } from '../../../../shared/services/loader.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private dashBordService:DashbordService, private loaderSVC:LoaderService) { }
-
+  constructor(private dashBordService: DashbordService, private loaderSVC: LoaderService) { }
+  events: string[] = [];
+  opened: true;
   ngOnInit() {
     this.loaderSVC.hideLoader();
   }

@@ -1,3 +1,4 @@
+import { MaterialModuleModule } from './../../shared/material-module.module';
 import { CurrencyDetailsComponent } from './component/popups/currency-details/currency-details.component';
 import { CurrencyComponent } from './component/currency/currency.component';
 import { DashboardRoutingModule } from './dashbord-routing.module';
@@ -32,7 +33,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     SharedModule,
     NgbModule,
     Ng2SearchPipeModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    MaterialModuleModule
   ],
   declarations: [
     HomeComponent,

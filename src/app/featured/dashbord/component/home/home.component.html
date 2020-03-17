@@ -1,7 +1,18 @@
-<app-header></app-header>
-<div class="main-wrapper">
+<app-header (toggleSideBar)="sidenav.toggle()"></app-header>
+<!-- <div class="main-wrapper">
     <app-side-navigation class="sidebar" id="mySidebar"></app-side-navigation>
     <section class="content-area" id='content-area'>
         <router-outlet></router-outlet>
     </section>
-</div>
+</div> -->
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side">
+        <app-side-navigation class="sidebar"></app-side-navigation>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <section class="content-area" id='content-area'>
+            <router-outlet></router-outlet>
+        </section>
+    </mat-sidenav-content>
+</mat-sidenav-container>
