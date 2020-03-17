@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         this.StorageService.setData({ key: 'access_token', value: val.data.token });
       } else {
         this.loaderSVC.hideLoader();
-        this.alertService.showAlert({ message: val.message, type: 'warning' });
+        this.alertService.showAlert({ message: val.error, type: 'warning' });
       }
     });
 
