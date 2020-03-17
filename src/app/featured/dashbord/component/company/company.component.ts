@@ -22,6 +22,8 @@ export class CompanyComponent implements OnInit {
   direction: number;
   AllCurrency: any;
   searchText: any;
+  showDetails: boolean;
+  detailsData: any;
   constructor(
     private dashboardSvc: DashbordService,
     private loaderSvc: LoaderService,
@@ -49,7 +51,14 @@ export class CompanyComponent implements OnInit {
     }
 
   }
-
+  openView(item) {
+    this.showDetails = true;
+    this.detailsData = item;
+  }
+  cancelView(item) {
+    this.showDetails = false;
+    this.detailsData = null;
+  }
   openDelete(item?) {
     this.showDelete = true;
     this.deleteData = this.deleteMessageSvc.deleteCompany(item);

@@ -1,0 +1,100 @@
+<ng-template #addUserModal let-modal>
+  <form (ngSubmit)="onSubmit()" [formGroup]="addUserForm">
+    <div>
+      <div class="modal-content modal-content-area modal-md">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">COST CENTER ACCESS</h4>
+          <img class="btn-close" (click)="popupClose()" src="../assets/img/close-icon.svg">
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="form-group-wrap row">
+            <div class="col col-sm-4 label">
+              User Name
+            </div>
+            <div class="col col-sm-5">
+              <div class="form-group">
+                <select class="form-control" formControlName="userid" disabled [ngClass]="{
+                                              'has-error': isSubmitted && formControls.userid.errors
+                                            }">
+                  <option *ngFor="let opt of users" [value]="opt.user_id">
+                    {{opt.user_name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="radio-wrap" style="margin-bottom: 8px;">
+            <label class="radio">
+              Full Access
+              <input type="radio" disabled [value]="1" (change)="disableSelection(1)" formControlName="Fullaccess">
+              <span class="checkmark"></span>
+            </label>
+            <label class="radio">
+              Custom
+              <input type="radio" disabled [value]="0" (change)="disableSelection(2)" formControlName="Fullaccess">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <section class="table-wrap">
+            <div class="table-head">Business Divisions/Chains</div>
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th style="width: 20%">Chain ID</th>
+                  <th style="width: 40%">Description</th>
+                  <th style="width: 40%">Select Locations</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor=" let group of formData.controls; let i=index;">
+                  <ng-container [formGroup]="group">
+                    <td>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" [formControl]="group.get('check')">
+                          <span></span>
+                          {{ group.get('chainname').value }}
+                        </label>
+                      </div>
+                    </td>
+                    <td>{{chainsList[i].chainname}}</td>
+                    <td class="dropdown-select">SELECT LOCATIONS <span
+                        *ngIf="group.get('locations').controls.length > 0"><i class="sort-down"
+                          (click)="chainsList[i].showSub = !chainsList[i].showSub"></i></span>
+                      <div class="multi-select" [style.display]="chainsList[i].showSub ? 'block' : 'none'">
+                        <ul>
+                          <li *ngFor="let item of group.get('locations').controls; index as j">
+                            <ng-container [formGroup]="item">
+                              <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" [formControl]="item.get('check')">
+                                  <span></span>
+                                  {{ item.get('Name').value }}
+                                </label>
+                              </div>
+                            </ng-container>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                  </ng-container>
+                </tr>
+
+              </tbody>
+            </table>
+          </section>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" mat-flat-button class="btn btn-default" (click)="popupClose()">Close</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-template>

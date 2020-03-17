@@ -23,6 +23,8 @@ export class UsersAdminComponent implements OnInit {
   direction: number;
   allCompanies: any;
   searchText: any;
+  showDetails: boolean;
+  detailsData: any;
   constructor(
     private dashboardSvc: DashbordService,
     private formGeneratorService: FormGeneratorService,
@@ -76,7 +78,14 @@ export class UsersAdminComponent implements OnInit {
   cancelDelete(val) {
     this.showDelete = false;
   }
-
+  openView(item) {
+    this.showDetails = true;
+    this.detailsData = item;
+  }
+  cancelView(item) {
+    this.showDetails = false;
+    this.detailsData = null;
+  }
 
   openAdd() {
     // this.addFormData = this.formGeneratorService.addUsersInSuperAdmin();

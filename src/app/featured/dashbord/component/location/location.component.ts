@@ -21,6 +21,8 @@ export class LocationComponent implements OnInit {
   direction: number;
   addedlocations: any;
   searchText: any;
+  showDetails: boolean;
+  detailsData: any;
   constructor(
     private dashboardSvc: DashbordService,
     private deleteMessageSvc: DeleteMessageService,
@@ -56,6 +58,16 @@ export class LocationComponent implements OnInit {
     this.showEdit = false;
 
   }
+
+  openView(item) {
+    this.showDetails = true;
+    this.detailsData = item;
+  }
+  cancelView(item) {
+    this.showDetails = false;
+    this.detailsData = null;
+  }
+
 
   openDelete(item?) {
     this.showDelete = true;

@@ -22,6 +22,8 @@ export class CompanyAccessComponent implements OnInit {
   column: string = 'user_id';
   direction: number;
   searchText: any;
+  showDetails: boolean;
+  detailsData: any;
   constructor(
     private dashboardSvc: DashbordService,
     private loaderSvc: LoaderService,
@@ -44,11 +46,25 @@ export class CompanyAccessComponent implements OnInit {
       this.showEdit = true;
     }
     else {
-      this.loadAllCompaniesForEdit(item);
+      this.loadAllCompaniesForEdit(item, true);
     }
 
   }
-
+  openView(item) {
+    this.loaderSvc.showLoader();
+    if (this.allCompanies) {
+      this.showDetails = true;
+      this.loaderSvc.hideLoader();
+      this.detailsData = this.formGeneratorService.CompanyAccessDetails(item, this.allCompanies);
+    }
+    else {
+      this.loadAllCompaniesForEdit(item);
+    }
+  }
+  cancelView(item) {
+    this.showDetails = false;
+    this.detailsData = null;
+  }
   openDelete(item?) {
     this.showDelete = true;
     this.deleteData = this.deleteMessageSvc.deleteCompanyAcess(item);
@@ -110,13 +126,17 @@ export class CompanyAccessComponent implements OnInit {
   }
 
   // for edit
-  loadAllCompaniesForEdit(item) {
+  loadAllCompaniesForEdit(item, id?) {
     this.loaderSvc.showLoader();
     this.dashboardSvc.getAllCompanies(null).subscribe((val: any) => {
       this.allCompanies = val.data;
       this.loaderSvc.hideLoader();
       if (this.allCompanies && this.allCompanies.length > 0) {
-        this.openEdit(item);
+        if (id) {
+          this.openEdit(item);
+        } else {
+          this.openView(item)
+        }
       }
     });
 

@@ -1,0 +1,102 @@
+<ng-template #addUserModal let-modal>
+  <form (ngSubmit)="onSubmit()" [formGroup]="addUserForm">
+    <div class="main-popup currency-popup">
+      <!-- <div class="modal-dialog"> -->
+      <div class="modal-content edit-user modal-content-area modal-lg">
+        <div class="add-user-popup">
+          <!-- Modal Header -->
+          <div class="modal-header black-header">
+            <h4 class="modal-title" *ngIf="isEdit">Edit User</h4>
+            <h4 class="modal-title" *ngIf="!isEdit">Add User</h4>
+            <img class="btn-close" (click)="popupClose()" src="../assets/img/close-icon.svg">
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="form-group-wrap row">
+              <div class="col col-sm-4 label astrick">
+                User ID
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="number" class="form-control" placeholder=" User ID" formControlName="userid" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="form-group-wrap row">
+              <div class="col col-sm-4 label astrick">
+                User Name
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder=" User Name" formControlName="username" disabled
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.username.errors }">
+                </div>
+              </div>
+            </div>
+            <div class="form-group-wrap row">
+              <div class="col col-sm-4 label astrick">
+                Email
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="email" class="form-control" placeholder="Email address" formControlName="email" disabled
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+                </div>
+              </div>
+            </div>
+            <div class="form-group-wrap row">
+              <div class="col col-sm-4 label astrick">
+                Password
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Password" formControlName="password" disabled
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+                </div>
+              </div>
+            </div>
+            <div class="switch-wrap">
+              <label type="text" class="label">Status</label>
+              <label class="switch">
+                <input type="checkbox" [value]="true" formControlName="status" disabled>
+                <div class="slider round">
+                  <span class="on">Active</span>
+                  <span class="off">Inactive</span>
+                </div>
+              </label>
+            </div>
+            <div class="table-head">Company Access</div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of companyList">
+                  <td>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" disabled [value]="item.CompanyID" [checked]="item.checked"
+                          (change)="selectCompany(item)">
+                        <span></span>
+                        {{item.CompanyName}}
+                      </label>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" mat-flat-button class="btn btn-default" (click)="popupClose()">Close</button>
+        </div>
+        <!-- </div> -->
+      </div>
+      <!-- </div> -->
+    </div>
+  </form>
+
+</ng-template>

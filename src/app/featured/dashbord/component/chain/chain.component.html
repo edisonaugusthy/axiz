@@ -46,7 +46,7 @@
       <table class="table table-striped table-main-body" *ngIf="addedChains&&addedChains.length>0">
         <tbody>
           <tr *ngFor="let item of addedChains | orderBy: {property: column, direction: direction}|filter:searchText">
-            <td class="curser-point" style="width: 20%;" (click)="openView(item)">{{item.id}}</td>
+            <td style="width: 20%;" class="curser-point" (click)="openView(item)">{{item.id}}</td>
             <td style="width: 20%;">{{item.ChainId}}</td>
             <td style="width: 30%;">{{item.ChainName}}</td>
             <td class="btn-wrap">

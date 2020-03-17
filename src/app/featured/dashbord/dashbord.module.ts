@@ -1,3 +1,6 @@
+import { UserDetailsComponent } from './component/details-popups/user-details/user-details.component';
+import { LocationDetailsComponent } from './component/details-popups/location-details/location-details.component';
+import { CompanyDetailsComponent } from './component/details-popups/company-details/company-details.component';
 import { ChainDetailsComponent } from './component/details-popups/chain-details/chain-details.component';
 import { MaterialModuleModule } from './../../shared/material-module.module';
 import { CurrencyDetailsComponent } from './component/details-popups/currency-details/currency-details.component';
@@ -26,6 +29,7 @@ import { AddCostCenterAccessComponent } from './component/popups/add-cost-center
 import { AddLocationPopupComponent } from './component/popups/add-location-popup/add-location-popup.component';
 import { AddCurrencyPopupComponent } from './component/popups/add-currency-popup/add-currency-popup.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CostCenterAccessDetailsComponent } from './component/details-popups/cost-center-access/cost-center-access.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -57,7 +61,11 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AddCurrencyPopupComponent,
     CurrencyComponent,
     CurrencyDetailsComponent,
-    ChainDetailsComponent
+    ChainDetailsComponent,
+    CompanyDetailsComponent,
+    CostCenterAccessDetailsComponent,
+    LocationDetailsComponent,
+    UserDetailsComponent
   ],
   exports: [DashboardRoutingModule],
 })

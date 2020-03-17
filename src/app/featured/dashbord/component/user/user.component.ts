@@ -22,6 +22,8 @@ export class UserComponent implements OnInit {
   direction: number;
   allUsers: any;
   searchText: any;
+  showDetails: boolean;
+  detailsData: any;
   constructor(
     private dashboardSvc: DashbordService,
     private loaderSvc: LoaderService,
@@ -43,6 +45,15 @@ export class UserComponent implements OnInit {
   openEdit(item?) {
     this.editFormData = this.formGeneratorService.editUser(item);
     this.showEdit = true;
+  }
+
+  openView(item) {
+    this.showDetails = true;
+    this.detailsData = this.formGeneratorService.UserDetails(item);
+  }
+  cancelView(item) {
+    this.showDetails = false;
+    this.detailsData = null;
   }
 
   submitEdit(val) {

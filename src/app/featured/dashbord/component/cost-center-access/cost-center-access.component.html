@@ -58,8 +58,8 @@
       <table class="table table-striped table-main-body" *ngIf="allCostAccess&&allCostAccess.length>0">
         <tbody>
           <tr *ngFor="let item of allCostAccess  | orderBy: {property: column, direction: direction}|filter:searchText">
-            <td style="width: 20%;">{{item.userid}}</td>
-            <td style="width: 20%;">{{item.username}}</td>
+            <td class="curser-point" (click)="openView(item)" style="width: 20%;">{{item.userid}}</td>
+            <td class="curser-point" (click)="openView(item)" style="width: 20%;">{{item.username}}</td>
             <td style="width: 20%;">{{item.ChainName}}</td>
             <td style="width: 20%;">{{item.LocationName}}</td>
             <td class="btn-wrap">
@@ -90,3 +90,6 @@
 <!-- add popup -->
 <app-add-cost-center-access *ngIf="showAdd" [users]="allusers" [Edit]="false" [fields]="addFormData"
   (formCancel)="cancelAdd($event)" (formSubmitted)="submitAdd($event)"></app-add-cost-center-access>
+
+<app-cost-center-access-details *ngIf="showDetails" [users]="allusers" [fields]="detailsData"
+  (formCancel)="cancelView($event)" (formSubmitted)="cancelView($event)"></app-cost-center-access-details>

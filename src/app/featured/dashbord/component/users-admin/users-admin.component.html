@@ -77,8 +77,8 @@
       <table class="table table-striped table-main-body" *ngIf="allUsers&&allUsers.length>0">
         <tbody>
           <tr *ngFor="let item of allUsers| orderBy: {property: column, direction: direction}|filter:searchText">
-            <td style="width: 10%;">{{item.id}}</td>
-            <td style="width: 20%;">{{item.user_name}}</td>
+            <td class="curser-point" (click)="openView(item)" style="width: 10%;">{{item.id}}</td>
+            <td class="curser-point" (click)="openView(item)" style="width: 20%;">{{item.user_name}}</td>
             <td style="width: 10%;">{{item.companyid}}</td>
             <td style="width: 20%;">{{item.email}}</td>
             <td style="width: 10%;"> {{item.password_ref}} </td>
@@ -106,3 +106,7 @@
 
 <app-add-user *ngIf="showAdd" [Edit]="false" [fields]="addFormData" [companyList]="allCompanies"
   (formCancel)="cancelAdd($event)" (formSubmitted)="submitAdd($event)"></app-add-user>
+
+
+<app-user-details *ngIf="showDetails" [companyList]="allCompanies" [fields]="detailsData"
+  (formCancel)="cancelView($event)" (formSubmitted)="cancelView($event)"></app-user-details>

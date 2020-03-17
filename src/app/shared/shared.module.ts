@@ -1,3 +1,4 @@
+import { DetailsPopupComponent } from './components/details-popup/details-popup.component';
 import { MaterialModuleModule } from './material-module.module';
 import { HeaderComponent } from "./components/header/header.component";
 import { LoaderComponent } from "./components/loader/loader.component";
@@ -23,6 +24,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     AddPopupComponent,
     OrderrByPipe,
     NoDataComponent,
+    DetailsPopupComponent
   ],
   exports: [
     LoaderComponent,
@@ -33,6 +35,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     AlertComponent,
     OrderrByPipe,
     NoDataComponent,
+    DetailsPopupComponent
   ]
 })
 export class SharedModule { }

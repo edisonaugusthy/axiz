@@ -66,8 +66,8 @@
       <table class="table table-striped table-main-body" *ngIf="addedlocations&&addedlocations.length>0">
         <tbody>
           <tr *ngFor="let item of addedlocations | orderBy: {property: column, direction: direction}|filter:searchText">
-            <td style="width: 10%;">{{item.id}}</td>
-            <td style="width: 10%;">{{item.ChainId}}</td>
+            <td class="curser-point" (click)="openView(item)" style="width: 10%;">{{item.id}}</td>
+            <td class="curser-point" (click)="openView(item)" style="width: 10%;">{{item.ChainId}}</td>
             <td style="width: 20%;">{{item.ChainName}}</td>
             <td style="width: 20%;">{{item.LocationId}}</td>
             <td style="width: 20%;">{{item.LocationName}}</td>
@@ -97,3 +97,6 @@
 <!-- add popup -->
 <app-add-location-popup *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
   (formSubmitted)="submitAdd($event)"></app-add-location-popup>
+
+<app-location-details *ngIf="showDetails" [fields]="detailsData" (formCancel)="cancelView($event)"
+  (formSubmitted)="cancelView($event)"></app-location-details>

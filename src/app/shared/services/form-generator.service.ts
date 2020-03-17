@@ -795,4 +795,110 @@ export class FormGeneratorService {
     };
     return formData;
   }
+
+
+  CompanyAccessDetails(currentValuse, companies) {
+    let data = [
+      {
+        value: currentValuse ? currentValuse['UserID'] : '',
+        key: 'userid',
+        label: 'User ID',
+        required: true,
+        order: 1,
+        controlType: 'textbox',
+        type: '',
+        options: '',
+        disabled: true
+      },
+      {
+        value: currentValuse ? currentValuse['CompanyID'] : '',
+        key: 'companyid',
+        label: 'Company',
+        required: true,
+        order: 2,
+        controlType: 'dropdown',
+        type: '',
+        options: companies,
+        displayKey: 'CompanyName',
+        returnKey: 'CompanyID'
+      },
+    ];
+    data = data.sort((a, b) => a.order - b.order);
+    const formData = {
+      header: 'Company Access',
+      fields: data
+    };
+    return formData;
+  }
+
+  UserDetails(currentValuse) {
+    let data = [
+      {
+        value: currentValuse ? currentValuse['user_id'] : '',
+        key: 'userid',
+        label: 'User ID',
+        required: true,
+        order: 1,
+        controlType: 'textbox',
+        type: '',
+        options: ''
+      },
+      {
+        value: currentValuse ? currentValuse['user_name'] : '',
+        key: 'username',
+        label: 'User Name',
+        required: true,
+        order: 2,
+        controlType: 'textbox',
+        type: '',
+        options: ''
+      },
+      {
+        value: currentValuse ? currentValuse['user_phone'] : '',
+        key: 'mobile',
+        label: 'Mobile',
+        required: true,
+        order: 3,
+        controlType: 'textbox',
+        type: '',
+        options: ''
+      },
+      {
+        value: currentValuse ? currentValuse['user_email'] : '',
+        key: 'email',
+        label: 'Email',
+        required: true,
+        order: 4,
+        controlType: 'textbox',
+        type: '',
+        options: ''
+      },
+      {
+        value: currentValuse ? currentValuse['UDID'] : '',
+        key: 'udid',
+        label: 'UDID',
+        required: true,
+        order: 5,
+        controlType: 'textbox',
+        type: '',
+        options: ''
+      },
+      {
+        value: currentValuse ? currentValuse['LoginPin'] : '',
+        key: 'loginpin',
+        label: 'Password',
+        required: true,
+        order: 6,
+        controlType: 'textbox',
+        type: '',
+        options: ''
+      }
+    ];
+    data = data.sort((a, b) => a.order - b.order);
+    const formData = {
+      header: 'User',
+      fields: data
+    };
+    return formData;
+  }
 }

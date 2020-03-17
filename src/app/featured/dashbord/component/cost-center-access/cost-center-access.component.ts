@@ -22,6 +22,8 @@ export class CostCenterAccessComponent implements OnInit {
   allCostAccess: any;
   searchText: any;
   allusers: any;
+  showDetails: boolean;
+  detailsData: any;
   constructor(
     private dashboardSvc: DashbordService,
     private formGeneratorService: FormGeneratorService,
@@ -61,6 +63,15 @@ export class CostCenterAccessComponent implements OnInit {
   openDelete(item?) {
     this.showDelete = true;
     this.deleteData = this.deleteMessageSvc.deleteCostCenterAcess(item);
+  }
+
+  openView(item) {
+    this.showDetails = true;
+    this.detailsData = item;
+  }
+  cancelView(item) {
+    this.showDetails = false;
+    this.detailsData = null;
   }
 
   submitDelete(val) {
