@@ -778,8 +778,8 @@ export class FormGeneratorService {
       },
       {
         value: '',
-        key: 'admincode',
-        label: 'Code',
+        key: 'password',
+        label: 'password',
         required: true,
         order: 2,
         controlType: 'textbox',

@@ -76,7 +76,7 @@ export class HeaderComponent implements OnInit {
   submitAdd(val) {
     this.showAdd = false;
     this.loaderSvc.showLoader();
-    this.authService.SecondLogin(val).subscribe((res: any) => {
+    this.authService.SuperAdminLogin(val).subscribe((res: any) => {
       if (res.details && res.details.details) {
         this.StorageService.removeAll();
         this.router.navigateByUrl('/dashbord/dashbord');

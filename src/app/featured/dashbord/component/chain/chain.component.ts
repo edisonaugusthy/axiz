@@ -24,6 +24,8 @@ export class ChainComponent implements OnInit {
   searchText: any;
   showDetails: boolean;
   detailsData: any;
+  page = 4;
+  pageSize = 10;
   constructor(
     private formGeneratorService: FormGeneratorService,
     private deleteMessageSvc: DeleteMessageService,
@@ -37,11 +39,13 @@ export class ChainComponent implements OnInit {
   }
 
   sort(property) {
-    this.isDesc = !this.isDesc; //change the direction
+    this.isDesc = !this.isDesc;
     this.column = property;
     this.direction = this.isDesc ? 1 : -1;
   }
-
+  pageChanged(item) {
+    console.log(item);
+  }
   openView(item) {
     this.showDetails = true;
     this.detailsData = item;
@@ -53,7 +57,6 @@ export class ChainComponent implements OnInit {
 
   openEdit(item?) {
     this.editFormData = item;
-    //this.formGeneratorService.editChain(item);
     this.showEdit = true;
   }
   submitEdit(val) {

@@ -9,7 +9,7 @@
         <a class="nav-link dropdown-toggle" [ngClass]="{'menu-active':mainMenu.isOpen}" (click)="showMenu(mainMenu)">
           <img src="../assets/img/{{mainMenu.img}}" [style.width]="'28px'">{{mainMenu.name}}
         </a>
-        <div class="dropdown-menu show" *ngIf="mainMenu.isOpen">
+        <div class="dropdown-menu-side show" *ngIf="mainMenu.isOpen">
           <a *ngFor="let subMenu of mainMenu.sub_menu" class="dropdown-item {{subMenu.class}}"
             (click)="navigate(subMenu)">{{subMenu.name}}</a>
         </div>

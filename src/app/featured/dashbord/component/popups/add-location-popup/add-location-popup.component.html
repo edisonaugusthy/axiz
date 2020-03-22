@@ -200,16 +200,26 @@
                                     Start Date
                                 </div>
                                 <div class="col-sm-7">
-                                    <div class="form-group">
-                                        <input type="date" class="form-control" formControlName="startdate">
-                                        <!-- <select class="form-control" formControlName="startdate">
+                                    <!-- <div class="form-group">
+                                        <input type="text" class="form-control" ngbDatepicker #d="ngbDatepicker"
+                                            formControlName="startdate">
+                                    </div> -->
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="dd/mm/yyyy" name="d2"
+                                            formControlName="startdate" ngbDatepicker #d2="ngbDatepicker">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()"
+                                                type="button"></button>
+                                        </div>
+                                    </div>
+                                    <!-- <select class="form-control" formControlName="startdate">
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
                                             <option>4</option>
                                             <option>5</option>
                                         </select> -->
-                                    </div>
+                                    <!-- </div> -->
                                 </div>
                             </div>
                             <div class="wrap row">

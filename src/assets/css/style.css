@@ -519,7 +519,7 @@ mat-sidenav-container.mat-drawer-container{
     background: #dbdbdb;
     color: #1976d2 !important;
 }
-.dropdown-menu.show a.active {
+.dropdown-menu-side.show a.active {
     /* background: #dbdbdb !important; */
     color: #1976d2 !important;
 }
@@ -546,18 +546,18 @@ li.menu-active a {
 .sidebar a{
     color: #444 !important;
 }
-.sidebar .dropdown-menu {
+.sidebar .dropdown-menu-side {
     background: transparent;
     border: 0;
     color: #fff !important;
 }
-.sidebar .dropdown-menu a{
+.sidebar .dropdown-menu-side a{
     background: transparent;
     border: 0;
     color: #444 !important;
     position: relative;
 }
-.sidebar .dropdown-menu.active a{
+.sidebar .dropdown-menu-side.active a{
     color: #6FA330;
 }
 /* a.dropdown-item.active:before {
@@ -582,12 +582,12 @@ li.menu-active a {
 /* .nav-link.dropdown-toggle.menu-active{
     padding: 10px 5px !important;
 } */
-.dropdown-menu.show{
+.dropdown-menu-side.show{
     position: relative !important;
     transform: inherit !important;
     float: inherit !important;
 }
-.sidebar .dropdown-menu a {
+.sidebar .dropdown-menu-side a {
     background: transparent;
     border: 0;
     color: #fff;

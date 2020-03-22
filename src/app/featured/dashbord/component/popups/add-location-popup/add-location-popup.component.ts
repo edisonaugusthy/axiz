@@ -7,17 +7,50 @@ import {
   ElementRef,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  Injectable
 } from '@angular/core';
 import { NgbModal, NgbModalRef, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
+import { NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+
+
+@Injectable()
+export class CustomAdapter extends NgbDateAdapter<string> {
+
+  readonly DELIMITER = '-';
+
+  fromModel(value: string | null): NgbDateStruct | null {
+    if (value) {
+      let date = value.split(this.DELIMITER);
+      return {
+        day: parseInt(date[0], 10),
+        month: parseInt(date[1], 10),
+        year: parseInt(date[2], 10)
+      };
+    }
+    return null;
+  }
+
+  toModel(date: NgbDateStruct | null): string | null {
+    return date ? date.day + this.DELIMITER + date.month + this.DELIMITER + date.year : null;
+  }
+}
+
+
+
+
+
 @Component({
   selector: 'app-add-location-popup',
   templateUrl: './add-location-popup.component.html',
-  styleUrls: ['./add-location-popup.component.scss']
+  styleUrls: ['./add-location-popup.component.scss'],
+  providers: [
+    { provide: NgbDateAdapter, useClass: CustomAdapter }
+  ]
 })
 export class AddLocationPopupComponent implements OnInit {
-
+  model: NgbDateStruct;
   private modalRef: NgbModalRef;
   @ViewChild('addUserModal', { static: true }) input: ElementRef;
 
@@ -36,6 +69,7 @@ export class AddLocationPopupComponent implements OnInit {
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
     private alert: AlertService,
+    private ngbCalendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>
   ) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -72,6 +106,10 @@ export class AddLocationPopupComponent implements OnInit {
     this.open(this.input);
   }
 
+  get today() {
+    return this.dateAdapter.toModel(this.ngbCalendar.getToday())!;
+  }
+
   open(content) {
     if (this.fields) {
       this.isEdit = true;
@@ -82,7 +120,7 @@ export class AddLocationPopupComponent implements OnInit {
     this.modalRef = this.modalService.open(content, { size: 'lg' });
   }
   onSubmit() {
-    this.isSubmitted = true;
+    this.isSubmitted = true; s
     if (this.addUserForm.valid) {
       this.formSubmitted.emit(this.addUserForm.value);
       this.modalRef.close();
@@ -119,3 +157,5 @@ export class AddLocationPopupComponent implements OnInit {
   }
 
 }
+
+
