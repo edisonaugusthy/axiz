@@ -24,6 +24,7 @@ export class CompanyComponent implements OnInit {
   searchText: any;
   showDetails: boolean;
   detailsData: any;
+  public pagination: any;
   constructor(
     private dashboardSvc: DashbordService,
     private loaderSvc: LoaderService,
@@ -33,9 +34,16 @@ export class CompanyComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.pagination = {
+      currentPage: 1,
+      totalPages: null,
+    }
     this.getAllCompany();
   }
-
+  pageChanged(event) {
+    this.pagination.currentPage = event;
+    this.getAllCompany();
+  }
   sort(property) {
     this.isDesc = !this.isDesc; //change the direction
     this.column = property;
@@ -129,9 +137,11 @@ export class CompanyComponent implements OnInit {
 
   getAllCompany() {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.getCompanyListing(null).subscribe((val: any) => {
-      this.companies = val.details;
+    this.dashboardSvc.getCompanyListing(this.pagination.currentPage).subscribe((val: any) => {
+      this.companies = val.details.data;
       this.loaderSvc.hideLoader();
+      this.pagination.currentPage = val.details.current_page;
+      this.pagination.totalPages = val.details.total;
     });
   }
   getAllCurrency(item) {

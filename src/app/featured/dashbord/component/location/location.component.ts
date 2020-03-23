@@ -23,6 +23,7 @@ export class LocationComponent implements OnInit {
   searchText: any;
   showDetails: boolean;
   detailsData: any;
+  public pagination: any;
   constructor(
     private dashboardSvc: DashbordService,
     private deleteMessageSvc: DeleteMessageService,
@@ -32,9 +33,17 @@ export class LocationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.pagination = {
+      currentPage: 1,
+      totalPages: null,
+    }
     this.getAllLocation();
   }
 
+  pageChanged(event) {
+    this.pagination.currentPage = event;
+    this.getAllLocation();
+  }
   sort(property) {
     this.isDesc = !this.isDesc;
     this.column = property;
@@ -121,9 +130,11 @@ export class LocationComponent implements OnInit {
 
   getAllLocation() {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.gerAllLocation(null).subscribe((val: any) => {
+    this.dashboardSvc.gerAllLocation(this.pagination.currentPage).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
-      this.addedlocations = val.location_data;
+      this.addedlocations = val.location_data.data;
+      this.pagination.currentPage = val.location_data.current_page;
+      this.pagination.totalPages = val.location_data.total;
     });
   }
 

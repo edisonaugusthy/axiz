@@ -20,7 +20,9 @@ export class DashbordService {
     return this.http.post(ApiConstants.SUPER_ADMIN_DELETE_COMPANY, data);
   }
   getCompanyListing(data) {
-    return this.http.post(ApiConstants.SUPER_ADMIN_COMPANY_TABLE, data);
+    const url = `${ApiConstants.SUPER_ADMIN_COMPANY_TABLE}?page=${data}`;
+    return this.http.get(url);
+    // return this.http.post(ApiConstants.SUPER_ADMIN_COMPANY_TABLE, data);
   }
 
 
@@ -36,7 +38,9 @@ export class DashbordService {
   }
 
   getUserListing(data) {
-    return this.http.post(ApiConstants.SUPER_ADMIN_USER_TABLE, data);
+    const url = `${ApiConstants.SUPER_ADMIN_USER_TABLE}?page=${data}`;
+    return this.http.get(url);
+    // return this.http.post(ApiConstants.SUPER_ADMIN_USER_TABLE, data);
   }
 
 
@@ -50,7 +54,9 @@ export class DashbordService {
     return this.http.post(ApiConstants.SUPER_ADMIN_DELETE_COMPANY_ACCESS, data);
   }
   getCompanyAccess(data) {
-    return this.http.post(ApiConstants.SUPER_ADMIN_COMPANY_ACCESS_TABLE, data);
+    const url = `${ApiConstants.SUPER_ADMIN_COMPANY_ACCESS_TABLE}?page=${data}`;
+    return this.http.get(url);
+    // return this.http.post(ApiConstants.SUPER_ADMIN_COMPANY_ACCESS_TABLE, data);
 
   }
 
@@ -72,7 +78,9 @@ export class DashbordService {
     return this.http.post(ApiConstants.UPDATE_CHAIN, data);
   }
   gerAllChain(data) {
-    return this.http.post(ApiConstants.GET_CHAINS, data);
+    const url = `${ApiConstants.GET_CHAINS}?page=${data}`;
+    return this.http.get(url);
+    // return this.http.post(ApiConstants.GET_CHAINS, data);
   }
 
 
@@ -86,7 +94,9 @@ export class DashbordService {
     return this.http.post(ApiConstants.UPDATE_LOCATION, data);
   }
   gerAllLocation(data) {
-    return this.http.post(ApiConstants.GET_LOCATIONS, data);
+    const url = `${ApiConstants.GET_LOCATIONS}?page=${data}`;
+    return this.http.get(url);
+    // return this.http.post(ApiConstants.GET_LOCATIONS, data);
   }
 
 
@@ -100,7 +110,8 @@ export class DashbordService {
     return this.http.post(ApiConstants.UPDATE_USER, data);
   }
   gerAllNormalUser(data) {
-    return this.http.post(ApiConstants.GET_USERS, data);
+    const url = `${ApiConstants.GET_USERS}?page=${data}`;
+    return this.http.get(url);
   }
 
 
@@ -138,7 +149,9 @@ export class DashbordService {
   }
 
   getUserCurrencyList(data) {
-    return this.http.post(ApiConstants.GET_CURRENCY_LIST, data);
+    const url = `${ApiConstants.GET_CURRENCY_LIST}?page=${data}`;
+    return this.http.get(url);
+    // return this.http.post(ApiConstants.GET_CURRENCY_LIST, data);
   }
   AddCurrency(data) {
     return this.http.post(ApiConstants.ADD_CURRENCY, data);

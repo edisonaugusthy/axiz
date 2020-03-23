@@ -24,6 +24,7 @@ export class UserComponent implements OnInit {
   searchText: any;
   showDetails: boolean;
   detailsData: any;
+  public pagination: any;
   constructor(
     private dashboardSvc: DashbordService,
     private loaderSvc: LoaderService,
@@ -33,6 +34,10 @@ export class UserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.pagination = {
+      currentPage: 1,
+      totalPages: null,
+    }
     this.getAllUsers();
   }
 
@@ -54,6 +59,10 @@ export class UserComponent implements OnInit {
   cancelView(item) {
     this.showDetails = false;
     this.detailsData = null;
+  }
+  pageChanged(event) {
+    this.pagination.currentPage = event;
+    this.getAllUsers();
   }
 
   submitEdit(val) {
@@ -120,9 +129,12 @@ export class UserComponent implements OnInit {
 
   getAllUsers() {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.gerAllNormalUser(null).subscribe((val: any) => {
+    this.dashboardSvc.gerAllNormalUser(this.pagination.currentPage).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
-      this.allUsers = val.location_data;
+      this.allUsers = val.location_data.data;
+      this.pagination.currentPage = val.location_data.current_page;
+      this.pagination.totalPages = val.location_data.total;
+
     });
   }
 }

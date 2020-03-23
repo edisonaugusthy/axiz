@@ -24,8 +24,7 @@ export class ChainComponent implements OnInit {
   searchText: any;
   showDetails: boolean;
   detailsData: any;
-  page = 4;
-  pageSize = 10;
+  public pagination: any;
   constructor(
     private formGeneratorService: FormGeneratorService,
     private deleteMessageSvc: DeleteMessageService,
@@ -35,6 +34,15 @@ export class ChainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.pagination = {
+      currentPage: 1,
+      totalPages: null,
+    }
+    this.getAllChains();
+  }
+
+  pageChanged(event) {
+    this.pagination.currentPage = event;
     this.getAllChains();
   }
 
@@ -43,9 +51,7 @@ export class ChainComponent implements OnInit {
     this.column = property;
     this.direction = this.isDesc ? 1 : -1;
   }
-  pageChanged(item) {
-    console.log(item);
-  }
+
   openView(item) {
     this.showDetails = true;
     this.detailsData = item;
@@ -123,10 +129,11 @@ export class ChainComponent implements OnInit {
 
   getAllChains() {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.gerAllChain(null).subscribe((val: any) => {
-      this.addedChains = val.chain_data;
+    this.dashboardSvc.gerAllChain(this.pagination.currentPage).subscribe((val: any) => {
+      this.addedChains = val.chain_data.data;
       this.loaderSvc.hideLoader();
-
+      this.pagination.currentPage = val.chain_data.current_page;
+      this.pagination.totalPages = val.chain_data.total;
     });
   }
 }

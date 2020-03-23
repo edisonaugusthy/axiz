@@ -69,6 +69,9 @@
           </tr>
         </tbody>
       </table>
+      <ngb-pagination *ngIf="addedCurrency&&addedCurrency.length>0 &&pagination.totalPages"
+        [collectionSize]="pagination.totalPages" [(page)]="pagination.currentPage" (pageChange)="pageChanged($event)">
+      </ngb-pagination>
       <app-no-data *ngIf="!addedCurrency||addedCurrency.length==0"></app-no-data>
     </div>
   </section>

@@ -24,6 +24,7 @@ export class CurrencyComponent implements OnInit {
   searchText: any;
   detailsData: any;
   showDetaisl: boolean;
+  public pagination: any;
   constructor(
     private formGeneratorService: FormGeneratorService,
     private deleteMessageSvc: DeleteMessageService,
@@ -33,9 +34,17 @@ export class CurrencyComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.pagination = {
+      currentPage: 1,
+      totalPages: null,
+    }
     this.getAllcurrency();
   }
 
+  pageChanged(event) {
+    this.pagination.currentPage = event;
+    this.getAllcurrency();
+  }
   sort(property) {
     this.isDesc = !this.isDesc; //change the direction
     this.column = property;
@@ -114,9 +123,11 @@ export class CurrencyComponent implements OnInit {
 
   getAllcurrency() {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.getUserCurrencyList(null).subscribe((val: any) => {
-      this.addedCurrency = val.currency;
+    this.dashboardSvc.getUserCurrencyList(this.pagination.currentPage).subscribe((val: any) => {
+      this.addedCurrency = val.currency.data;
       this.loaderSvc.hideLoader();
+      this.pagination.currentPage = val.currency.current_page;
+      this.pagination.totalPages = val.currency.total;
 
     });
   }

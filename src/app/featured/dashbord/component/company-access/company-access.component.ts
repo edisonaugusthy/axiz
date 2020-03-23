@@ -24,6 +24,7 @@ export class CompanyAccessComponent implements OnInit {
   searchText: any;
   showDetails: boolean;
   detailsData: any;
+  public pagination: any;
   constructor(
     private dashboardSvc: DashbordService,
     private loaderSvc: LoaderService,
@@ -33,6 +34,14 @@ export class CompanyAccessComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.pagination = {
+      currentPage: 1,
+      totalPages: null,
+    }
+    this.getAllCompany();
+  }
+  pageChanged(event) {
+    this.pagination.currentPage = event;
     this.getAllCompany();
   }
   sort(property) {
@@ -131,9 +140,11 @@ export class CompanyAccessComponent implements OnInit {
   // for listing details
   getAllCompany() {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.getCompanyAccess(null).subscribe((val: any) => {
-      this.companyAccess = val.data;
+    this.dashboardSvc.getCompanyAccess(this.pagination.currentPage).subscribe((val: any) => {
+      this.companyAccess = val.data.data;
       this.loaderSvc.hideLoader();
+      this.pagination.currentPage = val.data.current_page;
+      this.pagination.totalPages = val.data.total;
     });
   }
 

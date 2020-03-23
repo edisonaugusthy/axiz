@@ -76,6 +76,9 @@
           </tr>
         </tbody>
       </table>
+      <ngb-pagination *ngIf="companies&&companies.length>0 &&pagination.totalPages"
+        [collectionSize]="pagination.totalPages" [(page)]="pagination.currentPage" (pageChange)="pageChanged($event)">
+      </ngb-pagination>
       <app-no-data *ngIf="!companies||companies.length==0"></app-no-data>
     </div>
   </section>

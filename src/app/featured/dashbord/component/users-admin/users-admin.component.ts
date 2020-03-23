@@ -25,6 +25,7 @@ export class UsersAdminComponent implements OnInit {
   searchText: any;
   showDetails: boolean;
   detailsData: any;
+  public pagination: any;
   constructor(
     private dashboardSvc: DashbordService,
     private formGeneratorService: FormGeneratorService,
@@ -33,7 +34,16 @@ export class UsersAdminComponent implements OnInit {
     private deleteMessageSvc: DeleteMessageService) { }
 
   ngOnInit() {
+    this.pagination = {
+      currentPage: 1,
+      totalPages: null,
+    }
     this.getAllCompanies();
+    this.getAllUsers();
+  }
+
+  pageChanged(event) {
+    this.pagination.currentPage = event;
     this.getAllUsers();
   }
   sort(property) {
@@ -121,9 +131,11 @@ export class UsersAdminComponent implements OnInit {
 
   getAllUsers() {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.getUserListing(null).subscribe((val: any) => {
-      this.allUsers = val.details;
+    this.dashboardSvc.getUserListing(this.pagination.currentPage).subscribe((val: any) => {
+      this.allUsers = val.details.data;
       this.loaderSvc.hideLoader();
+      this.pagination.currentPage = val.details.current_page;
+      this.pagination.totalPages = val.details.total;
     });
   }
 

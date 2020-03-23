@@ -120,7 +120,7 @@ export class AddLocationPopupComponent implements OnInit {
     this.modalRef = this.modalService.open(content, { size: 'lg' });
   }
   onSubmit() {
-    this.isSubmitted = true; s
+    this.isSubmitted = true;
     if (this.addUserForm.valid) {
       this.formSubmitted.emit(this.addUserForm.value);
       this.modalRef.close();
