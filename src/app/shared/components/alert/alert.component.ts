@@ -4,11 +4,13 @@ import { AlertService } from '../../services/alert.service';
 const CLASS_TYPES = {
   warning: 'warning',
   error: 'error',
+  danger: 'error',
   success: 'success'
 }
 const HEADER_TYPES = {
   warning: 'Warning',
   error: 'Error',
+  danger: 'Error',
   success: 'Success'
 }
 
@@ -33,8 +35,8 @@ export class AlertComponent implements OnInit {
       if (val) {
         this.showAlert = false;
         this.alerts = val;
-        this.alerts.class = CLASS_TYPES[this.alerts.type];
-        this.alerts.title = HEADER_TYPES[this.alerts.type]
+        this.alerts.class = CLASS_TYPES[(this.alerts.type || 'warning')];
+        this.alerts.title = HEADER_TYPES[(this.alerts.type || 'warning')]
         this.showAlert = true;
       }
       else {
