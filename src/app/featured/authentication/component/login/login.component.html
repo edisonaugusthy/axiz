@@ -5,31 +5,18 @@
         <img src="../assets/img/logo.svg">
         <h2>LOGIN</h2>
       </div>
-     <!--  <div class="form-group">
-        <img src="../assets/img/email-icon.svg">
-        <input type="email" class="form-textbox" formControlName="email"
-          [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+      <div class="form-wrap">
+        <div class="form-row">
+          <input type="text" class="form-textbox" formControlName="email" required>
           <label for="form-email" class="form-label">Email address</label>
+        </div>
+        <div class="form-row">
+          <input type="password" class="form-textbox" formControlName="password" required>
+          <label for="form-email" class="form-label">Password</label>
+        </div>
       </div>
 
-      <div class="form-group">
-        <img src="../assets/img/lock-icon.svg">
-        <input type="password" class="form-control" formControlName="password" placeholder="Password"
-          [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
-      </div>
- -->
-    <div class="form-wrap">
-      <div class="form-row">
-        <input type="text" id="form-email" class="form-textbox" required>
-        <label for="form-email" class="form-label">Email address</label>
-      </div>
-      <div class="form-row">
-        <input type="text" id="form-email" class="form-textbox" required>
-        <label for="form-email" class="form-label">Password</label>
-      </div>
-    </div>
-
- <button mat-flat-button color="primary">Login</button>
+      <button mat-flat-button color="primary">Login</button>
     </form>
   </div>
 </div>

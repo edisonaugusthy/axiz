@@ -127,8 +127,8 @@ export class CostCenterAccessComponent implements OnInit {
 
 
   getAllUsers() {
-    this.dashboardSvc.gerAllNormalUser(null).subscribe((res: any) => {
-      this.allusers = res.location_data;
+    this.dashboardSvc.getUserChainList(null).subscribe((res: any) => {
+      this.allusers = res.users;
     });
   }
 

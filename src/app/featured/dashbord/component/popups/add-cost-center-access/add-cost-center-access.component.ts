@@ -172,7 +172,7 @@ export class AddCostCenterAccessComponent implements OnInit {
 
   loadData() {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.getUserChainList(null).subscribe((val: any) => {
+    this.dashboardSvc.getAllChains(null).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       this.chainsList = val;
       this.setinitialStatus();

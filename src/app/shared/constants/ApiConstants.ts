@@ -56,8 +56,9 @@ export class ApiConstants {
 
 
     public static GET_ALL_COMPANIES_LIST = API_BASE_URL + 'admin/companyList';
-    public static GET_USER_CHAIN_LIST = API_BASE_URL + 'user/chainlist';
+    public static GET_USER_CHAIN_LIST = API_BASE_URL + 'user/chainless-users';
     public static GET_CHAIN_LIST = API_BASE_URL + 'user/chainlist';
     public static GET_LOCATION_LIST = API_BASE_URL + 'user/locationlist';
+
 
 }
