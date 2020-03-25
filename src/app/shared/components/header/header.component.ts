@@ -66,29 +66,31 @@ export class HeaderComponent implements OnInit {
     // }
   }
   openAdd() {
+    const mail = this.StorageService.getData('super-admin-mail');
     this.showAdd = true;
-    this.addFormData = this.formGeneratorService.SuperAdminLoginForm(this.userDetails);
+    this.addFormData = this.formGeneratorService.SuperAdminLoginForm(mail);
   }
 
   cancelAdd(val) {
     this.showAdd = false;
   }
-  submitAdd(val) {
+
+  submitAdd(res) {
     this.showAdd = false;
     this.loaderSvc.showLoader();
-    this.authService.SuperAdminLogin(val).subscribe((res: any) => {
-      if (res.details && res.details.details) {
-        this.StorageService.removeAll();
+    this.authService.SuperAdminLogin(res).subscribe((val: any) => {
+      if (val.data && val.message === 'login success') {
         this.router.navigateByUrl('/dashbord/dashbord');
-        this.StorageService.setData({ key: 'user_type', value: UserType.SuperAdmin });
-        this.StorageService.setData({ key: 'user_details', value: res.details.details });
-        this.StorageService.setData({ key: 'access_token', value: res.details.token });
+        this.StorageService.setData({ key: 'user_type', value: val.UserRole });
+        this.StorageService.setData({ key: 'user_details', value: val.data.userdetails });
+        this.StorageService.setData({ key: 'access_token', value: val.data.token });
+        this.StorageService.setData({ key: 'super-admin-mail', value: val.superadmin });
         setTimeout(() => {
           window.location.reload();
         }, 100)
       } else {
         this.loaderSvc.hideLoader();
-        this.alert.showAlert({ message: val.message, type: 'warning' });
+        this.alert.showAlert({ message: val.error, type: 'warning' });
       }
       this.loaderSvc.hideLoader();
     });

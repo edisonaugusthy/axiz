@@ -204,7 +204,8 @@
                                     </div> -->
                                     <div class="input-group">
                                         <input class="form-control" placeholder="dd/mm/yyyy" name="d2"
-                                            formControlName="startdate" ngbDatepicker #d2="ngbDatepicker">
+                                            formControlName="startdate" (click)="d2.toggle()" ngbDatepicker
+                                            #d2="ngbDatepicker">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()"
                                                 type="button"></button>

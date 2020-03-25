@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
         this.StorageService.setData({ key: 'user_type', value: val.UserRole });
         this.StorageService.setData({ key: 'user_details', value: val.data.userdetails });
         this.StorageService.setData({ key: 'access_token', value: val.data.token });
+        this.StorageService.setData({ key: 'super-admin-mail', value: val.superadmin });
       } else {
         this.loaderSVC.hideLoader();
         this.alertService.showAlert({ message: val.error, type: 'warning' });

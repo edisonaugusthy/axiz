@@ -61,9 +61,6 @@ export class DashbordService {
   }
 
 
-  getAllCompanies(data) {
-    return this.http.post(ApiConstants.GET_ALL_COMPANIES_LIST, data);
-  }
 
 
   // admin part
@@ -122,19 +119,16 @@ export class DashbordService {
     return this.http.post(ApiConstants.UPDATE_COST_CENTER_ACCESS, data);
   }
   gerAllCostAccess(data) {
-    return this.http.post(ApiConstants.GET_COST_CENTER_ACCESS, data);
+    const url = `${ApiConstants.GET_COST_CENTER_ACCESS}?page=${data}`;
+    return this.http.get(url);
+    // return this.http.post(ApiConstants.GET_COST_CENTER_ACCESS, data);
   }
   addCostAccess(data) {
     return this.http.post(ApiConstants.ADD_COST_CENTER_ACCESS, data);
   }
 
 
-  getAllChains(data) {
-    return this.http.post(ApiConstants.GET_CHAIN_LIST, data);
-  }
-  getAllLocations(data) {
-    return this.http.post(ApiConstants.GET_LOCATION_LIST, data);
-  }
+
 
   getUserDashboard(data) {
     return this.http.post(ApiConstants.GET_DASHBOARD_ADMIN, data);
@@ -144,14 +138,10 @@ export class DashbordService {
   }
 
 
-  getUserChainList(data) {
-    return this.http.post(ApiConstants.GET_USER_CHAIN_LIST, data);
-  }
 
   getUserCurrencyList(data) {
     const url = `${ApiConstants.GET_CURRENCY_LIST}?page=${data}`;
     return this.http.get(url);
-    // return this.http.post(ApiConstants.GET_CURRENCY_LIST, data);
   }
   AddCurrency(data) {
     return this.http.post(ApiConstants.ADD_CURRENCY, data);
@@ -163,5 +153,25 @@ export class DashbordService {
     return this.http.post(ApiConstants.DELETE_CURRENCY, data);
   }
 
+
+  // listing for edit/add popups
+  getAllCUrrency(data) {
+    return this.http.post(ApiConstants.GET_TOTAL_CURRENCY_LIST, data);
+  }
+
+  getAllChains(data) {
+    return this.http.post(ApiConstants.GET_CHAIN_LIST, data);
+  }
+  getAllLocations(data) {
+    return this.http.post(ApiConstants.GET_LOCATION_LIST, data);
+  }
+
+  getUserChainList(data) {
+    return this.http.post(ApiConstants.GET_USER_CHAIN_LIST, data);
+  }
+
+  getAllCompanies(data) {
+    return this.http.post(ApiConstants.GET_ALL_COMPANIES_LIST, data);
+  }
 
 }

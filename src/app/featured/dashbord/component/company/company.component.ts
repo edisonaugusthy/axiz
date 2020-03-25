@@ -147,8 +147,8 @@ export class CompanyComponent implements OnInit {
   getAllCurrency(item) {
     this.loaderSvc.showLoader();
     this.AllCurrency = [];
-    this.dashboardSvc.getUserCurrencyList(null).subscribe((val: any) => {
-      this.AllCurrency = val.currency;
+    this.dashboardSvc.getAllCUrrency(null).subscribe((val: any) => {
+      this.AllCurrency = val.currencies;
       this.loaderSvc.hideLoader();
       if (item) {
         this.openEdit(item)

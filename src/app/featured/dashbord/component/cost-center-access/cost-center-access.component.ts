@@ -24,6 +24,7 @@ export class CostCenterAccessComponent implements OnInit {
   allusers: any;
   showDetails: boolean;
   detailsData: any;
+  public pagination: any;
   constructor(
     private dashboardSvc: DashbordService,
     private formGeneratorService: FormGeneratorService,
@@ -33,10 +34,17 @@ export class CostCenterAccessComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.pagination = {
+      currentPage: 1,
+      totalPages: null,
+    }
     this.getAllCenters();
     this.getAllUsers();
   }
-
+  pageChanged(event) {
+    this.pagination.currentPage = event;
+    this.getAllCenters();
+  }
   sort(property) {
     this.isDesc = !this.isDesc;
     this.column = property;
@@ -119,9 +127,11 @@ export class CostCenterAccessComponent implements OnInit {
 
   getAllCenters() {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.gerAllCostAccess(null).subscribe((res: any) => {
-      this.allCostAccess = res;
+    this.dashboardSvc.gerAllCostAccess(this.pagination.currentPage).subscribe((res: any) => {
+      this.allCostAccess = res.data;
       this.loaderSvc.hideLoader();
+      this.pagination.currentPage = res.current_page;
+      this.pagination.totalPages = res.total;
     });
   }
 

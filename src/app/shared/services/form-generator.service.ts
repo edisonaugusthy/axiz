@@ -766,7 +766,7 @@ export class FormGeneratorService {
   SuperAdminLoginForm(val) {
     let data = [
       {
-        value: 'Super Admin',
+        value: val,
         key: 'email',
         label: 'Super Admin',
         required: true,
