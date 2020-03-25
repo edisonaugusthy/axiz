@@ -207,7 +207,7 @@
                                             formControlName="startdate">
                                     </div> -->
                                     <div class="input-group">
-                                        <input class="form-control" placeholder="dd/mm/yyyy" name="d2" type="text"
+                                        <input class="form-control" placeholder="yyyy/mm/dd" name="d2" type="text"
                                             [ngClass]="{ 'has-error': isSubmitted && formControls.startdate.errors }"
                                             formControlName="startdate" (click)="d2.toggle()" ngbDatepicker
                                             #d2="ngbDatepicker">
@@ -266,7 +266,8 @@
                                 </div>
                                 <div class="col-sm-7">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" formControlName="seats"
+                                        <input type="text" numbersOnly class="form-control" formControlName="seats"
+                                            maxlength="6"
                                             [ngClass]="{ 'has-error': isSubmitted && formControls.seats.errors }">
                                     </div>
                                 </div>

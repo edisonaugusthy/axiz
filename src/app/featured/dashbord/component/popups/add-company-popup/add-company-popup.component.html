@@ -188,7 +188,8 @@
                                 </div>
                                 <label class="astrick">Tolarance</label>
                                 <div class="form-group">
-                                    <input type="number" class="form-control" formControlName="errortolerance"
+                                    <input type="text" numbersOnly maxlength="6" class="form-control"
+                                        formControlName="errortolerance"
                                         [ngClass]="{ 'has-error': isSubmitted && formControls.errortolerance.errors }">
                                 </div>
                             </div>

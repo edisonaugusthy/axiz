@@ -54,11 +54,10 @@ export class CostCenterAccessComponent implements OnInit {
     this.editFormData = item;//this.formGeneratorService.editCostCenterAccess(item);
     this.showEdit = true;
   }
-  submitEdit(val) {
+  submitEdit(data) {
     this.showEdit = false;
-    console.log(val);
     this.loaderSvc.showLoader();
-    this.dashboardSvc.updateCostAccess(val).subscribe((res: any) => {
+    this.dashboardSvc.updateCostAccess(data).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       if (val && val.status) {
         this.alert.showAlert({ message: val.message, type: 'success' });
@@ -86,10 +85,10 @@ export class CostCenterAccessComponent implements OnInit {
     this.detailsData = null;
   }
 
-  submitDelete(val) {
+  submitDelete(data) {
     this.showDelete = false;
     this.loaderSvc.showLoader();
-    this.dashboardSvc.deleteCostAccess(val).subscribe((res: any) => {
+    this.dashboardSvc.deleteCostAccess(data).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       if (val && val.status) {
         this.alert.showAlert({ message: val.message, type: 'success' });
@@ -111,10 +110,10 @@ export class CostCenterAccessComponent implements OnInit {
   cancelAdd(val) {
     this.showAdd = false;
   }
-  submitAdd(val) {
+  submitAdd(data) {
     this.showAdd = false;
     this.loaderSvc.showLoader();
-    this.dashboardSvc.addCostAccess(val).subscribe((res: any) => {
+    this.dashboardSvc.addCostAccess(data).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       if (val && val.status) {
         this.alert.showAlert({ message: val.message, type: 'success' });

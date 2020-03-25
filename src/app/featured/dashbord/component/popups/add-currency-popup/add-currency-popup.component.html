@@ -103,7 +103,8 @@
                         </div>
                         <div class="col col-sm-5">
                             <div class="form-group">
-                                <input type="number" class="form-control" formControlName="currencyrate"
+                                <input type="text" numbersOnly maxlength="6" class="form-control"
+                                    formControlName="currencyrate"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.currencyrate.errors }">
                             </div>
                         </div>
@@ -116,7 +117,7 @@
                         </div>
                         <div class="col col-sm-5">
                             <div class="form-group">
-                                <input type="number" maxlength="2" class="form-control"
+                                <input type="text" numbersOnly maxlength="2" class="form-control"
                                     formControlName="currencydecimals"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.currencydecimals.errors }">
                             </div>

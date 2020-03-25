@@ -72,10 +72,10 @@ export class CompanyComponent implements OnInit {
     this.deleteData = this.deleteMessageSvc.deleteCompany(item);
   }
 
-  submitDelete(val) {
+  submitDelete(data) {
     this.showDelete = false;
     this.loaderSvc.showLoader();
-    this.dashboardSvc.deleteCompany({ companyid: val.CompanyID }).subscribe((val: any) => {
+    this.dashboardSvc.deleteCompany({ companyid: data.CompanyID }).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       if (val && val.status) {
         this.alert.showAlert({ message: val.message, type: 'success' });
@@ -104,10 +104,10 @@ export class CompanyComponent implements OnInit {
   cancelAdd(val) {
     this.showAdd = false;
   }
-  submitAdd(val) {
+  submitAdd(data) {
     this.showAdd = false
     this.loaderSvc.showLoader();
-    this.dashboardSvc.registerCompany(val).subscribe((val: any) => {
+    this.dashboardSvc.registerCompany(data).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       if (val && val.status) {
         this.alert.showAlert({ message: val.message, type: 'success' });
@@ -118,10 +118,10 @@ export class CompanyComponent implements OnInit {
     });
   }
 
-  submitEdit(val) {
+  submitEdit(data) {
     this.showEdit = false;
     this.loaderSvc.showLoader();
-    this.dashboardSvc.updateCompany(val).subscribe((val: any) => {
+    this.dashboardSvc.updateCompany(data).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       if (val && val.status) {
         this.alert.showAlert({ message: val.message, type: 'success' });

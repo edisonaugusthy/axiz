@@ -13,27 +13,35 @@ import {
 import { NgbModal, NgbModalRef, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
 import { NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-
+import { DatePipe } from '@angular/common';
 
 @Injectable()
 export class CustomAdapter extends NgbDateAdapter<string> {
 
   readonly DELIMITER = '-';
-
+  constructor(
+    private datePipe: DatePipe
+  ) {
+    super();
+  }
   fromModel(value: string | null): NgbDateStruct | null {
     if (value) {
-      let date = value.split(this.DELIMITER);
-      return {
-        day: parseInt(date[0], 10),
-        month: parseInt(date[1], 10),
-        year: parseInt(date[2], 10)
+      const birthYear = Number(this.datePipe.transform(value, 'yyyy'));
+      const birthMonth = Number(this.datePipe.transform(value, 'MM'));
+      const birthDay = Number(this.datePipe.transform(value, 'dd'));
+      // let date = value.split(this.DELIMITER);
+      const val = {
+        day: birthDay,
+        month: birthMonth,
+        year: birthYear
       };
+      return val;
     }
     return null;
   }
 
   toModel(date: NgbDateStruct | null): string | null {
-    return date ? date.day + this.DELIMITER + date.month + this.DELIMITER + date.year : null;
+    return date ? date.year + this.DELIMITER + date.month + this.DELIMITER + date.day : null;
   }
 }
 
@@ -69,7 +77,7 @@ export class AddLocationPopupComponent implements OnInit {
     config: NgbModalConfig,
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
-    private alert: AlertService,
+    private alert: AlertService, private datePipe: DatePipe,
     private ngbCalendar: NgbCalendar, private dateAdapter: NgbDateAdapter<string>
   ) {
     config.backdrop = 'static';
@@ -107,11 +115,25 @@ export class AddLocationPopupComponent implements OnInit {
     this.open(this.input);
   }
 
+  addDefaultDate() {
+    if (this.fields?.StartDate) {
+      const birthYear = Number(this.datePipe.transform(this.fields?.StartDate, 'yyyy'));
+      const birthMonth = Number(this.datePipe.transform(this.fields?.StartDate, 'MM'));
+      const birthDay = Number(this.datePipe.transform(this.fields?.StartDate, 'dd'));
+      this.addUserForm.controls.startdate.setValue({
+        year: birthYear,
+        month: birthMonth,
+        day: birthDay
+      });
+    }
+
+  }
 
 
   open(content) {
     if (this.fields) {
       this.isEdit = true;
+      // this.addDefaultDate();
     }
     else {
       this.isEdit = false;

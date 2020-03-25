@@ -30,6 +30,7 @@ import { AddLocationPopupComponent } from './component/popups/add-location-popup
 import { AddCurrencyPopupComponent } from './component/popups/add-currency-popup/add-currency-popup.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CostCenterAccessDetailsComponent } from './component/details-popups/cost-center-access/cost-center-access.component';
+import { DatePipe } from '@angular/common';
 @NgModule({
   imports: [
     CommonModule,
@@ -66,6 +67,9 @@ import { CostCenterAccessDetailsComponent } from './component/details-popups/cos
     CostCenterAccessDetailsComponent,
     LocationDetailsComponent,
     UserDetailsComponent
+  ],
+  providers: [
+    DatePipe,
   ],
   exports: [DashboardRoutingModule],
 })
