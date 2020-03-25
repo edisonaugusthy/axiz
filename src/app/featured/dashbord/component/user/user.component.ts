@@ -49,6 +49,7 @@ export class UserComponent implements OnInit {
 
   openEdit(item?) {
     this.editFormData = this.formGeneratorService.editUser(item);
+    this.editFormData.id = item.id;
     this.showEdit = true;
   }
 
@@ -65,16 +66,18 @@ export class UserComponent implements OnInit {
     this.getAllUsers();
   }
 
-  submitEdit(val) {
+  submitEdit(data) {
     this.showEdit = false;
     this.loaderSvc.showLoader();
-    this.dashboardSvc.updateNormalUser(val).subscribe((val: any) => {
+    data.id = this.editFormData.id;
+    this.dashboardSvc.updateNormalUser(data).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       if (val && val.status) {
         this.alert.showAlert({ message: val.message, type: 'success' });
       } else {
         this.alert.showAlert({ message: val.message, type: 'danger' });
       }
+      this.editFormData = null;
       this.getAllUsers();
     });
 
@@ -88,10 +91,10 @@ export class UserComponent implements OnInit {
     this.deleteData = this.deleteMessageSvc.deleteUser(item);
   }
 
-  submitDelete(val) {
+  submitDelete(data) {
     this.showDelete = false;
     this.loaderSvc.showLoader();
-    this.dashboardSvc.deleteNormalUser({ userid: val.user_id }).subscribe((val: any) => {
+    this.dashboardSvc.deleteNormalUser({ id: data.id }).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       if (val && val.status) {
         this.alert.showAlert({ message: val.message, type: 'success' });
@@ -116,12 +119,12 @@ export class UserComponent implements OnInit {
   submitAdd(val) {
     this.showAdd = false;
     this.loaderSvc.showLoader();
-    this.dashboardSvc.createNormalUser(val).subscribe((val: any) => {
+    this.dashboardSvc.createNormalUser(val).subscribe((res: any) => {
       this.loaderSvc.hideLoader();
-      if (val && val.status) {
-        this.alert.showAlert({ message: val.message, type: 'success' });
+      if (res && res.status) {
+        this.alert.showAlert({ message: res.message, type: 'success' });
       } else {
-        this.alert.showAlert({ message: val.message, type: 'danger' });
+        this.alert.showAlert({ message: res.message, type: 'danger' });
       }
       this.getAllUsers();
     });

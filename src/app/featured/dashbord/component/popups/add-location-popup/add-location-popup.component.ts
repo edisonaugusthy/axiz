@@ -56,6 +56,7 @@ export class AddLocationPopupComponent implements OnInit {
 
   @Input() fields;
   @Input() companyList;
+  @Input() chains;
   @Output() formSubmitted = new EventEmitter<any>();
   @Output() formCancel = new EventEmitter<any>();
 
@@ -93,7 +94,7 @@ export class AddLocationPopupComponent implements OnInit {
       costcenter: [(this.fields?.CostCenter || '')],
       locationtype: [('')],
       inventory: [(this.fields?.UploadInv || 0), Validators.required],
-      startdate: [(this.fields?.StartDate || '')],
+      startdate: [(this.fields?.StartDate || null)],
       service: [(this.fields?.Service || '')],
       costcentertype: [(this.fields?.CostCenterType || '')],
       seats: [(this.fields?.Seats || ''), Validators.required],
@@ -106,9 +107,7 @@ export class AddLocationPopupComponent implements OnInit {
     this.open(this.input);
   }
 
-  get today() {
-    return this.dateAdapter.toModel(this.ngbCalendar.getToday())!;
-  }
+
 
   open(content) {
     if (this.fields) {
@@ -150,7 +149,7 @@ export class AddLocationPopupComponent implements OnInit {
   }
 
   enabletime() {
-    if (this.addUserForm.value.enablecutoff == 1) {
+    if (this.addUserForm.value.enablecutoff == true) {
       this.addUserForm.get('ordercutof').setValidators([Validators.required]);
       this.addUserForm.get('ordercutof').updateValueAndValidity();
     }

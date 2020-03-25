@@ -12,6 +12,7 @@ import { DeletePopupComponent } from "./components/delete-popup/delete-popup.com
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OrderrByPipe } from './pipes/orderr-by.pipe';
 import { NoDataComponent } from './components/no-data/no-data.component';
+import { NumberDirective } from './directives/number.directive';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbModule, MaterialModuleModule],
@@ -24,7 +25,8 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     AddPopupComponent,
     OrderrByPipe,
     NoDataComponent,
-    DetailsPopupComponent
+    DetailsPopupComponent,
+    NumberDirective
   ],
   exports: [
     LoaderComponent,
@@ -35,7 +37,8 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     AlertComponent,
     OrderrByPipe,
     NoDataComponent,
-    DetailsPopupComponent
+    DetailsPopupComponent,
+    NumberDirective
   ]
 })
 export class SharedModule { }

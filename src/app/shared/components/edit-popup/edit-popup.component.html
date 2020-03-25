@@ -11,13 +11,15 @@
       <div class="form-group" *ngFor="let item of fields.fields">
         <div [ngSwitch]="item.controlType" [formGroup]="form">
           <label for="{{item.key}}" class="col-form-label" [class.astrick]="item.required">{{item.label}}:</label>
-          <input type="text" class="form-control" placeholder="{{ item.label }}" disabled="{{item.disabled}}"
-            *ngSwitchCase="'textbox'" [formControlName]="item.key" [id]="item.key" [type]="item.type" [ngClass]="{
+          <input type="text" class="form-control" [maxlength]="item.maxlength" placeholder="{{ item.label }}"
+            disabled="{{item.disabled}}" *ngSwitchCase="'textbox'" [formControlName]="item.key" [id]="item.key"
+            [type]="item.type" [ngClass]="{
               'has-error': isSubmitted && formControls[item.key].errors
             }" />
 
-          <input type="number" class="form-control" placeholder="{{ item.label }}" disabled="{{item.disabled}}"
-            *ngSwitchCase="'number'" [formControlName]="item.key" [id]="item.key" [type]="item.type" [ngClass]="{
+          <input type="text" numbersOnly class="form-control" [maxlength]="item.maxlength"
+            placeholder="{{ item.label }}" disabled="{{item.disabled}}" *ngSwitchCase="'number'"
+            [formControlName]="item.key" [id]="item.key" [type]="item.type" [ngClass]="{
                           'has-error': isSubmitted && formControls[item.key].errors
                         }" />
 

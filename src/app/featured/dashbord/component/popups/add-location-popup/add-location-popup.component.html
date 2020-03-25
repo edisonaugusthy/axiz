@@ -19,10 +19,14 @@
                                     Chain ID
                                 </div>
                                 <div class="col col-sm-7">
-                                    <div class="form-group">
+                                    <select class="form-control" formControlName="chainid">
+                                        <option *ngFor="let opt of chains " [value]="opt.chainid">{{opt.chainname}}
+                                        </option>
+                                    </select>
+                                    <!-- <div class="form-group">
                                         <input type="text" maxlength="10" class="form-control" formControlName="chainid"
                                             [ngClass]="{ 'has-error': isSubmitted && formControls.chainid.errors }">
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="wrap row">
@@ -185,10 +189,10 @@
                                     <div class="form-group">
                                         <!-- <input type="text" class="form-control" formControlName="inventory"
                                             [ngClass]="{ 'has-error': isSubmitted && formControls.inventory.errors }"> -->
-                                        <select class="form-control" formControlName="inventory">
+                                        <select class="form-control" formControlName="inventory"
+                                            [ngClass]="{ 'has-error': isSubmitted && formControls.inventory.errors }">
                                             <option [value]="1">Yes</option>
                                             <option [value]="0">No</option>
-
                                         </select>
                                     </div>
                                 </div>
@@ -203,7 +207,8 @@
                                             formControlName="startdate">
                                     </div> -->
                                     <div class="input-group">
-                                        <input class="form-control" placeholder="dd/mm/yyyy" name="d2"
+                                        <input class="form-control" placeholder="dd/mm/yyyy" name="d2" type="text"
+                                            [ngClass]="{ 'has-error': isSubmitted && formControls.startdate.errors }"
                                             formControlName="startdate" (click)="d2.toggle()" ngbDatepicker
                                             #d2="ngbDatepicker">
                                         <div class="input-group-append">
@@ -261,7 +266,7 @@
                                 </div>
                                 <div class="col-sm-7">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" formControlName="seats"
+                                        <input type="number" class="form-control" formControlName="seats"
                                             [ngClass]="{ 'has-error': isSubmitted && formControls.seats.errors }">
                                     </div>
                                 </div>
@@ -272,7 +277,7 @@
                                 </div>
                                 <div class="col-sm-7">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" formControlName="area">
+                                        <input type="number" class="form-control" formControlName="area">
                                     </div>
                                 </div>
                             </div>

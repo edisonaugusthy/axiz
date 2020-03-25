@@ -86,7 +86,8 @@ export class FormGeneratorService {
         order: 1,
         controlType: 'textbox',
         type: '',
-        options: ''
+        options: '',
+        maxlength: '6'
       },
       {
         value: currentValuse ? currentValuse['user_name'] : '',
@@ -104,9 +105,10 @@ export class FormGeneratorService {
         label: 'Mobile',
         required: true,
         order: 3,
-        controlType: 'textbox',
+        controlType: 'number',
         type: '',
-        options: ''
+        options: '',
+        maxlength: '10'
       },
       {
         value: currentValuse ? currentValuse['user_email'] : '',
@@ -124,9 +126,10 @@ export class FormGeneratorService {
         label: 'UDID',
         required: true,
         order: 5,
-        controlType: 'textbox',
+        controlType: 'number',
         type: '',
-        options: ''
+        options: '',
+        maxlength: '6'
       },
       {
         value: currentValuse ? currentValuse['LoginPin'] : '',
@@ -134,9 +137,10 @@ export class FormGeneratorService {
         label: 'Password',
         required: true,
         order: 6,
-        controlType: 'textbox',
+        controlType: 'number',
         type: '',
-        options: ''
+        options: '',
+        maxlength: '6'
       }
     ];
     data = data.sort((a, b) => a.order - b.order);
@@ -581,7 +585,8 @@ export class FormGeneratorService {
         order: 1,
         controlType: 'textbox',
         type: '',
-        options: ''
+        options: '',
+        maxlength: '6'
       },
       {
         value: '',
@@ -599,9 +604,10 @@ export class FormGeneratorService {
         label: 'Mobile',
         required: true,
         order: 3,
-        controlType: 'textbox',
+        controlType: 'number',
         type: '',
-        options: ''
+        options: '',
+        maxlength: '10'
       },
       {
         value: '',
@@ -619,9 +625,10 @@ export class FormGeneratorService {
         label: 'UDID',
         required: true,
         order: 5,
-        controlType: 'textbox',
+        controlType: 'number',
         type: '',
-        options: ''
+        options: '',
+        maxlength: '6'
       },
       {
         value: '',
@@ -632,17 +639,8 @@ export class FormGeneratorService {
         controlType: 'number',
         type: '',
         regex: '',
-        options: ''
-      },
-      {
-        value: '',
-        key: 'company',
-        label: 'Company',
-        required: false,
-        order: 7,
-        controlType: 'textbox',
-        type: '',
-        options: ''
+        options: '',
+        maxlength: '6'
       },
     ];
     data = data.sort((a, b) => a.order - b.order);

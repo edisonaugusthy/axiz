@@ -88,7 +88,7 @@
 
 
 <!-- edit location -->
-<app-add-location-popup *ngIf="showEdit" [fields]="editFormData" (formCancel)="cancelEdit($event)"
+<app-add-location-popup *ngIf="showEdit" [chains]="Chains" [fields]="editFormData" (formCancel)="cancelEdit($event)"
   (formSubmitted)="submitEdit($event)">
 </app-add-location-popup>
 
@@ -98,7 +98,7 @@
 </app-delete-popup>
 
 <!-- add popup -->
-<app-add-location-popup *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
+<app-add-location-popup *ngIf="showAdd" [chains]="Chains" [fields]="addFormData" (formCancel)="cancelAdd($event)"
   (formSubmitted)="submitAdd($event)"></app-add-location-popup>
 
 <app-location-details *ngIf="showDetails" [fields]="detailsData" (formCancel)="cancelView($event)"

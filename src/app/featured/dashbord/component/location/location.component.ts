@@ -24,6 +24,7 @@ export class LocationComponent implements OnInit {
   showDetails: boolean;
   detailsData: any;
   public pagination: any;
+  Chains: any;
   constructor(
     private dashboardSvc: DashbordService,
     private deleteMessageSvc: DeleteMessageService,
@@ -38,6 +39,7 @@ export class LocationComponent implements OnInit {
       totalPages: null,
     }
     this.getAllLocation();
+    this.getAllChains();
   }
 
   pageChanged(event) {
@@ -58,10 +60,10 @@ export class LocationComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.updateLocation(val).subscribe((res: any) => {
       this.loaderSvc.hideLoader();
-      if (val && val.status) {
-        this.alert.showAlert({ message: val.message, type: 'success' });
+      if (res && res.status) {
+        this.alert.showAlert({ message: res.message, type: 'success' });
       } else {
-        this.alert.showAlert({ message: val.message, type: 'danger' });
+        this.alert.showAlert({ message: res.message, type: 'danger' });
       }
       this.getAllLocation();
     });
@@ -90,12 +92,12 @@ export class LocationComponent implements OnInit {
   submitDelete(val) {
     this.showDelete = false;
     this.loaderSvc.showLoader();
-    this.dashboardSvc.deleteLocation({ locationid: val.LocationId }).subscribe((val: any) => {
+    this.dashboardSvc.deleteLocation({ locationid: val.LocationId }).subscribe((res: any) => {
       this.loaderSvc.hideLoader();
-      if (val && val.status) {
-        this.alert.showAlert({ message: val.message, type: 'success' });
+      if (res && res.status) {
+        this.alert.showAlert({ message: res.message, type: 'success' });
       } else {
-        this.alert.showAlert({ message: val.message, type: 'danger' });
+        this.alert.showAlert({ message: res.message, type: 'danger' });
       }
       this.getAllLocation();
     });
@@ -118,10 +120,10 @@ export class LocationComponent implements OnInit {
     this.loaderSvc.showLoader();
     this.dashboardSvc.createLocation(val).subscribe((res: any) => {
       this.loaderSvc.hideLoader();
-      if (val && val.status) {
-        this.alert.showAlert({ message: val.message, type: 'success' });
+      if (res && res.status) {
+        this.alert.showAlert({ message: res.message, type: 'success' });
       } else {
-        this.alert.showAlert({ message: val.message, type: 'danger' });
+        this.alert.showAlert({ message: res.message, type: 'danger' });
       }
       this.getAllLocation();
 
@@ -135,6 +137,12 @@ export class LocationComponent implements OnInit {
       this.addedlocations = val.location_data.data;
       this.pagination.currentPage = val.location_data.current_page;
       this.pagination.totalPages = val.location_data.total;
+    });
+  }
+
+  getAllChains() {
+    this.dashboardSvc.getAllChains(null).subscribe((val: any) => {
+      this.Chains = val;
     });
   }
 

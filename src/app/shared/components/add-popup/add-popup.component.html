@@ -10,18 +10,19 @@
     <div class="modal-body">
       <div class="form-group" *ngFor="let item of fields.fields">
         <div [ngSwitch]="item.controlType" [formGroup]="form">
-          <input type="text" class="form-control" placeholder="{{ item.label }}" *ngSwitchCase="'textbox'"
-            [formControlName]="item.key" [id]="item.key" [ngClass]="{
+          <input type="text" class="form-control" placeholder="{{ item.label }}" [maxlength]="item.maxlength"
+            *ngSwitchCase="'textbox'" [formControlName]="item.key" [id]="item.key" [ngClass]="{
               'has-error': isSubmitted && formControls[item.key].errors
             }" />
 
-          <input type="number" class="form-control" placeholder="{{ item.label }}" *ngSwitchCase="'number'"
-            [formControlName]="item.key" [id]="item.key" [ngClass]="{
+          <input type="text" numbersOnly class="form-control" [maxlength]="item.maxlength"
+            placeholder="{{ item.label }}" *ngSwitchCase="'number'" [formControlName]="item.key" [id]="item.key"
+            [ngClass]="{
                           'has-error': isSubmitted && formControls[item.key].errors
                         }" />
 
-          <input type="password" class="form-control" placeholder="{{ item.label }}" *ngSwitchCase="'password'"
-            [formControlName]="item.key" [id]="item.key" [ngClass]="{
+          <input type="password" class="form-control" [maxlength]="item.maxlength" placeholder="{{ item.label }}"
+            *ngSwitchCase="'password'" [formControlName]="item.key" [id]="item.key" [ngClass]="{
                                       'has-error': isSubmitted && formControls[item.key].errors
                                     }" />
 
