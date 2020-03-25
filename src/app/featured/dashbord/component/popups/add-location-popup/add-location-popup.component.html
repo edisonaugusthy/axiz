@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="col col-sm-7">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" formControlName="chainid"
+                                        <input type="text" maxlength="10" class="form-control" formControlName="chainid"
                                             [ngClass]="{ 'has-error': isSubmitted && formControls.chainid.errors }">
                                     </div>
                                 </div>
@@ -31,7 +31,8 @@
                                 </div>
                                 <div class="col-sm-7">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" formControlName="locationid"
+                                        <input type="text" maxlength="10" class="form-control"
+                                            formControlName="locationid"
                                             [ngClass]="{ 'has-error': isSubmitted && formControls.locationid.errors }">
                                     </div>
                                 </div>
@@ -97,28 +98,25 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="wrap phone-num row">
+
+                            <div class="wrap row">
                                 <div class="col col-sm-5 label">
                                     Phone
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-7">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" formControlName="phone">
-                                    </div>
-                                </div>
-                                <div class="col-sm-3 pad-lef-non">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" formControlName="fax">
+                                        <input type="text" maxlength="10" class="form-control" formControlName="phone">
                                     </div>
                                 </div>
                             </div>
+
                             <div class="wrap row">
                                 <div class="col col-sm-5 label">
                                     Fax
                                 </div>
                                 <div class="col-sm-7">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" formControlName="fax">
+                                        <input type="text" maxlength="10" class="form-control" formControlName="fax">
                                     </div>
                                 </div>
                             </div>

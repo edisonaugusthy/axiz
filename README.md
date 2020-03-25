@@ -20,6 +20,7 @@
 ### Lead Developers
 
 * **[Edison Augusthy](https://github.com/edisonaugusthy)** - *Author*
+* **[Gokul Nath](https://github.com/gokulnath-r)** - *Developer*
 
 ### Thanks
 

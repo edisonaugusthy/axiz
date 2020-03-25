@@ -19,13 +19,13 @@
                         </div>
                         <div class="col col-sm-5">
                             <div class="form-group">
-                                <input type="text" class="form-control" formControlName="companyid"
+                                <input type="text" class="form-control" formControlName="companyid" maxlength="5"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.companyid.errors }">
                             </div>
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-5 label ">
                             Company Name
                         </div>
                         <div class="col col-sm-5">
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-5 label">
                             Contact
                         </div>
                         <div class="col col-sm-5">
@@ -113,7 +113,7 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-5 label">
                             Email
                         </div>
                         <div class="col col-sm-5">
@@ -153,35 +153,37 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-5 label">
                             Ret Earning A/C
                         </div>
                         <div class="col col-sm-5">
                             <div class="form-group">
-                                <input type="text" class="form-control" formControlName="retainedaccount"
+                                <input type="text" class="form-control" formControlName="retainedaccount" maxlength="10"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.retainedaccount.errors }">
                             </div>
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-5 label">
                             Acc Ret Earning
                         </div>
                         <div class="col col-sm-5">
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName="accuretainedaccount"
+                                    maxlength="10"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.accuretainedaccount.errors }">
                             </div>
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-5 label ">
                             System Error Account
                         </div>
                         <div class="col col-sm-5 label">
                             <div class="form-flex-wrap">
                                 <div class="form-group">
                                     <input type="text" class="form-control" formControlName="erroraccount"
+                                        maxlength="10"
                                         [ngClass]="{ 'has-error': isSubmitted && formControls.erroraccount.errors }">
                                 </div>
                                 <label class="astrick">Tolarance</label>
@@ -195,7 +197,7 @@
                     </div>
 
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-5 label">
                             Help path
                         </div>
                         <div class="col col-sm-5">
@@ -206,7 +208,7 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-5 label">
                             Communication
                         </div>
                         <div class="col-sm-5">
