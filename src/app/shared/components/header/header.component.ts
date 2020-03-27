@@ -56,14 +56,6 @@ export class HeaderComponent implements OnInit {
 
   openNav() {
     this.toggleSideBar.emit(true);
-    // this.showSideBar = !this.showSideBar;
-    // if (this.showSideBar) {
-    //   document.getElementById("mySidebar").style.width = "250px";
-    //   document.getElementById("content-area").style.marginLeft = "0px";
-    // } else {
-    //   document.getElementById("mySidebar").style.width = "0";
-    //   document.getElementById("content-area").style.marginLeft = "0";
-    // }
   }
   openAdd() {
     const mail = this.StorageService.getData('super-admin-mail');
@@ -74,7 +66,9 @@ export class HeaderComponent implements OnInit {
   cancelAdd(val) {
     this.showAdd = false;
   }
-
+  showDashbord() {
+    this.router.navigateByUrl('/dashbord/dashbord');
+  }
   submitAdd(res) {
     this.showAdd = false;
     this.loaderSvc.showLoader();

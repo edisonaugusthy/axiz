@@ -4,14 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'login'
-  },
+
   {
     path: 'login',
-    component: LoginComponent,
+    loadChildren: () => import('./featured/authentication/authentication.module').then(m => m.AuthenticationModule),
     data: { title: 'Login' }
   },
   {
@@ -20,6 +16,12 @@ const routes: Routes = [
     loadChildren: () => import('./featured/dashbord/dashbord.module').then(m => m.DashbordModule),
     data: { preload: true, delay: false, title: 'Dashbord' }
   },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login'
+  },
+  { path: '**', component: LoginComponent }
 ];
 
 @NgModule({

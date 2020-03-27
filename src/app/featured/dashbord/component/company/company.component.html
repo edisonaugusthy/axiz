@@ -98,5 +98,5 @@
 <app-add-company-popup *ngIf="showAdd" [currency]="AllCurrency" [Edit]="false" [fields]="addFormData"
   (formCancel)="cancelAdd($event)" (formSubmitted)="submitAdd($event)"></app-add-company-popup>
 
-<app-company-details *ngIf="showDetails" [fields]="detailsData" (formCancel)="cancelView($event)"
-  (formSubmitted)="cancelView($event)"></app-company-details>
+<app-company-details *ngIf="showDetails" [currency]="AllCurrency" [fields]="detailsData"
+  (formCancel)="cancelView($event)" (formSubmitted)="cancelView($event)"></app-company-details>

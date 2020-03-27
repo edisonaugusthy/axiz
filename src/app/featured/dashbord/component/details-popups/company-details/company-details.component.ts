@@ -51,7 +51,7 @@ export class CompanyDetailsComponent implements OnInit {
       email: [(this.fields?.Email || ''), [Validators.required, Validators.email]],
       website: [(this.fields?.Website || '')],
       currency: [(this.fields?.CurrencyId || ''), Validators.required],
-      retainedaccount: [(this.fields?.RetainedChainId || ''), Validators.required],
+      retainedaccount: [(this.fields?.RetainedAccountId || ''), Validators.required],
       accuretainedaccount: [(this.fields?.AccuRetainedAccountId || ''), Validators.required],
       erroraccount: [(this.fields?.SysErrorAccount || ''), Validators.required],
       errortolerance: [(this.fields?.SysErrorTolerance || ''), Validators.required],
@@ -59,7 +59,7 @@ export class CompanyDetailsComponent implements OnInit {
       comm: [(this.fields?.CommPath || ''), Validators.required],
       postingtype: [(this.fields?.SopPostingType || ''), Validators.required],
       qtyminor: [(this.fields?.SopQtyMinor || ''), Validators.required],
-      Image: [(this.fields?.Image) || '../assets/img/upload.png'],
+      Image: [(this.fields?.Image)],
     });
     this.open(this.input);
 

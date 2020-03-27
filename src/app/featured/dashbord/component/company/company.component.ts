@@ -39,6 +39,7 @@ export class CompanyComponent implements OnInit {
       totalPages: null,
     }
     this.getAllCompany();
+    this.getAllCurrency(4);
   }
   pageChanged(event) {
     this.pagination.currentPage = event;
@@ -55,13 +56,19 @@ export class CompanyComponent implements OnInit {
       this.showEdit = true;
     }
     else {
-      this.getAllCurrency(item)
+      this.getAllCurrency(1, item)
     }
 
   }
   openView(item) {
-    this.showDetails = true;
-    this.detailsData = item;
+    if (this.AllCurrency) {
+      this.showDetails = true;
+      this.detailsData = item;
+    }
+    else {
+      this.getAllCurrency(2, item)
+    }
+
   }
   cancelView(item) {
     this.showDetails = false;
@@ -96,7 +103,7 @@ export class CompanyComponent implements OnInit {
       this.showAdd = true;
     }
     else {
-      this.getAllCurrency(false)
+      this.getAllCurrency(3)
     }
 
   }
@@ -144,16 +151,24 @@ export class CompanyComponent implements OnInit {
       this.pagination.totalPages = val.details.total;
     });
   }
-  getAllCurrency(item) {
+  getAllCurrency(id, item?) {
     this.loaderSvc.showLoader();
     this.AllCurrency = [];
     this.dashboardSvc.getAllCUrrency(null).subscribe((val: any) => {
       this.AllCurrency = val.currencies;
       this.loaderSvc.hideLoader();
-      if (item) {
-        this.openEdit(item)
-      } else {
-        this.openAdd();
+      switch (id) {
+        case 1:
+          this.openEdit(item)
+          break;
+        case 3:
+          this.openAdd();
+          break;
+        case 3:
+          this.openView(item);
+          break;
+        default:
+          break;
       }
     });
   }
