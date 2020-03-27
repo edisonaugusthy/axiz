@@ -63,7 +63,7 @@ export class AddCostCenterAccessComponent implements OnInit {
       Fullaccess: [1, Validators.required],
     });
     this.open(this.input);
-    this.disableSelection(1);
+    
   }
 
 
@@ -130,8 +130,14 @@ export class AddCostCenterAccessComponent implements OnInit {
     if (this.Edit) {
       this.isEdit = true;
       this.addUserForm.patchValue({ Fullaccess: this.fields.fullaccess })
+      if(this.fields.fullaccess==0){
+        this.disableSelection(2);
+      }else{
+        this.disableSelection(1);
+      }
     }
     else {
+      this.disableSelection(1);
       this.isEdit = false;
     }
     this.modalRef = this.modalService.open(content, { size: 'lg' });
