@@ -59,8 +59,8 @@ export class CostCenterAccessDetailsComponent implements OnInit {
     this.formData = new FormArray(this.addControls(this.chainsList));
     this.addUserForm = this.formBuilder.group({
       userid: [(this.fields?.userid || ''), Validators.required],
-      username: [(this.fields?.userid || ''), Validators.required],
-      Fullaccess: [(this.fields?.fullaccess || ''), Validators.required],
+      username: [(this.fields?.username || ''), Validators.required],
+      Fullaccess: [(this.fields?.fullaccess), Validators.required],
     });
     this.open(this.input);
     this.disableSelection(1);
@@ -172,7 +172,7 @@ export class CostCenterAccessDetailsComponent implements OnInit {
 
   loadData() {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.getUserChainList(null).subscribe((val: any) => {
+    this.dashboardSvc.getAllChains(null).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       this.chainsList = val;
       this.setinitialStatus();
@@ -182,7 +182,7 @@ export class CostCenterAccessDetailsComponent implements OnInit {
 
 
   setinitialStatus() {
-    if (this.fields) {
+    if (this.fields && this.fields.fullaccess == 0) {
       this.chainsList.forEach(element => {
         element = this.getSelectedChain(element);
       });
@@ -200,15 +200,15 @@ export class CostCenterAccessDetailsComponent implements OnInit {
   getSelectedChain(item) {
     const selected = this.fields.selected || []
     let data = selected.filter(element => {
-      return element.chain['Chain Id'] == item.chainid
+      return element['Chain Id'] == item.chainid
     });
     data = data[0];
     if (data && data) {
       item.check = true;
       if (item.locations && item.locations.length > 0) {
         item.locations.map(val => {
-          if (Array.isArray(data.chain['location Id'])) {
-            data.chain['location Id'].includes(val.id) ? val.check = true : val.check = false
+          if (Array.isArray(data['location Id'])) {
+            data['location Id'].includes(val.id) ? val.check = true : val.check = false
           } else {
             val.check = false;
           }

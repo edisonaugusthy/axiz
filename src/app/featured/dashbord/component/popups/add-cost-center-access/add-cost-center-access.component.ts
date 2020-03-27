@@ -129,6 +129,7 @@ export class AddCostCenterAccessComponent implements OnInit {
   open(content) {
     if (this.Edit) {
       this.isEdit = true;
+      this.addUserForm.patchValue({ Fullaccess: this.fields.fullaccess })
     }
     else {
       this.isEdit = false;
@@ -182,7 +183,7 @@ export class AddCostCenterAccessComponent implements OnInit {
 
 
   setinitialStatus() {
-    if (this.fields) {
+    if (this.fields && this.fields.fullaccess == 0) {
       this.chainsList.forEach(element => {
         element = this.getSelectedChain(element);
       });
@@ -200,15 +201,15 @@ export class AddCostCenterAccessComponent implements OnInit {
   getSelectedChain(item) {
     const selected = this.fields.selected || []
     let data = selected.filter(element => {
-      return element.chain['Chain Id'] == item.chainid
+      return element['Chain Id'] == item.chainid
     });
     data = data[0];
     if (data && data) {
       item.check = true;
       if (item.locations && item.locations.length > 0) {
         item.locations.map(val => {
-          if (Array.isArray(data.chain['location Id'])) {
-            data.chain['location Id'].includes(val.id) ? val.check = true : val.check = false
+          if (Array.isArray(data['location Id'])) {
+            data['location Id'].includes(val.id) ? val.check = true : val.check = false
           } else {
             val.check = false;
           }

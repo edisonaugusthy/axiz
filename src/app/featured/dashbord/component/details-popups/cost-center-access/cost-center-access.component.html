@@ -16,14 +16,11 @@
               User Name
             </div>
             <div class="col col-sm-5">
+
               <div class="form-group">
-                <select class="form-control" formControlName="userid" disabled [ngClass]="{
-                                              'has-error': isSubmitted && formControls.userid.errors
-                                            }">
-                  <option *ngFor="let opt of users" [value]="opt.user_id">
-                    {{opt.user_name}}
-                  </option>
-                </select>
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="username" disabled>
+                </div>
               </div>
             </div>
           </div>
