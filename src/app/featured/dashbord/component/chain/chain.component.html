@@ -56,12 +56,11 @@
           </tr>
         </tbody>
       </table>
-      <ngb-pagination *ngIf="addedChains&&addedChains.length>0 &&pagination.totalPages" [collectionSize]="pagination.totalPages"
-        [(page)]="pagination.currentPage" (pageChange)="pageChanged($event)">
-      </ngb-pagination>
-
       <app-no-data *ngIf="!addedChains||addedChains.length==0"></app-no-data>
     </div>
+    <ngb-pagination *ngIf="addedChains&&addedChains.length>0 && pagination.totalPages &&pagination.totalPages>10"
+      [collectionSize]="pagination.totalPages" [(page)]="pagination.currentPage" (pageChange)="pageChanged($event)">
+    </ngb-pagination>
   </section>
 </section>
 
