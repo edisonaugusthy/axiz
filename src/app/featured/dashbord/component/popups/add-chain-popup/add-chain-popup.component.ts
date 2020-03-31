@@ -46,8 +46,8 @@ export class AddChainPopupComponent implements OnInit {
       description: [(this.fields?.ChainName || ''), Validators.required],
       email: [(this.fields?.Email || ''), [Validators.required, Validators.email]],
       isvirtual: [((this.fields?.IsVirtualChain) ? true : false || false)],
-      cgaontransac: [((this.fields?.cgaontransactions) || 0)],
-      gcaonguestcount: [((this.fields?.gcaonguestcount) || 0)],
+      cgaontransac: [((this.fields?.cgaontransactions) ? true : false || false)],
+      gcaonguestcount: [((this.fields?.gcaonguestcount) ? true : false || false)],
       image: [('')],
       chainlogo: [('')],
     });
