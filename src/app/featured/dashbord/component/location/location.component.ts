@@ -1,15 +1,18 @@
+import { AppConstants } from 'src/app/shared/constants/app-constants';
 import { AlertService } from './../../../../shared/services/alert.service';
 import { LoaderService } from './../../../../shared/services/loader.service';
 import { DeleteMessageService } from './../../../../shared/services/delete-message.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { DashbordService } from '../../services/dashbord.service';
 import { FormGeneratorService } from 'src/app/shared/services/form-generator.service';
+import { map, filter, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Observable, Subject, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
   styleUrls: ['./location.component.css']
 })
-export class LocationComponent implements OnInit {
+export class LocationComponent implements OnInit, AfterViewInit {
   showEdit: boolean;
   editFormData: any;
   showDelete: boolean;
@@ -25,6 +28,9 @@ export class LocationComponent implements OnInit {
   detailsData: any;
   public pagination: any;
   Chains: any;
+  @ViewChild('SearchInput', { static: false }) SearchInput: ElementRef;
+  scrollbarOptions = AppConstants.SCROLL_BAR_OPTIONS;
+  isSearching: boolean;
   constructor(
     private dashboardSvc: DashbordService,
     private deleteMessageSvc: DeleteMessageService,
@@ -41,7 +47,9 @@ export class LocationComponent implements OnInit {
     this.getAllLocation();
     this.getAllChains();
   }
-
+  ngAfterViewInit() {
+    this.searchUser();
+  }
   pageChanged(event) {
     this.pagination.currentPage = event;
     this.getAllLocation();
@@ -129,11 +137,29 @@ export class LocationComponent implements OnInit {
 
     });
   }
-
-  getAllLocation() {
+  searchUser() {
+    fromEvent(this.SearchInput.nativeElement, 'keyup').pipe(
+      // get value
+      map((event: any) => {
+        return event.target.value;
+      }),
+      debounceTime(AppConstants.SEARCH_TIMEOUT),
+      distinctUntilChanged()
+    ).subscribe((text: string) => {
+      this.isSearching = true;
+      this.pagination.currentPage = 1;
+      this.getAllLocation(text);
+    });
+  }
+  getAllLocation(searchStr = '') {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.gerAllLocation(this.pagination.currentPage).subscribe((val: any) => {
+    const data = {
+      page: this.pagination.currentPage,
+      search: searchStr
+    }
+    this.dashboardSvc.gerAllLocation(data).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
+      this.isSearching = false;
       this.addedlocations = val.location_data.data;
       this.pagination.currentPage = val.location_data.current_page;
       this.pagination.totalPages = val.location_data.total;
@@ -145,5 +171,4 @@ export class LocationComponent implements OnInit {
       this.Chains = val;
     });
   }
-
 }

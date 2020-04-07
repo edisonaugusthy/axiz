@@ -1,16 +1,18 @@
+import { AppConstants } from 'src/app/shared/constants/app-constants';
 import { DeleteMessageService } from './../../../../shared/services/delete-message.service';
 import { FormGeneratorService } from './../../../../shared/services/form-generator.service';
 import { AlertService } from './../../../../shared/services/alert.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { DashbordService } from '../../services/dashbord.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
-
+import { map, filter, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Observable, Subject, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-users-admin',
   templateUrl: 'users-admin.component.html',
   styleUrls: ['users-admin.component.scss']
 })
-export class UsersAdminComponent implements OnInit {
+export class UsersAdminComponent implements OnInit, AfterViewInit {
   allUsers: any;
   editFormData: any;
   showEdit: boolean;
@@ -26,6 +28,9 @@ export class UsersAdminComponent implements OnInit {
   showDetails: boolean;
   detailsData: any;
   public pagination: any;
+  isSearching: boolean;
+  @ViewChild('SearchInput', { static: false }) SearchInput: ElementRef;
+  scrollbarOptions = AppConstants.SCROLL_BAR_OPTIONS;
   constructor(
     private dashboardSvc: DashbordService,
     private formGeneratorService: FormGeneratorService,
@@ -129,9 +134,13 @@ export class UsersAdminComponent implements OnInit {
     });
   }
 
-  getAllUsers() {
+  getAllUsers(searchStr = '') {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.getUserListing(this.pagination.currentPage).subscribe((val: any) => {
+    const data = {
+      page: this.pagination.currentPage,
+      search: searchStr
+    }
+    this.dashboardSvc.getUserListing(data).subscribe((val: any) => {
       this.allUsers = val.details.data;
       this.loaderSvc.hideLoader();
       this.pagination.currentPage = val.details.current_page;
@@ -139,7 +148,23 @@ export class UsersAdminComponent implements OnInit {
     });
   }
 
-
+  ngAfterViewInit() {
+    this.searchUser();
+  }
+  searchUser() {
+    fromEvent(this.SearchInput.nativeElement, 'keyup').pipe(
+      // get value
+      map((event: any) => {
+        return event.target.value;
+      }),
+      debounceTime(AppConstants.SEARCH_TIMEOUT),
+      distinctUntilChanged()
+    ).subscribe((text: string) => {
+      this.isSearching = true;
+      this.pagination.currentPage = 1;
+      this.getAllUsers(text);
+    });
+  }
   getAllCompanies() {
     this.dashboardSvc.getAllCompanies(null).subscribe((val: any) => {
       this.allCompanies = val.data;

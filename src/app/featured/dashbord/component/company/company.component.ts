@@ -1,15 +1,18 @@
+import { AppConstants } from 'src/app/shared/constants/app-constants';
 import { DeleteMessageService } from './../../../../shared/services/delete-message.service';
 import { AlertService } from './../../../../shared/services/alert.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { DashbordService } from '../../services/dashbord.service';
 import { FormGeneratorService } from './../../../../shared/services/form-generator.service';
+import { map, filter, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Observable, Subject, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-company',
   templateUrl: 'company.component.html',
   styleUrls: ['company.component.scss']
 })
-export class CompanyComponent implements OnInit {
+export class CompanyComponent implements OnInit, AfterViewInit {
   companies: any;
   editFormData: any;
   showEdit: boolean;
@@ -25,6 +28,9 @@ export class CompanyComponent implements OnInit {
   showDetails: boolean;
   detailsData: any;
   public pagination: any;
+  @ViewChild('SearchInput', { static: false }) SearchInput: ElementRef;
+  isSearching: boolean;
+  scrollbarOptions = AppConstants.SCROLL_BAR_OPTIONS;
   constructor(
     private dashboardSvc: DashbordService,
     private loaderSvc: LoaderService,
@@ -40,6 +46,9 @@ export class CompanyComponent implements OnInit {
     }
     this.getAllCompany();
     this.getAllCurrency(4);
+  }
+  ngAfterViewInit() {
+    this.searchUser();
   }
   pageChanged(event) {
     this.pagination.currentPage = event;
@@ -141,12 +150,30 @@ export class CompanyComponent implements OnInit {
   cancelEdit(val) {
     this.showEdit = false;
   }
-
-  getAllCompany() {
+  searchUser() {
+    fromEvent(this.SearchInput.nativeElement, 'keyup').pipe(
+      // get value
+      map((event: any) => {
+        return event.target.value;
+      }),
+      debounceTime(AppConstants.SEARCH_TIMEOUT),
+      distinctUntilChanged()
+    ).subscribe((text: string) => {
+      this.isSearching = true;
+      this.pagination.currentPage = 1;
+      this.getAllCompany(text);
+    });
+  }
+  getAllCompany(searchStr = '') {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.getCompanyListing(this.pagination.currentPage).subscribe((val: any) => {
+    const data = {
+      page: this.pagination.currentPage,
+      search: searchStr
+    }
+    this.dashboardSvc.getCompanyListing(data).subscribe((val: any) => {
       this.companies = val.details.data;
       this.loaderSvc.hideLoader();
+      this.isSearching = false;
       this.pagination.currentPage = val.details.current_page;
       this.pagination.totalPages = val.details.total;
     });

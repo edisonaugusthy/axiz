@@ -1,15 +1,18 @@
+import { AppConstants } from 'src/app/shared/constants/app-constants';
 import { LoaderService } from './../../../../shared/services/loader.service';
 import { AlertService } from './../../../../shared/services/alert.service';
 import { DeleteMessageService } from './../../../../shared/services/delete-message.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { DashbordService } from '../../services/dashbord.service';
 import { FormGeneratorService } from 'src/app/shared/services/form-generator.service';
+import { map, filter, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Observable, Subject, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-cost-center-access',
   templateUrl: './cost-center-access.component.html',
   styleUrls: ['./cost-center-access.component.css']
 })
-export class CostCenterAccessComponent implements OnInit {
+export class CostCenterAccessComponent implements OnInit, AfterViewInit {
   public showEdit = false;
   editFormData: any;
   showDelete: boolean;
@@ -25,6 +28,9 @@ export class CostCenterAccessComponent implements OnInit {
   showDetails: boolean;
   detailsData: any;
   public pagination: any;
+  @ViewChild('SearchInput', { static: false }) SearchInput: ElementRef;
+  scrollbarOptions = AppConstants.SCROLL_BAR_OPTIONS;
+  isSearching: boolean;
   constructor(
     private dashboardSvc: DashbordService,
     private formGeneratorService: FormGeneratorService,
@@ -40,6 +46,9 @@ export class CostCenterAccessComponent implements OnInit {
     }
     this.getAllCenters();
     this.getAllUsers();
+  }
+  ngAfterViewInit() {
+    this.searchUser();
   }
   pageChanged(event) {
     this.pagination.currentPage = event;
@@ -123,12 +132,31 @@ export class CostCenterAccessComponent implements OnInit {
       this.getAllCenters();
     });
   }
+  searchUser() {
+    fromEvent(this.SearchInput.nativeElement, 'keyup').pipe(
+      // get value
+      map((event: any) => {
+        return event.target.value;
+      }),
+      debounceTime(AppConstants.SEARCH_TIMEOUT),
+      distinctUntilChanged()
+    ).subscribe((text: string) => {
+      this.isSearching = true;
+      this.pagination.currentPage = 1;
+      this.getAllCenters(text);
+    });
+  }
 
-  getAllCenters() {
+  getAllCenters(searchStr = '') {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.gerAllCostAccess(this.pagination.currentPage).subscribe((res: any) => {
+    const data = {
+      page: this.pagination.currentPage,
+      search: searchStr
+    }
+    this.dashboardSvc.gerAllCostAccess(data).subscribe((res: any) => {
       this.allCostAccess = res.data;
       this.loaderSvc.hideLoader();
+      this.isSearching = false;
       this.pagination.currentPage = res.current_page;
       this.pagination.totalPages = res.total;
     });

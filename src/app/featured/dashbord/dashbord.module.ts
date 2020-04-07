@@ -28,9 +28,9 @@ import { AddCompanyPopupComponent } from './component/popups/add-company-popup/a
 import { AddCostCenterAccessComponent } from './component/popups/add-cost-center-access/add-cost-center-access.component';
 import { AddLocationPopupComponent } from './component/popups/add-location-popup/add-location-popup.component';
 import { AddCurrencyPopupComponent } from './component/popups/add-currency-popup/add-currency-popup.component';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CostCenterAccessDetailsComponent } from './component/details-popups/cost-center-access/cost-center-access.component';
 import { DatePipe } from '@angular/common';
+import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
 @NgModule({
   imports: [
     CommonModule,
@@ -38,9 +38,9 @@ import { DatePipe } from '@angular/common';
     ReactiveFormsModule,
     SharedModule,
     NgbModule,
-    Ng2SearchPipeModule,
     DashboardRoutingModule,
-    MaterialModuleModule
+    MaterialModuleModule,
+    MalihuScrollbarModule.forRoot(),
   ],
   declarations: [
     HomeComponent,

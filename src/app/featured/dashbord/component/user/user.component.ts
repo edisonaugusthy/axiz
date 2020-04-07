@@ -6,10 +6,7 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angula
 import { DashbordService } from '../../services/dashbord.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormGeneratorService } from 'src/app/shared/services/form-generator.service';
-import { map, filter } from 'rxjs/operators';
-import { debounceTime } from 'rxjs/operators';
-import { distinctUntilChanged } from 'rxjs/operators';
-import { switchMap } from 'rxjs/operators';
+import { map, filter, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Observable, Subject, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-user',
@@ -32,6 +29,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   detailsData: any;
   public pagination: any;
   isSearching: boolean;
+  scrollbarOptions = AppConstants.SCROLL_BAR_OPTIONS;
   constructor(
     private dashboardSvc: DashbordService,
     private loaderSvc: LoaderService,
@@ -153,7 +151,6 @@ export class UserComponent implements OnInit, AfterViewInit {
       this.pagination.currentPage = 1;
       this.getAllUsers(text);
     });
-
   }
   getAllUsers(searchStr = '') {
     this.loaderSvc.showLoader();

@@ -20,9 +20,10 @@ export class DashbordService {
     return this.http.post(ApiConstants.SUPER_ADMIN_DELETE_COMPANY, data);
   }
   getCompanyListing(data) {
-    const url = `${ApiConstants.SUPER_ADMIN_COMPANY_TABLE}?page=${data}`;
-    return this.http.get(url);
-    // return this.http.post(ApiConstants.SUPER_ADMIN_COMPANY_TABLE, data);
+    let params = new HttpParams().set('page', data.page);
+    params = params.set('search', data.search);
+    const url = ApiConstants.SUPER_ADMIN_COMPANY_TABLE;
+    return this.http.get(url, { params });
   }
 
 
@@ -38,9 +39,10 @@ export class DashbordService {
   }
 
   getUserListing(data) {
-    const url = `${ApiConstants.SUPER_ADMIN_USER_TABLE}?page=${data}`;
-    return this.http.get(url);
-    // return this.http.post(ApiConstants.SUPER_ADMIN_USER_TABLE, data);
+    let params = new HttpParams().set('page', data.page);
+    params = params.set('search', data.search);
+    const url = ApiConstants.SUPER_ADMIN_USER_TABLE;
+    return this.http.get(url, { params });
   }
 
 
@@ -54,14 +56,11 @@ export class DashbordService {
     return this.http.post(ApiConstants.SUPER_ADMIN_DELETE_COMPANY_ACCESS, data);
   }
   getCompanyAccess(data) {
-    const url = `${ApiConstants.SUPER_ADMIN_COMPANY_ACCESS_TABLE}?page=${data}`;
-    return this.http.get(url);
-    // return this.http.post(ApiConstants.SUPER_ADMIN_COMPANY_ACCESS_TABLE, data);
-
+    let params = new HttpParams().set('page', data.page);
+    params = params.set('search', data.search);
+    const url = ApiConstants.SUPER_ADMIN_COMPANY_ACCESS_TABLE;
+    return this.http.get(url, { params });
   }
-
-
-
 
   // admin part
 
@@ -75,9 +74,10 @@ export class DashbordService {
     return this.http.post(ApiConstants.UPDATE_CHAIN, data);
   }
   gerAllChain(data) {
-    const url = `${ApiConstants.GET_CHAINS}?page=${data}`;
-    return this.http.get(url);
-    // return this.http.post(ApiConstants.GET_CHAINS, data);
+    let params = new HttpParams().set('page', data.page);
+    params = params.set('search', data.search);
+    const url = ApiConstants.GET_CHAINS;
+    return this.http.get(url, { params });
   }
 
 
@@ -91,9 +91,10 @@ export class DashbordService {
     return this.http.post(ApiConstants.UPDATE_LOCATION, data);
   }
   gerAllLocation(data) {
-    const url = `${ApiConstants.GET_LOCATIONS}?page=${data}`;
-    return this.http.get(url);
-    // return this.http.post(ApiConstants.GET_LOCATIONS, data);
+    let params = new HttpParams().set('page', data.page);
+    params = params.set('search', data.search);
+    const url = ApiConstants.GET_LOCATIONS;
+    return this.http.get(url, { params });
   }
 
 
@@ -106,15 +107,10 @@ export class DashbordService {
   updateNormalUser(data) {
     return this.http.post(ApiConstants.UPDATE_USER, data);
   }
-  // gerAllNormalUser(data) {
-  //   const url = `${ApiConstants.GET_USERS}?page=${data}`;
-  //   return this.http.get(url);
-  // }
+
   gerAllNormalUser(data) {
     let params = new HttpParams().set('page', data.page);
-    // if (data.search) {
     params = params.set('search', data.search);
-    // }
     const url = ApiConstants.GET_USERS;
     return this.http.get(url, { params });
   }
@@ -127,9 +123,10 @@ export class DashbordService {
     return this.http.post(ApiConstants.UPDATE_COST_CENTER_ACCESS, data);
   }
   gerAllCostAccess(data) {
-    const url = `${ApiConstants.GET_COST_CENTER_ACCESS}?page=${data}`;
-    return this.http.get(url);
-    // return this.http.post(ApiConstants.GET_COST_CENTER_ACCESS, data);
+    let params = new HttpParams().set('page', data.page);
+    params = params.set('search', data.search);
+    const url = ApiConstants.GET_COST_CENTER_ACCESS;
+    return this.http.get(url, { params });
   }
   addCostAccess(data) {
     return this.http.post(ApiConstants.ADD_COST_CENTER_ACCESS, data);
@@ -148,8 +145,10 @@ export class DashbordService {
 
 
   getUserCurrencyList(data) {
-    const url = `${ApiConstants.GET_CURRENCY_LIST}?page=${data}`;
-    return this.http.get(url);
+    let params = new HttpParams().set('page', data.page);
+    params = params.set('search', data.search);
+    const url = ApiConstants.GET_CURRENCY_LIST;
+    return this.http.get(url, { params });
   }
   AddCurrency(data) {
     return this.http.post(ApiConstants.ADD_CURRENCY, data);

@@ -1,15 +1,18 @@
+import { AppConstants } from 'src/app/shared/constants/app-constants';
 import { AlertService } from './../../../../shared/services/alert.service';
 import { LoaderService } from './../../../../shared/services/loader.service';
 import { DeleteMessageService } from './../../../../shared/services/delete-message.service';
 import { FormGeneratorService } from "./../../../../shared/services/form-generator.service";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from "@angular/core";
 import { DashbordService } from "../../services/dashbord.service";
+import { map, filter, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Observable, Subject, fromEvent } from 'rxjs';
 @Component({
   selector: "app-chain",
   templateUrl: "./chain.component.html",
   styleUrls: ["./chain.component.css"]
 })
-export class ChainComponent implements OnInit {
+export class ChainComponent implements OnInit, AfterViewInit {
   public showEdit = false;
   showAdd = false;
   popupData: any;
@@ -25,6 +28,9 @@ export class ChainComponent implements OnInit {
   showDetails: boolean;
   detailsData: any;
   public pagination: any;
+  isSearching: boolean;
+  @ViewChild('SearchInput', { static: false }) SearchInput: ElementRef;
+  scrollbarOptions = AppConstants.SCROLL_BAR_OPTIONS;
   constructor(
     private formGeneratorService: FormGeneratorService,
     private deleteMessageSvc: DeleteMessageService,
@@ -40,7 +46,9 @@ export class ChainComponent implements OnInit {
     }
     this.getAllChains();
   }
-
+  ngAfterViewInit() {
+    this.searchUser();
+  }
   pageChanged(event) {
     this.pagination.currentPage = event;
     this.getAllChains();
@@ -126,12 +134,30 @@ export class ChainComponent implements OnInit {
       this.getAllChains();
     });
   }
-
-  getAllChains() {
+  searchUser() {
+    fromEvent(this.SearchInput.nativeElement, 'keyup').pipe(
+      // get value
+      map((event: any) => {
+        return event.target.value;
+      }),
+      debounceTime(AppConstants.SEARCH_TIMEOUT),
+      distinctUntilChanged()
+    ).subscribe((text: string) => {
+      this.isSearching = true;
+      this.pagination.currentPage = 1;
+      this.getAllChains(text);
+    });
+  }
+  getAllChains(searchStr = '') {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.gerAllChain(this.pagination.currentPage).subscribe((val: any) => {
+    const data = {
+      page: this.pagination.currentPage,
+      search: searchStr
+    }
+    this.dashboardSvc.gerAllChain(data).subscribe((val: any) => {
       this.addedChains = val.chain_data.data;
       this.loaderSvc.hideLoader();
+      this.isSearching = false;
       this.pagination.currentPage = val.chain_data.current_page;
       this.pagination.totalPages = val.chain_data.total;
     });

@@ -1,4 +1,4 @@
-import { LoginComponent } from './featured/authentication/component/login/login.component';
+
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -13,6 +13,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InterCeptor } from './shared/services/interCeptor';
 import { MatButtonModule } from '@angular/material/button';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,9 @@ import { MatButtonModule } from '@angular/material/button';
     provide: HTTP_INTERCEPTORS,
     useClass: InterCeptor,
     multi: true
-  }],
+  },
+  { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   exports: [SharedModule],
   bootstrap: [AppComponent]
 })

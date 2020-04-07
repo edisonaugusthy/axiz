@@ -1,15 +1,18 @@
+import { AppConstants } from 'src/app/shared/constants/app-constants';
 import { DeleteMessageService } from './../../../../shared/services/delete-message.service';
 import { FormGeneratorService } from './../../../../shared/services/form-generator.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { DashbordService } from '../../services/dashbord.service';
 import { LoaderService } from '../../../../shared/services/loader.service';
 import { AlertService } from '../../../../shared/services/alert.service';
+import { map, filter, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Observable, Subject, fromEvent } from 'rxjs';
 @Component({
   selector: 'company-access',
   templateUrl: 'company-access.component.html',
   styleUrls: ['company-access.component.scss']
 })
-export class CompanyAccessComponent implements OnInit {
+export class CompanyAccessComponent implements OnInit, AfterViewInit {
   editFormData: any;
   showEdit: boolean;
   showDelete: boolean;
@@ -25,6 +28,9 @@ export class CompanyAccessComponent implements OnInit {
   showDetails: boolean;
   detailsData: any;
   public pagination: any;
+  isSearching: boolean;
+  @ViewChild('SearchInput', { static: false }) SearchInput: ElementRef;
+  scrollbarOptions = AppConstants.SCROLL_BAR_OPTIONS;
   constructor(
     private dashboardSvc: DashbordService,
     private loaderSvc: LoaderService,
@@ -39,6 +45,9 @@ export class CompanyAccessComponent implements OnInit {
       totalPages: null,
     }
     this.getAllCompany();
+  }
+  ngAfterViewInit() {
+    this.searchUser();
   }
   pageChanged(event) {
     this.pagination.currentPage = event;
@@ -136,12 +145,30 @@ export class CompanyAccessComponent implements OnInit {
   cancelEdit(val) {
     this.showEdit = false;
   }
-
+  searchUser() {
+    fromEvent(this.SearchInput.nativeElement, 'keyup').pipe(
+      // get value
+      map((event: any) => {
+        return event.target.value;
+      }),
+      debounceTime(AppConstants.SEARCH_TIMEOUT),
+      distinctUntilChanged()
+    ).subscribe((text: string) => {
+      this.isSearching = true;
+      this.pagination.currentPage = 1;
+      this.getAllCompany(text);
+    });
+  }
   // for listing details
-  getAllCompany() {
+  getAllCompany(searchStr = '') {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.getCompanyAccess(this.pagination.currentPage).subscribe((val: any) => {
+    const data = {
+      page: this.pagination.currentPage,
+      search: searchStr
+    }
+    this.dashboardSvc.getCompanyAccess(data).subscribe((val: any) => {
       this.companyAccess = val.data.data;
+      this.isSearching = false;
       this.loaderSvc.hideLoader();
       this.pagination.currentPage = val.data.current_page;
       this.pagination.totalPages = val.data.total;

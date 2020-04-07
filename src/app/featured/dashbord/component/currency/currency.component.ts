@@ -1,15 +1,18 @@
+import { AppConstants } from 'src/app/shared/constants/app-constants';
 import { AlertService } from './../../../../shared/services/alert.service';
 import { LoaderService } from './../../../../shared/services/loader.service';
 import { DeleteMessageService } from './../../../../shared/services/delete-message.service';
 import { FormGeneratorService } from "./../../../../shared/services/form-generator.service";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from "@angular/core";
 import { DashbordService } from "../../services/dashbord.service";
+import { map, filter, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Observable, Subject, fromEvent } from 'rxjs';
 @Component({
   selector: "app-chain",
   templateUrl: "./currency.component.html",
   styleUrls: ["./currency.component.css"]
 })
-export class CurrencyComponent implements OnInit {
+export class CurrencyComponent implements OnInit, AfterViewInit {
   public showEdit = false;
   showAdd = false;
   popupData: any;
@@ -25,6 +28,9 @@ export class CurrencyComponent implements OnInit {
   detailsData: any;
   showDetaisl: boolean;
   public pagination: any;
+  isSearching: boolean;
+  @ViewChild('SearchInput', { static: false }) SearchInput: ElementRef;
+  scrollbarOptions = AppConstants.SCROLL_BAR_OPTIONS;
   constructor(
     private formGeneratorService: FormGeneratorService,
     private deleteMessageSvc: DeleteMessageService,
@@ -40,7 +46,9 @@ export class CurrencyComponent implements OnInit {
     }
     this.getAllcurrency();
   }
-
+  ngAfterViewInit() {
+    this.searchUser();
+  }
   pageChanged(event) {
     this.pagination.currentPage = event;
     this.getAllcurrency();
@@ -120,12 +128,31 @@ export class CurrencyComponent implements OnInit {
       this.getAllcurrency();
     });
   }
+  searchUser() {
+    fromEvent(this.SearchInput.nativeElement, 'keyup').pipe(
+      // get value
+      map((event: any) => {
+        return event.target.value;
+      }),
+      debounceTime(AppConstants.SEARCH_TIMEOUT),
+      distinctUntilChanged()
+    ).subscribe((text: string) => {
+      this.isSearching = true;
+      this.pagination.currentPage = 1;
+      this.getAllcurrency(text);
+    });
+  }
 
-  getAllcurrency() {
+  getAllcurrency(searchStr = '') {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.getUserCurrencyList(this.pagination.currentPage).subscribe((val: any) => {
+    const data = {
+      page: this.pagination.currentPage,
+      search: searchStr
+    }
+    this.dashboardSvc.getUserCurrencyList(data).subscribe((val: any) => {
       this.addedCurrency = val.currency.data;
       this.loaderSvc.hideLoader();
+      this.isSearching = false;
       this.pagination.currentPage = val.currency.current_page;
       this.pagination.totalPages = val.currency.total;
 
