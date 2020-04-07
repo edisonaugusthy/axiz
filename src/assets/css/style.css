@@ -651,6 +651,11 @@ table.table.table-main-head {
 .table thead th:first-child, .table tbody td:first-child {
     text-align: center;
 }
+.table tbody tr:hover td, .table tbody tr:hover th {
+    background-color: #eeeeea;
+    /* border: #eeeeea; */
+}
+
 .table th{
     font-size: 14px;
     font-weight: 500;
@@ -1175,6 +1180,13 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+.loading {
+    background-color: #ffffff;
+    background-image: url("http://loadinggif.com/images/image-selection/3.gif");
+    background-size: 25px 25px;
+    background-position:right center;
+    background-repeat: no-repeat;
 }
 
 

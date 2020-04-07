@@ -5,7 +5,8 @@
     <div class="flex-wrap">
       <h1>Company Access</h1>
       <div class="form-group search-box search">
-        <input type="text" class="form-control" #SearchInput placeholder="Search here...">
+        <input type="text" class="form-control" #SearchInput [ngClass]="{'loading':isSearching}"
+          placeholder="Search here...">
       </div>
     </div>
   </section>
@@ -53,7 +54,7 @@
         </tr>
       </thead>
     </table>
-    <div class="table-scroll-wrap" malihu-scrollbar [scrollbarOptions]="this.scrollbarOptions">
+    <div class="table-scroll-wrap" malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
       <table class="table table-striped table-main-body" *ngIf="companyAccess&&companyAccess.length>0">
         <tbody>
           <tr *ngFor="let item of companyAccess| orderBy: {property: column, direction: direction};index as i">
