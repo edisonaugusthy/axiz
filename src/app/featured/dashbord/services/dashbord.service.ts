@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse, HttpParams } from '@angular/common/http';
 import { AppConstants } from 'src/app/shared/constants/app-constants';
 import { ApiConstants } from 'src/app/shared/constants/ApiConstants';
 @Injectable({
@@ -106,9 +106,17 @@ export class DashbordService {
   updateNormalUser(data) {
     return this.http.post(ApiConstants.UPDATE_USER, data);
   }
+  // gerAllNormalUser(data) {
+  //   const url = `${ApiConstants.GET_USERS}?page=${data}`;
+  //   return this.http.get(url);
+  // }
   gerAllNormalUser(data) {
-    const url = `${ApiConstants.GET_USERS}?page=${data}`;
-    return this.http.get(url);
+    let params = new HttpParams().set('page', data.page);
+    // if (data.search) {
+    params = params.set('search', data.search);
+    // }
+    const url = ApiConstants.GET_USERS;
+    return this.http.get(url, { params });
   }
 
 

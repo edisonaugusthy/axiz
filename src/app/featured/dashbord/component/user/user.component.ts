@@ -1,16 +1,22 @@
+import { AppConstants } from 'src/app/shared/constants/app-constants';
 import { AlertService } from './../../../../shared/services/alert.service';
 import { LoaderService } from './../../../../shared/services/loader.service';
 import { DeleteMessageService } from './../../../../shared/services/delete-message.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { DashbordService } from '../../services/dashbord.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormGeneratorService } from 'src/app/shared/services/form-generator.service';
+import { map, filter } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
+import { distinctUntilChanged } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
+import { Observable, Subject, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, AfterViewInit {
   public showEdit = false;
   editFormData: any;
   showDelete: boolean;
@@ -21,10 +27,11 @@ export class UserComponent implements OnInit {
   column: string = 'user_id';
   direction: number;
   allUsers: any;
-  searchText: any;
+  @ViewChild('SearchInput', { static: false }) SearchInput: ElementRef;
   showDetails: boolean;
   detailsData: any;
   public pagination: any;
+  isSearching: boolean;
   constructor(
     private dashboardSvc: DashbordService,
     private loaderSvc: LoaderService,
@@ -39,6 +46,10 @@ export class UserComponent implements OnInit {
       totalPages: null,
     }
     this.getAllUsers();
+
+  }
+  ngAfterViewInit() {
+    this.searchUser();
   }
 
   sort(property) {
@@ -129,11 +140,30 @@ export class UserComponent implements OnInit {
       this.getAllUsers();
     });
   }
+  searchUser() {
+    fromEvent(this.SearchInput.nativeElement, 'keyup').pipe(
+      // get value
+      map((event: any) => {
+        return event.target.value;
+      }),
+      debounceTime(AppConstants.SEARCH_TIMEOUT),
+      distinctUntilChanged()
+    ).subscribe((text: string) => {
+      this.isSearching = true;
+      this.pagination.currentPage = 1;
+      this.getAllUsers(text);
+    });
 
-  getAllUsers() {
+  }
+  getAllUsers(searchStr = '') {
     this.loaderSvc.showLoader();
-    this.dashboardSvc.gerAllNormalUser(this.pagination.currentPage).subscribe((val: any) => {
+    const data = {
+      page: this.pagination.currentPage,
+      search: searchStr
+    }
+    this.dashboardSvc.gerAllNormalUser(data).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
+      this.isSearching = false;
       this.allUsers = val.location_data.data;
       this.pagination.currentPage = val.location_data.current_page;
       this.pagination.totalPages = val.location_data.total;
