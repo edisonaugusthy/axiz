@@ -37,6 +37,7 @@ export class AddCostCenterAccessComponent implements OnInit {
   chainsList: any;
   selectedChains: Array<object> = [];
   disableItem: boolean;
+  selectedItems: Array<string> = [];
   private subs = new SubSink();
   formData: any;
   constructor(
@@ -63,7 +64,8 @@ export class AddCostCenterAccessComponent implements OnInit {
       Fullaccess: [1, Validators.required],
     });
     this.open(this.input);
-    
+    this.setDefaultSelection();
+
   }
 
 
@@ -93,11 +95,12 @@ export class AddCostCenterAccessComponent implements OnInit {
         locations: new FormArray([])
       });
       const { locations = [], ...info } = item;
-      this.addControls(locations)
-        .forEach(t => (group.get('locations') as FormArray).push(t));
-
-      Object.keys(info)
-        .forEach(name => group.registerControl(name, this.generateControl(name, item[name])))
+      this.addControls(locations).forEach(t => {
+        (group.get('locations') as FormArray).push(t)
+      });
+      Object.keys(info).forEach(name => {
+        group.registerControl(name, this.generateControl(name, item[name]))
+      })
 
       return [...array, group];
     }, []);
@@ -130,9 +133,9 @@ export class AddCostCenterAccessComponent implements OnInit {
     if (this.Edit) {
       this.isEdit = true;
       this.addUserForm.patchValue({ Fullaccess: this.fields.fullaccess })
-      if(this.fields.fullaccess==0){
+      if (this.fields.fullaccess == 0) {
         this.disableSelection(2);
-      }else{
+      } else {
         this.disableSelection(1);
       }
     }
@@ -203,6 +206,7 @@ export class AddCostCenterAccessComponent implements OnInit {
         }
       });
     }
+
   }
   getSelectedChain(item) {
     const selected = this.fields.selected || []
@@ -210,12 +214,18 @@ export class AddCostCenterAccessComponent implements OnInit {
       return element['Chain Id'] == item.chainid
     });
     data = data[0];
-    if (data && data) {
+    if (data) {
       item.check = true;
+      this.selectedItems.push(item.chainid)
       if (item.locations && item.locations.length > 0) {
         item.locations.map(val => {
           if (Array.isArray(data['location Id'])) {
-            data['location Id'].includes(val.id) ? val.check = true : val.check = false
+            if (data['location Id'].includes(val.id)) {
+              val.check = true;
+              this.selectedItems.push(val.id)
+            } else {
+              val.check = false;
+            }
           } else {
             val.check = false;
           }
@@ -223,7 +233,6 @@ export class AddCostCenterAccessComponent implements OnInit {
       }
       return item;
     } else {
-
       item.check = false;
       if (item.locations && item.locations.length > 0) {
         item.locations.forEach(val => {
@@ -274,4 +283,27 @@ export class AddCostCenterAccessComponent implements OnInit {
     });
     return selected;
   }
+
+
+  setDefaultSelection() {
+    this.formData.controls.forEach((element, i) => {
+      if (element.value.chainid) {
+        if (this.selectedItems.includes(element.value.chainid) === true) {
+          element.get('check').patchValue(true, { emitEvent: false });
+        } else {
+          element.get('check').patchValue(false)
+        }
+        element.get('locations').controls.forEach((val, i) => {
+          if (val.value.id) {
+            if (this.selectedItems.includes(val.value.id) === true) {
+              val.get('check').patchValue(true)
+            } else {
+              val.get('check').patchValue(false)
+            }
+          }
+        })
+      }
+    })
+  }
+
 }
