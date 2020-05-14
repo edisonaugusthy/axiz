@@ -1,4 +1,4 @@
-<header>
+<!-- <header>
   <div class="left-wrap">
     <div class="menu-icon">
       <img src="../assets/img/menu-icon.png" class="openbtn" (click)="openNav()" alt="">
@@ -16,11 +16,31 @@
       <li class="logout" (click)="logout()">Logout <img src="../assets/img/logout.svg"></li>
     </ul>
   </section>
-</header>
+</header> -->
 
 
 
 <!--super admin login -->
 
-<app-add-popup *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
-  (formSubmitted)="submitAdd($event)"></app-add-popup>
+<!-- <app-add-popup *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
+  (formSubmitted)="submitAdd($event)"></app-add-popup> -->
+
+<mat-toolbar color="primary" class="app-toolbar no-print">
+
+  <mat-toolbar-row>
+    <button mat-button class="hamburger" title="Docs menu" (click)="openNav()">
+      <mat-icon>
+        <svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+        </svg>
+      </mat-icon>
+    </button>
+
+    <a class="nav-link home">
+      <img src="../assets/img/logo.svg" width="150" height="40" title="Home" alt="Home">
+    </a>
+    <div class="search-container">
+      <input type="search" aria-label="search" placeholder="Search" #SearchInput>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

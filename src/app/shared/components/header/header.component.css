@@ -1,0 +1,77 @@
+.toolbar-external-icons-container {
+	 display: flex;
+	 flex-direction: row;
+	 height: 100%;
+}
+ .toolbar-external-icons-container a {
+	 display: flex;
+	 align-items: center;
+	 padding: 24px;
+	 margin: 0 -16px;
+}
+ .toolbar-external-icons-container a:focus {
+	 outline-offset: -16px;
+}
+ @media screen and (max-width: 480px) {
+	 .toolbar-external-icons-container a {
+		 margin: 0 0 0 8px;
+		 padding: 0;
+	}
+}
+ .toolbar-external-icons-container a:hover {
+	 opacity: 0.8;
+}
+ .toolbar-external-icons-container a img {
+	 height: 24px;
+}
+
+.aio-top-menu {
+    width: 80%
+}
+
+.aio-top-menu,aio-top-menu ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.aio-top-menu ul {
+    /* list-style-position:inside; */
+    /* padding:0; */
+    /* margin:0; */
+}
+
+.aio-top-menu ul li {
+    padding-bottom: 2px;
+    list-style-type: none;
+    cursor: pointer
+}
+
+.aio-top-menu ul li:focus {
+    outline: none
+}
+
+.aio-top-menu ul li a.nav-link {
+    margin: 0 4px;
+    padding: 0;
+    cursor: pointer
+}
+
+.aio-top-menu ul li a.nav-link .nav-link-inner {
+    border-radius: 4px;
+    padding: 8px 16px
+}
+
+.aio-top-menu ul li a.nav-link .nav-link-inner:hover {
+    background: hsla(0,0%,100%,.15)
+}
+
+.aio-top-menu ul li a.nav-link:focus {
+    outline: none
+}
+
+.aio-top-menu ul li a.nav-link:focus .nav-link-inner {
+    background: hsla(0,0%,100%,.15);
+    border-radius: 1px;
+    box-shadow: 0 0 1px 2px hsla(0,0%,100%,.8)
+}

@@ -8,6 +8,7 @@ import { ApiConstants } from 'src/app/shared/constants/ApiConstants';
 })
 export class DashbordService {
 
+  public searchStr = new BehaviorSubject<any>(null);
   constructor(private http: HttpClient) { }
   // superAdmin part
   registerCompany(Data) {
@@ -179,6 +180,15 @@ export class DashbordService {
 
   getAllCompanies(data) {
     return this.http.post(ApiConstants.GET_ALL_COMPANIES_LIST, data);
+  }
+
+
+  // search
+  setSearchString(val) {
+    this.searchStr.next(val);
+  }
+  getSearch() {
+    return this.searchStr.asObservable;
   }
 
 }

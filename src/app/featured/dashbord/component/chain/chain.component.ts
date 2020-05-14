@@ -5,8 +5,18 @@ import { DeleteMessageService } from './../../../../shared/services/delete-messa
 import { FormGeneratorService } from "./../../../../shared/services/form-generator.service";
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from "@angular/core";
 import { DashbordService } from "../../services/dashbord.service";
-import { map, filter, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { Observable, Subject, fromEvent } from 'rxjs';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+export interface PeriodicElement {
+  id: number;
+  ChainId: string;
+  ChainName: string;
+  Operation: string;
+}
+
+
+
 @Component({
   selector: "app-chain",
   templateUrl: "./chain.component.html",
@@ -28,9 +38,11 @@ export class ChainComponent implements OnInit, AfterViewInit {
   showDetails: boolean;
   detailsData: any;
   public pagination: any;
-  isSearching: boolean;
-  @ViewChild('SearchInput', { static: false }) SearchInput: ElementRef;
+  displayedColumns = ['id', 'ChainId', 'ChainName', 'Operation'];
+  public dataSource;
   scrollbarOptions = AppConstants.SCROLL_BAR_OPTIONS;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   constructor(
     private formGeneratorService: FormGeneratorService,
     private deleteMessageSvc: DeleteMessageService,
@@ -44,6 +56,7 @@ export class ChainComponent implements OnInit, AfterViewInit {
       currentPage: 1,
       totalPages: null,
     }
+
     this.getAllChains();
   }
   ngAfterViewInit() {
@@ -54,11 +67,11 @@ export class ChainComponent implements OnInit, AfterViewInit {
     this.getAllChains();
   }
 
-  sort(property) {
-    this.isDesc = !this.isDesc;
-    this.column = property;
-    this.direction = this.isDesc ? 1 : -1;
-  }
+  // sort(property) {
+  //   this.isDesc = !this.isDesc;
+  //   this.column = property;
+  //   this.direction = this.isDesc ? 1 : -1;
+  // }
 
   openView(item) {
     this.showDetails = true;
@@ -135,18 +148,13 @@ export class ChainComponent implements OnInit, AfterViewInit {
     });
   }
   searchUser() {
-    fromEvent(this.SearchInput.nativeElement, 'keyup').pipe(
-      // get value
-      map((event: any) => {
-        return event.target.value;
-      }),
-      debounceTime(AppConstants.SEARCH_TIMEOUT),
-      distinctUntilChanged()
-    ).subscribe((text: string) => {
-      this.isSearching = true;
-      this.pagination.currentPage = 1;
-      this.getAllChains(text);
-    });
+    this.dashboardSvc.searchStr.subscribe(val => {
+      if (val != null || val != undefined) {
+        this.pagination.currentPage = 1;
+        this.getAllChains(val);
+      }
+
+    })
   }
   getAllChains(searchStr = '') {
     this.loaderSvc.showLoader();
@@ -157,9 +165,10 @@ export class ChainComponent implements OnInit, AfterViewInit {
     this.dashboardSvc.gerAllChain(data).subscribe((val: any) => {
       this.addedChains = val.chain_data.data;
       this.loaderSvc.hideLoader();
-      this.isSearching = false;
       this.pagination.currentPage = val.chain_data.current_page;
       this.pagination.totalPages = val.chain_data.total;
+      this.dataSource = new MatTableDataSource(this.addedChains);
+      this.dataSource.sort = this.sort;
     });
   }
 }

@@ -133,18 +133,12 @@ export class CostCenterAccessComponent implements OnInit, AfterViewInit {
     });
   }
   searchUser() {
-    fromEvent(this.SearchInput.nativeElement, 'keyup').pipe(
-      // get value
-      map((event: any) => {
-        return event.target.value;
-      }),
-      debounceTime(AppConstants.SEARCH_TIMEOUT),
-      distinctUntilChanged()
-    ).subscribe((text: string) => {
-      this.isSearching = true;
-      this.pagination.currentPage = 1;
-      this.getAllCenters(text);
-    });
+    this.dashboardSvc.searchStr.subscribe(val => {
+      if (val != null || val != undefined) {
+        this.pagination.currentPage = 1;
+        this.getAllCenters(val);
+      }
+    })
   }
 
   getAllCenters(searchStr = '') {

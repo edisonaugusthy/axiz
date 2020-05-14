@@ -63,7 +63,7 @@ export class SideNavigationComponent implements OnInit {
           element.class = '';
           if (`/dashbord/${innerItem.path}` === item) {
             this.sideMenuList[i].isOpen = true;
-            innerItem.class = 'active';
+            innerItem.class = 'selected';
             // element.class = 'nav-item dropdown menu-active';
           }
           element.sub_menu[j] = innerItem;
@@ -71,7 +71,7 @@ export class SideNavigationComponent implements OnInit {
         }
       }
       else if (`/dashbord/${element.path}` === item) {
-        element.class = 'menu-active';
+        element.class = 'selected';
         this.sideMenuList[i] = element;
       }
     }
