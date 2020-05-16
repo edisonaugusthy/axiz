@@ -6,35 +6,13 @@
       <h1>Chain</h1>
     </div>
   </section>
-  <!-- <section class="table-wrap">
+  <section class="table-wrap">
     <table class="table table-main-head">
       <thead>
         <tr>
-          <th style="width: 20%;" (click)="sort('id')">
-            <span class="sort-wrap">
-              Id
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th style="width: 20%;" (click)="sort('ChainId')">
-            <span class="sort-wrap">
-              Chain Code
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span></th>
-          <th style="width: 30%;" (click)="sort('ChainName')">
-            <span class="sort-wrap">
-              Chain Name
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span></th>
+          <th style="width: 20%;" (click)="sort('id')"> Id </th>
+          <th style="width: 20%;" (click)="sort('ChainId')"> Chain Code </th>
+          <th style="width: 30%;" (click)="sort('ChainName')"> Chain Name </th>
           <th style="width: 30%;">Operation</th>
         </tr>
       </thead>
@@ -47,8 +25,8 @@
             <td style="width: 20%;">{{item.ChainId}}</td>
             <td style="width: 30%;">{{item.ChainName}}</td>
             <td class="btn-wrap">
-              <button mat-flat-button color="primary" class="btn" (click)="openEdit(item)">Edit</button>
-              <button mat-flat-button class="btn btn-default" (click)="openDelete(item)">Remove</button>
+              <span class="material-icons" (click)="openEdit(item)"> edit </span>
+              <span class="material-icons" (click)="openDelete(item)"> delete </span>
             </td>
           </tr>
         </tbody>
@@ -58,58 +36,22 @@
     <ngb-pagination *ngIf="addedChains&&addedChains.length>0 && pagination.totalPages &&pagination.totalPages>10"
       [collectionSize]="pagination.totalPages" [(page)]="pagination.currentPage" (pageChange)="pageChanged($event)">
     </ngb-pagination>
-  </section> -->
-  <div class="example-container mat-elevation-z8" *ngIf="addedChains&&addedChains.length>0">
-    <table mat-table [dataSource]="dataSource" matSort>
+  </section>
 
-      <!-- Position Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> Id </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-      </ng-container>
+  <!-- delete popup -->
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="ChainId">
-        <th mat-header-cell *matHeaderCellDef> Chain Code </th>
-        <td mat-cell *matCellDef="let element"> {{element.ChainId}} </td>
-      </ng-container>
+  <app-delete-popup *ngIf="showDelete" [details]="deleteData" (deleteCancel)="cancelDelete($event)"
+    (deleteSubmitted)="submitDelete($event)">
+  </app-delete-popup>
 
-      <!-- Weight Column -->
-      <ng-container matColumnDef="ChainName">
-        <th mat-header-cell *matHeaderCellDef> Chain Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.ChainName}} </td>
-      </ng-container>
+  <!-- add popup -->
+  <app-add-chain-popup *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
+    (formSubmitted)="submitAdd($event)"></app-add-chain-popup>
 
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="Operation">
-        <th mat-header-cell *matHeaderCellDef> Operation </th>
-        <td mat-cell *matCellDef="let element"> {{element.Operation}} </td>
-      </ng-container>
+  <!-- edit chain -->
+  <app-add-chain-popup *ngIf="showEdit" [fields]="editFormData" (formCancel)="cancelEdit($event)"
+    (formSubmitted)="submitEdit($event)">
+  </app-add-chain-popup>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  </div>
-</section>
-
-
-
-
-
-<!-- delete popup -->
-
-<app-delete-popup *ngIf="showDelete" [details]="deleteData" (deleteCancel)="cancelDelete($event)"
-  (deleteSubmitted)="submitDelete($event)">
-</app-delete-popup>
-
-<!-- add popup -->
-<app-add-chain-popup *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
-  (formSubmitted)="submitAdd($event)"></app-add-chain-popup>
-
-<!-- edit chain -->
-<app-add-chain-popup *ngIf="showEdit" [fields]="editFormData" (formCancel)="cancelEdit($event)"
-  (formSubmitted)="submitEdit($event)">
-</app-add-chain-popup>
-
-<app-chain-details *ngIf="showDetails" [fields]="detailsData" (formCancel)="cancelView($event)"
-  (formSubmitted)="cancelView($event)"></app-chain-details>
+  <app-chain-details *ngIf="showDetails" [fields]="detailsData" (formCancel)="cancelView($event)"
+    (formSubmitted)="cancelView($event)"></app-chain-details>

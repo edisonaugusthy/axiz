@@ -14,42 +14,10 @@
     <table class="table table-main-head">
       <thead>
         <tr>
-          <th style="width: 15%;" (click)="sort('id')">
-            <span class="sort-wrap">
-              Id
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th style="width: 20%;" (click)="sort('CurrencyName')">
-            <span class="sort-wrap">
-              Name
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th style="width: 15%;" (click)="sort('CurrencySymbol')">
-            <span class="sort-wrap">
-              Symbol
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th style="width: 20%;" (click)="sort('CurrencyUnit')">
-            <span class="sort-wrap">
-              Unit
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
+          <th style="width: 15%;" (click)="sort('id')"> Id </th>
+          <th style="width: 20%;" (click)="sort('CurrencyName')"> Name </th>
+          <th style="width: 15%;" (click)="sort('CurrencySymbol')"> Symbol </th>
+          <th style="width: 20%;" (click)="sort('CurrencyUnit')"> Unit </th>
           <th>Operation</th>
         </tr>
       </thead>
@@ -62,10 +30,9 @@
             <td class="curser-point" (click)="openView(item)" style="width: 20%;">{{item.CurrencyName}}</td>
             <td style="width: 15%;">{{item.CurrencySymbol}}</td>
             <td style="width: 20%;">{{item.CurrencyUnit}}</td>
-
             <td class="btn-wrap">
-              <button mat-flat-button color="primary" class="btn" (click)="openEdit(item)">Edit</button>
-              <button mat-flat-button class="btn btn-default" (click)="openDelete(item)">Remove</button>
+              <span class="material-icons" (click)="openEdit(item)"> edit </span>
+              <span class="material-icons" (click)="openDelete(item)"> delete </span>
             </td>
           </tr>
         </tbody>

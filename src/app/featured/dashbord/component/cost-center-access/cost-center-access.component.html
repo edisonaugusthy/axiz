@@ -11,34 +11,9 @@
     <table class="table table-main-head">
       <thead>
         <tr>
-          <th (click)="sort('userid')" style="width: 20%;">
-            <span class="sort-wrap">
-              Id
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('username')" style="width: 30%;">
-            <span class="sort-wrap">
-              Name
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('fullaccess')" style="width: 30%;">
-            <span class="sort-wrap">
-              Access Type
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-
+          <th (click)="sort('userid')" style="width: 20%;"> Id </th>
+          <th (click)="sort('username')" style="width: 30%;"> Name </th>
+          <th (click)="sort('fullaccess')" style="width: 30%;"> Access Type </th>
           <th style="width: 20%;">Operation</th>
         </tr>
       </thead>
@@ -52,8 +27,8 @@
             <td class="curser-point" (click)="openView(item)" style="width: 30%;">
               {{item.fullaccess ==0 ?'Custom Access':'Full Access'}}</td>
             <td class="btn-wrap">
-              <button mat-flat-button color="primary" class="btn" (click)="openEdit(item)">Edit</button>
-              <button mat-flat-button class="btn btn-default" (click)="openDelete(item)">Remove</button>
+              <span class="material-icons" (click)="openEdit(item)"> edit </span>
+              <span class="material-icons" (click)="openDelete(item)"> delete </span>
             </td>
           </tr>
         </tbody>

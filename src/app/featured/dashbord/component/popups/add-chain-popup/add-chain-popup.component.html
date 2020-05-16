@@ -7,8 +7,11 @@
                 <div class="add-chain-popup">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h4 class="modal-title" *ngIf="!isEdit">ADD CHAIN</h4>
-                        <h4 class="modal-title" *ngIf="isEdit">EDIT CHAIN</h4>
+                        <span class="material-icons">
+                            list
+                        </span>
+                        <h6 class="modal-title" *ngIf="!isEdit">ADD CHAIN</h6>
+                        <h6 class="modal-title" *ngIf="isEdit">EDIT CHAIN</h6>
                         <img class="btn-close" src="../assets/img/close-icon.svg" (click)="popupClose()">
                     </div>
                     <!-- Modal body -->
@@ -86,20 +89,6 @@
                                         CGA Based on transacions
                                     </label>
                                 </div>
-                                <!-- <div class="radio-wrap">
-                                    <label class="radio">
-                                        GCA Based on Guest Count
-                                        <input type="radio" [value]="1" formControlName="gcaonguestcount">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div class="radio-wrap">
-                                    <label class="radio">
-                                        CGA Based on transacions
-                                        <input type="radio" [value]="1" formControlName="cgaontransac">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div> -->
                             </div>
                             <div class="col-6 col-md-4"></div>
                         </div>

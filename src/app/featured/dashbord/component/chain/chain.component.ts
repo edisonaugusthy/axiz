@@ -5,16 +5,6 @@ import { DeleteMessageService } from './../../../../shared/services/delete-messa
 import { FormGeneratorService } from "./../../../../shared/services/form-generator.service";
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from "@angular/core";
 import { DashbordService } from "../../services/dashbord.service";
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
-export interface PeriodicElement {
-  id: number;
-  ChainId: string;
-  ChainName: string;
-  Operation: string;
-}
-
 
 
 @Component({
@@ -38,11 +28,8 @@ export class ChainComponent implements OnInit, AfterViewInit {
   showDetails: boolean;
   detailsData: any;
   public pagination: any;
-  displayedColumns = ['id', 'ChainId', 'ChainName', 'Operation'];
-  public dataSource;
   scrollbarOptions = AppConstants.SCROLL_BAR_OPTIONS;
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+
   constructor(
     private formGeneratorService: FormGeneratorService,
     private deleteMessageSvc: DeleteMessageService,
@@ -67,11 +54,11 @@ export class ChainComponent implements OnInit, AfterViewInit {
     this.getAllChains();
   }
 
-  // sort(property) {
-  //   this.isDesc = !this.isDesc;
-  //   this.column = property;
-  //   this.direction = this.isDesc ? 1 : -1;
-  // }
+  sort(property) {
+    this.isDesc = !this.isDesc;
+    this.column = property;
+    this.direction = this.isDesc ? 1 : -1;
+  }
 
   openView(item) {
     this.showDetails = true;
@@ -167,8 +154,6 @@ export class ChainComponent implements OnInit, AfterViewInit {
       this.loaderSvc.hideLoader();
       this.pagination.currentPage = val.chain_data.current_page;
       this.pagination.totalPages = val.chain_data.total;
-      this.dataSource = new MatTableDataSource(this.addedChains);
-      this.dataSource.sort = this.sort;
     });
   }
 }

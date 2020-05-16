@@ -434,6 +434,7 @@ label.radio {
 }
 .form-control{
     position: relative;
+    font-size: 14px;
 }
 .form-group{
     position: relative;
@@ -621,9 +622,7 @@ li.menu-active a {
 .table-bordered td, .table-bordered th {
     border: 1px solid #dee2e6 !important;
 }
-.table-wrap {
-    /* border-bottom: 1px solid #ddd; */
-}
+
 .table-scroll-wrap {
     height: 380px;
     overflow: auto;
@@ -659,17 +658,17 @@ table.table.table-main-head {
 .table th{
     font-size: 14px;
     font-weight: 500;
-    border-bottom: 1px solid #CCD0D4;
+    border: 1px solid #CCD0D4 !important;
     word-break: break-all;
-    padding: 15px 2px  !important;
+    /* padding: 15px 2px  !important; */
 }
 .table td{
     font-size: 14px;
     font-weight: 500;
     color: #444;
     vertical-align: middle;
-    border: 0;
-    padding: 10px;
+    border: 1px solid #CCD0D4 !important;
+    /* padding: 10px; */
     word-break: break-all;
 }
 .table td .sort-down {
@@ -878,18 +877,14 @@ td.dropdown-select .multi-select{
     padding: 0;
 }
 .main-popup .btn-close {
-    background: #ECECEC;
-    width: 30px;
-    height: 30px;
+   background: #FFF;
+    width: 27px;
+    height: 28px;
     border-radius: 50%;
-    padding: 7px;
+    padding: 9px;
+    margin-right: 0px;
 }
-/*.main-popup {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}*/
+
 .main-popup .modal-dialog{
     width: 40%;
     margin-top: 150px;
@@ -897,8 +892,14 @@ td.dropdown-select .multi-select{
 }
 /* currency-popup */
 .modal-header {
-    padding: 10px 15px 6px;
+    padding: 6px 15px 6px;
     line-height: 0;
+    color: #fff;
+    font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+    background: #1976d2;
+}
+.modal-title{
+    color: #fff;
 }
 .modal-footer {
     align-items: center !important;
@@ -908,10 +909,7 @@ td.dropdown-select .multi-select{
     width: 47%;
     margin-top: 30px;
 }
-.currency-popup .modal-body .col{
-    /* display: flex;
-    align-items: flex-end; */
-}
+
 .currency-popup .modal-body .file-upload-wrap .file-name{
     font-size: 12px;
 }
@@ -925,7 +923,7 @@ td.dropdown-select .multi-select{
 }
 .currency-popup .form-group-wrap .label, .currency-popup .form-group-wrap .checkbox, .location-popup .label{
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
 }
 .currency-popup.main-popup .form-group .form-control, .location-popup .form-group .form-control{
     border: 1px solid #ddd;
@@ -1189,7 +1187,7 @@ input[type="number"]::-webkit-outer-spin-button {
     background-repeat: no-repeat;
 }
 .mat-toolbar.mat-primary {
-    background: #1976d2;
+    background: #1976d2 !important;
     color: #fff;
 }
 @-webkit-keyframes cdk-text-field-autofill-start {
@@ -2352,7 +2350,7 @@ textarea.cdk-textarea-autosize-measuring {
 }
 
 .mat-fab.mat-primary,.mat-flat-button.mat-primary,.mat-mini-fab.mat-primary,.mat-raised-button.mat-primary {
-    background-color: #1976d2
+    background-color: #1976d2 !important
 }
 
 .mat-fab.mat-accent,.mat-flat-button.mat-accent,.mat-mini-fab.mat-accent,.mat-raised-button.mat-accent {
@@ -3537,10 +3535,7 @@ mat-footer-row,mat-header-row,mat-row,td.mat-cell,td.mat-footer-cell,th.mat-head
     color: rgba(0,0,0,.87)
 }
 
-.mat-toolbar.mat-primary {
-    background: #1976d2;
-    color: #fff;
-}
+
 
 .mat-toolbar.mat-accent {
     background: #d32f2f;
@@ -3647,7 +3642,7 @@ h5,h6 {
     font-size: 16px;
     font-size: 1.6rem;
     font-weight: 500;
-    margin: 8px 0;
+ margin: 2px 3px 2px;
     clear: both
 }
 
@@ -3798,19 +3793,19 @@ code {
 
 .sidenav-content {
     min-height: 100vh;
-    padding: 80px 3rem 2rem
+    padding: 50px 3rem 2rem
 }
 
 @media screen and (max-width: 600px) {
     .sidenav-content {
         min-height:450px;
-        padding: 80px 2rem 1rem
+        padding: 50px 2rem 1rem
     }
 }
 
 @media screen and (max-width: 480px) {
     .sidenav-content {
-        padding:80px 1rem 1rem
+        padding:50px 1rem 1rem
     }
 }
 
@@ -7669,13 +7664,14 @@ table thead> {
 
 table thead>tr {
     vertical-align: inherit;
-    border-color: inherit
+    border-color: inherit;
+    background: #1976d2;
 }
 
 table thead>tr>th {
     background: hsla(0,0%,85.9%,.2);
     border-bottom: 1px solid #dbdbdb;
-    color: #444;
+    color: #fff;
     font-size: 12px;
     font-size: 1.2rem;
     font-weight: 500;
@@ -8063,6 +8059,15 @@ aio-toc.embedded>div.collapsed li.secondary {
     .feature-section img {
         max-width: 70px!important
     }
+}
+.vertical-menu-item:focus {
+    outline: 2px auto #1e88e5 !important;
+}
+
+.vertical-menu-item:hover {
+    background-color: #dbdbdb;
+    color: #1976d2;
+    text-shadow: 0 0 5px #fff;
 }
 
 

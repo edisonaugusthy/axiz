@@ -15,61 +15,12 @@
     <table class="table table-main-head">
       <thead>
         <tr>
-          <th (click)="sort('id')" style="width: 10%;">
-            <span class="sort-wrap">
-              Id
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('user_name')" style="width: 20%;">
-            <span class="sort-wrap">
-              Name
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-
-          <th (click)="sort('companyid')" style="width: 10%;">
-            <span class="sort-wrap">
-              Company
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('email')" style="width: 20%;">
-            <span class="sort-wrap">
-              Email
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('password')" style="width: 10%;">
-            <span class="sort-wrap">
-              Password
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('status')" style="width: 10%;">
-            <span class="sort-wrap">
-              Status
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
+          <th (click)="sort('id')" style="width: 10%;">Id </th>
+          <th (click)="sort('user_name')" style="width: 20%;">Name </th>
+          <th (click)="sort('companyid')" style="width: 10%;">Company </th>
+          <th (click)="sort('email')" style="width: 20%;">Email </th>
+          <th (click)="sort('password')" style="width: 10%;">Password </th>
+          <th (click)="sort('status')" style="width: 10%;">Status </th>
           <th style="width: 20%;">Operation</th>
         </tr>
       </thead>
@@ -87,8 +38,8 @@
               {{item.status==0?'Suspended':'Active'}}
             </td>
             <td class="btn-wrap">
-              <button mat-flat-button color="primary" class="btn" (click)="openEdit(item)">Edit</button>
-              <button mat-flat-button class="btn btn-default" (click)="openDelete(item)">Remove</button>
+              <span class="material-icons" (click)="openEdit(item)"> edit </span>
+              <span class="material-icons" (click)="openDelete(item)"> delete </span>
             </td>
           </tr>
         </tbody>
