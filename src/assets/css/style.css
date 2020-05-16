@@ -660,7 +660,7 @@ table.table.table-main-head {
     font-weight: 500;
     border: 1px solid #CCD0D4 !important;
     word-break: break-all;
-    /* padding: 15px 2px  !important; */
+    padding: 5px 12px  !important;
 }
 .table td{
     font-size: 14px;
@@ -668,7 +668,7 @@ table.table.table-main-head {
     color: #444;
     vertical-align: middle;
     border: 1px solid #CCD0D4 !important;
-    /* padding: 10px; */
+    padding: 5px 12px;
     word-break: break-all;
 }
 .table td .sort-down {
@@ -818,7 +818,7 @@ td.dropdown-select .multi-select{
 .login-wrapper .form-textbox:valid ~ .form-label {
     top: -0.5em;
     left: 16px;
-    font-size: .8em;
+    font-size: 14px;
     font-weight: 500;
     color: inherit;
     cursor: pointer;
@@ -898,6 +898,18 @@ td.dropdown-select .multi-select{
     font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
     background: #1976d2;
 }
+.modal-header{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.modal-header h4{
+    margin: 0 0 0 10px;
+}
+.modal-header .btn-close{
+        position: absolute;
+        right: 6px;
+}
 .modal-title{
     color: #fff;
 }
@@ -935,6 +947,7 @@ td.dropdown-select .multi-select{
     border: 1px solid #ddd;
     padding: 5px 10px 5px 15px;
     border-radius: 4px;
+    height: auto !important;
 }
 .modal .table-wrap {
     height: auto;
@@ -5994,6 +6007,12 @@ a.filter-button:hover {
 
 .card-container .docs-card:hover {
     box-shadow: 0 8px 8px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12)
+}
+.mCSB_inside > .mCSB_container {
+    margin-right: 0 !important;
+}
+button.close:focus {
+    outline: none !important;
 }
 
 @media screen and (max-width: 600px) {
