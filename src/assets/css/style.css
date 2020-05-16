@@ -905,6 +905,12 @@ td.dropdown-select .multi-select{
     align-items: center !important;
     justify-content: center;
 }
+.modal-body label{
+    font-size: 14px;
+}
+.modal-body .label{
+    font-size: 14px;
+}
 .currency-popup .modal-dialog{
     width: 47%;
     margin-top: 30px;

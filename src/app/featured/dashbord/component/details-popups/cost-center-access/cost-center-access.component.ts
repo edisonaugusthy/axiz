@@ -133,7 +133,7 @@ export class CostCenterAccessDetailsComponent implements OnInit {
     else {
       this.isEdit = false;
     }
-    this.modalRef = this.modalService.open(content, { size: 'lg' });
+    this.modalRef = this.modalService.open(content);
   }
   onSubmit() {
     this.addUsername();

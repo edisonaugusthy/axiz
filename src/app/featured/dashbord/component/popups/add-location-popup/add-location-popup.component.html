@@ -1,10 +1,13 @@
 <ng-template #addUserModal let-modal>
     <form (ngSubmit)="onSubmit()" [formGroup]="addUserForm">
-        <div class="location-popup">
-            <div class="modal-content modal-content-area modal-xl">
+        <div class=" main-popup location-popup">
+            <div class="modal-content modal-content-area modal-lg">
 
                 <!-- Modal Header -->
                 <div class="modal-header">
+                    <span class="material-icons">
+                        list
+                    </span>
                     <h4 class="modal-title" *ngIf="!isEdit">ADD LOCATION</h4>
                     <h4 class="modal-title" *ngIf="isEdit">EDIT LOCATION</h4>
                     <img class="btn-close" (click)="popupClose()" src="../assets/img/close-icon.svg">
@@ -23,10 +26,7 @@
                                         <option *ngFor="let opt of chains " [value]="opt.chainid">{{opt.chainname}}
                                         </option>
                                     </select>
-                                    <!-- <div class="form-group">
-                                        <input type="text" maxlength="10" class="form-control" formControlName="chainid"
-                                            [ngClass]="{ 'has-error': isSubmitted && formControls.chainid.errors }">
-                                    </div> -->
+
                                 </div>
                             </div>
                             <div class="wrap row">
@@ -154,13 +154,7 @@
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <input type="text" class="form-control" formControlName="costcenter">
-                                        <!-- <select class="form-control" formControlName="costcenter">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select> -->
+
                                     </div>
                                 </div>
                             </div>
@@ -171,157 +165,126 @@
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <input type="text" class="form-control" formControlName="locationtype">
-                                        <!-- <select class="form-control" formControlName="locationtype">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select> -->
+                                        < </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="wrap row">
-                                <div class="col-sm-5 label astrick ">
-                                    Manages Inventory
-                                </div>
-                                <div class="col-sm-7">
-                                    <div class="form-group">
-                                        <!-- <input type="text" class="form-control" formControlName="inventory"
-                                            [ngClass]="{ 'has-error': isSubmitted && formControls.inventory.errors }"> -->
-                                        <select class="form-control" formControlName="inventory"
-                                            [ngClass]="{ 'has-error': isSubmitted && formControls.inventory.errors }">
-                                            <option [value]="1">Yes</option>
-                                            <option [value]="0">No</option>
-                                        </select>
+                                <div class="wrap row">
+                                    <div class="col-sm-5 label astrick ">
+                                        Manages Inventory
                                     </div>
-                                </div>
-                            </div>
-                            <div class="wrap row">
-                                <div class="col-sm-5 label">
-                                    Start Date
-                                </div>
-                                <div class="col-sm-7">
-                                    <!-- <div class="form-group">
-                                        <input type="text" class="form-control" ngbDatepicker #d="ngbDatepicker"
-                                            formControlName="startdate">
-                                    </div> -->
-                                    <div class="input-group">
-                                        <input class="form-control" placeholder="yyyy/mm/dd" name="d2" type="text"
-                                            [ngClass]="{ 'has-error': isSubmitted && formControls.startdate.errors }"
-                                            formControlName="startdate" (click)="d2.toggle()" ngbDatepicker
-                                            #d2="ngbDatepicker">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()"
-                                                type="button"></button>
-                                        </div>
-                                    </div>
-                                    <!-- <select class="form-control" formControlName="startdate">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select> -->
-                                    <!-- </div> -->
-                                </div>
-                            </div>
-                            <div class="wrap row">
-                                <div class="col-sm-5 label">
-                                    Cost Centre Type
-                                </div>
-                                <div class="col-sm-7">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" formControlName="costcentertype">
-                                        <!-- <select class="form-control" formControlName="costcentertype">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="wrap row">
-                                <div class="col-sm-5 label">
-                                    Service Type
-                                </div>
-                                <div class="col-sm-7">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" formControlName="service">
-                                        <!-- <select class="form-control" formControlName="service">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="wrap row">
-                                <div class="col-sm-5 label astrick">
-                                    Number of Seats
-                                </div>
-                                <div class="col-sm-7">
-                                    <div class="form-group">
-                                        <input type="text" numbersOnly class="form-control" formControlName="seats"
-                                            maxlength="6"
-                                            [ngClass]="{ 'has-error': isSubmitted && formControls.seats.errors }">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="wrap row">
-                                <div class="col-sm-5 label">
-                                    Location Area (Sq Ft)
-                                </div>
-                                <div class="col-sm-7">
-                                    <div class="form-group">
-                                        <input type="number" class="form-control" formControlName="area">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="wrap row">
-                                <div class="col-sm-12 active-location label">
-                                    <div class="checkbox-block col-sm-8">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" [value]="1" formControlName="active">
-                                                <span></span>
-                                                Active Location
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" [value]="1" formControlName="planned">
-                                                <span></span>
-                                                Planed Location
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" [value]="1" (change)="enabletime()"
-                                                    formControlName="enablecutoff">
-                                                <span></span>
-                                                Enable Order cut of time
-                                            </label>
+                                    <div class="col-sm-7">
+                                        <div class="form-group">
+
+                                            <select class="form-control" formControlName="inventory"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.inventory.errors }">
+                                                <option [value]="1">Yes</option>
+                                                <option [value]="0">No</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="wrap row out-time" *ngIf="addUserForm.value.enablecutoff==1">
-                                <div class="col-sm-4 label astrick">
-                                    Cut Of Time
-                                </div>
-                                <div class="col-sm-6 label">
-                                    <div class="form-group">
-                                        <!-- <label>Time</label> -->
-                                        <input type="time" class="form-control" formControlName="ordercutof">
-                                        <!-- <input type="text" class="form-control" formControlName="hrs"> -->
+                                <div class="wrap row">
+                                    <div class="col-sm-5 label">
+                                        Start Date
+                                    </div>
+                                    <div class="col-sm-7">
+
+                                        <div class="input-group">
+                                            <input class="form-control" placeholder="yyyy/mm/dd" name="d2" type="text"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.startdate.errors }"
+                                                formControlName="startdate" (click)="d2.toggle()" ngbDatepicker
+                                                #d2="ngbDatepicker">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()"
+                                                    type="button"></button>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
-                                <!-- <div class="col-sm-2 label">
+                                <div class="wrap row">
+                                    <div class="col-sm-5 label">
+                                        Cost Centre Type
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="costcentertype">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wrap row">
+                                    <div class="col-sm-5 label">
+                                        Service Type
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="service">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wrap row">
+                                    <div class="col-sm-5 label astrick">
+                                        Number of Seats
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="form-group">
+                                            <input type="text" numbersOnly class="form-control" formControlName="seats"
+                                                maxlength="6"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.seats.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wrap row">
+                                    <div class="col-sm-5 label">
+                                        Location Area (Sq Ft)
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" formControlName="area">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wrap row">
+                                    <div class="col-sm-12 active-location label">
+                                        <div class="checkbox-block col-sm-8">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" [value]="1" formControlName="active">
+                                                    <span></span>
+                                                    Active Location
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" [value]="1" formControlName="planned">
+                                                    <span></span>
+                                                    Planed Location
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" [value]="1" (change)="enabletime()"
+                                                        formControlName="enablecutoff">
+                                                    <span></span>
+                                                    Enable Order cut of time
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wrap row out-time" *ngIf="addUserForm.value.enablecutoff==1">
+                                    <div class="col-sm-4 label astrick">
+                                        Cut Of Time
+                                    </div>
+                                    <div class="col-sm-6 label">
+                                        <div class="form-group">
+                                            <!-- <label>Time</label> -->
+                                            <input type="time" class="form-control" formControlName="ordercutof">
+                                            <!-- <input type="text" class="form-control" formControlName="hrs"> -->
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-sm-2 label">
                                     <div class="form-group">
                                         <label>Min</label>
                                         <input type="text" class="form-control" formControlName="min">
@@ -335,79 +298,81 @@
                                         </select>
                                     </div>
                                 </div> -->
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-12 po-limit">
-                            <div class="wrap row">
-                                <div class="col-sm-2 label label-name">
-                                    PO Limit
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="row">
-                                        <div class="col-sm-3 year">
-                                            <div class="form-group">
-                                                <label class="labal">Year</label>
-                                                <select class="form-control">
-                                                    <option selected>2020</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <section class="table-wrap">
-                                                <div class="table-head">PURCHASE ORDER LIMIT</div>
-                                                <table class="table table-striped table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th style="width: 25%">No</th>
-                                                            <th style="width: 25%">From Date</th>
-                                                            <th style="width: 25%">To Date</th>
-                                                            <th style="width: 25%">PO Limit</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>12/12/12</td>
-                                                            <td>12/12/12</td>
-                                                            <td>0.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>12/12/12</td>
-                                                            <td>12/12/12</td>
-                                                            <td>0.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>12/12/12</td>
-                                                            <td>12/12/12</td>
-                                                            <td>0.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>12/12/12</td>
-                                                            <td>12/12/12</td>
-                                                            <td>0.00</td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    </tbody>
-                                                </table>
-                                            </section>
-                                        </div>
-
+                            <div class="col-sm-12 po-limit">
+                                <div class="wrap row">
+                                    <div class="col-sm-2 label label-name">
+                                        PO Limit
                                     </div>
-                                </div>
+                                    <div class="col-sm-9">
+                                        <div class="row">
+                                            <div class="col-sm-3 year">
+                                                <div class="form-group">
+                                                    <label class="labal">Year</label>
+                                                    <select class="form-control">
+                                                        <option selected>2020</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <section class="table-wrap">
+                                                    <div class="table-head">PURCHASE ORDER LIMIT</div>
+                                                    <table class="table table-striped table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width: 25%">No</th>
+                                                                <th style="width: 25%">From Date</th>
+                                                                <th style="width: 25%">To Date</th>
+                                                                <th style="width: 25%">PO Limit</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>12/12/12</td>
+                                                                <td>12/12/12</td>
+                                                                <td>0.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>12/12/12</td>
+                                                                <td>12/12/12</td>
+                                                                <td>0.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>12/12/12</td>
+                                                                <td>12/12/12</td>
+                                                                <td>0.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>12/12/12</td>
+                                                                <td>12/12/12</td>
+                                                                <td>0.00</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </section>
+                                            </div>
 
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" mat-flat-button color="primary" class="btn" (click)="onSubmit()">Save</button>
-                    <button type="button" mat-flat-button class="btn btn-default" (click)="popupClose()">Close</button>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" mat-flat-button color="primary" class="btn"
+                            (click)="onSubmit()">Save</button>
+                        <button type="button" mat-flat-button class="btn btn-default"
+                            (click)="popupClose()">Close</button>
+                    </div>
                 </div>
             </div>
-        </div>
     </form>
 </ng-template>

@@ -143,7 +143,7 @@ export class AddCostCenterAccessComponent implements OnInit {
       this.disableSelection(1);
       this.isEdit = false;
     }
-    this.modalRef = this.modalService.open(content, { size: 'lg' });
+    this.modalRef = this.modalService.open(content);
   }
   onSubmit() {
     this.addUsername();

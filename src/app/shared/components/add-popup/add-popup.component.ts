@@ -43,7 +43,7 @@ export class AddPopupComponent implements OnInit {
   }
 
   open(content) {
-    this.modalRef = this.modalService.open(content);
+    this.modalRef = this.modalService.open(content, { size: 'sm' });
   }
   onSubmit() {
     this.isSubmitted = true;

@@ -41,9 +41,7 @@ export class EditPopupComponent implements OnInit {
   }
 
   open(content) {
-    this.modalRef = this.modalService.open(content, {
-      ariaLabelledBy: "modal-basic-title"
-    });
+    this.modalRef = this.modalService.open(content, { size: 'sm' });
   }
   onSubmit() {
     this.isSubmitted = true;

@@ -2,7 +2,8 @@
 <ng-template #editModal let-modal>
   <!-- Modal Header -->
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
-    <div class="modal-header">
+    <div class="modal-header main-popup">
+      <span class="material-icons"> list </span>
       <h4 class="modal-title">{{ header }}</h4>
       <img class="btn-close" src="../assets/img/close-icon.svg" (click)="popupClose()" />
     </div>

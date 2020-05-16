@@ -1,10 +1,13 @@
 <ng-template #addUserModal let-modal>
   <form (ngSubmit)="onSubmit()" [formGroup]="addUserForm">
-    <div class="location-popup">
+    <div class="main-popup location-popup">
       <div class="modal-content modal-content-area modal-xl">
 
         <!-- Modal Header -->
         <div class="modal-header">
+          <span class="material-icons">
+            list
+          </span>
           <h4 class="modal-title">LOCATION</h4>
           <img class="btn-close" (click)="popupClose()" src="../assets/img/close-icon.svg">
         </div>
@@ -14,7 +17,7 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="wrap row">
-                <div class="col col-sm-5 label astrick">
+                <div class="col col-sm-5 label">
                   Chain ID
                 </div>
                 <div class="col col-sm-7">
@@ -25,7 +28,7 @@
                 </div>
               </div>
               <div class="wrap row">
-                <div class="col col-sm-5 label astrick ">
+                <div class="col col-sm-5 label ">
                   Location ID
                 </div>
                 <div class="col-sm-7">
@@ -178,7 +181,7 @@
                 </div>
               </div>
               <div class="wrap row">
-                <div class="col-sm-5 label astrick ">
+                <div class="col-sm-5 label ">
                   Manages Inventory
                 </div>
                 <div class="col-sm-7">
@@ -245,7 +248,7 @@
                 </div>
               </div>
               <div class="wrap row">
-                <div class="col-sm-5 label astrick">
+                <div class="col-sm-5 label">
                   Number of Seats
                 </div>
                 <div class="col-sm-7">
@@ -294,7 +297,7 @@
                 </div>
               </div>
               <div class="wrap row out-time" *ngIf="addUserForm.value.enablecutoff==1">
-                <div class="col-sm-4 label astrick">
+                <div class="col-sm-4 label">
                   Cut Of Time
                 </div>
                 <div class="col-sm-6 label">
