@@ -5,7 +5,8 @@
             <div class="modal-content modal-content-area modal-lg">
 
                 <!-- Modal Header -->
-                <div class="modal-header black-header">
+                <div class="modal-header">
+                    <span class="material-icons"> list </span>
                     <h4 class="modal-title" *ngIf="isEdit">Edit Company</h4>
                     <h4 class="modal-title" *ngIf="!isEdit">Add Company</h4>
                     <img class="btn-close" (click)="popupClose()" src="../assets/img/close-icon.svg">
@@ -14,10 +15,10 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-4 label astrick">
                             Company ID
                         </div>
-                        <div class="col col-sm-5">
+                        <div class="col col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName="companyid" maxlength="5"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.companyid.errors }">
@@ -25,10 +26,10 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-4 label astrick">
                             Company Name
                         </div>
-                        <div class="col col-sm-5">
+                        <div class="col col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName="companyname"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.companyname.errors }">
@@ -36,10 +37,10 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-4 label astrick">
                             Contact
                         </div>
-                        <div class="col col-sm-5">
+                        <div class="col col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName="contact"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.contact.errors }">
@@ -47,21 +48,21 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label">
+                        <div class="col col-sm-4 label">
                             Address1
                         </div>
-                        <div class="col col-sm-5">
+                        <div class="col col-sm-6">
                             <div class="form-group">
-                                <textarea class="form-control" formControlName="address1"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.address1.errors }"></textarea>
+                                <input type="text" class="form-control" formControlName="address1"
+                                    [ngClass]="{ 'has-error': isSubmitted && formControls.address1.errors }">
                             </div>
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label">
+                        <div class="col col-sm-4 label">
                             Address2
                         </div>
-                        <div class="col col-sm-5">
+                        <div class="col col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName="address2"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.address2.errors }">
@@ -69,10 +70,10 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label">
+                        <div class="col col-sm-4 label">
                             City
                         </div>
-                        <div class="col col-sm-5">
+                        <div class="col col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName="city"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.city.errors }">
@@ -80,10 +81,10 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label">
+                        <div class="col col-sm-4 label">
                             Country
                         </div>
-                        <div class="col col-sm-5">
+                        <div class="col col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName="country"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.country.errors }">
@@ -91,10 +92,10 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label">
+                        <div class="col col-sm-4 label">
                             Phone
                         </div>
-                        <div class="col col-sm-5">
+                        <div class="col col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName="phone"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.phone.errors }">
@@ -102,10 +103,10 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label">
+                        <div class="col col-sm-4 label">
                             Fax
                         </div>
-                        <div class="col col-sm-5">
+                        <div class="col col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName="fax"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.fax.errors }">
@@ -113,10 +114,10 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-4 label astrick">
                             Email
                         </div>
-                        <div class="col col-sm-5">
+                        <div class="col col-sm-6">
                             <div class="form-group">
                                 <input type="email" class="form-control" formControlName="email"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
@@ -124,10 +125,10 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label">
+                        <div class="col col-sm-4 label">
                             Website
                         </div>
-                        <div class="col col-sm-5">
+                        <div class="col col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName="website"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.website.errors }">
@@ -135,10 +136,10 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-4 label astrick">
                             Default Currency
                         </div>
-                        <div class="col col-sm-5">
+                        <div class="col col-sm-6">
                             <div class="form-group">
                                 <select class="form-control" formControlName="currency">
                                     <option *ngFor="let item of currency"
@@ -153,10 +154,10 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-4 label astrick">
                             Ret Earning A/C
                         </div>
-                        <div class="col col-sm-5">
+                        <div class="col col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName="retainedaccount" maxlength="10"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.retainedaccount.errors }">
@@ -164,10 +165,10 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-4 label astrick">
                             Acc Ret Earning
                         </div>
-                        <div class="col col-sm-5">
+                        <div class="col col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName="accuretainedaccount"
                                     maxlength="10"
@@ -176,10 +177,10 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-4 label astrick">
                             System Error Account
                         </div>
-                        <div class="col col-sm-5 label">
+                        <div class="col col-sm-6 label">
                             <div class="form-flex-wrap">
                                 <div class="form-group">
                                     <input type="text" class="form-control" formControlName="erroraccount"
@@ -198,10 +199,10 @@
                     </div>
 
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-4 label astrick">
                             Help path
                         </div>
-                        <div class="col col-sm-5">
+                        <div class="col col-sm-6">
                             <div class="form-group search">
                                 <input type="text" class="form-control" formControlName="manual"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.manual.errors }">
@@ -209,10 +210,10 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col col-sm-5 label astrick">
+                        <div class="col col-sm-4 label astrick">
                             Communication
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-sm-4">
                             <div class="form-group search">
                                 <input type="text" class="form-control" formControlName="comm"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.comm.errors }">
@@ -220,8 +221,8 @@
                         </div>
                     </div>
                     <div class="form-group-wrap row">
-                        <div class="col-6 col-md-5"></div>
-                        <div class="col-6 col-md-7">
+                        <div class="col-6 col-md-4"></div>
+                        <div class="col-6 col-md-8">
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" value="1" formControlName="qtyminor">
@@ -232,10 +233,10 @@
                         </div>
                     </div>
                     <div class="form-group-wrap company-logo row">
-                        <div class="col col-sm-5 label">
+                        <div class="col col-sm-3 label">
                             Company logo
                         </div>
-                        <div class="col-sm-7">
+                        <div class="col-sm-8">
                             <div class="flex-wrap">
                                 <div class="upload file-upload-wrap">
                                     <label class="btn-upload">

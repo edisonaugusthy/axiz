@@ -84,7 +84,7 @@ export class AddCompanyPopupComponent implements OnInit {
         }
       );
     }
-    this.modalRef = this.modalService.open(content, { size: 'lg' });
+    this.modalRef = this.modalService.open(content);
   }
   onSubmit() {
     this.isSubmitted = true;

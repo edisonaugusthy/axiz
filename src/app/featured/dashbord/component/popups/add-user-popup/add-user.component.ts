@@ -65,7 +65,7 @@ export class AddUserComponent implements OnInit {
     if (this.isEdit) {
       this.initSelection()
     }
-    this.modalRef = this.modalService.open(content, { size: 'lg' });
+    this.modalRef = this.modalService.open(content);
   }
   onSubmit() {
     this.isSubmitted = true;
