@@ -21,7 +21,7 @@ export class UserDetailsComponent implements OnInit {
 
   private modalRef: NgbModalRef;
   @ViewChild('addUserModal', { static: true }) input: ElementRef;
-
+  statusList = [{ name: 'Active', val: 1 }, { name: 'Inactive', val: 0 }]
   @Input() fields;
   @Input() companyList;
   @Output() formSubmitted = new EventEmitter<any>();

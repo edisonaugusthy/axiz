@@ -278,7 +278,7 @@ export class FormGeneratorService {
     ];
     data = data.sort((a, b) => a.order - b.order);
     const formData = {
-      header: 'Edit Company Access',
+      header: 'EDIT COMPANY ACCESS',
       fields: data
     };
     return formData;
@@ -823,7 +823,7 @@ export class FormGeneratorService {
     ];
     data = data.sort((a, b) => a.order - b.order);
     const formData = {
-      header: 'Company Access',
+      header: 'COMPANY ACCESS',
       fields: data
     };
     return formData;

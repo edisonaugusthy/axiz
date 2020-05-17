@@ -10,12 +10,12 @@
     <table class="table table-main-head">
       <thead>
         <tr>
-          <th (click)="sort('user_id')" style="width: 10%;">Id </th>
-          <th (click)="sort('user_name')" style="width: 10%;">Name </th>
-          <th (click)="sort('user_phone')" style="width: 20%;">Mobile </th>
-          <th (click)="sort('user_email')" style="width: 20%;">Email </th>
-          <th (click)="sort('UDID')" style="width: 10%;">UUID </th>
-          <th (click)="sort('LoginPin')" style="width: 10%;">Login Pin </th>
+          <th class="curser-point" (click)="sort('user_id')" style="width: 10%;">Id </th>
+          <th class="curser-point" (click)="sort('user_name')" style="width: 10%;">Name </th>
+          <th class="curser-point" (click)="sort('user_phone')" style="width: 20%;">Mobile </th>
+          <th class="curser-point" (click)="sort('user_email')" style="width: 20%;">Email </th>
+          <th class="curser-point" (click)="sort('UDID')" style="width: 10%;">UUID </th>
+          <th class="curser-point" (click)="sort('LoginPin')" style="width: 10%;">Login Pin </th>
           <th style="width: 20%;">Operation</th>
         </tr>
       </thead>
@@ -31,8 +31,8 @@
             <td style="width: 10%;">{{item.UDID}}</td>
             <td style="width: 10%;">{{item.LoginPin}}</td>
             <td style="width: 20%;">
-              <span class="material-icons" (click)="openEdit(item)"> edit </span>
-              <span class="material-icons" (click)="openDelete(item)"> delete </span>
+              <span class="material-icons curser-point" (click)="openEdit(item)"> edit </span>
+              <span class="material-icons curser-point" (click)="openDelete(item)"> delete </span>
             </td>
           </tr>
         </tbody>

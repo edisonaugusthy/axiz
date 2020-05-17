@@ -15,11 +15,11 @@
     <table class="table table-main-head">
       <thead>
         <tr>
-          <th (click)="sort('id')" style="width: 10%;"> Id </th>
-          <th (click)="sort('CompanyName')" style="width: 10%;"> Name </th>
-          <th (click)="sort('Address1')" style="width: 20%;"> Address </th>
-          <th (click)="sort('MobileNo')" style="width: 20%;"> Mobile </th>
-          <th (click)="sort('Email')" style="width: 20%;"> Email </th>
+          <th class="curser-point" (click)="sort('id')" style="width: 10%;"> Id </th>
+          <th class="curser-point" (click)="sort('CompanyName')" style="width: 10%;"> Name </th>
+          <th class="curser-point" (click)="sort('Address1')" style="width: 20%;"> Address </th>
+          <th class="curser-point" (click)="sort('MobileNo')" style="width: 20%;"> Mobile </th>
+          <th class="curser-point" (click)="sort('Email')" style="width: 20%;"> Email </th>
           <th style="width: 20%;">Operation</th>
         </tr>
       </thead>
@@ -28,14 +28,14 @@
       <table class="table table-striped table-main-body" *ngIf="companies&&companies.length>0">
         <tbody>
           <tr *ngFor="let item of companies | orderBy: {property: column, direction: direction}">
-            <td class=" curser-point" (click)="openView(item)" style="width: 10%;">{{item.id}}</td>
+            <td class="curser-point" (click)="openView(item)" style="width: 10%;">{{item.id}}</td>
             <td class="curser-point" (click)="openView(item)" style="width: 10%;">{{item.CompanyName}}</td>
             <td style="width: 20%;">{{item.Address1}}</td>
             <td style="width: 20%;">{{item.MobileNo}}</td>
             <td style="width: 20%;">{{item.Email}}</td>
             <td class="btn-wrap">
-              <span class="material-icons" (click)="openEdit(item)"> edit </span>
-              <span class="material-icons" (click)="openDelete(item)"> delete </span>
+              <span class="material-icons curser-point" (click)="openEdit(item)"> edit </span>
+              <span class="material-icons curser-point" (click)="openDelete(item)"> delete </span>
             </td>
           </tr>
         </tbody>

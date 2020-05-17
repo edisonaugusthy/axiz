@@ -5,7 +5,7 @@ import { DeleteMessageService } from './../../../../shared/services/delete-messa
 import { FormGeneratorService } from "./../../../../shared/services/form-generator.service";
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from "@angular/core";
 import { DashbordService } from "../../services/dashbord.service";
-
+import { Sort } from '@angular/material/sort';
 
 @Component({
   selector: "app-chain",

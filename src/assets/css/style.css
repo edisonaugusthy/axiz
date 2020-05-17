@@ -3396,7 +3396,7 @@ mat-footer-row,mat-header-row,mat-row,td.mat-cell,td.mat-footer-cell,th.mat-head
 }
 
 .mat-sort-header-arrow {
-    color: #757575
+    color: #fff;
 }
 
 .mat-tab-header,.mat-tab-nav-bar {

@@ -74,16 +74,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="switch-wrap">
-                            <label type="text" class="label">Status</label>
-                            <label class="switch">
-                                <input type="checkbox" [value]="true" formControlName="status">
-                                <div class="slider round">
-                                    <span class="on">Active</span>
-                                    <span class="off">Inactive</span>
+                        <!-- status -->
+                        <div class="form-group-wrap row">
+                            <div class="col col-sm-4 label astrick">
+                                Status
+                            </div>
+                            <div class="col col-sm-5">
+                                <div class="form-group">
+                                    <select formControlName="status" class="form-control">
+                                        <option *ngFor="let item of statusList" [value]="item.val">{{item.name}}
+                                        </option>
+                                    </select>
                                 </div>
-                            </label>
+                            </div>
                         </div>
+                        <!--  -->
+
                         <div class="table-head">Company Access</div>
                         <table class="table table-striped">
                             <thead>

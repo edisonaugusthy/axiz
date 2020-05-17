@@ -9,9 +9,9 @@
     <table class="table table-main-head">
       <thead>
         <tr>
-          <th (click)="sort('userid')" style="width: 20%;"> Id </th>
-          <th (click)="sort('username')" style="width: 30%;"> Name </th>
-          <th (click)="sort('fullaccess')" style="width: 30%;"> Access Type </th>
+          <th class="curser-point" (click)="sort('userid')" style="width: 20%;"> Id </th>
+          <th class="curser-point" (click)="sort('username')" style="width: 30%;"> Name </th>
+          <th class="curser-point" (click)="sort('fullaccess')" style="width: 30%;"> Access Type </th>
           <th style="width: 20%;">Operation</th>
         </tr>
       </thead>
@@ -25,8 +25,8 @@
             <td class="curser-point" (click)="openView(item)" style="width: 30%;">
               {{item.fullaccess ==0 ?'Custom Access':'Full Access'}}</td>
             <td style="width: 20%;">
-              <span class="material-icons" (click)="openEdit(item)"> edit </span>
-              <span class="material-icons" (click)="openDelete(item)"> delete </span>
+              <span class="material-icons curser-point" (click)="openEdit(item)"> edit </span>
+              <span class="material-icons curser-point" (click)="openDelete(item)"> delete </span>
             </td>
           </tr>
         </tbody>

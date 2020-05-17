@@ -10,11 +10,11 @@
     <table class="table table-main-head">
       <thead>
         <tr>
-          <th (click)="sort('id')" style="width: 10%;"> Id </th>
-          <th (click)="sort('ChainId')" style="width: 15%;"> Chain Code </th>
-          <th (click)="sort('ChainName')" style="width: 20%;"> Chain Name </th>
-          <th (click)="sort('LocationId')" style="width: 20%;"> Location Code </th>
-          <th (click)="sort('LocationName')" style="width: 20%;"> Location Name </th>
+          <th class="curser-point" (click)="sort('id')" style="width: 10%;"> Id </th>
+          <th class="curser-point" (click)="sort('ChainId')" style="width: 15%;"> Chain Code </th>
+          <th class="curser-point" (click)="sort('ChainName')" style="width: 20%;"> Chain Name </th>
+          <th class="curser-point" (click)="sort('LocationId')" style="width: 20%;"> Location Code </th>
+          <th class="curser-point" (click)="sort('LocationName')" style="width: 20%;"> Location Name </th>
           <th style="width: 15%;">Operation</th>
         </tr>
       </thead>
@@ -29,8 +29,8 @@
             <td style="width: 20%;">{{item.LocationId}}</td>
             <td style="width: 20%;">{{item.LocationName}}</td>
             <td style="width: 15%;">
-              <span class="material-icons" (click)="openEdit(item)"> edit </span>
-              <span class="material-icons" (click)="openDelete(item)"> delete </span>
+              <span class="material-icons curser-point" (click)="openEdit(item)"> edit </span>
+              <span class="material-icons curser-point" (click)="openDelete(item)"> delete </span>
             </td>
           </tr>
         </tbody>

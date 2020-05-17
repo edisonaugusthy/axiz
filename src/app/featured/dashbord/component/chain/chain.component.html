@@ -10,9 +10,9 @@
     <table class="table table-main-head">
       <thead>
         <tr>
-          <th style="width: 20%;" (click)="sort('id')"> Id </th>
-          <th style="width: 20%;" (click)="sort('ChainId')"> Chain Code </th>
-          <th style="width: 30%;" (click)="sort('ChainName')"> Chain Name </th>
+          <th style="width: 20%;" class="curser-point" (click)="sort('id')"> Id </th>
+          <th style="width: 20%;" class="curser-point" (click)="sort('ChainId')"> Chain Code </th>
+          <th style="width: 30%;" class="curser-point" (click)="sort('ChainName')"> Chain Name </th>
           <th style="width: 30%;">Operation</th>
         </tr>
       </thead>
@@ -22,11 +22,11 @@
         <tbody>
           <tr *ngFor="let item of addedChains | orderBy: {property: column, direction: direction}">
             <td style="width: 20%;" class="curser-point" (click)="openView(item)">{{item.id}}</td>
-            <td style="width: 20%;">{{item.ChainId}}</td>
+            <td style="width: 20%;" class="curser-point" (click)="openView(item)">{{item.ChainId}}</td>
             <td style="width: 30%;">{{item.ChainName}}</td>
             <td style="width: 30%;">
-              <span class="material-icons" (click)="openEdit(item)"> edit </span>
-              <span class="material-icons" (click)="openDelete(item)"> delete </span>
+              <span class="material-icons curser-point" (click)="openEdit(item)"> edit </span>
+              <span class="material-icons curser-point" (click)="openDelete(item)"> delete </span>
             </td>
           </tr>
         </tbody>

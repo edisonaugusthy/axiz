@@ -45,8 +45,8 @@
     <!--  -->
     <div class="toolbar-external-icons-container">
       <a>
-        <mat-icon role="img" class="mat-icon notranslate mat-icon-no-color" *ngIf="!isSuperAdmin" aria-hidden="true"
-          (click)="openAdd()">
+        <mat-icon role="img" class="mat-icon notranslate mat-icon-no-color curser-point" *ngIf="!isSuperAdmin"
+          aria-hidden="true" (click)="openAdd()">
           <img src="../assets/img/settings-icon.svg">
         </mat-icon>
       </a>
@@ -58,7 +58,8 @@
         </mat-icon>
       </a>
       <a>
-        <mat-icon (click)="logout()" role="img" class="mat-icon notranslate mat-icon-no-color" aria-hidden="true">
+        <mat-icon (click)="logout()" role="img" class="mat-icon notranslate mat-icon-no-color curser-point"
+          aria-hidden="true">
           <span class="material-icons"> exit_to_app </span>
         </mat-icon>
       </a>

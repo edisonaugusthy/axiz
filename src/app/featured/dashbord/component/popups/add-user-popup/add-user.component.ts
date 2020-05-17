@@ -33,6 +33,7 @@ export class AddUserComponent implements OnInit {
   isSubmitted: boolean;
   isEdit: boolean;
   selectedCompany: any;
+  statusList = [{ name: 'Active', val: 1 }, { name: 'Inactive', val: 0 }]
   constructor(
     config: NgbModalConfig,
     private modalService: NgbModal,
