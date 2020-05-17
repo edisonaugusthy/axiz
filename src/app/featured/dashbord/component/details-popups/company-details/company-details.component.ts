@@ -1,5 +1,4 @@
 import { AlertService } from 'src/app/shared/services/alert.service';
-import { environment } from './../../../../../../environments/environment.prod';
 import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { NgbModalRef, NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -21,7 +20,6 @@ export class CompanyDetailsComponent implements OnInit {
   @Input() Edit;
   @Input() currency;
   addUserForm: FormGroup;
-  imageBase = environment.imageBase;
   isSubmitted: boolean;
   isEdit: boolean;
   selectedCompany: any;

@@ -1,4 +1,4 @@
-import { environment } from '../../../../../../environments/environment.prod';
+
 import {
   Component,
   OnInit,
@@ -26,7 +26,6 @@ export class AddCurrencyPopupComponent implements OnInit {
   @Output() formCancel = new EventEmitter<any>();
 
   addUserForm: FormGroup;
-  imageBase = environment.imageBase;
   isSubmitted: boolean;
   isEdit: boolean;
   selectedCompany: any;

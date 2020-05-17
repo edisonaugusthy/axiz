@@ -1,5 +1,4 @@
 import { LoaderService } from 'src/app/shared/services/loader.service';
-import { environment } from './../../../../../../environments/environment.prod';
 import {
   Component,
   OnInit,
@@ -31,7 +30,6 @@ export class CostCenterAccessDetailsComponent implements OnInit {
   @Input() Edit;
   @Input() users;
   addUserForm: FormGroup;
-  imageBase = environment.imageBase;
   isSubmitted: boolean;
   isEdit: boolean;
   chainsList: any;

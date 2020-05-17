@@ -1,4 +1,4 @@
-import { environment } from './../../../../environments/environment.prod';
+
 import { Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 import { NgbModalRef, NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -12,7 +12,6 @@ export class DetailsPopupComponent implements OnInit {
 
   private modalRef: NgbModalRef;
   @ViewChild("editModal", { static: true }) input: ElementRef;
-  imageBase = environment.imageBase;
   @Input() fields;
   @Output() formSubmitted = new EventEmitter<any>();
   @Output() formCancel = new EventEmitter<any>();

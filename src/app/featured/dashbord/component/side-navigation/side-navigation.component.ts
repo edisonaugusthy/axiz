@@ -1,11 +1,11 @@
-import { environment } from './../../../../../environments/environment';
+
 import { SideMenuOptions } from './../../../../shared/constants/sidemenu-options';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { DashbordService } from '../../services/dashbord.service';
 import { NgStorageService } from 'ng7-storage';
 import { UserType } from 'src/app/featured/authentication/models/user-type.enum';
-import { filter } from 'rxjs/operators';
+
 @Component({
   selector: 'app-side-navigation',
   templateUrl: './side-navigation.component.html',
@@ -13,11 +13,9 @@ import { filter } from 'rxjs/operators';
 })
 export class SideNavigationComponent implements OnInit {
   isSuperAdmin: boolean;
-  imageBase = environment.imageBase;
   constructor(
     private router: Router,
     private StorageService: NgStorageService,
-    private activatedRoute: ActivatedRoute,
     private dashboardSvc: DashbordService,
   ) {
 

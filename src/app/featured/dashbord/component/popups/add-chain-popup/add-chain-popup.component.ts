@@ -1,4 +1,4 @@
-import { environment } from '../../../../../../environments/environment.prod';
+
 import {
   Component,
   OnInit,
@@ -28,11 +28,10 @@ export class AddChainPopupComponent implements OnInit {
   @Output() formCancel = new EventEmitter<any>();
 
   addUserForm: FormGroup;
-  imageBase = environment.imageBase;
   isSubmitted: boolean;
   isEdit: boolean;
   fileData: any;
-  imgUrl = `${environment.imageBase}/assets/img/upload.png`;
+  imgUrl = `../assets/img/upload.png`;
   imageName: string;
   constructor(config: NgbModalConfig, private modalService: NgbModal, private formBuilder: FormBuilder) {
     config.backdrop = 'static';

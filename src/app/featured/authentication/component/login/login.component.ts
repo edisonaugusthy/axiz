@@ -1,4 +1,3 @@
-import { environment } from './../../../../../environments/environment';
 import { AuthService } from './../../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
@@ -16,7 +15,6 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   isSubmitted = false;
-  imageBase = environment.imageBase;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,

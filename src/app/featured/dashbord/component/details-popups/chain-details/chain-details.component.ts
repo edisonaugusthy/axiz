@@ -2,9 +2,6 @@
 import { Component, OnInit, ElementRef, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { NgbModalRef, NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { environment } from 'src/environments/environment';
-
-
 @Component({
   selector: 'app-chain-details',
   templateUrl: './chain-details.component.html',
@@ -21,7 +18,6 @@ export class ChainDetailsComponent implements OnInit {
   @Output() formCancel = new EventEmitter<any>();
 
   addUserForm: FormGroup;
-  imageBase = environment.imageBase;
   isSubmitted: boolean;
   isEdit: boolean;
   fileData: any;

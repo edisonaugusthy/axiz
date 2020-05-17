@@ -1,4 +1,4 @@
-import { environment } from './../../../../environments/environment.prod';
+
 import {
   Component,
   OnInit,
@@ -19,8 +19,6 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 export class AddPopupComponent implements OnInit {
   private modalRef: NgbModalRef;
   @ViewChild('addModal', { static: true }) input: ElementRef;
-  imageBase = environment.imageBase;
-
   @Input() fields;
   @Output() formSubmitted = new EventEmitter<any>();
   @Output() formCancel = new EventEmitter<any>();

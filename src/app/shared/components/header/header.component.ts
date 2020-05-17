@@ -1,5 +1,4 @@
 import { AppConstants } from './../../constants/app-constants';
-import { environment } from './../../../../environments/environment';
 import { AlertService } from './../../services/alert.service';
 import { DashbordService } from './../../../featured/dashbord/services/dashbord.service';
 import { FormGeneratorService } from './../../services/form-generator.service';
@@ -9,8 +8,8 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '
 import { Router, NavigationStart } from '@angular/router';
 import { NgStorageService } from 'ng7-storage';
 import { AuthService } from 'src/app/featured/authentication/service/auth.service';
-import { map, filter, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { Observable, Subject, fromEvent } from 'rxjs';
+import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { fromEvent } from 'rxjs';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -21,7 +20,6 @@ export class HeaderComponent implements OnInit {
   userDetails: any;
   showAdd: boolean;
   addFormData: any;
-  imageBase = environment.imageBase;
   showSideBar = false;
   @Output() toggleSideBar = new EventEmitter<any>();
   @ViewChild('SearchInput', { static: true }) SearchInput: ElementRef;
