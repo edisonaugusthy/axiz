@@ -37,7 +37,7 @@
     </button>
 
     <a class="nav-link home">
-      <img src="../assets/img/logo.svg" width="150" height="40" title="Home" alt="Home">
+      <img src="../assets/img/logo.svg" (click)="showDashbord()" width="150" height="40" title="Home" alt="Home">
     </a>
     <div class="search-container">
       <input type="search" aria-label="search" placeholder="Search" #SearchInput>
@@ -50,7 +50,7 @@
           <img src="../assets/img/settings-icon.svg">
         </mat-icon>
       </a>
-      <a *ngIf="!isSuperAdmin" class="user-name">Hello, {{userDetails.user_name}}</a>
+      <a *ngIf="!isSuperAdmin" class="user-name">Hello, {{userDetails?.user_name}}</a>
       <a *ngIf="isSuperAdmin" class="user-name">Super Admin</a>
       <a>
         <mat-icon role="img" class="mat-icon notranslate mat-icon-no-color" aria-hidden="true">

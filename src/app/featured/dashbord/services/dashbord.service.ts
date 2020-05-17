@@ -9,6 +9,7 @@ import { ApiConstants } from 'src/app/shared/constants/ApiConstants';
 export class DashbordService {
 
   public searchStr = new BehaviorSubject<any>(null);
+  public userSwichStatus = new BehaviorSubject<boolean>(false);
   constructor(private http: HttpClient) { }
   // superAdmin part
   registerCompany(Data) {
@@ -189,6 +190,10 @@ export class DashbordService {
   }
   getSearch() {
     return this.searchStr.asObservable;
+  }
+
+  switchUser(val: boolean) {
+    this.userSwichStatus.next(val);
   }
 
 }

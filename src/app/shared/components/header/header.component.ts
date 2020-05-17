@@ -6,7 +6,7 @@ import { FormGeneratorService } from './../../services/form-generator.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { UserType } from 'src/app/featured/authentication/models/user-type.enum';
 import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
 import { NgStorageService } from 'ng7-storage';
 import { AuthService } from 'src/app/featured/authentication/service/auth.service';
 import { map, filter, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -38,16 +38,28 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.activate();
+
+    this.router.events.forEach((event) => {
+      if (event instanceof NavigationStart) {
+        this.SearchInput.nativeElement.value = '';
+        this.dashboardSvc.setSearchString(null);
+      }
+    });
+  }
+
+  activate(id?) {
     if (this.StorageService.getData('user_type') === UserType.SuperAdmin) {
       this.isSuperAdmin = true;
     } else {
       this.isSuperAdmin = false;
     }
     this.userDetails = this.StorageService.getData('user_details');
-    this.openNav();
     this.search();
+    if (!id) {
+      this.openNav();
+    }
   }
-
   logout() {
     this.loaderSvc.showLoader();
     this.authService.SuperAdminLogOut(null).subscribe(val => {
@@ -96,9 +108,11 @@ export class HeaderComponent implements OnInit {
         this.StorageService.setData({ key: 'user_details', value: val.data.userdetails });
         this.StorageService.setData({ key: 'access_token', value: val.data.token });
         this.StorageService.setData({ key: 'super-admin-mail', value: val.superadmin });
-        setTimeout(() => {
-          window.location.reload();
-        }, 100)
+        this.dashboardSvc.switchUser(true);
+        this.activate(1);
+        // setTimeout(() => {
+        //   window.location.reload();
+        // }, 100)
       } else {
         this.loaderSvc.hideLoader();
         this.alert.showAlert({ message: val.error, type: 'warning' });

@@ -17,12 +17,23 @@ export class SideNavigationComponent implements OnInit {
   constructor(
     private router: Router,
     private StorageService: NgStorageService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private dashboardSvc: DashbordService,
   ) {
 
   }
   sideMenuList: Array<any>;
   ngOnInit() {
+    this.activate();
+    this.dashboardSvc.userSwichStatus.subscribe(val => {
+      if (val) {
+        this.activate();
+      }
+    })
+  }
+
+
+  activate() {
     if (this.StorageService.getData('user_type') === UserType.SuperAdmin) {
       this.sideMenuList = SideMenuOptions.SUPER_ADMIN_MENU;
       this.isSuperAdmin = true;
@@ -39,7 +50,6 @@ export class SideNavigationComponent implements OnInit {
       }
     });
     this.addCass(this.router.url);
-
   }
 
   navigate(item) {

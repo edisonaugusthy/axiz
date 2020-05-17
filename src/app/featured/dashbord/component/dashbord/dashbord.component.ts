@@ -21,6 +21,15 @@ export class DashbordComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.activate();
+    this.dashBordService.userSwichStatus.subscribe(val => {
+      if (val) {
+        this.activate();
+      }
+    })
+  }
+  activate() {
+    this.dashboardData = null;
     if (this.StorageService.getData('user_type') === UserType.SuperAdmin) {
       this.getAdminDashBord();
       this.isSuperAdmin = true;
@@ -28,9 +37,7 @@ export class DashbordComponent implements OnInit {
       this.isSuperAdmin = false;
       this.getUserDahbord();
     }
-
   }
-
   getUserDahbord() {
     this.loaderSvc.showLoader();
     this.dashBordService.getUserDashboard(null).subscribe(val => {
