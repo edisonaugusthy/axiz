@@ -1,12 +1,11 @@
 import { AppConstants } from 'src/app/shared/constants/app-constants';
 import { DeleteMessageService } from './../../../../shared/services/delete-message.service';
 import { FormGeneratorService } from './../../../../shared/services/form-generator.service';
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { DashbordService } from '../../services/dashbord.service';
 import { LoaderService } from '../../../../shared/services/loader.service';
 import { AlertService } from '../../../../shared/services/alert.service';
-import { map, filter, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { Observable, Subject, fromEvent } from 'rxjs';
+;
 @Component({
   selector: 'company-access',
   templateUrl: 'company-access.component.html',
@@ -29,7 +28,6 @@ export class CompanyAccessComponent implements OnInit, AfterViewInit {
   detailsData: any;
   public pagination: any;
   isSearching: boolean;
-  @ViewChild('SearchInput', { static: false }) SearchInput: ElementRef;
   scrollbarOptions = AppConstants.SCROLL_BAR_OPTIONS;
   constructor(
     private dashboardSvc: DashbordService,
@@ -146,18 +144,12 @@ export class CompanyAccessComponent implements OnInit, AfterViewInit {
     this.showEdit = false;
   }
   searchUser() {
-    fromEvent(this.SearchInput.nativeElement, 'keyup').pipe(
-      // get value
-      map((event: any) => {
-        return event.target.value;
-      }),
-      debounceTime(AppConstants.SEARCH_TIMEOUT),
-      distinctUntilChanged()
-    ).subscribe((text: string) => {
-      this.isSearching = true;
-      this.pagination.currentPage = 1;
-      this.getAllCompany(text);
-    });
+    this.dashboardSvc.searchStr.subscribe(val => {
+      if (val != null || val != undefined) {
+        this.pagination.currentPage = 1;
+        this.getAllCompany(val);
+      }
+    })
   }
   // for listing details
   getAllCompany(searchStr = '') {

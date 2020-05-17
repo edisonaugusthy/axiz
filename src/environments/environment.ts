@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   baseUrl: 'http://iroidtechnologies.in/axis_laravel/api/',
-  imageBase: 'http://realartdubai.com'
+  imageBase: 'http://axiz.rancarts.com'
 };
 
 /*

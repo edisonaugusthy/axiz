@@ -140,7 +140,6 @@ export class ChainComponent implements OnInit, AfterViewInit {
         this.pagination.currentPage = 1;
         this.getAllChains(val);
       }
-
     })
   }
   getAllChains(searchStr = '') {

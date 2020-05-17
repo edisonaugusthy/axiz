@@ -1,9 +1,8 @@
 <ng-template #deleteModal let-modal>
-  <div class="modal-header">
+  <div class="modal-header main-popup">
+    <span class="material-icons"> list </span>
     <h4 class="modal-title" id="modal-title">{{deleteItem.header}}</h4>
-    <button type="button" class="close" aria-describedby="modal-title" (click)="popupClose()">
-      <span aria-hidden="true">&times;</span>
-    </button>
+    <img class="btn-close" src="../assets/img/close-icon.svg" (click)="popupClose()" />
   </div>
   <div class="modal-body">
     <p><strong>{{deleteItem.message}}</strong></p>
