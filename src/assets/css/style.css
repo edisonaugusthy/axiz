@@ -7974,14 +7974,17 @@ aio-toc.embedded>div.collapsed li.secondary {
     color: #1976d2;
     text-shadow: 0 0 5px #fff;
 }
+.modal-content{
+    border: 0px;
+}
 
 
 
 
 
-
-
-
+/* ngb-datepicker.dropdown-menu.show{
+    width:100%;
+} */
 
 
 

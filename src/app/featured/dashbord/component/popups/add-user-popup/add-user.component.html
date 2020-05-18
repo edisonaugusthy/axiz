@@ -1,6 +1,6 @@
 <ng-template #addUserModal let-modal>
     <form (ngSubmit)="onSubmit()" [formGroup]="addUserForm">
-        <div class="main-popup currency-popup">
+        <div class="currency-popup">
             <!-- <div class="modal-dialog"> -->
             <div class="modal-content edit-user modal-content-area modal-lg">
                 <div class="add-user-popup">
@@ -9,7 +9,8 @@
                         <span class="material-icons"> list </span>
                         <h4 class="modal-title" *ngIf="isEdit">Edit User</h4>
                         <h4 class="modal-title" *ngIf="!isEdit">Add User</h4>
-                        <img class="btn-close" (click)="popupClose()" src="../assets/img/close-icon.svg">
+                        <span class="material-icons btn-close curser-point" (click)="popupClose()"> highlight_off
+                        </span>
                     </div>
 
                     <!-- Modal body -->

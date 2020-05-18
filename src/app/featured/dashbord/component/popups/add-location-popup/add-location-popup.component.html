@@ -1,6 +1,6 @@
 <ng-template #addUserModal let-modal>
     <form (ngSubmit)="onSubmit()" [formGroup]="addUserForm">
-        <div class=" main-popup location-popup">
+        <div class="location-popup">
             <div class="modal-content modal-content-area modal-lg">
 
                 <!-- Modal Header -->
@@ -10,7 +10,8 @@
                     </span>
                     <h4 class="modal-title" *ngIf="!isEdit">ADD LOCATION</h4>
                     <h4 class="modal-title" *ngIf="isEdit">EDIT LOCATION</h4>
-                    <img class="btn-close" (click)="popupClose()" src="../assets/img/close-icon.svg">
+                    <span class="material-icons btn-close curser-point" (click)="popupClose()"> highlight_off
+                    </span>
                 </div>
 
                 <!-- Modal body -->
@@ -188,16 +189,11 @@
                                         Start Date
                                     </div>
                                     <div class="col-sm-7">
-
                                         <div class="input-group">
-                                            <input class="form-control" placeholder="yyyy/mm/dd" name="d2" type="text"
-                                                [ngClass]="{ 'has-error': isSubmitted && formControls.startdate.errors }"
-                                                formControlName="startdate" (click)="d2.toggle()" ngbDatepicker
-                                                #d2="ngbDatepicker">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()"
-                                                    type="button"></button>
-                                            </div>
+                                            <input class="form-control" placeholder="yyyy/mm/dd" type="date"
+                                                [ngClass]="{'has-error': isSubmitted && formControls.startdate.errors }"
+                                                formControlName="startdate">
+
                                         </div>
 
                                     </div>
