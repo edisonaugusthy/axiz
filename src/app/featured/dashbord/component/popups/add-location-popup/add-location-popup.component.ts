@@ -7,7 +7,8 @@ import {
   Input,
   Output,
   EventEmitter,
-  Injectable
+  Injectable,
+  ViewEncapsulation
 } from '@angular/core';
 import { NgbModal, NgbModalRef, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
@@ -54,7 +55,7 @@ export class CustomAdapter extends NgbDateAdapter<string> {
   styleUrls: ['./add-location-popup.component.scss'],
   providers: [
     { provide: NgbDateAdapter, useClass: CustomAdapter }
-  ]
+  ],
 })
 export class AddLocationPopupComponent implements OnInit {
   model: NgbDateStruct;

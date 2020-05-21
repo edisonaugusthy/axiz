@@ -1,12 +1,12 @@
-<div *ngFor="let mainMenu of sideMenuList">
+<div *ngFor="let mainMenu of sideMenuList" class="aio-nav-menu">
   <div *ngIf="!mainMenu.sub_menu">
     <a (click)="navigate(mainMenu)" class="vertical-menu-item expanded level-1 {{mainMenu.class}}">
       <span>{{mainMenu.name}}</span>
     </a>
   </div>
   <div *ngIf="mainMenu.sub_menu">
-    <a class="vertical-menu-item heading level-1 {{mainMenu.class}}" [ngClass]="{'expanded selected':mainMenu.isOpen}"
-      (click)="showMenu(mainMenu)">
+    <a class="vertical-menu-item heading level-1 {{mainMenu.class}}"
+      [ngClass]="{'expanded selected menu-active':mainMenu.isOpen}" (click)="showMenu(mainMenu)">
       <span>{{mainMenu.name}}</span>
       <mat-icon class="rotating-icon">
         <svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

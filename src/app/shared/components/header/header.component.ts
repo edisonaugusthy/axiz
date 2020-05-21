@@ -40,7 +40,6 @@ export class HeaderComponent implements OnInit {
 
     this.router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
-        this.SearchInput.nativeElement.value = '';
         this.dashboardSvc.setSearchString(null);
       }
     });
@@ -53,7 +52,6 @@ export class HeaderComponent implements OnInit {
       this.isSuperAdmin = false;
     }
     this.userDetails = this.StorageService.getData('user_details');
-    this.search();
     if (!id) {
       this.openNav();
     }
@@ -68,18 +66,6 @@ export class HeaderComponent implements OnInit {
 
   }
 
-
-  search() {
-    fromEvent(this.SearchInput.nativeElement, 'keyup').pipe(
-      map((event: any) => {
-        return event.target.value;
-      }),
-      debounceTime(AppConstants.SEARCH_TIMEOUT),
-      distinctUntilChanged()
-    ).subscribe((text: string) => {
-      this.dashboardSvc.setSearchString(text);
-    });
-  }
 
   openNav() {
     this.toggleSideBar.emit(true);

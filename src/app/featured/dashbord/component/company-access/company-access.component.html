@@ -3,6 +3,7 @@
     <div class="flex-wrap">
       <h1>Company Access</h1>
     </div>
+    <app-search-box></app-search-box>
   </section>
   <section class="table-wrap">
     <table class="table table-main-head">
@@ -25,8 +26,7 @@
             <td style="width: 20%;">{{item.CompanyID}}</td>
             <td style="width: 20%;">{{item.CompanyName}}</td>
             <td class="btn-wrap">
-              <span class="material-icons curser-point" (click)="openEdit(item)"> edit </span>
-              <span class="material-icons curser-point" (click)="openDelete(item)"> delete </span>
+              <app-buttons [data]='item' (onRemove)="openDelete($event)" (onEdit)="openEdit($event)"></app-buttons>
             </td>
           </tr>
         </tbody>
