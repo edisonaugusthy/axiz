@@ -3490,8 +3490,8 @@ body {
     font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
     margin: 0;
     color: #444;
-    /* font-size: 14px; */
-    /* font-size: 1.4rem; */
+    /* font-size: 14px;
+    font-size: 1.4rem; */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -3624,34 +3624,34 @@ strong {
     font-weight: 500
 }
 
-table {
+.content-wrap table {
     border-collapse: collapse;
     border-spacing: 0;
     /* margin: 12px 0 32px */
 }
 
-table tbody th {
+.content-wrap table tbody th {
     max-width: 100px;
     padding: 13px 32px;
     text-align: left
 }
 
-td {
+.content-wrap td {
     font-weight: 400;
     padding: 8px 30px;
     letter-spacing: .3px;
     letter-spacing: .03rem
 }
 
-td>p:first-child,td ul:first-child {
+.content-wrap td>p:first-child,td ul:first-child {
     margin-top: 0
 }
 
-td>p:last-child,td ul:last-child {
+.content-wrap .content-wrap td>p:last-child,td ul:last-child {
     margin-bottom: 0
 }
 
-th {
+.content-wrap th {
     font-size: 16px;
     font-size: 1.6rem;
     font-weight: 500;
@@ -7423,33 +7423,33 @@ aio-resource-list .resource-row-link:hover {
     z-index: 5
 }
 
-table {
+.content-wrap table {
     /* margin: 24px 0; */
     box-shadow: 0 2px 2px rgba(10,16,20,.24),0 0 2px rgba(10,16,20,.12);
     border-radius: 2px;
     background: #fff
 }
 
-table.is-full-width {
+.content-wrap table.is-full-width {
     width: 100%
 }
 
-table.is-fixed-layout {
+.content-wrap table.is-fixed-layout {
     table-layout: fixed
 }
 
-table thead> {
+.content-wrap table thead> {
     vertical-align: middle;
     border-color: inherit
 }
 
-table thead>tr {
+.content-wrap table thead>tr {
     vertical-align: inherit;
     border-color: inherit;
     background: #1976d2;
 }
 
-table thead>tr>th {
+.content-wrap table thead>tr>th {
     background: hsla(0,0%,85.9%,.2);
     border-bottom: 1px solid #dbdbdb;
     color: #fff;
@@ -7463,7 +7463,7 @@ table thead>tr>th {
     line-height: 2.8rem
 }
 
-table tbody>tr>td,table tbody>tr>th {
+.content-wrap table tbody>tr>td,.content-wrap table tbody>tr>th {
     border-bottom: 1px solid #dbdbdb;
     /* padding: 16px; */
     text-align: left;
@@ -7473,35 +7473,35 @@ table tbody>tr>td,table tbody>tr>th {
 }
 
 @media (max-width: 480px) {
-    table tbody>tr>td:before,table tbody>tr>th:before {
+    .content-wrap table tbody>tr>td:before,table tbody>tr>th:before {
         display:inline-block
     }
 }
 
-table tbody>tr>td {
+.content-wrap table tbody>tr>td {
     letter-spacing: .3px;
     letter-spacing: .03rem
 }
 
 @media (max-width: 480px) {
-    table tbody>tr>td tr td:first-child {
+    .content-wrap table tbody>tr>td tr td:first-child {
         background-color:#dbdbdb
     }
 }
 
-table tbody>tr>th {
+.content-wrap table tbody>tr>th {
     background: hsla(0,0%,85.9%,.2);
     border-right: 1px solid #dbdbdb;
     font-weight: 600;
     max-width: 100px
 }
 
-table tbody>tr:last-child td {
+.content-wrap table tbody>tr:last-child td {
     border: none
 }
 
 @media (max-width: 480px) {
-    table tbody>tr:last-child td {
+    .content-wrap table tbody>tr:last-child td {
         border-bottom:1px solid #dbdbdb
     }
 }
@@ -7760,11 +7760,11 @@ aio-toc.embedded>div.collapsed li.secondary {
         page-break-after: avoid
     }
 
-    .alert,.callout,.feature,code-example,img,ol,table,tr,ul {
+    .alert,.callout,.feature,code-example,img,ol,.content-wrap table,tr,ul {
         page-break-inside: avoid
     }
 
-    table tbody tr:last-child td {
+    .content-wrap table tbody tr:last-child td {
         border-bottom: 1px solid #dbdbdb!important
     }
 
@@ -7854,9 +7854,7 @@ aio-toc.embedded>div.collapsed li.secondary {
     outline: 2px auto #1e88e5 !important;
 }
 
-.md-datepicker-calendar-pane{
-    z-index: 1200
-}
+
 
 
 
