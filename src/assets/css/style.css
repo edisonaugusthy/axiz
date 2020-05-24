@@ -31,7 +31,9 @@ time, mark, audio, video {
     background:transparent;
     /* color: #444; */
 }
-
+/* html {
+    font-size: 62.5%;
+} */
 body {
     line-height:1;
 }
@@ -41,6 +43,61 @@ footer,header,hgroup,menu,nav,section {
     display:block;
 }
 
+/*  */
+/* 
+h2 {
+    font-size: 22px;
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin: 32px 0 24px;
+    clear: both
+}
+
+h3 {
+    font-size: 20px;
+    font-size: 2rem;
+    margin: 24px 0 12px
+}
+
+h3,h4 {
+    font-weight: 400;
+    clear: both
+}
+
+h4 {
+    font-size: 18px;
+    font-size: 1.8rem;
+    margin: 8px 0
+}
+
+h5,h6 {
+    font-size: 16px;
+    font-size: 1.6rem;
+    font-weight: 500;
+ margin: 2px 3px 2px;
+    clear: both
+}
+
+h6 {
+    color: #6e6e6e
+}
+
+h2 a,h3 a,h4 a,h5 a,h6 a {
+    font-size: inherit
+} */
+
+
+a, th, td{
+    font-size: 13px !important;
+    line-height: 20px !important;
+}
+th, td{
+    vertical-align: center;
+}
+.modal-title {
+    font-size: 14px !important;
+}
+/*  */
 nav ul {
     list-style:none;
 }
@@ -3520,9 +3577,7 @@ mat-footer-row,mat-header-row,mat-row,td.mat-cell,td.mat-footer-cell,th.mat-head
     color: #d32f2f
 }
 
-html {
-    font-size: 62.5%;
-}
+
 
 body {
     font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
@@ -3550,47 +3605,6 @@ h1 {
     h1 {
         margin-top:0
     }
-}
-
-h2 {
-    font-size: 22px;
-    font-size: 2.2rem;
-    font-weight: 500;
-    margin: 32px 0 24px;
-    clear: both
-}
-
-h3 {
-    font-size: 20px;
-    font-size: 2rem;
-    margin: 24px 0 12px
-}
-
-h3,h4 {
-    font-weight: 400;
-    clear: both
-}
-
-h4 {
-    font-size: 18px;
-    font-size: 1.8rem;
-    margin: 8px 0
-}
-
-h5,h6 {
-    font-size: 16px;
-    font-size: 1.6rem;
-    font-weight: 500;
- margin: 2px 3px 2px;
-    clear: both
-}
-
-h6 {
-    color: #6e6e6e
-}
-
-h2 a,h3 a,h4 a,h5 a,h6 a {
-    font-size: inherit
 }
 
 @media screen and (max-width: 600px) {
@@ -7507,7 +7521,7 @@ aio-resource-list .resource-row-link:hover {
     text-align: left;
     line-height: 24px;
     line-height: 2.4rem;
-    vertical-align: top
+    /* vertical-align: top */
 }
 
 @media (max-width: 480px) {
