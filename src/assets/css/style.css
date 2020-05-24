@@ -140,6 +140,44 @@ body{
 .btn.btn-default{
     background: #c3c3c3 !important;
 }
+.user-icon{
+    position: relative;
+}
+.user-icon:hover .drop-menu-wrap{
+    visibility: visible;
+}
+.drop-menu-wrap{
+    visibility: hidden;
+    padding: 20px;
+    width: 200px;
+    position: absolute;
+    right: 0;
+    border-radius: 4px;
+    top: 0;
+    z-index: 9999;
+}
+.drop-menu {
+    background: #fff;
+    width: 200px;
+    position: absolute;
+    right: 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    top: 28px;
+}
+.drop-menu a{
+    color: #000 !important;
+    padding: 8px 8px !important;
+    margin: 0 !important;
+    font-size: 13px !important;
+    border-bottom: 1px solid #d0e3f6;
+}
+a.dropdown-item:active, a.dropdown-item:hover{
+    background: #1976d2;
+    border: 0 !important;
+    outline: none !important;
+    color: #fff !important;
+}
 header{
     background: #343a40;
     padding: 0 15px;
@@ -651,7 +689,7 @@ table.table.table-main-head {
 }
 .table tbody tr:hover td, .table tbody tr:hover th {
     background-color: #eeeeea;
-    border: 1px solid rgb(157, 138, 207);
+    border: 2px solid #03a9f438 !important;
 }
 
 .table th{
