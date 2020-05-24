@@ -53,8 +53,15 @@
       <a *ngIf="!isSuperAdmin" class="user-name">Hello, {{userDetails?.user_name}}</a>
       <a *ngIf="isSuperAdmin" class="user-name">Super Admin</a>
       <a>
-        <mat-icon role="img" class="mat-icon notranslate mat-icon-no-color" aria-hidden="true">
+        <mat-icon role="img" class="mat-icon notranslate mat-icon-no-color user-icon" aria-hidden="true">
           <img src="../assets/img/user-img.png" alt="">
+          <div class="drop-menu-wrap">
+            <div class="drop-menu">
+              <a class="dropdown-item" href="#">Link 1</a>
+              <a class="dropdown-item" href="#">Link 2</a>
+              <a class="dropdown-item" href="#">Link 3</a>
+            </div>
+          </div>
         </mat-icon>
       </a>
       <a>
