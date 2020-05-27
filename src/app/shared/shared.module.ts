@@ -17,8 +17,18 @@ import { NumberDirective } from './directives/number.directive';
 import { EditDeleteButtonsComponent } from './components/edit-delete-buttons/edit-delete-buttons.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbModule, MaterialModuleModule, NgSelectModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule,
+    MaterialModuleModule,
+    NgSelectModule,
+    ToastrModule.forRoot(),
+
+  ],
   declarations: [
     LoaderComponent,
     HeaderComponent,
