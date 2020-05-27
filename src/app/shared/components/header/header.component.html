@@ -31,6 +31,17 @@
       <a *ngIf="!isSuperAdmin" class="user-name">Hello, {{userDetails?.user_name}}</a>
       <a *ngIf="isSuperAdmin" class="user-name">Super Admin</a>
       <a>
+        <mat-icon role="img" class="mat-icon notranslate mat-icon-no-color" aria-hidden="true">
+          <img src="../assets/img/user-img.png" alt="">
+        </mat-icon>
+      </a>
+      <a>
+        <mat-icon (click)="logout()" role="img" class="mat-icon notranslate mat-icon-no-color curser-point"
+          aria-hidden="true">
+          <span class="material-icons"> exit_to_app </span>
+        </mat-icon>
+      </a>
+      <!-- <a>
         <div ngbDropdown class="d-inline-block">
           <button class="user-img" ngbDropdownToggle></button>
           <div ngbDropdownMenu>
@@ -40,7 +51,7 @@
             </div>
           </div>
         </div>
-      </a>
+      </a> -->
 
     </div>
     <!--  -->

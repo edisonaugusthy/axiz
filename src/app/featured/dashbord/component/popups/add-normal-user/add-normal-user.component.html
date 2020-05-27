@@ -1,0 +1,117 @@
+<!-- edit popup -->
+<ng-template #addUserModal let-modal>
+  <form (ngSubmit)="onSubmit()" [formGroup]="addUserForm">
+    <div class="currency-popup">
+      <!-- <div class="modal-dialog"> -->
+      <div class="modal-content modal-content-area modal-lg">
+        <div class="add-chain-popup">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <span class="material-icons"> list </span>
+            <h6 class="modal-title" *ngIf="!isEdit">ADD USER</h6>
+            <h6 class="modal-title" *ngIf="isEdit">EDIT USER</h6>
+            <!--  -->
+            <span class="material-icons btn-close curser-point" (click)="popupClose()"> highlight_off
+            </span>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="form-group-wrap row">
+              <div class="col col-sm-5 label astrick">
+                User ID
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="text" maxlength="6" class="form-control" formControlName="userid"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.userid.errors }">
+                </div>
+              </div>
+            </div>
+            <div class="form-group-wrap row">
+              <div class="col col-sm-5 label astrick">
+                User Name
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="username"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.username.errors }">
+                </div>
+              </div>
+              <div class="col col-sm-3">
+              </div>
+            </div>
+            <div class="form-group-wrap row">
+              <div class="col col-sm-5 label astrick">
+                Mobile
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="text" numbersOnly maxlength="10" mclass="form-control" formControlName="mobile"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.mobile.errors }">
+                </div>
+              </div>
+            </div>
+            <div class="form-group-wrap row">
+              <div class="col col-sm-5 label astrick">
+                Email
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="email"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group-wrap row">
+              <div class="col col-sm-5 label astrick">
+                UDID
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="text" numbersOnly maxlength="6" class="form-control" formControlName="udid"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.udid.errors }">
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group-wrap row">
+              <div class="col col-sm-5 label astrick">
+                Login Pin
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="text" numbersOnly maxlength="6" class="form-control" formControlName="loginpin"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.loginpin.errors }">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="form-group-wrap chain-logo row">
+              <div class="col col-sm-5 label flex-top astrick">
+                Profile image
+              </div>
+              <div class="col col-sm-5 file-upload-wrap">
+                <label class="btn-upload">
+                  <input type="file" name="fileupload" (change)="fileProgress($event)" accept="image/*">
+                  <img class="btn" [src]="imgUrl">
+                </label>
+                <p class="file-name" *ngIf="imageName">{{imageName}}</p>
+              </div>
+              <div class="col col-sm-3">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" mat-flat-button class="btn btn-default" data-dismiss="modal"
+            (click)="popupClose()">Close</button>
+          <button type="button" mat-flat-button color="primary" class="btn" data-dismiss="modal"
+            (click)="onSubmit()">Save</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-template>

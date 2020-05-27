@@ -46,20 +46,20 @@
   </section>
 </section>
 
-<!-- edit user -->
-<app-edit-popup *ngIf="showEdit" [fields]="editFormData" (formCancel)="cancelEdit($event)"
-  (formSubmitted)="submitEdit($event)">
-</app-edit-popup>
 
 <!-- delete popup -->
 <app-delete-popup *ngIf="showDelete" [details]="deleteData" (deleteCancel)="cancelDelete($event)"
   (deleteSubmitted)="submitDelete($event)">
 </app-delete-popup>
 
-<!-- add popup -->
-<app-add-popup *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
-  (formSubmitted)="submitAdd($event)"></app-add-popup>
+
 
 <app-details-popup *ngIf="showDetails" [fields]="detailsData" (formCancel)="cancelView($event)"
   (formSubmitted)="cancelView($event)">
 </app-details-popup>
+
+<app-add-normal-user *ngIf="showEdit" [fields]="editFormData" (formCancel)="cancelEdit($event)"
+  (formSubmitted)="submitEdit($event)"></app-add-normal-user>
+
+<app-add-normal-user *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
+  (formSubmitted)="submitAdd($event)"></app-add-normal-user>

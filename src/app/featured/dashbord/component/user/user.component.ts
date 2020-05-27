@@ -57,8 +57,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   }
 
   openEdit(item?) {
-    this.editFormData = this.formGeneratorService.editUser(item);
-    this.editFormData.id = item.id;
+    this.editFormData = item;
     this.showEdit = true;
   }
 

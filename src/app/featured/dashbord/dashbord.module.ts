@@ -32,6 +32,7 @@ import { CostCenterAccessDetailsComponent } from './component/details-popups/cos
 import { DatePipe } from '@angular/common';
 import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { AddNormalUserComponent } from './component/popups/add-normal-user/add-normal-user.component';
 
 
 
@@ -71,7 +72,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     CompanyDetailsComponent,
     CostCenterAccessDetailsComponent,
     LocationDetailsComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    AddNormalUserComponent
   ],
   providers: [
     DatePipe,
