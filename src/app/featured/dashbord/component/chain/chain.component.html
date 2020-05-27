@@ -10,10 +10,10 @@
     <table class="table table-main-head">
       <thead>
         <tr>
-          <th style="width: 20%;" class="curser-point" (click)="sort('id')"> Id </th>
-          <th style="width: 20%;" class="curser-point" (click)="sort('ChainId')"> Chain Code </th>
+          <th style="width: 30%;" class="curser-point" (click)="sort('id')"> Id </th>
+          <th style="width: 30%;" class="curser-point" (click)="sort('ChainId')"> Chain Code </th>
           <th style="width: 30%;" class="curser-point" (click)="sort('ChainName')"> Chain Name </th>
-          <th style="width: 30%;">Operation</th>
+          <th style="width: 10%;">Operation</th>
         </tr>
       </thead>
     </table>
@@ -21,10 +21,10 @@
       <table class="table table-striped table-main-body" *ngIf="addedChains&&addedChains.length>0">
         <tbody>
           <tr *ngFor="let item of addedChains | orderBy: {property: column, direction: direction}">
-            <td style="width: 20%;" class="curser-point" (click)="openView(item)">{{item.id}}</td>
-            <td style="width: 20%;" class="curser-point" (click)="openView(item)">{{item.ChainId}}</td>
+            <td style="width: 30%;" class="curser-point" (click)="openView(item)">{{item.id}}</td>
+            <td style="width: 30%;" class="curser-point" (click)="openView(item)">{{item.ChainId}}</td>
             <td style="width: 30%;">{{item.ChainName}}</td>
-            <td style="width: 30%;">
+            <td style="width: 10%;">
               <app-buttons [data]='item' (onRemove)="openDelete($event)" (onEdit)="openEdit($event)"></app-buttons>
             </td>
           </tr>

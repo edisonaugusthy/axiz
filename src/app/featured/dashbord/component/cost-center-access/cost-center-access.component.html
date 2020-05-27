@@ -13,7 +13,7 @@
           <th class="curser-point" (click)="sort('userid')" style="width: 20%;"> Id </th>
           <th class="curser-point" (click)="sort('username')" style="width: 30%;"> Name </th>
           <th class="curser-point" (click)="sort('fullaccess')" style="width: 30%;"> Access Type </th>
-          <th style="width: 20%;">Operation</th>
+          <th style="width: 10%;">Operation</th>
         </tr>
       </thead>
     </table>
@@ -25,7 +25,7 @@
             <td class="curser-point" (click)="openView(item)" style="width: 30%;">{{item.username}}</td>
             <td class="curser-point" (click)="openView(item)" style="width: 30%;">
               {{item.fullaccess ==0 ?'Custom Access':'Full Access'}}</td>
-            <td style="width: 20%;">
+            <td style="width: 10%;">
               <app-buttons [data]='item' (onRemove)="openDelete($event)" (onEdit)="openEdit($event)"></app-buttons>
             </td>
           </tr>

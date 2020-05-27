@@ -13,7 +13,7 @@
           <th class="curser-point" (click)="sort('user_name')" style="width: 20%;"> Users </th>
           <th class="curser-point" (click)="sort('CompanyID')" style="width: 20%;"> Company Id </th>
           <th class="curser-point" (click)="sort('CompanyName')" style="width: 20%;"> Company Name </th>
-          <th style="width: 20%;">Operation</th>
+          <th style="width: 10%;">Operation</th>
         </tr>
       </thead>
     </table>
@@ -25,7 +25,7 @@
             <td class="curser-point" (click)="openView(item)" style="width: 20%;">{{item.user_name}}</td>
             <td style="width: 20%;">{{item.CompanyID}}</td>
             <td style="width: 20%;">{{item.CompanyName}}</td>
-            <td class="btn-wrap">
+            <td style="width: 10%;">
               <app-buttons [data]='item' (onRemove)="openDelete($event)" (onEdit)="openEdit($event)"></app-buttons>
             </td>
           </tr>
