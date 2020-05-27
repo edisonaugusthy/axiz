@@ -7,7 +7,8 @@ import {
   ElementRef,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  ViewEncapsulation
 } from '@angular/core';
 import { NgbModal, NgbModalRef, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray, ValidatorFn } from '@angular/forms';
@@ -16,7 +17,8 @@ import { SubSink } from 'subsink';
 @Component({
   selector: 'app-add-cost-center-access',
   templateUrl: './add-cost-center-access.component.html',
-  styleUrls: ['./add-cost-center-access.component.scss']
+  styleUrls: ['./add-cost-center-access.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AddCostCenterAccessComponent implements OnInit {
 

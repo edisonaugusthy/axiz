@@ -142,13 +142,17 @@
                         </div>
                         <div class="col col-sm-6">
                             <div class="form-group">
-                                <select class="form-control" formControlName="currency">
+
+                                <ng-select [items]="currency" bindLabel="CurrencyName" bindValue="CurrencyId"
+                                    appendTo="body" formControlName="currency">
+                                </ng-select>
+
+                                <!-- <select class="form-control" formControlName="currency">
                                     <option *ngFor="let item of currency"
                                         [selected]="item.CurrencyId == this.fields?.CurrencyId"
                                         [value]="item.CurrencyId">
                                         {{item.CurrencyName}}</option>
-
-                                </select>
+                                </select> -->
                                 <!-- <input type="text" class="form-control" formControlName="currency"
                                     [ngClass]="{ 'has-error': isSubmitted && formControls.currency.errors }"> -->
                             </div>

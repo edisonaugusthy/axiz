@@ -6,7 +6,8 @@ import {
   ElementRef,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  ViewEncapsulation
 } from '@angular/core';
 import { NgbModal, NgbModalRef, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
@@ -14,7 +15,8 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
   selector: 'app-add-popup',
   templateUrl: './add-popup.component.html',
   styleUrls: ['./add-popup.component.css'],
-  providers: [NgbModalConfig, NgbModal]
+  providers: [NgbModalConfig, NgbModal],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AddPopupComponent implements OnInit {
   private modalRef: NgbModalRef;

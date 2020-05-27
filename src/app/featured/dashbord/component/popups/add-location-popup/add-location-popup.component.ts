@@ -53,6 +53,7 @@ export class CustomAdapter extends NgbDateAdapter<string> {
   selector: 'app-add-location-popup',
   templateUrl: './add-location-popup.component.html',
   styleUrls: ['./add-location-popup.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   providers: [
     { provide: NgbDateAdapter, useClass: CustomAdapter }
   ],
@@ -72,6 +73,8 @@ export class AddLocationPopupComponent implements OnInit {
   isSubmitted: boolean;
   isEdit: boolean;
   selectedCompany: any;
+  status = [{ id: 1, name: 'Yes' }, { id: 0, name: 'no' }]
+
   constructor(
     config: NgbModalConfig,
     private modalService: NgbModal,

@@ -6,7 +6,8 @@ import {
   ElementRef,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  ViewEncapsulation
 } from '@angular/core';
 import { NgbModal, NgbModalRef, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
@@ -14,7 +15,8 @@ import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms'
 @Component({
   selector: 'app-add-company-popup',
   templateUrl: './add-company-popup.component.html',
-  styleUrls: ['./add-company-popup.component.scss']
+  styleUrls: ['./add-company-popup.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AddCompanyPopupComponent implements OnInit {
 

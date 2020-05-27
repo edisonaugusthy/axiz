@@ -17,13 +17,16 @@
                         </div>
                         <div class="col col-sm-5">
                             <div class="form-group" *ngIf="!isEdit">
-                                <select class="form-control" formControlName="userid" [ngClass]="{
+                                <!-- <select class="form-control" formControlName="userid" [ngClass]="{
                                               'has-error': isSubmitted && formControls.userid.errors
                                             }">
                                     <option *ngFor="let opt of users" [value]="opt.user_id">
                                         {{opt.user_name}}
                                     </option>
-                                </select>
+                                </select> -->
+                                <ng-select [items]="users" bindLabel="user_name" bindValue="user_id" appendTo="body"
+                                    formControlName="userid">
+                                </ng-select>
                             </div>
                             <div class="form-group" *ngIf="isEdit">
                                 <div class="form-group">

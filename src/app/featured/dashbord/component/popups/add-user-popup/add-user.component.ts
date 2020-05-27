@@ -6,7 +6,8 @@ import {
   ElementRef,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  ViewEncapsulation
 } from '@angular/core';
 import { NgbModal, NgbModalRef, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
@@ -17,7 +18,8 @@ import { MustMatch } from '../../../utilities/must-match';
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.scss'],
-  providers: [NgbModalConfig, NgbModal]
+  encapsulation: ViewEncapsulation.None,
+  providers: [NgbModalConfig, NgbModal],
 })
 export class AddUserComponent implements OnInit {
 

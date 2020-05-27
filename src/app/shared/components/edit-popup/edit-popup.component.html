@@ -25,14 +25,19 @@
                           'has-error': isSubmitted && formControls[item.key].errors
                         }" />
 
-          <select class="form-control" [id]="item.key" *ngSwitchCase="'dropdown'" [formControlName]="item.key"
+          <!-- <select class="form-control" [id]="item.key" *ngSwitchCase="'dropdown'" [formControlName]="item.key"
             [ngClass]="{
               'has-error': isSubmitted && formControls[item.key].errors
             }">
             <option *ngFor="let opt of item.options" [value]="opt[item.returnKey]">{{
               opt[item.displayKey]
             }}</option>
-          </select>
+          </select> -->
+          <ng-select *ngSwitchCase="'dropdown'" [items]="item.options" bindLabel="{{item.displayKey}}"
+            bindValue="{{item.returnKey}}" appendTo="body" [ngClass]="{
+                        'has-error': isSubmitted && formControls[item.key].errors
+                      }" [formControlName]="item.key">
+          </ng-select>
         </div>
       </div>
     </div>

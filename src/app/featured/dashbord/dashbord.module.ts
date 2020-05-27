@@ -31,7 +31,7 @@ import { AddCurrencyPopupComponent } from './component/popups/add-currency-popup
 import { CostCenterAccessDetailsComponent } from './component/details-popups/cost-center-access/cost-center-access.component';
 import { DatePipe } from '@angular/common';
 import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
-
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -45,6 +45,7 @@ import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
     DashboardRoutingModule,
     MaterialModuleModule,
     MalihuScrollbarModule.forRoot(),
+    NgSelectModule
   ],
   declarations: [
     HomeComponent,

@@ -82,10 +82,13 @@
                             </div>
                             <div class="col col-sm-5">
                                 <div class="form-group">
-                                    <select formControlName="status" class="form-control">
+                                    <!-- <select formControlName="status" class="form-control">
                                         <option *ngFor="let item of statusList" [value]="item.val">{{item.name}}
                                         </option>
-                                    </select>
+                                    </select> -->
+                                    <ng-select [items]="statusList" bindLabel="name" bindValue="val" appendTo="body"
+                                        formControlName="status">
+                                    </ng-select>
                                 </div>
                             </div>
                         </div>

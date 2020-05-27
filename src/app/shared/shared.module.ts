@@ -16,9 +16,9 @@ import { NoDataComponent } from './components/no-data/no-data.component';
 import { NumberDirective } from './directives/number.directive';
 import { EditDeleteButtonsComponent } from './components/edit-delete-buttons/edit-delete-buttons.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
-
+import { NgSelectModule } from '@ng-select/ng-select';
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbModule, MaterialModuleModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbModule, MaterialModuleModule, NgSelectModule],
   declarations: [
     LoaderComponent,
     HeaderComponent,

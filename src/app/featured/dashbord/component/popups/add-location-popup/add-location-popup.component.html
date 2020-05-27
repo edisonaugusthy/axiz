@@ -23,10 +23,15 @@
                                     Chain ID
                                 </div>
                                 <div class="col col-sm-7">
+                                    <ng-select [items]="chains" bindLabel="chainname"
+                                        [ngClass]="{ 'has-error': isSubmitted && formControls.chainid.errors}"
+                                        bindValue="chainid" appendTo="body" formControlName="chainid">
+                                    </ng-select>
+                                    <!--
                                     <select class="form-control" formControlName="chainid">
                                         <option *ngFor="let opt of chains " [value]="opt.chainid">{{opt.chainname}}
                                         </option>
-                                    </select>
+                                    </select> -->
 
                                 </div>
                             </div>
@@ -176,11 +181,17 @@
                                 <div class="col-sm-7">
                                     <div class="form-group">
 
-                                        <select class="form-control" formControlName="inventory"
+                                        <ng-select
+                                            [ngClass]="{ 'has-error': isSubmitted && formControls.inventory.errors }"
+                                            [items]="status" bindLabel="name" bindValue="id" appendTo="body"
+                                            formControlName="inventory">
+                                        </ng-select>
+
+                                        <!-- <select class="form-control" formControlName="inventory"
                                             [ngClass]="{ 'has-error': isSubmitted && formControls.inventory.errors }">
                                             <option [value]="1">Yes</option>
                                             <option [value]="0">No</option>
-                                        </select>
+                                        </select> -->
                                     </div>
                                 </div>
                             </div>

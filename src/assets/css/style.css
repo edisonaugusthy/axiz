@@ -172,12 +172,7 @@ body{
     font-size: 13px !important;
     border-bottom: 1px solid #d0e3f6;
 }
-a.dropdown-item:active, a.dropdown-item:hover{
-    background: #1976d2;
-    border: 0 !important;
-    outline: none !important;
-    color: #fff !important;
-}
+
 header{
     background: #343a40;
     padding: 0 15px;
@@ -836,7 +831,7 @@ td.dropdown-select .multi-select{
 .login-wrapper .form-textbox,
 .login-wrapper .form-submit {
     width: 100%;
-    padding: 16px;
+    padding: 8px;
     border-radius: 4px;
     box-shadow: none !important;
     outline: 0;
@@ -3534,7 +3529,6 @@ h1,h2,h3,h4,h5,h6 {
 
 h1 {
     font-size: 24px;
-    font-size: 2.4rem;
     font-weight: 500;
     display: inline-block;
     margin: 8px 0
@@ -3548,7 +3542,6 @@ h1 {
 
 h2 {
     font-size: 22px;
-    font-size: 2.2rem;
     font-weight: 500;
     margin: 32px 0 24px;
     clear: both
@@ -3556,7 +3549,6 @@ h2 {
 
 h3 {
     font-size: 20px;
-    font-size: 2rem;
     margin: 24px 0 12px
 }
 
@@ -3567,13 +3559,11 @@ h3,h4 {
 
 h4 {
     font-size: 18px;
-    font-size: 1.8rem;
     margin: 8px 0
 }
 
 h5,h6 {
     font-size: 16px;
-    font-size: 1.6rem;
     font-weight: 500;
  margin: 2px 3px 2px;
     clear: both
@@ -3607,7 +3597,7 @@ a,input,li,ol,p,ul {
 
 a,a>em,input,input>em,li,li>em,ol,ol>em,p,p>em,ul,ul>em {
     letter-spacing: .3px;
-    letter-spacing: .03rem
+
 }
 
 p {
@@ -4516,12 +4506,6 @@ mat-sidenav-container div.mat-sidenav-content {
 .vertical-menu-item.selected {
     color: #1976d2 !important;
 }
-
-.vertical-menu-item.level-2 {
-    padding-top: 4px;
-    padding-bottom: 4px
-}
-
 
 .vertical-menu-item .mat-icon {
     height: 24px;
@@ -7460,8 +7444,8 @@ aio-resource-list .resource-row-link:hover {
     background: hsla(0,0%,85.9%,.2);
     border-bottom: 1px solid #dbdbdb;
     color: #fff;
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 600;
     text-align: left;
     line-height: 28px;
 
@@ -7846,10 +7830,11 @@ aio-toc.embedded>div.collapsed li.secondary {
 .modal-content{
     border: 0px;
 }
-.menu-active {
-    outline: 2px auto #1e88e5 !important;
-}
 
+ng-select a, ng-select input, ng-select li, ng-select ol, ng-select p, ng-select ul {
+    font-size: 14px;
+    line-height: 24px;
+}
 
 
 
