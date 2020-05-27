@@ -736,7 +736,7 @@ td.dropdown-select .multi-select{
     display: block;
 } */
 .multi-select {
-    width: 70%;
+    width: 100%;
     background: #fff;
     position: absolute;
     top: 44px;
@@ -748,6 +748,7 @@ td.dropdown-select .multi-select{
     list-style-type: none;
     padding: 10px 15px;
     border-bottom: 1px solid #ddd;
+    line-height: 20px;
 }
 /* multiselect end*/
 

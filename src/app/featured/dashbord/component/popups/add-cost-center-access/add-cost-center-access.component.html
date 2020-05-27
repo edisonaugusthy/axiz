@@ -53,8 +53,9 @@
                         <table class="table table-striped table-bordered">
                             <thead>
                                 <tr>
+                                    <th style="width: 10%"></th>
                                     <th style="width: 20%">Chain ID</th>
-                                    <th style="width: 40%">Description</th>
+                                    <th style="width: 30%">Description</th>
                                     <th style="width: 40%">Select Locations</th>
                                 </tr>
                             </thead>
@@ -67,9 +68,13 @@
                                                 <label>
                                                     <input type="checkbox" [formControl]="group.get('check')">
                                                     <span></span>
-                                                    {{ group.get('chainname').value }}
+
                                                 </label>
                                             </div>
+                                        </td>
+                                        <td>
+                                            {{ group.get('chainname').value }}
+
                                         </td>
                                         <td>{{chainsList[i].chainname}}</td>
                                         <td class="dropdown-select">SELECT LOCATIONS <span
