@@ -8,8 +8,8 @@
           <!-- Modal Header -->
           <div class="modal-header">
             <span class="material-icons"> list </span>
-            <h6 class="modal-title" *ngIf="!isEdit">ADD USER</h6>
-            <h6 class="modal-title" *ngIf="isEdit">EDIT USER</h6>
+
+            <h6 class="modal-title" *ngIf="isEdit">USER</h6>
             <!--  -->
             <span class="material-icons btn-close curser-point" (click)="popupClose()"> highlight_off
             </span>
@@ -17,78 +17,72 @@
           <!-- Modal body -->
           <div class="modal-body">
             <div class="form-group-wrap row">
-              <div class="col col-sm-5 label astrick">
+              <div class="col col-sm-5 label">
                 User ID
               </div>
               <div class="col col-sm-5">
                 <div class="form-group">
-                  <input type="text" maxlength="6" class="form-control" formControlName="userid"
-                    [ngClass]="{ 'has-error': isSubmitted && formControls.userid.errors }">
+                  <input type="text" maxlength="6" class="form-control" formControlName="userid" disabled>
                 </div>
               </div>
             </div>
             <div class="form-group-wrap row">
-              <div class="col col-sm-5 label astrick">
+              <div class="col col-sm-5 label">
                 User Name
               </div>
               <div class="col col-sm-5">
                 <div class="form-group">
-                  <input type="text" class="form-control" formControlName="username"
-                    [ngClass]="{ 'has-error': isSubmitted && formControls.username.errors }">
+                  <input type="text" class="form-control" formControlName="username" disabled>
                 </div>
               </div>
               <div class="col col-sm-3">
               </div>
             </div>
             <div class="form-group-wrap row">
-              <div class="col col-sm-5 label astrick">
+              <div class="col col-sm-5 label ">
                 Mobile
               </div>
               <div class="col col-sm-5">
                 <div class="form-group">
-                  <input type="text" numbersOnly maxlength="10" class="form-control" formControlName="mobile"
-                    [ngClass]="{ 'has-error': isSubmitted && formControls.mobile.errors }">
+                  <input type="text" numbersOnly maxlength="10" class="form-control" formControlName="mobile" disabled>
                 </div>
               </div>
             </div>
             <div class="form-group-wrap row">
-              <div class="col col-sm-5 label astrick">
+              <div class="col col-sm-5 label">
                 Email
               </div>
               <div class="col col-sm-5">
                 <div class="form-group">
-                  <input type="text" class="form-control" formControlName="email"
-                    [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+                  <input type="text" class="form-control" formControlName="email" disabled>
                 </div>
               </div>
 
             </div>
             <div class="form-group-wrap row">
-              <div class="col col-sm-5 label astrick">
+              <div class="col col-sm-5 label ">
                 UDID
               </div>
               <div class="col col-sm-5">
                 <div class="form-group">
-                  <input type="text" numbersOnly maxlength="6" class="form-control" formControlName="udid"
-                    [ngClass]="{ 'has-error': isSubmitted && formControls.udid.errors }">
+                  <input type="text" numbersOnly maxlength="6" class="form-control" formControlName="udid" disabled>
                 </div>
               </div>
 
             </div>
             <div class="form-group-wrap row">
-              <div class="col col-sm-5 label astrick">
+              <div class="col col-sm-5 label ">
                 Login Pin
               </div>
               <div class="col col-sm-5">
                 <div class="form-group">
-                  <input type="text" numbersOnly maxlength="6" class="form-control" formControlName="loginpin"
-                    [ngClass]="{ 'has-error': isSubmitted && formControls.loginpin.errors }">
+                  <input type="text" numbersOnly maxlength="6" class="form-control" formControlName="loginpin" disabled>
                 </div>
               </div>
             </div>
 
             <div class="form-group-wrap chain-logo row">
-              <div class="col col-sm-5 label flex-top" [ngClass]="{'astrick':isEdit ===false}">
+              <div class="col col-sm-5 label flex-top ">
                 Profile image
               </div>
               <div class="col col-sm-5 file-upload-wrap">
@@ -96,7 +90,7 @@
                   <input type="file" name="fileupload" (change)="fileProgress($event)" accept="image/*">
                   <img class="btn" [src]="imgUrl">
                 </label>
-                <p class="file-name" *ngIf="imageName">{{imageName}}</p>
+
               </div>
               <div class="col col-sm-3">
               </div>
@@ -107,8 +101,6 @@
         <div class="modal-footer">
           <button type="button" mat-flat-button class="btn btn-default" data-dismiss="modal"
             (click)="popupClose()">Close</button>
-          <button type="button" mat-flat-button color="primary" class="btn" data-dismiss="modal"
-            (click)="onSubmit()">Save</button>
         </div>
       </div>
     </div>

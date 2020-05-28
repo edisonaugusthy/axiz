@@ -63,7 +63,7 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   openView(item) {
     this.showDetails = true;
-    this.detailsData = this.formGeneratorService.UserDetails(item);
+    this.detailsData = item;
   }
   cancelView(item) {
     this.showDetails = false;

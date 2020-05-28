@@ -113,7 +113,7 @@ export class CostCenterAccessComponent implements OnInit, AfterViewInit {
 
   openAdd() {
     this.showAdd = true;
-    this.addFormData = this.formGeneratorService.addCostCenterAccess();
+    // this.addFormData = this.formGeneratorService.addCostCenterAccess();
   }
 
   cancelAdd(val) {

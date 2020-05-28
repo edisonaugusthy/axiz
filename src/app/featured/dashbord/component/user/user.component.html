@@ -53,13 +53,12 @@
 </app-delete-popup>
 
 
-
-<app-details-popup *ngIf="showDetails" [fields]="detailsData" (formCancel)="cancelView($event)"
+<app-normal-user *ngIf="showDetails" [fields]="detailsData" (formCancel)="cancelView($event)"
   (formSubmitted)="cancelView($event)">
-</app-details-popup>
 
+</app-normal-user>
 <app-add-normal-user *ngIf="showEdit" [fields]="editFormData" (formCancel)="cancelEdit($event)"
   (formSubmitted)="submitEdit($event)"></app-add-normal-user>
 
-<app-add-normal-user *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
-  (formSubmitted)="submitAdd($event)"></app-add-normal-user>
+<app-add-normal-user *ngIf="showAdd" [fields]="" (formCancel)="cancelAdd($event)" (formSubmitted)="submitAdd($event)">
+</app-add-normal-user>

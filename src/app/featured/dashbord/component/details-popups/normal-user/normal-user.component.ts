@@ -1,13 +1,13 @@
-import { Component, OnInit, Input, ElementRef, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, Input, EventEmitter, ElementRef } from '@angular/core';
 import { NgbModalRef, NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-add-normal-user',
-  templateUrl: './add-normal-user.component.html',
-  styleUrls: ['./add-normal-user.component.css']
+  selector: 'app-normal-user',
+  templateUrl: './normal-user.component.html',
+  styleUrls: ['./normal-user.component.css']
 })
-export class AddNormalUserComponent implements OnInit {
+export class NormalUserComponent implements OnInit {
 
   private modalRef: NgbModalRef;
   @ViewChild('addUserModal', { static: true }) input: ElementRef;
