@@ -36,7 +36,6 @@ export class AddNormalUserComponent implements OnInit {
       email: [(this.fields?.user_email || ''), [Validators.required, Validators.email]],
       mobile: [(this.fields?.user_phone || ''), Validators.required],
       udid: [(this.fields?.UDID || ''), Validators.required],
-      loginpin: [(this.fields?.LoginPin || ''), Validators.required],
       image: [('')],
       profilepic: [('')],
     });
