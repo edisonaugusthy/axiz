@@ -41,6 +41,7 @@ export class NormalUserComponent implements OnInit {
       profilepic: [('')],
     });
     this.open(this.input);
+    this.imgUrl = this.fields.image || `../assets/img/upload.png`;
   }
 
   open(content) {

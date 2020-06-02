@@ -41,6 +41,7 @@ export class ChainDetailsComponent implements OnInit {
       chainlogo: [('')],
     });
     this.open(this.input);
+    this.imgUrl = this.fields.Image || `../assets/img/upload.png`;
   }
 
   open(content) {

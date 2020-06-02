@@ -7836,7 +7836,11 @@ ng-select a, ng-select input, ng-select li, ng-select ol, ng-select p, ng-select
     font-size: 14px;
     line-height: 24px;
 }
-
+.image-uploaded{
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
 
 
 

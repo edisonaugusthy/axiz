@@ -24,6 +24,7 @@ export class CompanyDetailsComponent implements OnInit {
   isEdit: boolean;
   selectedCompany: any;
   imageName: any;
+  imgUrl = `../assets/img/upload.png`;
   constructor(
     config: NgbModalConfig,
     private modalService: NgbModal,
@@ -60,7 +61,7 @@ export class CompanyDetailsComponent implements OnInit {
       Image: [(this.fields?.Image)],
     });
     this.open(this.input);
-
+    this.imgUrl = this.fields.CompanyLogo || `../assets/img/upload.png`;
   }
 
   open(content) {
