@@ -34,6 +34,7 @@ export class AddCompanyPopupComponent implements OnInit {
   isEdit: boolean;
   selectedCompany: any;
   imageName: any;
+  active = 1;
   constructor(
     config: NgbModalConfig,
     private modalService: NgbModal,
@@ -67,6 +68,10 @@ export class AddCompanyPopupComponent implements OnInit {
       comm: [(this.fields?.CommPath || ''), Validators.required],
       postingtype: [(this.fields?.SopPostingType || ''), Validators.required],
       qtyminor: [(this.fields?.SopQtyMinor || ''), Validators.required],
+      conhostname: [(this.fields?.conhostname || ''), Validators.required],
+      condbname: [(this.fields?.condbname || ''), Validators.required],
+      conusername: [(this.fields?.conusername || ''), Validators.required],
+      conpassword: [(this.fields?.conpassword || ''), Validators.required],
       Image: [(this.fields?.Image) || ''],
     });
     this.open(this.input);
@@ -78,7 +83,7 @@ export class AddCompanyPopupComponent implements OnInit {
     if (this.isEdit) {
       this.addUserForm.patchValue(
         {
-          qtyminor: this.fields.SopQtyMinor,
+          qtyminor: (this.fields?.SopQtyMinor || 0),
           currency: this.fields.CurrencyId,
           postingtype: this.fields.SopPostingType
         }
@@ -93,7 +98,7 @@ export class AddCompanyPopupComponent implements OnInit {
       this.modalRef.close();
       this.isSubmitted = false;
     } else {
-      this.alert.showAlert({ message: 'Please Fill Remaining fields', type: 'error' });
+      this.alert.showAlert({ message: 'Please check all tabs and Fill Remaining fields.. ', type: 'error' });
     }
   }
 

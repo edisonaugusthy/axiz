@@ -15,260 +15,321 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label astrick">
-                            Company ID
-                        </div>
-                        <div class="col col-sm-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" formControlName="companyid" maxlength="5"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.companyid.errors }">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label astrick">
-                            Company Name
-                        </div>
-                        <div class="col col-sm-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" formControlName="companyname"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.companyname.errors }">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label astrick">
-                            Contact
-                        </div>
-                        <div class="col col-sm-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" formControlName="contact"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.contact.errors }">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label">
-                            Address1
-                        </div>
-                        <div class="col col-sm-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" formControlName="address1"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.address1.errors }">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label">
-                            Address2
-                        </div>
-                        <div class="col col-sm-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" formControlName="address2"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.address2.errors }">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label">
-                            City
-                        </div>
-                        <div class="col col-sm-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" formControlName="city"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.city.errors }">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label">
-                            Country
-                        </div>
-                        <div class="col col-sm-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" formControlName="country"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.country.errors }">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label">
-                            Phone
-                        </div>
-                        <div class="col col-sm-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" formControlName="phone"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.phone.errors }">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label">
-                            Fax
-                        </div>
-                        <div class="col col-sm-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" formControlName="fax"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.fax.errors }">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label astrick">
-                            Email
-                        </div>
-                        <div class="col col-sm-6">
-                            <div class="form-group">
-                                <input type="email" class="form-control" formControlName="email"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label">
-                            Website
-                        </div>
-                        <div class="col col-sm-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" formControlName="website"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.website.errors }">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label astrick">
-                            Default Currency
-                        </div>
-                        <div class="col col-sm-6">
-                            <div class="form-group">
-
-                                <ng-select [items]="currency" bindLabel="CurrencyName" bindValue="CurrencyId"
-                                    appendTo="body" formControlName="currency">
-                                </ng-select>
-
-                                <!-- <select class="form-control" formControlName="currency">
-                                    <option *ngFor="let item of currency"
-                                        [selected]="item.CurrencyId == this.fields?.CurrencyId"
-                                        [value]="item.CurrencyId">
-                                        {{item.CurrencyName}}</option>
-                                </select> -->
-                                <!-- <input type="text" class="form-control" formControlName="currency"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.currency.errors }"> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label astrick">
-                            Ret Earning A/C
-                        </div>
-                        <div class="col col-sm-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" formControlName="retainedaccount" maxlength="10"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.retainedaccount.errors }">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label astrick">
-                            Acc Ret Earning
-                        </div>
-                        <div class="col col-sm-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" formControlName="accuretainedaccount"
-                                    maxlength="10"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.accuretainedaccount.errors }">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label astrick move-item">
-                            System Error Account
-                        </div>
-                        <div class="col col-sm-6 label">
-                            <div class="form-flex-wrap">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" formControlName="erroraccount"
-                                        maxlength="10"
-                                        [ngClass]="{ 'has-error': isSubmitted && formControls.erroraccount.errors }">
-                                </div>
-                                <label class="astrick">Tolarance</label>
-                                <div class="form-group">
-                                    <input type="text" numbersOnly maxlength="6" class="form-control"
-                                        formControlName="errortolerance"
-                                        [ngClass]="{ 'has-error': isSubmitted && formControls.errortolerance.errors }">
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label astrick">
-                            Help path
-                        </div>
-                        <div class="col col-sm-6">
-                            <div class="form-group search">
-                                <input type="text" class="form-control" formControlName="manual"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.manual.errors }">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap row">
-                        <div class="col col-sm-4 label astrick">
-                            Communication
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group search">
-                                <input type="text" class="form-control" formControlName="comm"
-                                    [ngClass]="{ 'has-error': isSubmitted && formControls.comm.errors }">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap row">
-                        <div class="col-6 col-md-4"></div>
-                        <div class="col-6 col-md-8">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" value="1" formControlName="qtyminor">
-                                    <span></span>
-                                    Allow only Minor Qty in Sales invoice
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-wrap company-logo row">
-                        <div class="col col-sm-3 label">
-                            Company logo
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="flex-wrap">
-                                <div class="upload file-upload-wrap">
-                                    <label class="btn-upload">
-                                        <input type="file" name="fileupload" (change)="fileProgress($event)">
-                                        <img class="btn" src="../assets/img/upload.png">
-                                    </label>
-                                    <p class="file-name" *ngIf="imageName">{{imageName}}</p>
-                                </div>
-                                <div class="radio-wrap">
-                                    <div class="labal astrick">Sales Posting Based On</div>
-                                    <div class="radio-btn-wrap">
-                                        <label class="radio">
-                                            Item Group
-                                            <input type="radio" [value]="1" formControlName="postingtype">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="radio">
-                                            Customer
-                                            <input type="radio" [value]="0" formControlName="postingtype">
-                                            <span class="checkmark"></span>
-                                        </label>
+                    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+                        <li [ngbNavItem]="1">
+                            <a ngbNavLink>Company Details</a>
+                            <ng-template ngbNavContent>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label astrick">
+                                        Company ID
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="companyid"
+                                                maxlength="5"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.companyid.errors }">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label astrick">
+                                        Company Name
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="companyname"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.companyname.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label astrick">
+                                        Contact
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="contact"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.contact.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label">
+                                        Address1
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="address1"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.address1.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label">
+                                        Address2
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="address2"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.address2.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label">
+                                        City
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="city"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.city.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label">
+                                        Country
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="country"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.country.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label">
+                                        Phone
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="phone"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.phone.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label">
+                                        Fax
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="fax"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.fax.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label astrick">
+                                        Email
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" formControlName="email"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label">
+                                        Website
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="website"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.website.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label astrick">
+                                        Default Currency
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
 
-                    </div>
+                                            <ng-select [items]="currency" bindLabel="CurrencyName"
+                                                bindValue="CurrencyId" appendTo="body" formControlName="currency">
+                                            </ng-select>
+
+                                            <!-- <select class="form-control" formControlName="currency">
+                                                        <option *ngFor="let item of currency"
+                                                            [selected]="item.CurrencyId == this.fields?.CurrencyId"
+                                                            [value]="item.CurrencyId">
+                                                            {{item.CurrencyName}}</option>
+                                                    </select> -->
+                                            <!-- <input type="text" class="form-control" formControlName="currency"
+                                                        [ngClass]="{ 'has-error': isSubmitted && formControls.currency.errors }"> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label astrick">
+                                        Ret Earning A/C
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="retainedaccount"
+                                                maxlength="10"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.retainedaccount.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label astrick">
+                                        Acc Ret Earning
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control"
+                                                formControlName="accuretainedaccount" maxlength="10"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.accuretainedaccount.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label astrick move-item">
+                                        System Error Account
+                                    </div>
+                                    <div class="col col-sm-6 label">
+                                        <div class="form-flex-wrap">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" formControlName="erroraccount"
+                                                    maxlength="10"
+                                                    [ngClass]="{ 'has-error': isSubmitted && formControls.erroraccount.errors }">
+                                            </div>
+                                            <label class="astrick">Tolarance</label>
+                                            <div class="form-group">
+                                                <input type="text" numbersOnly maxlength="6" class="form-control"
+                                                    formControlName="errortolerance"
+                                                    [ngClass]="{ 'has-error': isSubmitted && formControls.errortolerance.errors }">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label astrick">
+                                        Help path
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group search">
+                                            <input type="text" class="form-control" formControlName="manual"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.manual.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label astrick">
+                                        Communication
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group search">
+                                            <input type="text" class="form-control" formControlName="comm"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.comm.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col-6 col-md-4"></div>
+                                    <div class="col-6 col-md-8">
+                                        <div class="checkbox">
+                                            <label class="astrick">
+                                                <input type="checkbox" value="1" formControlName="qtyminor">
+                                                <span></span>
+                                                Allow only Minor Qty in Sales invoice
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap company-logo row">
+                                    <div class="col col-sm-3 label">
+                                        Company logo
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="flex-wrap">
+                                            <div class="upload file-upload-wrap">
+                                                <label class="btn-upload">
+                                                    <input type="file" name="fileupload"
+                                                        (change)="fileProgress($event)">
+                                                    <img class="btn" src="../assets/img/upload.png">
+                                                </label>
+                                                <p class="file-name" *ngIf="imageName">{{imageName}}</p>
+                                            </div>
+                                            <div class="radio-wrap">
+                                                <div class="labal astrick">Sales Posting Based On</div>
+                                                <div class="radio-btn-wrap">
+                                                    <label class="radio">
+                                                        Item Group
+                                                        <input type="radio" [value]="1" formControlName="postingtype">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <label class="radio">
+                                                        Customer
+                                                        <input type="radio" [value]="0" formControlName="postingtype">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </li>
+                        <li [ngbNavItem]="2">
+                            <a ngbNavLink>Connection Details</a>
+                            <ng-template ngbNavContent>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label astrick">
+                                        Host Name
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="conhostname"
+                                                maxlength="5"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.conhostname.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label astrick">
+                                        Database Name
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="condbname"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.condbname.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label astrick">
+                                        User Name
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="conusername"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.conusername.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-wrap row">
+                                    <div class="col col-sm-4 label astrick">
+                                        Password
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="conpassword"
+                                                [ngClass]="{ 'has-error': isSubmitted && formControls.conpassword.errors }">
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </li>
+                    </ul>
+
+                    <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
                 </div>
                 <!-- Modal footer -->

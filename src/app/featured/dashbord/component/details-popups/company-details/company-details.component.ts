@@ -25,6 +25,7 @@ export class CompanyDetailsComponent implements OnInit {
   selectedCompany: any;
   imageName: any;
   imgUrl = `../assets/img/upload.png`;
+  active = 1;
   constructor(
     config: NgbModalConfig,
     private modalService: NgbModal,
@@ -58,6 +59,10 @@ export class CompanyDetailsComponent implements OnInit {
       comm: [(this.fields?.CommPath || ''), Validators.required],
       postingtype: [(this.fields?.SopPostingType || ''), Validators.required],
       qtyminor: [(this.fields?.SopQtyMinor || ''), Validators.required],
+      conhostname: [(this.fields?.conhostname || ''), Validators.required],
+      condbname: [(this.fields?.condbname || ''), Validators.required],
+      conusername: [(this.fields?.conusername || ''), Validators.required],
+      conpassword: [(this.fields?.conpassword || ''), Validators.required],
       Image: [(this.fields?.Image)],
     });
     this.open(this.input);

@@ -12,7 +12,7 @@ export class SideMenuOptions {
             name: 'User Management', path: 'user', img: 'user-management-icon.png',
             sub_menu: [{ name: 'User', path: 'user' }, { name: 'Cost Center Acess', path: 'cost-center-access' }]
         },
-        { name: 'Connecting Path', path: 'connecting-path', sub_menu: false, img: 'connecting-icon.png' },
+
     ];
 
     public static SUPER_ADMIN_MENU = [
@@ -25,7 +25,8 @@ export class SideMenuOptions {
                 { name: 'Currency', path: 'currency', img: 'dimension-icon.png' },
                 { name: 'Company Access', path: 'company-access', img: 'dimension-icon.png' },
             ]
-        }
+        },
+        { name: 'Connecting Path', path: 'connecting-path', sub_menu: false, img: 'connecting-icon.png' },
     ]
 }
 
