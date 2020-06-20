@@ -127,7 +127,6 @@ export class AddCompanyPopupComponent implements OnInit {
       this.imageName = file.name;
       reader.readAsDataURL(file);
       reader.onload = () => {
-        console.log(reader.result)
         this.addUserForm.patchValue({
           Image: reader.result,
         });
