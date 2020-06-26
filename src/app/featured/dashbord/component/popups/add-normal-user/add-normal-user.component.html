@@ -63,14 +63,14 @@
               </div>
 
             </div>
-            <div class="form-group-wrap row">
+            <div class="form-group-wrap row" *ngIf="isEdit">
               <div class="col col-sm-5 label astrick">
-                UDID
+                Login Pin
               </div>
               <div class="col col-sm-5">
                 <div class="form-group">
-                  <input type="text" numbersOnly maxlength="6" class="form-control" formControlName="udid"
-                    [ngClass]="{ 'has-error': isSubmitted && formControls.udid.errors }">
+                  <input type="text" numbersOnly maxlength="6" class="form-control" formControlName="loginpin"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.loginpin.errors }">
                 </div>
               </div>
 

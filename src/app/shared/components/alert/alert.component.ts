@@ -54,8 +54,8 @@ export class AlertComponent implements OnInit {
           case CLASS_TYPES.success:
             this.toastr.success(val.message, HEADER_TYPES[val.type], this.settings);
             break;
-
           default:
+            this.toastr.error(val.message, HEADER_TYPES[val.type], this.settings);
             break;
         }
 

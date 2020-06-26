@@ -35,7 +35,8 @@ export class AddNormalUserComponent implements OnInit {
       username: [(this.fields?.user_name || ''), Validators.required],
       email: [(this.fields?.user_email || ''), [Validators.required, Validators.email]],
       mobile: [(this.fields?.user_phone || ''), Validators.required],
-      udid: [(this.fields?.UDID || ''), Validators.required],
+      // udid: [(this.fields?.UDID || ''), Validators.required],
+      loginpin: [(this.fields?.LoginPin || '')],
       image: [('')],
       profilepic: [('')],
     });
@@ -45,12 +46,13 @@ export class AddNormalUserComponent implements OnInit {
   open(content) {
     if (this.fields) {
       this.isEdit = true;
+      this.addUserForm.get('loginpin').setValidators([Validators.required]);
     }
     else {
-      this.addUserForm.get('profilepic').setValidators([Validators.required]);
       this.isEdit = false;
-      this.addUserForm.get('profilepic').updateValueAndValidity();
+      this.addUserForm.get('profilepic').setValidators([Validators.required]);
     }
+    this.addUserForm.get('profilepic').updateValueAndValidity();
     this.modalRef = this.modalService.open(content);
   }
   onSubmit() {

@@ -107,7 +107,7 @@ export class UserComponent implements OnInit, AfterViewInit {
       if (val && val.status) {
         this.alert.showAlert({ message: val.message, type: 'success' });
       } else {
-        this.alert.showAlert({ message: val.message, type: 'danger' });
+        this.alert.showAlert({ message: val.message, type: 'error' });
       }
       this.getAllUsers();
     });
