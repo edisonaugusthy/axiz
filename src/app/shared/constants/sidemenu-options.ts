@@ -26,7 +26,7 @@ export class SideMenuOptions {
                 { name: 'Company Access', path: 'company-access', img: 'dimension-icon.png' },
             ]
         },
-        { name: 'Connecting Path', path: 'connecting-path', sub_menu: false, img: 'connecting-icon.png' },
+        // { name: 'Connecting Path', path: 'connecting-path', sub_menu: false, img: 'connecting-icon.png' },
     ]
 }
 

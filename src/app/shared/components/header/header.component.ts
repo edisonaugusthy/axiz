@@ -71,7 +71,7 @@ export class HeaderComponent implements OnInit {
     this.toggleSideBar.emit(true);
   }
   openAdd() {
-    const mail = this.StorageService.getData('super-admin-mail');
+    const mail = 'administor' //this.StorageService.getData('super-admin-mail');
     this.showAdd = true;
     this.addFormData = this.formGeneratorService.SuperAdminLoginForm(mail);
   }
@@ -85,6 +85,7 @@ export class HeaderComponent implements OnInit {
   submitAdd(res) {
     this.showAdd = false;
     this.loaderSvc.showLoader();
+    res.email = this.StorageService.getData('super-admin-mail');
     this.authService.SuperAdminLogin(res).subscribe((val: any) => {
       if (val.data && val.message === 'login success') {
         this.router.navigateByUrl('/dashbord/dashbord');
