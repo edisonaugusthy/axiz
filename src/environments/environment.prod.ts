@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  base_Url: 'http://businessapp.axistc.com/axis/api/',
+  baseUrl: 'http://businessapp.axistc.com/axis/api/',
   imageBase: 'http://axiz.rancarts.com',
-  baseUrl: 'http://iroidtechnologies.in/axis_laravel/api/',
+  base_Url: 'http://iroidtechnologies.in/axis_laravel/api/',
 };

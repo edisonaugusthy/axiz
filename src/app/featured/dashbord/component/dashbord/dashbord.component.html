@@ -27,7 +27,7 @@
           </ul>
         </div>
       </div>
-      <div class="box-wrap col-sm-4">
+      <div class="box-wrap col-sm-4" *ngIf='dashboardData?.company_address'>
         <h2>Head Office</h2>
         <p>{{dashboardData?.company_address}}</p>
       </div>

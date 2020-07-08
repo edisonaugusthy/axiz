@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from "@angular/core";
 import { tap, catchError } from "rxjs/operators";
 import { throwError } from 'rxjs';
@@ -17,7 +18,7 @@ import { LoaderService } from './loader.service';
 @Injectable()
 export class InterCeptor implements HttpInterceptor {
     constructor(private StorageService: NgStorageService,
-        private loaderSvc: LoaderService, ) { }
+        private loaderSvc: LoaderService, private router: Router) { }
     intercept(
         request: HttpRequest<any>,
         next: HttpHandler
@@ -35,6 +36,7 @@ export class InterCeptor implements HttpInterceptor {
         return next.handle(updatedRequest).pipe(
             catchError((error: HttpErrorResponse) => {
                 this.loaderSvc.hideLoader();
+                this.router.navigateByUrl('/login');
                 return throwError((error))
             })
         )

@@ -62,7 +62,8 @@
                             <tbody>
 
                                 <tr *ngFor=" let group of formData.controls; let i=index;">
-                                    <ng-container [formGroup]="group">
+                                    <ng-container [formGroup]="group"
+                                        *ngIf="group.get('locations').controls.length > 0">
                                         <td>
                                             <div class="checkbox">
                                                 <label>
@@ -73,7 +74,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            {{ group.get('chainname').value }}
+                                            {{ group.get('chainid').value }}
 
                                         </td>
                                         <td>{{chainsList[i].chainname}}</td>
