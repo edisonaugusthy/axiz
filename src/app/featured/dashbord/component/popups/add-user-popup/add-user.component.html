@@ -21,8 +21,8 @@
                             </div>
                             <div class="col col-sm-5">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder=" User ID" maxlength="5"
-                                        formControlName="userid"
+                                    <input type="text" numbersOnly class="form-control" placeholder=" User ID"
+                                        maxlength="6" formControlName="userid"
                                         [ngClass]="{ 'has-error': isSubmitted && formControls.userid.errors }">
                                 </div>
                             </div>

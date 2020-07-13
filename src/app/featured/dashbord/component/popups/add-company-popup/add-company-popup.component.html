@@ -276,6 +276,7 @@
                                     </div>
                                 </div>
                             </ng-template>
+
                         </li>
                         <li [ngbNavItem]="2">
                             <a ngbNavLink>Connection Details</a>
@@ -287,7 +288,6 @@
                                     <div class="col col-sm-6">
                                         <div class="form-group">
                                             <input type="text" class="form-control" formControlName="conhostname"
-                                                maxlength="5"
                                                 [ngClass]="{ 'has-error': isSubmitted && formControls.conhostname.errors }">
                                         </div>
                                     </div>
@@ -334,8 +334,15 @@
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" mat-flat-button class="btn btn-default" (click)="popupClose()">Cancel</button>
-                    <button type="button" mat-flat-button color="primary" class="btn" (click)="onSubmit()">Save</button>
+                    <button type="button" *ngIf="active == 1" mat-flat-button class="btn btn-default"
+                        (click)="popupClose()">Cancel</button>
+                    <button type="button" *ngIf="active != 1" mat-flat-button class="btn btn-default"
+                        (click)="active=1">Back</button>
+
+                    <button type="button" *ngIf="active == 1" mat-flat-button color="primary" class="btn"
+                        (click)="active=2">Next</button>
+                    <button type="button" *ngIf="active != 1" mat-flat-button color="primary" class="btn"
+                        (click)="onSubmit()">Save</button>
                 </div>
                 <!-- </div> -->
             </div>

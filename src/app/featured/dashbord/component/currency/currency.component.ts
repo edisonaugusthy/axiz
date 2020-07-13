@@ -113,11 +113,12 @@ export class CurrencyComponent implements OnInit, AfterViewInit {
     this.showAdd = false;
   }
   submitAdd(val) {
-    this.showAdd = false;
+
     this.loaderSvc.showLoader();
     this.dashboardSvc.AddCurrency(val).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       if (val && val.status) {
+        this.showAdd = false;
         this.alert.showAlert({ message: val.message, type: 'success' });
       } else {
         this.alert.showAlert({ message: val.message, type: 'danger' });

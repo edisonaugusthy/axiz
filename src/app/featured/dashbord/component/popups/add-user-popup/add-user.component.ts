@@ -49,7 +49,7 @@ export class AddUserComponent implements OnInit {
   ngOnInit() {
     this.addUserForm = this.formBuilder.group({
       id: [(this.fields?.id || '')],
-      userid: [(this.fields?.user_id || ''), Validators.required],
+      userid: [(this.fields?.user_id || ''), [Validators.required, Validators.minLength(4)]],
       username: [(this.fields?.user_name || ''), Validators.required],
       email: [(this.fields?.email || ''), [Validators.required, Validators.email]],
       password: [(this.fields?.password_ref || ''), Validators.required],

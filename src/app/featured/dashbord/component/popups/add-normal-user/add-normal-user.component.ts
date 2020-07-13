@@ -31,7 +31,7 @@ export class AddNormalUserComponent implements OnInit {
   ngOnInit() {
     this.addUserForm = this.formBuilder.group({
       id: [(this.fields?.id || '')],
-      userid: [(this.fields?.user_id || ''), Validators.required],
+      userid: [(this.fields?.user_id || ''), [Validators.required, Validators.minLength(4)]],
       username: [(this.fields?.user_name || ''), Validators.required],
       email: [(this.fields?.user_email || ''), [Validators.required, Validators.email]],
       mobile: [(this.fields?.user_phone || ''), Validators.required],
@@ -47,6 +47,7 @@ export class AddNormalUserComponent implements OnInit {
     if (this.fields) {
       this.isEdit = true;
       this.addUserForm.get('loginpin').setValidators([Validators.required]);
+      this.imgUrl = this.fields?.image ?? `../assets/img/upload.png`
     }
     else {
       this.isEdit = false;
