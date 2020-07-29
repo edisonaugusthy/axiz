@@ -7,11 +7,13 @@
       </div>
       <div class="form-wrap">
         <div class="form-row">
-          <input type="text" class="form-textbox" formControlName="email" required>
+          <input type="text" class="form-textbox" formControlName="email"
+            [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
           <label for="form-email" class="form-label">Email address</label>
         </div>
         <div class="form-row">
-          <input type="password" class="form-textbox" formControlName="password" required>
+          <input type="password" class="form-textbox" formControlName="password"
+            [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
           <label for="form-email" class="form-label">Password</label>
         </div>
       </div>

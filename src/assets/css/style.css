@@ -330,7 +330,7 @@ header li.logout img{
 
   /* When the radio button is checked, add a blue background */
   .radio input:checked ~ .checkmark {
-    background-color: #6fa330;
+    background-color: #1976d2;
   }
 
   /* Create the indicator (the dot/circle - hidden when not checked) */

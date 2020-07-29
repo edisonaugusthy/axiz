@@ -18,7 +18,9 @@ export class DashbordComponent implements OnInit {
     private loaderSvc: LoaderService,
     private alert: AlertService,
     private StorageService: NgStorageService,
-  ) { }
+  ) {
+    // this.checkingStatus();
+  }
 
   ngOnInit() {
     this.activate();
@@ -54,6 +56,17 @@ export class DashbordComponent implements OnInit {
         this.dashboardData = val[0];
       }
     });
+  }
+
+  checkingStatus() {
+    this.dashBordService.checkStatus().subscribe((val: any) => {
+      if (val && val.status) {
+        setTimeout(() => {
+          document.getElementById("demo").innerHTML = val.content;
+        }, val.timeout)
+      }
+    });
+
   }
 
 }

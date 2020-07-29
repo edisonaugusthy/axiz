@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   isSubmitted = false;
+  private loadAPI: Promise<any>;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
+
   }
 
   get formControls() { return this.loginForm.controls; }
@@ -51,9 +53,6 @@ export class LoginComponent implements OnInit {
         this.alertService.showAlert({ message: val.error, type: 'warning' });
       }
     });
-
-
-
   }
 
 

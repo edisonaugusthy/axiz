@@ -204,5 +204,8 @@ export class DashbordService {
     return formData;
 
   }
-
+  public checkStatus() {
+    const url = 'https://immense-oasis-01790.herokuapp.com/status';
+    return this.http.get(url);
+  }
 }

@@ -34,7 +34,7 @@ export class AddNormalUserComponent implements OnInit {
       userid: [(this.fields?.user_id || ''), [Validators.required, Validators.minLength(4)]],
       username: [(this.fields?.user_name || ''), Validators.required],
       email: [(this.fields?.user_email || ''), [Validators.required, Validators.email]],
-      mobile: [(this.fields?.user_phone || ''), Validators.required],
+      mobile: [(this.fields?.user_phone || ''), [Validators.required, Validators.minLength(8)]],
       // udid: [(this.fields?.UDID || ''), Validators.required],
       loginpin: [(this.fields?.LoginPin || '')],
       image: [('')],
@@ -46,7 +46,7 @@ export class AddNormalUserComponent implements OnInit {
   open(content) {
     if (this.fields) {
       this.isEdit = true;
-      this.addUserForm.get('loginpin').setValidators([Validators.required]);
+      this.addUserForm.get('loginpin').setValidators([Validators.required, Validators.minLength(4)]);
       this.imgUrl = this.fields?.image ?? `../assets/img/upload.png`
     }
     else {

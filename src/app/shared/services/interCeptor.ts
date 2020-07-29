@@ -17,12 +17,10 @@ import { LoaderService } from './loader.service';
 
 @Injectable()
 export class InterCeptor implements HttpInterceptor {
+
     constructor(private StorageService: NgStorageService,
         private loaderSvc: LoaderService, private router: Router) { }
-    intercept(
-        request: HttpRequest<any>,
-        next: HttpHandler
-    ): Observable<HttpEvent<any>> {
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const token = this.StorageService.getData('access_token');
         const updatedRequest = request.clone({
             setHeaders: {
@@ -33,6 +31,8 @@ export class InterCeptor implements HttpInterceptor {
             }
 
         });
+
+
         return next.handle(updatedRequest).pipe(
             catchError((error: HttpErrorResponse) => {
                 this.loaderSvc.hideLoader();
@@ -40,5 +40,6 @@ export class InterCeptor implements HttpInterceptor {
                 return throwError((error))
             })
         )
+
     }
 }
