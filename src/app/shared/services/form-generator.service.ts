@@ -794,6 +794,39 @@ export class FormGeneratorService {
     return formData;
   }
 
+  editSuperAdminPassword(val) {
+    let data = [
+      {
+        value: val,
+        key: 'email',
+        label: 'Super Admin',
+        required: true,
+        order: 1,
+        controlType: 'email',
+        type: '',
+        options: '',
+        disabled: false
+      },
+      {
+        value: '',
+        key: 'password',
+        label: 'new password',
+        required: true,
+        order: 2,
+        controlType: 'textbox',
+        type: '',
+        options: ''
+      },
+    ];
+    data = data.sort((a, b) => a.order - b.order);
+    const formData = {
+      header: 'Change Credentials',
+      fields: data,
+      buttonText: 'Change'
+    };
+    return formData;
+  }
+
 
   CompanyAccessDetails(currentValuse, companies) {
     let data = [

@@ -21,6 +21,8 @@ export class HeaderComponent implements OnInit {
   showAdd: boolean;
   addFormData: any;
   showSideBar = false;
+  passwordFormFields: any;
+  showEditPassWord = false;
   @Output() toggleSideBar = new EventEmitter<any>();
   @ViewChild('SearchInput', { static: true }) SearchInput: ElementRef;
 
@@ -75,9 +77,18 @@ export class HeaderComponent implements OnInit {
     this.showAdd = true;
     this.addFormData = this.formGeneratorService.SuperAdminLoginForm(mail);
   }
+  openChangePasswordPopup() {
+    const mail = this.StorageService.getData('super-admin-mail');
+    this.passwordFormFields = this.formGeneratorService.editSuperAdminPassword(mail);
+    this.showEditPassWord = true;
+  }
+  changePassword(res) {
 
-  cancelAdd(val) {
+    this.cancelAdd();
+  }
+  cancelAdd(val?) {
     this.showAdd = false;
+    this.showEditPassWord = false;
   }
   showDashbord() {
     this.router.navigateByUrl('/dashbord/dashbord');
@@ -95,9 +106,6 @@ export class HeaderComponent implements OnInit {
         this.StorageService.setData({ key: 'super-admin-mail', value: val.superadmin });
         this.dashboardSvc.switchUser(true);
         this.activate(1);
-        // setTimeout(() => {
-        //   window.location.reload();
-        // }, 100)
       } else {
         this.loaderSvc.hideLoader();
         this.alert.showAlert({ message: val.error, type: 'warning' });

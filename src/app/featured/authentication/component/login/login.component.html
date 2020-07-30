@@ -1,4 +1,4 @@
-<div class="login-wrapper">
+<div class="login-wrapper" *ngIf="!sowCompanySelection">
   <div class="wrapper">
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <div class="logo-wrap">
@@ -22,3 +22,6 @@
     </form>
   </div>
 </div>
+
+<app-select-company-popup *ngIf="sowCompanySelection" [companyList]='companyData' (onSelect)="hideCompanyPopup($event)">
+</app-select-company-popup>

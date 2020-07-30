@@ -1,0 +1,16 @@
+<ng-template #content>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Select company</h4>
+  </div>
+  <div class="modal-body">
+    <p>Please select a company to proceed further.!</p>
+    <div class="form-group">
+      <ng-select class="form-control" [items]="companyList" bindLabel="CompanyName" bindValue="CompanyID"
+        appendTo="body" [(ngModel)]="status">
+      </ng-select>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="closePopup()">Continue</button>
+  </div>
+</ng-template>

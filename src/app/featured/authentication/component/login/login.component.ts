@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   isSubmitted = false;
+  sowCompanySelection = false;
+  companyData: any;
   private loadAPI: Promise<any>;
   constructor(
     private formBuilder: FormBuilder,
@@ -43,16 +45,32 @@ export class LoginComponent implements OnInit {
     this.loaderSVC.showLoader();
     this.authService.SuperAdminLogin(this.loginForm.value).subscribe((val: any) => {
       if (val.data && val.message === 'login success') {
-        this.router.navigateByUrl('/dashbord/dashbord');
+
         this.StorageService.setData({ key: 'user_type', value: val.UserRole });
         this.StorageService.setData({ key: 'user_details', value: val.data.userdetails });
         this.StorageService.setData({ key: 'access_token', value: val.data.token });
         this.StorageService.setData({ key: 'super-admin-mail', value: val.superadmin });
+        if (val?.data?.companyDetails?.length > 1) {
+          this.companyData = val.data.companyDetails;
+          this.showCompanyPopup();
+        } else {
+          this.router.navigateByUrl('/dashbord/dashbord');
+        }
       } else {
         this.loaderSVC.hideLoader();
         this.alertService.showAlert({ message: val.error, type: 'warning' });
       }
     });
+  }
+
+  showCompanyPopup() {
+    this.sowCompanySelection = true;
+  }
+  hideCompanyPopup(event) {
+    this.sowCompanySelection = false;
+    if (event) {
+      this.router.navigateByUrl('/dashbord/dashbord');
+    }
   }
 
 

@@ -9,6 +9,7 @@ export class ApiConstants {
     public static ADMIN_LOGOUT = API_BASE_URL + 'user-admin/logout';
     public static SECOND_LOGIN = API_BASE_URL + 'user/superadmin/secondlogin';
 
+
     public static SUPER_ADMIN_REGISTER_COMPANY = API_BASE_URL + 'admin/register/company';
     public static SUPER_ADMIN_DELETE_COMPANY = API_BASE_URL + 'admin/delete/company';
     public static SUPER_ADMIN_UPDATE_COMPANY = API_BASE_URL + 'admin/update/company';
@@ -25,6 +26,10 @@ export class ApiConstants {
     public static SUPER_ADMIN_COMPANY_ACCESS_TABLE = API_BASE_URL + 'admin/view/CompanyAccess';
 
     // admin
+
+    public static SET_SELECTED_COMPANY = API_BASE_URL + 'user/company-session';
+
+
     public static ADD_CHAIN = API_BASE_URL + 'user/add/chain';
     public static DELETE_CHAIN = API_BASE_URL + 'user/delete/chain';
     public static UPDATE_CHAIN = API_BASE_URL + 'user/update/chain';

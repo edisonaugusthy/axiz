@@ -22,5 +22,8 @@ export class AuthService {
     return this.http.post(ApiConstants.SECOND_LOGIN, data);
   }
 
+  public setCompany(data) {
+    return this.http.post(ApiConstants.SET_SELECTED_COMPANY, data);
+  }
 
 }

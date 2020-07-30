@@ -3,6 +3,10 @@
 <app-add-popup *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
   (formSubmitted)="submitAdd($event)"></app-add-popup>
 
+<app-add-popup *ngIf="showEditPassWord" [fields]="passwordFormFields" (formCancel)="cancelAdd($event)"
+  (formSubmitted)="changePassword($event)"></app-add-popup>
+
+
 <mat-toolbar color="primary" class="app-toolbar no-print">
 
   <mat-toolbar-row>
@@ -28,6 +32,12 @@
           aria-hidden="true" (click)="openAdd()">
           <img src="../assets/img/settings-icon.svg">
         </mat-icon>
+
+        <mat-icon role="img" class="mat-icon notranslate mat-icon-no-color curser-point" *ngIf="isSuperAdmin"
+          aria-hidden="true" (click)="openChangePasswordPopup()">
+          <img src="../assets/img/settings-icon.svg">
+        </mat-icon>
+
       </a>
       <a *ngIf="!isSuperAdmin" class="user-name">Hi, {{userDetails?.user_name}}</a>
       <a *ngIf="isSuperAdmin" class="user-name">Super Admin</a>

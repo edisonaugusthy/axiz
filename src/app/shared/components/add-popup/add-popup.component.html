@@ -27,6 +27,10 @@
             *ngSwitchCase="'password'" [formControlName]="item.key" [id]="item.key" [ngClass]="{
                                       'has-error': isSubmitted && formControls[item.key].errors
                                     }" />
+          <input type="email" class="form-control" placeholder="{{ item.label }}" *ngSwitchCase="'email'"
+            [formControlName]="item.key" [id]="item.key" [ngClass]="{
+                                                                          'has-error': isSubmitted && formControls[item.key].errors
+                                                                        }" />
 
           <!-- <select [id]="item.key" *ngSwitchCase="'dropdown'" [formControlName]="item.key" [ngClass]="{
               'has-error': isSubmitted && formControls[item.key].errors
