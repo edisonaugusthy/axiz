@@ -11,6 +11,8 @@ import { CompanyComponent } from './component/company/company.component';
 import { UsersAdminComponent } from './component/users-admin/users-admin.component';
 import { CompanyAccessComponent } from './component/company-access/company-access.component';
 import { ConnectingPathComponent } from './component/connecting-path/connecting-path.component';
+import { ContactUsComponent } from './component/contact-us/contact-us.component';
+import { RequstsComponent } from './component/requsts/requsts.component';
 
 const routes: Routes = [{
     path: '',
@@ -48,7 +50,16 @@ const routes: Routes = [{
     {
         path: 'currency',
         component: CurrencyComponent
-    }]
+    },
+    {
+        path: 'contact-us',
+        component: ContactUsComponent
+    },
+    {
+        path: 'requests',
+        component: RequstsComponent
+    }
+    ]
 }
 ];
 

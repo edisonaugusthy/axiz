@@ -64,6 +64,22 @@ export class DashbordService {
     return this.http.get(url, { params });
   }
 
+  getContactUs(data) {
+    return this.http.post(ApiConstants.VIEW_CONTACT_US, data);
+  }
+
+  deleteContactUs(data) {
+    return this.http.post(ApiConstants.DELETE_CONTACT_US, data);
+  }
+
+  getRequests(data) {
+    return this.http.post(ApiConstants.GET_REQUESTS, data);
+  }
+
+  updateRequests(data) {
+    return this.http.post(ApiConstants.UPDATE_REQUESTS, data);
+  }
+
   // admin part
 
   createChain(data) {

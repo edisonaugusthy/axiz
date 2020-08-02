@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group-wrap row">
+                        <div class="form-group-wrap row" *ngIf="!isEdit">
                             <div class="col col-sm-4 label astrick">
                                 Confirm Password
                             </div>
@@ -82,39 +82,26 @@
                             </div>
                             <div class="col col-sm-5">
                                 <div class="form-group">
-                                    <!-- <select formControlName="status" class="form-control">
-                                        <option *ngFor="let item of statusList" [value]="item.val">{{item.name}}
-                                        </option>
-                                    </select> -->
                                     <ng-select [items]="statusList" bindLabel="name" bindValue="val" appendTo="body"
                                         formControlName="status">
                                     </ng-select>
                                 </div>
                             </div>
                         </div>
-                        <!--  -->
 
-                        <div class="table-head">Company Access</div>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let item of companyList">
-                                    <td>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" [value]="item.CompanyID" [checked]="item.checked"
-                                                    (change)="selectCompany(item)">
-                                                <span></span>
-                                                {{item.CompanyName}}
-                                            </label>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="form-group-wrap row">
+                            <div class="col col-sm-4 label astrick">
+                                Company Access
+                            </div>
+                            <div class="col col-sm-5">
+                                <div class="form-group">
+                                    <ng-select [items]="companyList" [multiple]="true" bindLabel="CompanyName"
+                                        bindValue="CompanyID" appendTo="body" formControlName="companyid">
+                                    </ng-select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
                     </div>
                 </div>
                 <!-- Modal footer -->

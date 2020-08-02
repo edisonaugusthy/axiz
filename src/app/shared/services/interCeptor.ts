@@ -13,13 +13,14 @@ import {
 import { Observable } from 'rxjs/internal/Observable';
 import { NgStorageService } from 'ng7-storage';
 import { LoaderService } from './loader.service';
+import { AlertService } from './alert.service';
 
 
 @Injectable()
 export class InterCeptor implements HttpInterceptor {
 
     constructor(private StorageService: NgStorageService,
-        private loaderSvc: LoaderService, private router: Router) { }
+        private loaderSvc: LoaderService, private router: Router, private alert: AlertService,) { }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const token = this.StorageService.getData('access_token');
         const updatedRequest = request.clone({
@@ -36,7 +37,8 @@ export class InterCeptor implements HttpInterceptor {
         return next.handle(updatedRequest).pipe(
             catchError((error: HttpErrorResponse) => {
                 this.loaderSvc.hideLoader();
-                this.router.navigateByUrl('/login');
+                // this.router.navigateByUrl('/login');
+                this.alert.showAlert({ message: 'Something went wrong...please try later..!', type: 'danger' });
                 return throwError((error))
             })
         )

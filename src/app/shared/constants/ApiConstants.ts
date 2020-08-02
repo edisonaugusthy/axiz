@@ -8,6 +8,7 @@ export class ApiConstants {
     public static ADMIN_LOGIN = API_BASE_URL + 'user-admin/login';
     public static ADMIN_LOGOUT = API_BASE_URL + 'user-admin/logout';
     public static SECOND_LOGIN = API_BASE_URL + 'user/superadmin/secondlogin';
+    public static CHANGE_CREDENTIALS = API_BASE_URL + 'admin/change-password';
 
 
     public static SUPER_ADMIN_REGISTER_COMPANY = API_BASE_URL + 'admin/register/company';
@@ -24,6 +25,12 @@ export class ApiConstants {
     public static SUPER_ADMIN_UPDATE_COMPANY_ACCESS = API_BASE_URL + 'admin/update/CompanyAccess';
     public static SUPER_ADMIN_DELETE_COMPANY_ACCESS = API_BASE_URL + 'admin/delete/CompanyAccess';
     public static SUPER_ADMIN_COMPANY_ACCESS_TABLE = API_BASE_URL + 'admin/view/CompanyAccess';
+
+    public static VIEW_CONTACT_US = API_BASE_URL + 'admin/enquiries';
+    public static DELETE_CONTACT_US = API_BASE_URL + 'admin/enquiries-delete';
+
+    public static GET_REQUESTS = API_BASE_URL + 'admin/app-users-registration';
+    public static UPDATE_REQUESTS = API_BASE_URL + 'admin/app-users-registration-action';
 
     // admin
 

@@ -34,6 +34,9 @@ import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AddNormalUserComponent } from './component/popups/add-normal-user/add-normal-user.component';
 import { NormalUserComponent } from './component/details-popups/normal-user/normal-user.component';
+import { ContactUsComponent } from './component/contact-us/contact-us.component';
+import { ContactUsViewComponent } from './component/details-popups/contact-us/contact-us.component';
+import { RequstsComponent } from './component/requsts/requsts.component';
 
 
 
@@ -75,7 +78,10 @@ import { NormalUserComponent } from './component/details-popups/normal-user/norm
     LocationDetailsComponent,
     UserDetailsComponent,
     AddNormalUserComponent,
-    NormalUserComponent
+    NormalUserComponent,
+    ContactUsComponent,
+    ContactUsViewComponent,
+    RequstsComponent
   ],
   providers: [
     DatePipe,

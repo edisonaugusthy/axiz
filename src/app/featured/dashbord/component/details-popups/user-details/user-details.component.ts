@@ -48,7 +48,8 @@ export class UserDetailsComponent implements OnInit {
       email: [(this.fields?.email || ''), [Validators.required, Validators.email]],
       password: [(this.fields?.password_ref || ''), Validators.required],
       confirmpassword: ['', Validators.required],
-      status: [(this.fields?.status), Validators.required]
+      status: [(this.fields?.status), Validators.required],
+      companyid: [(this.fields?.companyid), Validators.required],
     },
       {
         validator: MustMatch('password', 'confirmpassword')
@@ -57,21 +58,13 @@ export class UserDetailsComponent implements OnInit {
   }
 
   open(content) {
-    this.initSelection();
     this.modalRef = this.modalService.open(content);
   }
   onSubmit() {
-    this.isSubmitted = true;
-    if (this.addUserForm.valid && this.selectedCompany) {
-      let formVal = this.addUserForm.value;
-      delete formVal['confirmpassword'];
-      formVal.companyid = this.selectedCompany
-      this.formSubmitted.emit(formVal);
-      this.modalRef.close();
-      this.isSubmitted = false;
-    } else {
-      this.alert.showAlert({ message: 'Please Fill Remaining fields', type: 'error' });
-    }
+    this.formSubmitted.emit(this.addUserForm.value);
+    this.modalRef.close();
+    this.isSubmitted = false;
+
   }
 
   get formControls() {
@@ -84,28 +77,9 @@ export class UserDetailsComponent implements OnInit {
     this.modalRef.close();
   }
 
-  selectCompany(val) {
-    this.companyList.forEach(element => {
-      element.checked = false;
-    });
-    val.checked = !val.checked;
-    if (this.selectedCompany === val.CompanyID) {
-      this.selectedCompany = null;
-    } else {
-      this.selectedCompany = val.CompanyID
-    }
 
-  }
 
-  initSelection() {
-    this.companyList.forEach(element => {
-      element.checked = false;
-      if (element.CompanyID == this.fields.companyid) {
-        this.selectedCompany = element.CompanyID;
-        element.checked = true;
-      }
-    });
-  }
+
 
 
 }

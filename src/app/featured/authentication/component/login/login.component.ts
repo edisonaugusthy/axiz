@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
       if (val.data && val.message === 'login success') {
 
         this.StorageService.setData({ key: 'user_type', value: val.UserRole });
+        this.StorageService.setData({ key: 'is-loggedIn', value: true });
         this.StorageService.setData({ key: 'user_details', value: val.data.userdetails });
         this.StorageService.setData({ key: 'access_token', value: val.data.token });
         this.StorageService.setData({ key: 'super-admin-mail', value: val.superadmin });

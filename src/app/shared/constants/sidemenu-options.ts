@@ -24,6 +24,8 @@ export class SideMenuOptions {
                 { name: 'User', path: 'admin-user', img: 'dimension-icon.png' },
                 { name: 'Currency', path: 'currency', img: 'dimension-icon.png' },
                 { name: 'Company Access', path: 'company-access', img: 'dimension-icon.png' },
+                { name: 'Contact Us', path: 'contact-us', img: 'dimension-icon.png' },
+                { name: 'Requests', path: 'requests', img: 'dimension-icon.png' }
             ]
         },
         // { name: 'Connecting Path', path: 'connecting-path', sub_menu: false, img: 'connecting-icon.png' },

@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { environment } from './../environments/environment';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationError, NavigationCancel, RoutesRecognized } from '@angular/router';
+import { NgStorageService } from 'ng7-storage';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   showHeader: boolean = false;
-  constructor(router: Router) {
+  constructor(private router: Router, private StorageService: NgStorageService) {
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
         if (event.url === '/login') {
@@ -18,5 +20,15 @@ export class AppComponent {
 
       }
     });
+  }
+
+  ngOnInit() {
+    if (environment.production) {
+      if (this.StorageService.getData('is-loggedIn')) {
+        this.StorageService.removeAll();
+        this.router.navigateByUrl('/login');
+      }
+    }
+
   }
 }

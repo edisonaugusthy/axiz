@@ -6,12 +6,13 @@ import { DashbordService } from '../../services/dashbord.service';
 import { LoaderService } from '../../../../shared/services/loader.service';
 import { AlertService } from '../../../../shared/services/alert.service';
 ;
+
 @Component({
-  selector: 'company-access',
-  templateUrl: 'company-access.component.html',
-  styleUrls: ['company-access.component.scss']
+  selector: 'app-requsts',
+  templateUrl: './requsts.component.html',
+  styleUrls: ['./requsts.component.css']
 })
-export class CompanyAccessComponent implements OnInit, AfterViewInit {
+export class RequstsComponent implements OnInit, AfterViewInit {
   editFormData: any;
   showEdit: boolean;
   showDelete: boolean;
@@ -42,6 +43,7 @@ export class CompanyAccessComponent implements OnInit, AfterViewInit {
       currentPage: 1,
       totalPages: null,
     }
+    this.loadAllCompaniesForEdit(null, 3);
     this.getAllCompany();
   }
   ngAfterViewInit() {
@@ -58,7 +60,7 @@ export class CompanyAccessComponent implements OnInit, AfterViewInit {
   }
   openEdit(item?) {
     if (this.allCompanies) {
-      this.editFormData = this.formGeneratorService.editCompanyAccess(item, this.allCompanies);
+      this.editFormData = this.formGeneratorService.editRequests(item, this.allCompanies);
       this.showEdit = true;
     }
     else {
@@ -71,7 +73,7 @@ export class CompanyAccessComponent implements OnInit, AfterViewInit {
     if (this.allCompanies) {
       this.showDetails = true;
       this.loaderSvc.hideLoader();
-      this.detailsData = this.formGeneratorService.CompanyAccessDetails(item, this.allCompanies);
+      this.detailsData = this.formGeneratorService.viewRequests(item, this.allCompanies);
     }
     else {
       this.loadAllCompaniesForEdit(item);
@@ -81,56 +83,12 @@ export class CompanyAccessComponent implements OnInit, AfterViewInit {
     this.showDetails = false;
     this.detailsData = null;
   }
-  openDelete(item?) {
-    this.showDelete = true;
-    this.deleteData = this.deleteMessageSvc.deleteCompanyAcess(item);
-  }
-
-  submitDelete(val) {
-    this.showDelete = false;
-    this.loaderSvc.showLoader();
-    this.dashboardSvc.deleteCompanyAccess({ userid: val.UserID }).subscribe((val: any) => {
-      this.loaderSvc.hideLoader();
-      if (val && val.status) {
-        this.alert.showAlert({ message: val.message, type: 'success' });
-      } else {
-        this.alert.showAlert({ message: val.message, type: 'danger' });
-      }
-      this.getAllCompany();
-    });
-  }
-  cancelDelete(val) {
-    this.showDelete = false;
-  }
-
-  openAdd() {
-    this.showAdd = true;
-    this.addFormData = this.formGeneratorService.addCompanyAccess();
-  }
-
-  cancelAdd(val) {
-    this.showAdd = false;
-  }
-  submitAdd(val) {
-    this.showAdd = false
-    this.loaderSvc.showLoader();
-    this.dashboardSvc.createCompanyAccess(val).subscribe((val: any) => {
-      this.loaderSvc.hideLoader();
-      if (val && val.status) {
-        this.alert.showAlert({ message: val.message, type: 'success' });
-      } else {
-        this.alert.showAlert({ message: val.message, type: 'danger' });
-      }
-      this.getAllCompany();
-    });
-  }
 
 
   submitEdit(val) {
     this.showEdit = false;
-    val.companyid = val.companyid;
     this.loaderSvc.showLoader();
-    this.dashboardSvc.updateCompanyAccess(val).subscribe((val: any) => {
+    this.dashboardSvc.updateRequests(val).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       if (val && val.status) {
         this.alert.showAlert({ message: val.message, type: 'success' });
@@ -158,7 +116,7 @@ export class CompanyAccessComponent implements OnInit, AfterViewInit {
       page: this.pagination.currentPage,
       search: searchStr
     }
-    this.dashboardSvc.getCompanyAccess(data).subscribe((val: any) => {
+    this.dashboardSvc.getRequests(data).subscribe((val: any) => {
       this.companyAccess = val.data.data;
       this.isSearching = false;
       this.loaderSvc.hideLoader();
@@ -173,7 +131,7 @@ export class CompanyAccessComponent implements OnInit, AfterViewInit {
     this.dashboardSvc.getAllCompanies(null).subscribe((val: any) => {
       this.allCompanies = val.data;
       this.loaderSvc.hideLoader();
-      if (this.allCompanies && this.allCompanies.length > 0) {
+      if (this.allCompanies && this.allCompanies.length > 0 && id !== 3) {
         if (id) {
           this.openEdit(item);
         } else {
@@ -184,4 +142,3 @@ export class CompanyAccessComponent implements OnInit, AfterViewInit {
 
   }
 }
-

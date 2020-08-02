@@ -264,13 +264,14 @@ export class FormGeneratorService {
         disabled: true
       },
       {
-        value: currentValuse ? currentValuse['CompanyID'] : '',
+        value: currentValuse ? currentValuse['CompanyID'].split(',') : '',
         key: 'companyid',
         label: 'Company',
         required: true,
         order: 2,
         controlType: 'dropdown',
         type: '',
+        multi: true,
         options: companies,
         displayKey: 'CompanyName',
         returnKey: 'CompanyID'
@@ -847,7 +848,8 @@ export class FormGeneratorService {
         label: 'Company',
         required: true,
         order: 2,
-        controlType: 'dropdown',
+        controlType: 'textbox',
+        multi: true,
         type: '',
         options: companies,
         displayKey: 'CompanyName',
@@ -928,6 +930,76 @@ export class FormGeneratorService {
     data = data.sort((a, b) => a.order - b.order);
     const formData = {
       header: 'User',
+      fields: data
+    };
+    return formData;
+  }
+
+  editRequests(currentValuse, companies) {
+    let data = [
+      {
+        value: currentValuse ? currentValuse['user_id'] : '',
+        key: 'userid',
+        label: 'User ID',
+        required: true,
+        order: 1,
+        controlType: 'textbox',
+        type: '',
+        options: '',
+        disabled: true
+      },
+      {
+        value: '',
+        key: 'companyid',
+        label: 'Company',
+        required: true,
+        order: 2,
+        controlType: 'dropdown',
+        type: '',
+        multi: true,
+        options: companies,
+        displayKey: 'CompanyName',
+        returnKey: 'CompanyID'
+      },
+    ];
+    data = data.sort((a, b) => a.order - b.order);
+    const formData = {
+      header: 'EDIT REQUESTS',
+      fields: data
+    };
+    return formData;
+  }
+
+  viewRequests(currentValuse, companies) {
+    let data = [
+      {
+        value: currentValuse ? currentValuse['user_id'] : '',
+        key: 'userid',
+        label: 'User ID',
+        required: true,
+        order: 1,
+        controlType: 'textbox',
+        type: '',
+        options: '',
+        disabled: true
+      },
+      {
+        value: currentValuse ? currentValuse['CompanyID'] : '',
+        key: 'companyid',
+        label: 'Company',
+        required: true,
+        order: 2,
+        controlType: 'textbox',
+        multi: true,
+        type: '',
+        options: companies,
+        displayKey: 'CompanyName',
+        returnKey: 'CompanyID'
+      },
+    ];
+    data = data.sort((a, b) => a.order - b.order);
+    const formData = {
+      header: 'REQUESTS',
       fields: data
     };
     return formData;

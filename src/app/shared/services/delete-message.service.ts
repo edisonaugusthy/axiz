@@ -32,6 +32,13 @@ export class DeleteMessageService {
       itemDetails: item
     }
   }
+  deleteEnquiry(item) {
+    return {
+      header: 'Warning',
+      message: 'Are you sure you want to delete ?',
+      itemDetails: item
+    }
+  }
 
   deleteCostCenterAcess(item) {
     return {

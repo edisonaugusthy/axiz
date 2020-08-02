@@ -26,4 +26,8 @@ export class AuthService {
     return this.http.post(ApiConstants.SET_SELECTED_COMPANY, data);
   }
 
+  public changeSuperAdminCredentials(data) {
+    return this.http.post(ApiConstants.CHANGE_CREDENTIALS, data);
+  }
+
 }

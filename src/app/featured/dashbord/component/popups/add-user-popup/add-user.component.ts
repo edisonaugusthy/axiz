@@ -54,7 +54,8 @@ export class AddUserComponent implements OnInit {
       email: [(this.fields?.email || ''), [Validators.required, Validators.email]],
       password: [(this.fields?.password_ref || ''), Validators.required],
       confirmpassword: ['', Validators.required],
-      status: [(this.fields?.status), Validators.required]
+      status: [(this.fields?.status || 1), Validators.required],
+      companyid: [(this.fields?.companyid.split(',') || null), Validators.required],
     },
       {
         validator: MustMatch('password', 'confirmpassword')
@@ -65,16 +66,16 @@ export class AddUserComponent implements OnInit {
   open(content) {
     this.isEdit = this.Edit;
     if (this.isEdit) {
-      this.initSelection()
+      this.addUserForm.patchValue({ confirmpassword: this.fields?.password_ref })
     }
     this.modalRef = this.modalService.open(content);
   }
   onSubmit() {
     this.isSubmitted = true;
-    if (this.addUserForm.valid && this.selectedCompany) {
+    if (this.addUserForm.valid) {
       let formVal = this.addUserForm.value;
       delete formVal['confirmpassword'];
-      formVal.companyid = this.selectedCompany
+      formVal.companyid = formVal.companyid.join(',');
       this.formSubmitted.emit(formVal);
       this.modalRef.close();
       this.isSubmitted = false;
@@ -93,27 +94,8 @@ export class AddUserComponent implements OnInit {
     this.modalRef.close();
   }
 
-  selectCompany(val) {
-    this.companyList.forEach(element => {
-      element.checked = false;
-    });
-    val.checked = !val.checked;
-    if (this.selectedCompany === val.CompanyID) {
-      this.selectedCompany = null;
-    } else {
-      this.selectedCompany = val.CompanyID
-    }
 
-  }
 
-  initSelection() {
-    this.companyList.forEach(element => {
-      element.checked = false;
-      if (element.CompanyID == this.fields.companyid) {
-        this.selectedCompany = element.CompanyID;
-        element.checked = true;
-      }
-    });
-  }
+
 
 }

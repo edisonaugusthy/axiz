@@ -83,8 +83,16 @@ export class HeaderComponent implements OnInit {
     this.showEditPassWord = true;
   }
   changePassword(res) {
-
-    this.cancelAdd();
+    this.authService.changeSuperAdminCredentials(res).subscribe((val: any) => {
+      if (val.status) {
+        this.StorageService.setData({ key: 'super-admin-mail', value: res.email });
+        this.alert.showAlert({ message: val.message, type: 'success' });
+      }
+      else {
+        this.alert.showAlert({ message: val.message, type: 'warning' });
+      }
+      this.cancelAdd();
+    })
   }
   cancelAdd(val?) {
     this.showAdd = false;
