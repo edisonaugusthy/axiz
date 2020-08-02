@@ -13,6 +13,7 @@ import { CompanyAccessComponent } from './component/company-access/company-acces
 import { ConnectingPathComponent } from './component/connecting-path/connecting-path.component';
 import { ContactUsComponent } from './component/contact-us/contact-us.component';
 import { RequstsComponent } from './component/requsts/requsts.component';
+import { FaqComponent } from './component/faq/faq.component';
 
 const routes: Routes = [{
     path: '',
@@ -58,6 +59,10 @@ const routes: Routes = [{
     {
         path: 'requests',
         component: RequstsComponent
+    },
+    {
+        path: 'faq',
+        component: FaqComponent
     }
     ]
 }

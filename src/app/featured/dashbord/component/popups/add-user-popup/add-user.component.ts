@@ -75,7 +75,7 @@ export class AddUserComponent implements OnInit {
     if (this.addUserForm.valid) {
       let formVal = this.addUserForm.value;
       delete formVal['confirmpassword'];
-      formVal.companyid = formVal.companyid.join(',');
+      // formVal.companyid = formVal.companyid.join(',');
       this.formSubmitted.emit(formVal);
       this.modalRef.close();
       this.isSubmitted = false;

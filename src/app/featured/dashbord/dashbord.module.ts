@@ -37,6 +37,7 @@ import { NormalUserComponent } from './component/details-popups/normal-user/norm
 import { ContactUsComponent } from './component/contact-us/contact-us.component';
 import { ContactUsViewComponent } from './component/details-popups/contact-us/contact-us.component';
 import { RequstsComponent } from './component/requsts/requsts.component';
+import { FaqComponent } from './component/faq/faq.component';
 
 
 
@@ -81,7 +82,8 @@ import { RequstsComponent } from './component/requsts/requsts.component';
     NormalUserComponent,
     ContactUsComponent,
     ContactUsViewComponent,
-    RequstsComponent
+    RequstsComponent,
+    FaqComponent
   ],
   providers: [
     DatePipe,
