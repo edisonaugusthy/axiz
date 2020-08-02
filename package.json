@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.config.json --live-reload=true  --port 4200 --open",
     "build": "ng build --prod --outputHashing=all",
+    "build-dev": "ng build  --outputHashing=all",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

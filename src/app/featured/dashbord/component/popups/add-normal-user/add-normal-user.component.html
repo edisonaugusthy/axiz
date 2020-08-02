@@ -61,7 +61,6 @@
                     [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
                 </div>
               </div>
-
             </div>
             <div class="form-group-wrap row" *ngIf="isEdit">
               <div class="col col-sm-5 label astrick">
@@ -73,8 +72,24 @@
                     [ngClass]="{ 'has-error': isSubmitted && formControls.loginpin.errors }">
                 </div>
               </div>
-
             </div>
+
+
+            <div class="form-group-wrap row">
+              <div class="col col-sm-5 label astrick">
+                Company
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <ng-select [items]="companyList" [multiple]="true" bindLabel="CompanyName" bindValue="CompanyID"
+                    appendTo="body" formControlName="companyid"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.companyid.errors }">
+                  </ng-select>
+                </div>
+              </div>
+            </div>
+
+
 
             <div class="form-group-wrap chain-logo row">
               <div class="col col-sm-5 label flex-top" [ngClass]="{'astrick':isEdit ===false}">

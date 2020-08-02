@@ -2,6 +2,7 @@ import { AlertService } from 'src/app/shared/services/alert.service';
 import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter, Input, ViewEncapsulation } from '@angular/core';
 import { NgbModalConfig, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../../service/auth.service';
+import { NgStorageService } from 'ng7-storage';
 
 @Component({
   selector: 'app-select-company-popup',
@@ -19,7 +20,8 @@ export class SelectCompanyPopupComponent implements OnInit {
     config: NgbModalConfig,
     private modalService: NgbModal,
     private authService: AuthService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private StorageService: NgStorageService,
   ) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -31,7 +33,8 @@ export class SelectCompanyPopupComponent implements OnInit {
   }
   closePopup() {
     if (this.status) {
-      this.authService.setCompany({ companyid: this.status }).subscribe(val => {
+      const userInfo = this.StorageService.getData('user_details');
+      this.authService.setCompany({ companyid: this.status, user_id: userInfo.user_id }).subscribe(val => {
         this.onSelect.emit(true);
         this.modalRef.close();
       })

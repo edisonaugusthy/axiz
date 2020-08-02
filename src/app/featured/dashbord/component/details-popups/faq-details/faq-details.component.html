@@ -1,0 +1,54 @@
+<!-- edit popup -->
+<ng-template #addUserModal let-modal>
+  <form (ngSubmit)="onSubmit()" [formGroup]="addUserForm">
+    <div class="currency-popup">
+      <!-- <div class="modal-dialog"> -->
+      <div class="modal-content modal-content-area modal-lg">
+        <div class="add-chain-popup">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <span class="material-icons"> list </span>
+            <h6 class="modal-title"> QUESTION</h6>
+            <!--  -->
+            <span class="material-icons btn-close curser-point" (click)="popupClose()"> highlight_off
+            </span>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="form-group-wrap row">
+              <div class="col col-sm-3 label astrick">
+                Question
+              </div>
+              <div class="col col-sm-7">
+                <div class="form-group">
+                  <input type="text" class="form-control" disabled formControlName="question"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.question.errors }">
+                </div>
+              </div>
+            </div>
+            <div class="form-group-wrap row">
+              <div class="col col-sm-3 label astrick">
+                Answer
+              </div>
+              <div class="col col-sm-7">
+                <div class="form-group">
+                  <textarea type="text" class="form-control" disabled formControlName="answer"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.answer.errors }"></textarea>
+                </div>
+              </div>
+              <div class="col col-sm-3">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" mat-flat-button class="btn btn-default" data-dismiss="modal"
+            (click)="popupClose()">Close</button>
+          <button type="button" mat-flat-button color="primary" class="btn" data-dismiss="modal"
+            (click)="onSubmit()">Save</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-template>

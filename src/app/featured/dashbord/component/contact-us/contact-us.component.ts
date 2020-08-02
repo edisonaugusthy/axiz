@@ -70,7 +70,7 @@ export class ContactUsComponent implements OnInit, AfterViewInit {
   submitDelete(val) {
     this.showDelete = false;
     this.loaderSvc.showLoader();
-    this.dashboardSvc.deleteCompanyAccess({ enquiryId: val.id }).subscribe((val: any) => {
+    this.dashboardSvc.deleteContactUs({ enquiryid: val.id }).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       if (val && val.status) {
         this.alert.showAlert({ message: val.message, type: 'success' });

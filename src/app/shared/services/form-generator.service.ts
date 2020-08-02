@@ -264,7 +264,7 @@ export class FormGeneratorService {
         disabled: true
       },
       {
-        value: currentValuse ? currentValuse['CompanyID'].split(',') : '',
+        value: currentValuse ? currentValuse['CompanyID'] : '',
         key: 'companyid',
         label: 'Company',
         required: true,
@@ -843,7 +843,7 @@ export class FormGeneratorService {
         disabled: true
       },
       {
-        value: currentValuse ? currentValuse['CompanyID'] : '',
+        value: currentValuse['CompanyID']?.join(',') ?? '',
         key: 'companyid',
         label: 'Company',
         required: true,

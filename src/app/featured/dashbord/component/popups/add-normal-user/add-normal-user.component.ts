@@ -1,11 +1,12 @@
-import { Component, OnInit, Input, ElementRef, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, Output, EventEmitter, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NgbModalRef, NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-normal-user',
   templateUrl: './add-normal-user.component.html',
-  styleUrls: ['./add-normal-user.component.css']
+  styleUrls: ['./add-normal-user.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AddNormalUserComponent implements OnInit {
 
@@ -35,7 +36,7 @@ export class AddNormalUserComponent implements OnInit {
       username: [(this.fields?.user_name || ''), Validators.required],
       email: [(this.fields?.user_email || ''), [Validators.required, Validators.email]],
       mobile: [(this.fields?.user_phone || ''), [Validators.required, Validators.minLength(8)]],
-      // udid: [(this.fields?.UDID || ''), Validators.required],
+      companyid: [(this.fields?.CompanyID || ''), Validators.required],
       loginpin: [(this.fields?.LoginPin || '')],
       image: [('')],
       profilepic: [('')],

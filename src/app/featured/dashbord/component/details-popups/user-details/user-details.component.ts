@@ -49,7 +49,7 @@ export class UserDetailsComponent implements OnInit {
       password: [(this.fields?.password_ref || ''), Validators.required],
       confirmpassword: ['', Validators.required],
       status: [(this.fields?.status), Validators.required],
-      companyid: [(this.fields?.companyid), Validators.required],
+      companyid: [(this.fields?.companyid?.join(',')), Validators.required],
     },
       {
         validator: MustMatch('password', 'confirmpassword')

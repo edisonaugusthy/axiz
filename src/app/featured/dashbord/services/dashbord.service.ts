@@ -80,6 +80,18 @@ export class DashbordService {
     return this.http.post(ApiConstants.UPDATE_REQUESTS, data);
   }
 
+  getFaq(data) {
+    return this.http.post(ApiConstants.GET_ALL_FAQ, data);
+  }
+  addFaq(data) {
+    return this.http.post(ApiConstants.ADD_FAQ, data);
+  }
+  editFaq(data) {
+    return this.http.post(ApiConstants.EDIT_FAQ, data);
+  }
+  deleteFaq(data) {
+    return this.http.post(ApiConstants.DELETE_FAQ, data);
+  }
   // admin part
 
   createChain(data) {
@@ -197,6 +209,9 @@ export class DashbordService {
 
   getAllCompanies(data) {
     return this.http.post(ApiConstants.GET_ALL_COMPANIES_LIST, data);
+  }
+  getUserCompanies(data) {
+    return this.http.post(ApiConstants.GET_USER_COMPANIES_LIST, data);
   }
 
 

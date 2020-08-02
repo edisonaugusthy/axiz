@@ -38,6 +38,8 @@ import { ContactUsComponent } from './component/contact-us/contact-us.component'
 import { ContactUsViewComponent } from './component/details-popups/contact-us/contact-us.component';
 import { RequstsComponent } from './component/requsts/requsts.component';
 import { FaqComponent } from './component/faq/faq.component';
+import { AddFaqComponent } from './component/popups/add-faq/add-faq.component';
+import { FaqDetailsComponent } from './component/details-popups/faq-details/faq-details.component';
 
 
 
@@ -83,7 +85,9 @@ import { FaqComponent } from './component/faq/faq.component';
     ContactUsComponent,
     ContactUsViewComponent,
     RequstsComponent,
-    FaqComponent
+    FaqComponent,
+    AddFaqComponent,
+    FaqDetailsComponent
   ],
   providers: [
     DatePipe,

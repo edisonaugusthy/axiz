@@ -8,6 +8,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormGeneratorService } from 'src/app/shared/services/form-generator.service';
 import { map, filter, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Observable, Subject, fromEvent } from 'rxjs';
+import { NgStorageService } from 'ng7-storage';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -30,12 +31,14 @@ export class UserComponent implements OnInit, AfterViewInit {
   public pagination: any;
   isSearching: boolean;
   scrollbarOptions = AppConstants.SCROLL_BAR_OPTIONS;
+  allCompanies: any;
   constructor(
     private dashboardSvc: DashbordService,
     private loaderSvc: LoaderService,
     private alert: AlertService,
     private formGeneratorService: FormGeneratorService,
-    private deleteMessageSvc: DeleteMessageService
+    private deleteMessageSvc: DeleteMessageService,
+    private StorageService: NgStorageService,
   ) { }
 
   ngOnInit() {
@@ -43,6 +46,7 @@ export class UserComponent implements OnInit, AfterViewInit {
       currentPage: 1,
       totalPages: null,
     }
+    this.getAllCompanies();
     this.getAllUsers();
 
   }
@@ -160,4 +164,11 @@ export class UserComponent implements OnInit, AfterViewInit {
 
     });
   }
+  getAllCompanies() {
+    const userInfo = this.StorageService.getData('user_details');
+    this.dashboardSvc.getUserCompanies({ userid: userInfo.user_id }).subscribe((val: any) => {
+      this.allCompanies = val.comapny_id;
+    });
+  }
+
 }

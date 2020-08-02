@@ -32,6 +32,12 @@ export class ApiConstants {
     public static GET_REQUESTS = API_BASE_URL + 'admin/app-users-registration';
     public static UPDATE_REQUESTS = API_BASE_URL + 'admin/app-users-registration-action';
 
+
+    public static GET_ALL_FAQ = API_BASE_URL + 'admin/faq';
+    public static ADD_FAQ = API_BASE_URL + 'admin/faq-add';
+    public static EDIT_FAQ = API_BASE_URL + 'admin/faq-edit';
+    public static DELETE_FAQ = API_BASE_URL + 'admin/faq-delete';
+
     // admin
 
     public static SET_SELECTED_COMPANY = API_BASE_URL + 'user/company-session';
@@ -72,5 +78,6 @@ export class ApiConstants {
     public static GET_CHAIN_LIST = API_BASE_URL + 'user/chainlist';
     public static GET_LOCATION_LIST = API_BASE_URL + 'user/locationlist';
     public static GET_TOTAL_CURRENCY_LIST = API_BASE_URL + 'admin/currencydrop';
+    public static GET_USER_COMPANIES_LIST = API_BASE_URL + 'user/company-list';
 
 }

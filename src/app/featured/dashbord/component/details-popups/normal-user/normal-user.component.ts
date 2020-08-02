@@ -37,6 +37,7 @@ export class NormalUserComponent implements OnInit {
       mobile: [(this.fields?.user_phone || ''), Validators.required],
       udid: [(this.fields?.UDID || ''), Validators.required],
       loginpin: [(this.fields?.LoginPin || ''), Validators.required],
+      companyid: [(this.fields?.CompanyID?.join(',') || ''), Validators.required],
       image: [('')],
       profilepic: [('')],
     });

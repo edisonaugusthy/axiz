@@ -128,7 +128,6 @@ export class CompanyAccessComponent implements OnInit, AfterViewInit {
 
   submitEdit(val) {
     this.showEdit = false;
-    val.companyid = val.companyid;
     this.loaderSvc.showLoader();
     this.dashboardSvc.updateCompanyAccess(val).subscribe((val: any) => {
       this.loaderSvc.hideLoader();

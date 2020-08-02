@@ -55,7 +55,7 @@ export class AddUserComponent implements OnInit {
       password: [(this.fields?.password_ref || ''), Validators.required],
       confirmpassword: ['', Validators.required],
       status: [(this.fields?.status || 1), Validators.required],
-      companyid: [(this.fields?.companyid.split(',') || null), Validators.required],
+      companyid: [(this.fields?.companyid || null), Validators.required],
     },
       {
         validator: MustMatch('password', 'confirmpassword')
@@ -75,7 +75,6 @@ export class AddUserComponent implements OnInit {
     if (this.addUserForm.valid) {
       let formVal = this.addUserForm.value;
       delete formVal['confirmpassword'];
-      // formVal.companyid = formVal.companyid.join(',');
       this.formSubmitted.emit(formVal);
       this.modalRef.close();
       this.isSubmitted = false;
