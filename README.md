@@ -1,4 +1,4 @@
-# AxizClient
+# AxizClient [![Netlify Status](https://api.netlify.com/api/v1/badges/2f389181-39f3-4ca0-82a2-31d379ad570b/deploy-status)](https://app.netlify.com/sites/axiz-demo-app/deploys)
 
 
 ## Built with 🔧
