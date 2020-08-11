@@ -31,13 +31,16 @@ export class NormalUserComponent implements OnInit {
   ngOnInit() {
     this.addUserForm = this.formBuilder.group({
       id: [(this.fields?.id || '')],
-      userid: [(this.fields?.user_id || ''), Validators.required],
-      username: [(this.fields?.user_name || ''), Validators.required],
-      email: [(this.fields?.user_email || ''), [Validators.required, Validators.email]],
-      mobile: [(this.fields?.user_phone || ''), Validators.required],
-      udid: [(this.fields?.UDID || ''), Validators.required],
-      loginpin: [(this.fields?.LoginPin || ''), Validators.required],
+      firstname: [(this.fields?.firstname || ''), Validators.required],
+      lastname: [(this.fields?.lastname || ''), Validators.required],
+      dob: [(this.fields?.dob || ''), Validators.required],
+      gender: [(this.fields?.gender || ''), Validators.required],
+      user_id: [(this.fields?.user_id || ''), [Validators.required, Validators.minLength(4)]],
+      username: [(this.fields?.username || ''), Validators.required],
+      user_email: [(this.fields?.user_email || ''), [Validators.required, Validators.email]],
+      user_phone: [(this.fields?.user_phone || ''), [Validators.required, Validators.minLength(8)]],
       companyid: [(this.fields?.CompanyID?.join(',') || ''), Validators.required],
+      password: [(''), (this.fields ? '' : Validators.required)],
       image: [('')],
       profilepic: [('')],
     });
@@ -50,9 +53,9 @@ export class NormalUserComponent implements OnInit {
       this.isEdit = true;
     }
     else {
-      this.addUserForm.get('profilepic').setValidators([Validators.required]);
+
       this.isEdit = false;
-      this.addUserForm.get('profilepic').updateValueAndValidity();
+
     }
     this.modalRef = this.modalService.open(content);
   }

@@ -89,7 +89,7 @@ export class CompanyAccessComponent implements OnInit, AfterViewInit {
   submitDelete(val) {
     this.showDelete = false;
     this.loaderSvc.showLoader();
-    this.dashboardSvc.deleteCompanyAccess({ userid: val.UserID }).subscribe((val: any) => {
+    this.dashboardSvc.deleteCompanyAccess({ userid: val.user_id }).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       if (val && val.status) {
         this.alert.showAlert({ message: val.message, type: 'success' });

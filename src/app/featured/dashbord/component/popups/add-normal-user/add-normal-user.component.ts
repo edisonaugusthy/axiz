@@ -1,12 +1,17 @@
 import { Component, OnInit, Input, ElementRef, Output, EventEmitter, ViewChild, ViewEncapsulation } from '@angular/core';
-import { NgbModalRef, NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef, NgbModalConfig, NgbModal, NgbInputDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { CustomAdapter } from '../add-location-popup/add-location-popup.component';
 
 @Component({
   selector: 'app-add-normal-user',
   templateUrl: './add-normal-user.component.html',
   styleUrls: ['./add-normal-user.component.css'],
   encapsulation: ViewEncapsulation.None,
+  providers: [
+    { provide: NgbDateAdapter, useClass: CustomAdapter }
+  ],
 })
 export class AddNormalUserComponent implements OnInit {
 
@@ -24,20 +29,35 @@ export class AddNormalUserComponent implements OnInit {
   fileData: any;
   imgUrl = `../assets/img/upload.png`;
   imageName: string;
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private formBuilder: FormBuilder) {
+  genderList = ['male', 'female', 'transgender']
+  minDate: { year: number; month: number; day: number; };
+  maxDate: { year: number; month: number; day: number; };
+  startDate: { year: number; month: number; day: number; };
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private formBuilder: FormBuilder, dPconfig: NgbInputDatepickerConfig) {
     config.backdrop = 'static';
     config.keyboard = false;
+    const d = new Date();
+    const day = d.getDate();
+    const month = d.getMonth() + 1; // Since getMonth() returns month from 0-11 not 1-12.
+    const year = d.getFullYear();
+    this.maxDate = { year: year, month: month, day: day };
+    this.minDate = { year: (year - 100), month: 1, day: 1 }
+    this.startDate = { year: year, month: 1, day: 1 };
   }
 
   ngOnInit() {
     this.addUserForm = this.formBuilder.group({
       id: [(this.fields?.id || '')],
-      userid: [(this.fields?.user_id || ''), [Validators.required, Validators.minLength(4)]],
-      username: [(this.fields?.user_name || ''), Validators.required],
-      email: [(this.fields?.user_email || ''), [Validators.required, Validators.email]],
-      mobile: [(this.fields?.user_phone || ''), [Validators.required, Validators.minLength(8)]],
+      firstname: [(this.fields?.firstname || ''), Validators.required],
+      lastname: [(this.fields?.lastname || ''), Validators.required],
+      dob: [(this.fields?.dob || ''), Validators.required],
+      gender: [(this.fields?.gender || ''), Validators.required],
+      user_id: [(this.fields?.user_id || ''), [Validators.required, Validators.minLength(4)]],
+      username: [(this.fields?.username || ''), Validators.required],
+      user_email: [(this.fields?.user_email || ''), [Validators.required, Validators.email]],
+      user_phone: [(this.fields?.user_phone || ''), [Validators.required, Validators.minLength(8)]],
       companyid: [(this.fields?.CompanyID || ''), Validators.required],
-      loginpin: [(this.fields?.LoginPin || '')],
+      password: [(''), (this.fields ? '' : Validators.required)],
       image: [('')],
       profilepic: [('')],
     });
@@ -47,7 +67,6 @@ export class AddNormalUserComponent implements OnInit {
   open(content) {
     if (this.fields) {
       this.isEdit = true;
-      this.addUserForm.get('loginpin').setValidators([Validators.required, Validators.minLength(4)]);
       this.imgUrl = this.fields?.image ?? `../assets/img/upload.png`
     }
     else {

@@ -18,12 +18,85 @@
           <div class="modal-body">
             <div class="form-group-wrap row">
               <div class="col col-sm-5 label astrick">
+                First Name
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="firstname"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.firstname.errors }">
+                </div>
+              </div>
+            </div>
+            <div class="form-group-wrap row">
+              <div class="col col-sm-5 label astrick">
+                Last Name
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="lastname"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.lastname.errors }">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group-wrap row">
+              <div class="col col-sm-5 label astrick">
+                DOB
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input class="form-control" placeholder="dd/mm/yyyy" name="d2" formControlName="dob" ngbDatepicker
+                    #d2="ngbDatepicker" autocomplete="off" (click)="d2.toggle()" [minDate]="minDate" [maxDate]="maxDate"
+                    [startDate]="startDate" (keypress)="$event.preventDefault()"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.dob.errors }">
+
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group-wrap row">
+              <div class="col col-sm-5 label astrick">
+                Gender
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <ng-select [items]="genderList" [multiple]="false" appendTo="body" formControlName="gender"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.gender.errors }">
+                  </ng-select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group-wrap row">
+              <div class="col col-sm-5 label astrick">
+                Mobile
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="text" numbersOnly maxlength="10" class="form-control" formControlName="user_phone"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.user_phone.errors }">
+                </div>
+              </div>
+            </div>
+            <div class="form-group-wrap row">
+              <div class="col col-sm-5 label astrick">
+                Email
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="user_email"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.user_email.errors }">
+                </div>
+              </div>
+            </div>
+            <div class="form-group-wrap row">
+              <div class="col col-sm-5 label astrick">
                 User ID
               </div>
               <div class="col col-sm-5">
                 <div class="form-group">
-                  <input type="text" numbersOnly maxlength="6" class="form-control" formControlName="userid"
-                    [ngClass]="{ 'has-error': isSubmitted && formControls.userid.errors }">
+                  <input type="text" numbersOnly maxlength="6" class="form-control" formControlName="user_id"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.user_id.errors }">
                 </div>
               </div>
             </div>
@@ -40,36 +113,16 @@
               <div class="col col-sm-3">
               </div>
             </div>
+
+
             <div class="form-group-wrap row">
-              <div class="col col-sm-5 label astrick">
-                Mobile
+              <div class="col col-sm-5 label " [ngClass]="{'astrick':!isEdit}">
+                Password
               </div>
               <div class="col col-sm-5">
                 <div class="form-group">
-                  <input type="text" numbersOnly maxlength="10" class="form-control" formControlName="mobile"
-                    [ngClass]="{ 'has-error': isSubmitted && formControls.mobile.errors }">
-                </div>
-              </div>
-            </div>
-            <div class="form-group-wrap row">
-              <div class="col col-sm-5 label astrick">
-                Email
-              </div>
-              <div class="col col-sm-5">
-                <div class="form-group">
-                  <input type="text" class="form-control" formControlName="email"
-                    [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
-                </div>
-              </div>
-            </div>
-            <div class="form-group-wrap row" *ngIf="isEdit">
-              <div class="col col-sm-5 label astrick">
-                Login Pin
-              </div>
-              <div class="col col-sm-5">
-                <div class="form-group">
-                  <input type="text" numbersOnly maxlength="6" class="form-control" formControlName="loginpin"
-                    [ngClass]="{ 'has-error': isSubmitted && formControls.loginpin.errors }">
+                  <input type="text" class="form-control" formControlName="password"
+                    [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
                 </div>
               </div>
             </div>

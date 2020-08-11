@@ -15,7 +15,7 @@
         <tr>
           <th class="curser-point" (click)="sort('id')" style="width: 10%;">Id </th>
           <th class="curser-point" (click)="sort('user_name')" style="width: 20%;">Name </th>
-          <th class="curser-point" (click)="sort('companyid')" style="width: 10%;">Company </th>
+          <th class="curser-point" (click)="sort('companyName')" style="width: 10%;">Company </th>
           <th class="curser-point" (click)="sort('email')" style="width: 20%;">Email </th>
           <th class="curser-point" (click)="sort('password')" style="width: 15%;">Password </th>
           <th class="curser-point" (click)="sort('status')" style="width: 15%;">Status </th>
@@ -29,7 +29,7 @@
           <tr *ngFor="let item of allUsers| orderBy: {property: column, direction: direction}">
             <td class="curser-point" (click)="openView(item)" style="width: 10%;">{{item.id}}</td>
             <td class="curser-point" (click)="openView(item)" style="width: 20%;">{{item.user_name}}</td>
-            <td style="width: 10%;">{{item?.companyid?.join(',')}}</td>
+            <td style="width: 10%;">{{item?.companyName?.join(',')}}</td>
             <td style="width: 20%;">{{item.email}}</td>
             <td style="width: 15%;"> {{item.password_ref}} </td>
             <td style="width: 15%;" [ngStyle]="{'color':item.status==1 ? 'green' : '#c0bbc7'}">

@@ -6,11 +6,11 @@
         <div class="box">
           <ul>
             <li>Chain</li>
-            <li>{{dashboardData?.chains[0]?.chains}}</li>
+            <li>{{dashboardData?.chains[0]?.chains||0}}</li>
           </ul>
           <ul>
             <li>Location</li>
-            <li>{{dashboardData?.locations[0]?.locations}}</li>
+            <li>{{dashboardData?.locations[0]?.locations||0}}</li>
           </ul>
         </div>
       </div>
@@ -19,11 +19,11 @@
         <div class="box">
           <ul>
             <li>Chain</li>
-            <li>{{dashboardData?.chains[0]?.chains}}</li>
+            <li>{{dashboardData?.chains[0]?.chains||0}}</li>
           </ul>
           <ul>
             <li>Location</li>
-            <li>{{dashboardData?.locations[0]?.locations}}</li>
+            <li>{{dashboardData?.locations[0]?.locations||0}}</li>
           </ul>
         </div>
       </div>
@@ -43,11 +43,11 @@
         <div class="box">
           <ul>
             <li>Chain</li>
-            <li>{{dashboardData?.chains}}</li>
+            <li>{{dashboardData?.chains||0}}</li>
           </ul>
           <ul>
             <li>Companies</li>
-            <li>{{dashboardData?.companies}}</li>
+            <li>{{(dashboardData?.companies)||0}}</li>
           </ul>
         </div>
       </div>
@@ -56,11 +56,11 @@
         <div class="box">
           <ul>
             <li>Users</li>
-            <li>{{dashboardData?.users}}</li>
+            <li>{{dashboardData?.users||0}}</li>
           </ul>
           <ul>
             <li>Location</li>
-            <li>{{dashboardData?.locations}}</li>
+            <li>{{dashboardData?.locations||0}}</li>
           </ul>
         </div>
       </div>

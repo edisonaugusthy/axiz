@@ -253,7 +253,7 @@ export class FormGeneratorService {
   editCompanyAccess(currentValuse, companies) {
     let data = [
       {
-        value: currentValuse ? currentValuse['UserID'] : '',
+        value: currentValuse?.user_id ?? '',
         key: 'userid',
         label: 'User ID',
         required: true,
@@ -264,7 +264,7 @@ export class FormGeneratorService {
         disabled: true
       },
       {
-        value: currentValuse ? currentValuse['CompanyID'] : '',
+        value: currentValuse ? currentValuse['companyID'] : '',
         key: 'companyid',
         label: 'Company',
         required: true,
@@ -832,7 +832,7 @@ export class FormGeneratorService {
   CompanyAccessDetails(currentValuse, companies) {
     let data = [
       {
-        value: currentValuse ? currentValuse['UserID'] : '',
+        value: currentValuse ? currentValuse['user_id'] : '',
         key: 'userid',
         label: 'User ID',
         required: true,
@@ -843,7 +843,7 @@ export class FormGeneratorService {
         disabled: true
       },
       {
-        value: currentValuse['CompanyID']?.join(',') ?? '',
+        value: currentValuse['companyID']?.join(',') ?? '',
         key: 'companyid',
         label: 'Company',
         required: true,
