@@ -17,14 +17,8 @@
                         </div>
                         <div class="col col-sm-5">
                             <div class="form-group" *ngIf="!isEdit">
-                                <!-- <select class="form-control" formControlName="userid" [ngClass]="{
-                                              'has-error': isSubmitted && formControls.userid.errors
-                                            }">
-                                    <option *ngFor="let opt of users" [value]="opt.user_id">
-                                        {{opt.user_name}}
-                                    </option>
-                                </select> -->
-                                <ng-select [items]="users" bindLabel="user_name" bindValue="user_id" appendTo="body"
+
+                                <ng-select [items]="users" bindLabel="username" bindValue="user_id" appendTo="body"
                                     formControlName="userid">
                                 </ng-select>
                             </div>
@@ -62,8 +56,7 @@
                             <tbody>
 
                                 <tr *ngFor=" let group of formData.controls; let i=index;">
-                                    <ng-container [formGroup]="group"
-                                        *ngIf="group.get('locations').controls.length > 0">
+                                    <ng-container [formGroup]="group">
                                         <td>
                                             <div class="checkbox">
                                                 <label>
