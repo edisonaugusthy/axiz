@@ -10,7 +10,7 @@
       <thead>
         <tr>
           <th class="curser-point" (click)="sort('user_id')" style="width: 20%;"> User Id </th>
-          <th class="curser-point" (click)="sort('user_name')" style="width: 20%;"> Name </th>
+          <th class="curser-point" (click)="sort('firstname')" style="width: 20%;"> Name </th>
           <th class="curser-point" (click)="sort('user_phone')" style="width: 20%;"> Phone </th>
           <th class="curser-point" (click)="sort('user_email')" style="width: 20%;"> Email</th>
           <th style="width: 10%;">Operation</th>
@@ -22,7 +22,7 @@
         <tbody>
           <tr *ngFor="let item of companyAccess| orderBy: {property: column, direction: direction};index as i">
             <td class="curser-point" (click)="openView(item)" style="width: 20%;">{{item.user_id}}</td>
-            <td class="curser-point" (click)="openView(item)" style="width: 20%;">{{item.user_name}}</td>
+            <td class="curser-point" (click)="openView(item)" style="width: 20%;">{{item.firstname}}</td>
             <td style="width: 20%;">{{item.user_phone}}</td>
             <td style="width: 20%;">{{item.user_email}}</td>
             <td style="width: 10%;">

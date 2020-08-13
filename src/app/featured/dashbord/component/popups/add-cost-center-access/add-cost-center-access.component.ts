@@ -170,7 +170,7 @@ export class AddCostCenterAccessComponent implements OnInit {
         return val.user_id == this.addUserForm.value.userid;
       })
       if (user && user.length > 0) {
-        this.addUserForm.patchValue({ username: user[0].user_name })
+        this.addUserForm.patchValue({ username: user[0].username })
       }
     }
   }
