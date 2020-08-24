@@ -35,6 +35,7 @@ export class AddCompanyPopupComponent implements OnInit {
   selectedCompany: any;
   imageName: any;
   active = 1;
+  imgUrl: any;
   constructor(
     config: NgbModalConfig,
     private modalService: NgbModal,
@@ -75,7 +76,7 @@ export class AddCompanyPopupComponent implements OnInit {
       Image: [(this.fields?.Image) || ''],
     });
     this.open(this.input);
-
+    this.imgUrl = this.fields?.CompanyLogo || `../assets/img/upload.png`;
   }
 
   open(content) {

@@ -15,8 +15,8 @@
           <th class="curser-point" (click)="sort('id')" style="width: 10%;"> Id </th>
           <th class="curser-point" (click)="sort('CompanyName')" style="width: 15%;">Company Name </th>
           <th class="curser-point" (click)="sort('CompanyName')" style="width: 15%;">Company Code</th>
-          <th class="curser-point" (click)="sort('Address1')" style="width: 20%;"> Address </th>
-          <th class="curser-point" (click)="sort('MobileNo')" style="width: 10%;"> Mobile </th>
+          <th class="curser-point" (click)="sort('Address1')" style="width: 18%;"> Address </th>
+          <th class="curser-point" (click)="sort('Phone1')" style="width: 12%;"> Phone </th>
           <th class="curser-point" (click)="sort('Email')" style="width: 20%;"> Email </th>
           <th style="width: 10%;">Operation</th>
         </tr>
@@ -29,8 +29,8 @@
             <td class="curser-point" (click)="openView(item)" style="width: 10%;">{{item.id}}</td>
             <td class="curser-point" (click)="openView(item)" style="width: 15%;">{{item.CompanyName}}</td>
             <td class="curser-point" (click)="openView(item)" style="width: 15%;">{{item.CompanyCode}}</td>
-            <td style="width: 20%;">{{item.Address1}}</td>
-            <td style="width: 10%;">{{item.MobileNo}}</td>
+            <td style="width: 18%;">{{item.Address1}}</td>
+            <td style="width: 12%;">{{item.Phone1}}</td>
             <td style="width: 20%;">{{item.Email}}</td>
             <td style="width: 10%;">
               <app-buttons [data]='item' (onRemove)="openDelete($event)" (onEdit)="openEdit($event)"></app-buttons>

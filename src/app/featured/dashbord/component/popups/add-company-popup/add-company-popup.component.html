@@ -253,7 +253,7 @@
                                                 <label class="btn-upload">
                                                     <input type="file" name="fileupload"
                                                         (change)="fileProgress($event)">
-                                                    <img class="btn" src="../assets/img/upload.png">
+                                                    <img class="image-uploaded" [src]="imgUrl">
                                                 </label>
                                                 <p class="file-name" *ngIf="imageName">{{imageName}}</p>
                                             </div>

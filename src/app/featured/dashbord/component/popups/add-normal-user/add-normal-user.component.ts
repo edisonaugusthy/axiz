@@ -64,10 +64,23 @@ export class AddNormalUserComponent implements OnInit {
     this.open(this.input);
   }
 
+  checkIfCompanyLoaded() {
+    this.companyList = this.companyList ?? []
+    if (this.fields?.company?.length > 0) {
+      for (let i = 0; i < this.fields.company.length; i++) {
+        const element = this.fields.company[i];
+        const index = this.companyList.findIndex(x => x.CompanyID === element.CompanyID);
+        if (index === -1) {
+          this.companyList.push(element)
+        }
+      }
+    }
+  }
   open(content) {
     if (this.fields) {
       this.isEdit = true;
       this.imgUrl = this.fields?.image ?? `../assets/img/upload.png`
+      this.checkIfCompanyLoaded();
     }
     else {
       this.isEdit = false;
