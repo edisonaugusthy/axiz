@@ -21,7 +21,7 @@
 ### Lead Developers
 
 * **[Edison Augusthy](https://github.com/edisonaugusthy)** - *Author*
-* **[Gokul Nath](https://github.com/gokulnath-r)** - *Developer*
+* **[Gokul Nath](https://github.com/gokulnath-r)** - *Ui Designer/Developer*
 
 ### Thanks
 
