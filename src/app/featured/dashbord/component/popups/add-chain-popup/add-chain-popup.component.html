@@ -1,15 +1,18 @@
 <!-- edit popup -->
 <ng-template #addUserModal let-modal>
     <form (ngSubmit)="onSubmit()" [formGroup]="addUserForm">
-        <div class="main-popup currency-popup">
+        <div class="currency-popup">
             <!-- <div class="modal-dialog"> -->
             <div class="modal-content modal-content-area modal-lg">
                 <div class="add-chain-popup">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h4 class="modal-title" *ngIf="!isEdit">ADD CHAIN</h4>
-                        <h4 class="modal-title" *ngIf="isEdit">EDIT CHAIN</h4>
-                        <img class="btn-close" src="../assets/img/close-icon.svg" (click)="popupClose()">
+                        <span class="material-icons"> list </span>
+                        <h6 class="modal-title" *ngIf="!isEdit">ADD CHAIN</h6>
+                        <h6 class="modal-title" *ngIf="isEdit">EDIT CHAIN</h6>
+                        <!--  -->
+                        <span class="material-icons btn-close curser-point" (click)="popupClose()"> highlight_off
+                        </span>
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
@@ -50,7 +53,7 @@
 
                         </div>
 
-                        <div class="form-group-wrap row">
+                        <div class="form-group-wrap row remove-borrom-padding">
                             <div class="col-6 col-md-4">
                                 <div class="checkbox">
                                     <label>
@@ -64,12 +67,12 @@
 
                         </div>
 
-                        <div class="form-group-wrap row">
+                        <!-- <div class="form-group-wrap row">
                             <div class="col-6 col-md-8">
 
                             </div>
                             <div class="col-6 col-md-4"></div>
-                        </div>
+                        </div> -->
                         <div class="form-group-wrap row">
                             <div class="col-6 col-md-8">
                                 <div class="checkbox">
@@ -86,20 +89,6 @@
                                         CGA Based on transacions
                                     </label>
                                 </div>
-                                <!-- <div class="radio-wrap">
-                                    <label class="radio">
-                                        GCA Based on Guest Count
-                                        <input type="radio" [value]="1" formControlName="gcaonguestcount">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div class="radio-wrap">
-                                    <label class="radio">
-                                        CGA Based on transacions
-                                        <input type="radio" [value]="1" formControlName="cgaontransac">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div> -->
                             </div>
                             <div class="col-6 col-md-4"></div>
                         </div>
@@ -110,8 +99,9 @@
                             </div>
                             <div class="col col-sm-5 file-upload-wrap">
                                 <label class="btn-upload">
-                                    <input type="file" name="fileupload" (change)="fileProgress($event)">
-                                    <img class="btn" [src]="imgUrl">
+                                    <input type="file" name="fileupload" (change)="fileProgress($event)"
+                                        accept="image/*">
+                                    <img class="image-uploaded" [src]="imgUrl">
                                 </label>
                                 <p class="file-name" *ngIf="imageName">{{imageName}}</p>
                             </div>

@@ -1,13 +1,17 @@
 <ng-template #addUserModal let-modal>
     <form (ngSubmit)="onSubmit()" [formGroup]="addUserForm">
         <div class="location-popup">
-            <div class="modal-content modal-content-area modal-xl">
+            <div class="modal-content modal-content-area modal-lg">
 
                 <!-- Modal Header -->
                 <div class="modal-header">
+                    <span class="material-icons">
+                        list
+                    </span>
                     <h4 class="modal-title" *ngIf="!isEdit">ADD LOCATION</h4>
                     <h4 class="modal-title" *ngIf="isEdit">EDIT LOCATION</h4>
-                    <img class="btn-close" (click)="popupClose()" src="../assets/img/close-icon.svg">
+                    <span class="material-icons btn-close curser-point" (click)="popupClose()"> highlight_off
+                    </span>
                 </div>
 
                 <!-- Modal body -->
@@ -19,14 +23,16 @@
                                     Chain ID
                                 </div>
                                 <div class="col col-sm-7">
+                                    <ng-select [items]="chains" bindLabel="chainname"
+                                        [ngClass]="{ 'has-error': isSubmitted && formControls.chainid.errors}"
+                                        bindValue="chainid" appendTo="body" formControlName="chainid">
+                                    </ng-select>
+                                    <!--
                                     <select class="form-control" formControlName="chainid">
                                         <option *ngFor="let opt of chains " [value]="opt.chainid">{{opt.chainname}}
                                         </option>
-                                    </select>
-                                    <!-- <div class="form-group">
-                                        <input type="text" maxlength="10" class="form-control" formControlName="chainid"
-                                            [ngClass]="{ 'has-error': isSubmitted && formControls.chainid.errors }">
-                                    </div> -->
+                                    </select> -->
+
                                 </div>
                             </div>
                             <div class="wrap row">
@@ -154,13 +160,7 @@
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <input type="text" class="form-control" formControlName="costcenter">
-                                        <!-- <select class="form-control" formControlName="costcenter">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select> -->
+
                                     </div>
                                 </div>
                             </div>
@@ -171,13 +171,6 @@
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <input type="text" class="form-control" formControlName="locationtype">
-                                        <!-- <select class="form-control" formControlName="locationtype">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select> -->
                                     </div>
                                 </div>
                             </div>
@@ -187,13 +180,18 @@
                                 </div>
                                 <div class="col-sm-7">
                                     <div class="form-group">
-                                        <!-- <input type="text" class="form-control" formControlName="inventory"
-                                            [ngClass]="{ 'has-error': isSubmitted && formControls.inventory.errors }"> -->
-                                        <select class="form-control" formControlName="inventory"
+
+                                        <ng-select
+                                            [ngClass]="{ 'has-error': isSubmitted && formControls.inventory.errors }"
+                                            [items]="status" bindLabel="name" bindValue="id" appendTo="body"
+                                            formControlName="inventory">
+                                        </ng-select>
+
+                                        <!-- <select class="form-control" formControlName="inventory"
                                             [ngClass]="{ 'has-error': isSubmitted && formControls.inventory.errors }">
                                             <option [value]="1">Yes</option>
                                             <option [value]="0">No</option>
-                                        </select>
+                                        </select> -->
                                     </div>
                                 </div>
                             </div>
@@ -202,28 +200,16 @@
                                     Start Date
                                 </div>
                                 <div class="col-sm-7">
-                                    <!-- <div class="form-group">
-                                        <input type="text" class="form-control" ngbDatepicker #d="ngbDatepicker"
-                                            formControlName="startdate">
-                                    </div> -->
                                     <div class="input-group">
-                                        <input class="form-control" placeholder="yyyy/mm/dd" name="d2" type="text"
-                                            [ngClass]="{ 'has-error': isSubmitted && formControls.startdate.errors }"
-                                            formControlName="startdate" (click)="d2.toggle()" ngbDatepicker
-                                            #d2="ngbDatepicker">
+                                        <input class="form-control" placeholder="dd/mm/yyyy" name="d2"
+                                            formControlName="startdate" ngbDatepicker #d2="ngbDatepicker"
+                                            autocomplete="off">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()"
                                                 type="button"></button>
                                         </div>
                                     </div>
-                                    <!-- <select class="form-control" formControlName="startdate">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select> -->
-                                    <!-- </div> -->
+
                                 </div>
                             </div>
                             <div class="wrap row">
@@ -233,13 +219,7 @@
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <input type="text" class="form-control" formControlName="costcentertype">
-                                        <!-- <select class="form-control" formControlName="costcentertype">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select> -->
+
                                     </div>
                                 </div>
                             </div>
@@ -250,13 +230,6 @@
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <input type="text" class="form-control" formControlName="service">
-                                        <!-- <select class="form-control" formControlName="service">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select> -->
                                     </div>
                                 </div>
                             </div>
@@ -316,25 +289,10 @@
                                 </div>
                                 <div class="col-sm-6 label">
                                     <div class="form-group">
-                                        <!-- <label>Time</label> -->
                                         <input type="time" class="form-control" formControlName="ordercutof">
-                                        <!-- <input type="text" class="form-control" formControlName="hrs"> -->
                                     </div>
                                 </div>
-                                <!-- <div class="col-sm-2 label">
-                                    <div class="form-group">
-                                        <label>Min</label>
-                                        <input type="text" class="form-control" formControlName="min">
-                                    </div>
-                                </div>
-                                <div class="col-sm-2 label">
-                                    <div class="form-group">
-                                        <select class="form-control" formControlName="type">
-                                            <option selected>AM</option>
-                                            <option>PM</option>
-                                        </select>
-                                    </div>
-                                </div> -->
+
                             </div>
                         </div>
                         <div class="col-sm-12 po-limit">
@@ -410,4 +368,14 @@
             </div>
         </div>
     </form>
+</ng-template>
+
+
+
+
+<ng-template #customDay let-date let-currentMonth="currentMonth" let-selected="selected" let-disabled="disabled"
+    let-focused="focused">
+    <span class="custom-day">
+        {{ date.day }}
+    </span>
 </ng-template>

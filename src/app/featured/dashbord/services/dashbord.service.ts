@@ -8,6 +8,8 @@ import { ApiConstants } from 'src/app/shared/constants/ApiConstants';
 })
 export class DashbordService {
 
+  public searchStr = new BehaviorSubject<any>(null);
+  public userSwichStatus = new BehaviorSubject<boolean>(false);
   constructor(private http: HttpClient) { }
   // superAdmin part
   registerCompany(Data) {
@@ -62,6 +64,34 @@ export class DashbordService {
     return this.http.get(url, { params });
   }
 
+  getContactUs(data) {
+    return this.http.post(ApiConstants.VIEW_CONTACT_US, data);
+  }
+
+  deleteContactUs(data) {
+    return this.http.post(ApiConstants.DELETE_CONTACT_US, data);
+  }
+
+  getRequests(data) {
+    return this.http.post(ApiConstants.GET_REQUESTS, data);
+  }
+
+  updateRequests(data) {
+    return this.http.post(ApiConstants.UPDATE_REQUESTS, data);
+  }
+
+  getFaq(data) {
+    return this.http.post(ApiConstants.GET_ALL_FAQ, data);
+  }
+  addFaq(data) {
+    return this.http.post(ApiConstants.ADD_FAQ, data);
+  }
+  editFaq(data) {
+    return this.http.post(ApiConstants.EDIT_FAQ, data);
+  }
+  deleteFaq(data) {
+    return this.http.post(ApiConstants.DELETE_FAQ, data);
+  }
   // admin part
 
   createChain(data) {
@@ -180,5 +210,33 @@ export class DashbordService {
   getAllCompanies(data) {
     return this.http.post(ApiConstants.GET_ALL_COMPANIES_LIST, data);
   }
+  getUserCompanies(data) {
+    return this.http.post(ApiConstants.GET_USER_COMPANIES_LIST, data);
+  }
 
+
+  // search
+  setSearchString(val) {
+    this.searchStr.next(val);
+  }
+  getSearch() {
+    return this.searchStr.asObservable;
+  }
+
+  switchUser(val: boolean) {
+    this.userSwichStatus.next(val);
+  }
+
+  getFormData(val) {
+    const formData = new FormData();
+    for (const [key, value] of Object.entries(val)) {
+      formData.append(key, val[key]);
+    }
+    return formData;
+
+  }
+  public checkStatus() {
+    const url = 'https://immense-oasis-01790.herokuapp.com/status';
+    return this.http.get(url);
+  }
 }

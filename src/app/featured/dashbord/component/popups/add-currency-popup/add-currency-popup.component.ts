@@ -1,4 +1,4 @@
-import { environment } from '../../../../../../environments/environment.prod';
+
 import {
   Component,
   OnInit,
@@ -26,7 +26,6 @@ export class AddCurrencyPopupComponent implements OnInit {
   @Output() formCancel = new EventEmitter<any>();
 
   addUserForm: FormGroup;
-  imageBase = environment.imageBase;
   isSubmitted: boolean;
   isEdit: boolean;
   selectedCompany: any;
@@ -36,6 +35,10 @@ export class AddCurrencyPopupComponent implements OnInit {
   }
 
   ngOnInit() {
+    let rate = this.fields?.CurrencyRate ?? '';
+    if (rate?.length > 6) {
+      rate = this.fields.CurrencyRate.slice(0, 6)
+    }
     this.addUserForm = this.formBuilder.group({
       id: [(this.fields?.id || '')],
       currencyid: [(this.fields?.CurrencyId || ''), Validators.required],
@@ -45,7 +48,7 @@ export class AddCurrencyPopupComponent implements OnInit {
       currencyunit: [(this.fields?.CurrencyUnit || ''), Validators.required],
       currencyconnect: [(this.fields?.CurrencyConnect || ''), Validators.required],
       currencysubunit: [(this.fields?.CurrencySubUnit || ''), Validators.required],
-      currencyrate: [(this.fields?.CurrencyRate || ''), Validators.required],
+      currencyrate: [(rate || ''), Validators.required],
       currencydecimals: [(this.fields?.Currencydecimals || ''), Validators.required],
     });
     this.open(this.input);
@@ -58,7 +61,7 @@ export class AddCurrencyPopupComponent implements OnInit {
     else {
       this.isEdit = false;
     }
-    this.modalRef = this.modalService.open(content, { size: 'lg' });
+    this.modalRef = this.modalService.open(content);
   }
   onSubmit() {
     this.isSubmitted = true;

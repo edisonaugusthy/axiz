@@ -1,74 +1,23 @@
 <section class="content-wrap">
   <section class="table-heading">
-    <button mat-flat-button color="primary" class="float-right btn" (click)="openAdd()">Add New</button>
+    <app-add-button (onAdd)="openAdd()"></app-add-button>
     <div class="flex-wrap">
       <h1>User</h1>
-      <div class="form-group search-box search">
-        <input type="text" class="form-control" [ngClass]="{'loading':isSearching}" #SearchInput
-          placeholder="Search here...">
-      </div>
     </div>
+    <app-search-box></app-search-box>
   </section>
 
   <section class="table-wrap">
     <table class="table table-main-head">
       <thead>
         <tr>
-          <th (click)="sort('user_id')" style="width: 10%;">
-            <span class="sort-wrap">
-              Id
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('user_name')" style="width: 10%;">
-            <span class="sort-wrap">
-              Name
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('user_phone')" style="width: 20%;">
-            <span class="sort-wrap">
-              Mobile
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('user_email')" style="width: 20%;">
-            <span class="sort-wrap">
-              Email
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('UDID')" style="width: 10%;">
-            <span class="sort-wrap">
-              UUID
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('LoginPin')" style="width: 10%;">
-            <span class="sort-wrap">
-              Login Pin
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th style="width: 20%;">Operation</th>
+          <th class="curser-point" (click)="sort('user_id')" style="width: 10%;">Id </th>
+          <th class="curser-point" (click)="sort('firstname')" style="width: 15%;">First Name </th>
+          <th class="curser-point" (click)="sort('lastname')" style="width: 15%;">Last Name </th>
+          <th class="curser-point" (click)="sort('user_phone')" style="width: 10%;">Mobile </th>
+          <th class="curser-point" (click)="sort('user_email')" style="width: 25%;">Email </th>
+          <th class="curser-point" (click)="sort('username')" style="width: 10%;">User Name</th>
+          <th style="width: 10%;">Operation</th>
         </tr>
       </thead>
     </table>
@@ -77,14 +26,13 @@
         <tbody>
           <tr *ngFor="let item of allUsers | orderBy: {property: column, direction: direction}">
             <td class="curser-point" (click)="openView(item)" style="width: 10%;">{{item.user_id}}</td>
-            <td class="curser-point" (click)="openView(item)" style="width: 10%;">{{item.user_name}}</td>
-            <td style="width: 20%;">{{item.user_phone}}</td>
-            <td style="width: 20%;">{{item.user_email}}</td>
-            <td style="width: 10%;">{{item.UDID}}</td>
-            <td style="width: 10%;">{{item.LoginPin}}</td>
-            <td class="btn-wrap">
-              <button mat-flat-button color="primary" class="btn" (click)="openEdit(item)">Edit</button>
-              <button mat-flat-button class="btn btn-default" (click)="openDelete(item)">Remove</button>
+            <td class="curser-point" (click)="openView(item)" style="width: 15%;">{{item.firstname}}</td>
+            <td class="curser-point" (click)="openView(item)" style="width: 15%;">{{item.lastname}}</td>
+            <td style="width: 10%;">{{item.user_phone}}</td>
+            <td style="width: 25%;">{{item.user_email}}</td>
+            <td style="width: 10%;">{{item.username}}</td>
+            <td style="width: 10%;">
+              <app-buttons [data]='item' (onRemove)="openDelete($event)" (onEdit)="openEdit($event)"></app-buttons>
             </td>
           </tr>
         </tbody>
@@ -98,20 +46,20 @@
   </section>
 </section>
 
-<!-- edit user -->
-<app-edit-popup *ngIf="showEdit" [fields]="editFormData" (formCancel)="cancelEdit($event)"
-  (formSubmitted)="submitEdit($event)">
-</app-edit-popup>
 
 <!-- delete popup -->
 <app-delete-popup *ngIf="showDelete" [details]="deleteData" (deleteCancel)="cancelDelete($event)"
   (deleteSubmitted)="submitDelete($event)">
 </app-delete-popup>
 
-<!-- add popup -->
-<app-add-popup *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
-  (formSubmitted)="submitAdd($event)"></app-add-popup>
 
-<app-details-popup *ngIf="showDetails" [fields]="detailsData" (formCancel)="cancelView($event)"
+<app-normal-user *ngIf="showDetails" [fields]="detailsData" (formCancel)="cancelView($event)"
   (formSubmitted)="cancelView($event)">
-</app-details-popup>
+
+</app-normal-user>
+<app-add-normal-user *ngIf="showEdit" [fields]="editFormData" [companyList]="allCompanies"
+  (formCancel)="cancelEdit($event)" (formSubmitted)="submitEdit($event)"></app-add-normal-user>
+
+<app-add-normal-user *ngIf="showAdd" [fields]="" [companyList]="allCompanies" (formCancel)="cancelAdd($event)"
+  (formSubmitted)="submitAdd($event)">
+</app-add-normal-user>

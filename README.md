@@ -1,5 +1,6 @@
 # AxizClient
 
+![Node.js CI](https://github.com/edisonaugusthy/axiz/workflows/Node.js%20CI/badge.svg)
 
 ## Built with 🔧
 

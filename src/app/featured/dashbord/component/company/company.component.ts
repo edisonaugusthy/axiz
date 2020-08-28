@@ -96,7 +96,7 @@ export class CompanyComponent implements OnInit, AfterViewInit {
       if (val && val.status) {
         this.alert.showAlert({ message: val.message, type: 'success' });
       } else {
-        this.alert.showAlert({ message: val.message, type: 'danger' });
+        this.alert.showAlert({ message: val.message, type: 'error' });
       }
       this.getAllCompany();
     });
@@ -128,7 +128,7 @@ export class CompanyComponent implements OnInit, AfterViewInit {
       if (val && val.status) {
         this.alert.showAlert({ message: val.message, type: 'success' });
       } else {
-        this.alert.showAlert({ message: val.message, type: 'danger' });
+        this.alert.showAlert({ message: val.message, type: 'error' });
       }
       this.getAllCompany();
     });
@@ -142,7 +142,7 @@ export class CompanyComponent implements OnInit, AfterViewInit {
       if (val && val.status) {
         this.alert.showAlert({ message: val.message, type: 'success' });
       } else {
-        this.alert.showAlert({ message: val.message, type: 'danger' });
+        this.alert.showAlert({ message: val.message, type: 'error' });
       }
       this.getAllCompany();
     });
@@ -151,18 +151,12 @@ export class CompanyComponent implements OnInit, AfterViewInit {
     this.showEdit = false;
   }
   searchUser() {
-    fromEvent(this.SearchInput.nativeElement, 'keyup').pipe(
-      // get value
-      map((event: any) => {
-        return event.target.value;
-      }),
-      debounceTime(AppConstants.SEARCH_TIMEOUT),
-      distinctUntilChanged()
-    ).subscribe((text: string) => {
-      this.isSearching = true;
-      this.pagination.currentPage = 1;
-      this.getAllCompany(text);
-    });
+    this.dashboardSvc.searchStr.subscribe(val => {
+      if (val != null || val != undefined) {
+        this.pagination.currentPage = 1;
+        this.getAllCompany(val);
+      }
+    })
   }
   getAllCompany(searchStr = '') {
     this.loaderSvc.showLoader();

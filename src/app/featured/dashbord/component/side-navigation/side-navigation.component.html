@@ -1,22 +1,26 @@
-<section>
-  <!-- <div class="logo">
-    <img src="../assets/img/logo.svg">
-    <h6 *ngIf="isSuperAdmin">Super Admin mode</h6>
-  </div> -->
-  <ul>
-    <li *ngFor="let mainMenu of sideMenuList" class="{{mainMenu.class}}">
-      <div *ngIf="mainMenu.sub_menu">
-        <a class="nav-link dropdown-toggle" [ngClass]="{'menu-active':mainMenu.isOpen}" (click)="showMenu(mainMenu)">
-          <img src="../assets/img/{{mainMenu.img}}" [style.width]="'28px'">{{mainMenu.name}}
+<div *ngFor="let mainMenu of sideMenuList" class="aio-nav-menu">
+  <div *ngIf="!mainMenu.sub_menu">
+    <a (click)="navigate(mainMenu)" class="vertical-menu-item expanded level-1 {{mainMenu.class}}">
+      <span>{{mainMenu.name}}</span>
+    </a>
+  </div>
+  <div *ngIf="mainMenu.sub_menu">
+    <a class="vertical-menu-item heading level-1 {{mainMenu.class}}"
+      [ngClass]="{'expanded selected menu-active':mainMenu.isOpen}" (click)="showMenu(mainMenu)">
+      <span>{{mainMenu.name}}</span>
+      <mat-icon class="rotating-icon">
+        <svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" />
+        </svg>
+      </mat-icon>
+    </a>
+    <div class="heading-children level-1 expanded {{mainMenu.class}}" *ngIf="mainMenu.isOpen">
+      <div *ngFor="let subMenu of mainMenu.sub_menu">
+        <a class="vertical-menu-item level-2 expanded {{subMenu.class}}" (click)="navigate(subMenu)">
+          <span>{{subMenu.name}}</span>
         </a>
-        <div class="dropdown-menu-side show" *ngIf="mainMenu.isOpen">
-          <a *ngFor="let subMenu of mainMenu.sub_menu" class="dropdown-item {{subMenu.class}}"
-            (click)="navigate(subMenu)">{{subMenu.name}}</a>
-        </div>
       </div>
-      <div *ngIf="!mainMenu.sub_menu" (click)="navigate(mainMenu)">
-        <a> <img src="../assets/img/{{mainMenu.img}}" [style.width]="'28px'"> {{mainMenu.name}}</a>
-      </div>
-    </li>
-  </ul>
-</section>
+    </div>
+  </div>
+
+</div>

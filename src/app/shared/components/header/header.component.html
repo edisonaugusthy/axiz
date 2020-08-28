@@ -1,26 +1,70 @@
-<header>
-  <div class="left-wrap">
-    <div class="menu-icon">
-      <img src="../assets/img/menu-icon.png" class="openbtn" (click)="openNav()" alt="">
-    </div>
-    <div class="logo">
-      <img src="../assets/img/logo.svg" (click)="showDashbord()">
-    </div>
-  </div>
-  <section class="login">
-    <ul>
-      <li class="settings" *ngIf="!isSuperAdmin" (click)="openAdd()"><img src="../assets/img/settings-icon.svg"></li>
-      <li *ngIf="!isSuperAdmin" class="user-name">Hello, {{userDetails.user_name}}</li>
-      <li *ngIf="isSuperAdmin" class="user-name">Super Admin</li>
-      <li class="user-img"><img src="../assets/img/user-img.png" alt=""></li>
-      <li class="logout" (click)="logout()">Logout <img src="../assets/img/logout.svg"></li>
-    </ul>
-  </section>
-</header>
-
-
-
 <!--super admin login -->
 
 <app-add-popup *ngIf="showAdd" [fields]="addFormData" (formCancel)="cancelAdd($event)"
   (formSubmitted)="submitAdd($event)"></app-add-popup>
+
+<app-add-popup *ngIf="showEditPassWord" [fields]="passwordFormFields" (formCancel)="cancelAdd($event)"
+  (formSubmitted)="changePassword($event)"></app-add-popup>
+
+
+<mat-toolbar color="primary" class="app-toolbar no-print">
+
+  <mat-toolbar-row>
+    <button mat-button class="hamburger" title="Docs menu" (click)="openNav()">
+      <mat-icon>
+        <svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+        </svg>
+      </mat-icon>
+    </button>
+
+    <a class="nav-link home">
+      <img src="../assets/img/Axis-Logo.png" (click)="showDashbord()" width="125" height="40" title="Home" alt="Home">
+    </a>
+    <span class="logo-footer-text">Business 365</span>
+    <div class="search-container">
+      <!-- <input type="search" aria-label="search" placeholder="Search" #SearchInput> -->
+    </div>
+    <!--  -->
+    <div class="toolbar-external-icons-container">
+      <a>
+        <mat-icon role="img" class="mat-icon notranslate mat-icon-no-color curser-point" *ngIf="!isSuperAdmin"
+          aria-hidden="true" (click)="openAdd()">
+          <img src="../assets/img/settings-icon.svg">
+        </mat-icon>
+
+        <mat-icon role="img" class="mat-icon notranslate mat-icon-no-color curser-point" *ngIf="isSuperAdmin"
+          aria-hidden="true" (click)="openChangePasswordPopup()">
+          <img src="../assets/img/settings-icon.svg">
+        </mat-icon>
+
+      </a>
+      <a *ngIf="!isSuperAdmin" class="user-name">Hi, {{userDetails?.user_name}}</a>
+      <a *ngIf="isSuperAdmin" class="user-name">Super Admin</a>
+      <a>
+        <mat-icon role="img" class="mat-icon notranslate mat-icon-no-color" aria-hidden="true">
+          <img src="../assets/img/user-img.png" alt="">
+        </mat-icon>
+      </a>
+      <a>
+        <mat-icon (click)="logout()" role="img" class="mat-icon notranslate mat-icon-no-color curser-point"
+          aria-hidden="true">
+          <span class="material-icons"> exit_to_app </span>
+        </mat-icon>
+      </a>
+      <!-- <a>
+        <div ngbDropdown class="d-inline-block">
+          <button class="user-img" ngbDropdownToggle></button>
+          <div ngbDropdownMenu>
+            <div ngbDropdownItem (click)="logout()">
+              Logout
+              <span class="material-icons icon-style"> exit_to_app </span>
+            </div>
+          </div>
+        </div>
+      </a> -->
+
+    </div>
+    <!--  -->
+  </mat-toolbar-row>
+</mat-toolbar>

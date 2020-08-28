@@ -1,5 +1,4 @@
 import { AlertService } from 'src/app/shared/services/alert.service';
-import { environment } from '../../../../../../environments/environment.prod';
 import {
   Component,
   OnInit,
@@ -8,7 +7,8 @@ import {
   Input,
   Output,
   EventEmitter,
-  Injectable
+  Injectable,
+  ViewEncapsulation
 } from '@angular/core';
 import { NgbModal, NgbModalRef, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
@@ -53,9 +53,10 @@ export class CustomAdapter extends NgbDateAdapter<string> {
   selector: 'app-add-location-popup',
   templateUrl: './add-location-popup.component.html',
   styleUrls: ['./add-location-popup.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   providers: [
     { provide: NgbDateAdapter, useClass: CustomAdapter }
-  ]
+  ],
 })
 export class AddLocationPopupComponent implements OnInit {
   model: NgbDateStruct;
@@ -69,10 +70,11 @@ export class AddLocationPopupComponent implements OnInit {
   @Output() formCancel = new EventEmitter<any>();
 
   addUserForm: FormGroup;
-  imageBase = environment.imageBase;
   isSubmitted: boolean;
   isEdit: boolean;
   selectedCompany: any;
+  status = [{ id: 1, name: 'Yes' }, { id: 0, name: 'no' }]
+
   constructor(
     config: NgbModalConfig,
     private modalService: NgbModal,
@@ -98,15 +100,15 @@ export class AddLocationPopupComponent implements OnInit {
       phone: [(this.fields?.Phone || '')],
       fax: [(this.fields?.Fax || '')],
       email: [(this.fields?.Email || '')],
-      notes: [('')],
+      notes: [(this.fields?.Notes || '')],
       costcenter: [(this.fields?.CostCenter || '')],
-      locationtype: [('')],
+      locationtype: [(this.fields?.LocationType || '')],
       inventory: [(this.fields?.UploadInv || 0), Validators.required],
       startdate: [(this.fields?.StartDate || null)],
       service: [(this.fields?.Service || '')],
       costcentertype: [(this.fields?.CostCenterType || '')],
       seats: [(this.fields?.Seats || ''), Validators.required],
-      area: [(this.fields?.userid || '')],
+      area: [(this.fields?.Area || '')],
       active: [(this.fields?.Active || 1), Validators.required],
       planned: [(this.fields?.Planned || 1), Validators.required],
       enablecutoff: [(this.fields?.EnableOrderCutoff || 0), Validators.required],

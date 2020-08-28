@@ -1,8 +1,8 @@
-import { User } from './../models/user';
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { AppConstants } from 'src/app/shared/constants/app-constants';
 import { ApiConstants } from 'src/app/shared/constants/ApiConstants';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,4 +21,13 @@ export class AuthService {
   public SecondLogin(data) {
     return this.http.post(ApiConstants.SECOND_LOGIN, data);
   }
+
+  public setCompany(data) {
+    return this.http.post(ApiConstants.SET_SELECTED_COMPANY, data);
+  }
+
+  public changeSuperAdminCredentials(data) {
+    return this.http.post(ApiConstants.CHANGE_CREDENTIALS, data);
+  }
+
 }

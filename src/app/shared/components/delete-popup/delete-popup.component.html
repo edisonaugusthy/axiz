@@ -1,9 +1,9 @@
 <ng-template #deleteModal let-modal>
-  <div class="modal-header">
+  <div class="modal-header ">
+    <span class="material-icons"> list </span>
     <h4 class="modal-title" id="modal-title">{{deleteItem.header}}</h4>
-    <button type="button" class="close" aria-describedby="modal-title" (click)="popupClose()">
-      <span aria-hidden="true">&times;</span>
-    </button>
+    <span class="material-icons btn-close curser-point" (click)="popupClose()"> highlight_off
+    </span>
   </div>
   <div class="modal-body">
     <p><strong>{{deleteItem.message}}</strong></p>

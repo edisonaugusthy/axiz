@@ -2,9 +2,11 @@
 <ng-template #editModal let-modal>
   <!-- Modal Header -->
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
-    <div class="modal-header">
+    <div class="modal-header ">
+      <span class="material-icons"> list </span>
       <h4 class="modal-title">{{ header }}</h4>
-      <img class="btn-close" src="../assets/img/close-icon.svg" (click)="popupClose()" />
+      <span class="material-icons btn-close curser-point" (click)="popupClose()"> highlight_off
+      </span>
     </div>
     <!-- Modal body -->
     <div class="modal-body">
@@ -23,14 +25,11 @@
                           'has-error': isSubmitted && formControls[item.key].errors
                         }" />
 
-          <select class="form-control" [id]="item.key" *ngSwitchCase="'dropdown'" [formControlName]="item.key"
-            [ngClass]="{
-              'has-error': isSubmitted && formControls[item.key].errors
-            }">
-            <option *ngFor="let opt of item.options" [value]="opt[item.returnKey]">{{
-              opt[item.displayKey]
-            }}</option>
-          </select>
+          <ng-select *ngSwitchCase="'dropdown'" [multiple]="item.multi" [items]="item.options"
+            bindLabel="{{item.displayKey}}" bindValue="{{item.returnKey}}" appendTo="body" [ngClass]="{
+                        'has-error': isSubmitted && formControls[item.key].errors
+                      }" [formControlName]="item.key">
+          </ng-select>
         </div>
       </div>
     </div>

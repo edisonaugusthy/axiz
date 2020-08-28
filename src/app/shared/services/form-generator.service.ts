@@ -253,7 +253,7 @@ export class FormGeneratorService {
   editCompanyAccess(currentValuse, companies) {
     let data = [
       {
-        value: currentValuse ? currentValuse['UserID'] : '',
+        value: currentValuse?.user_id ?? '',
         key: 'userid',
         label: 'User ID',
         required: true,
@@ -264,13 +264,14 @@ export class FormGeneratorService {
         disabled: true
       },
       {
-        value: currentValuse ? currentValuse['CompanyID'] : '',
+        value: currentValuse ? currentValuse['companyID'] : '',
         key: 'companyid',
         label: 'Company',
         required: true,
         order: 2,
         controlType: 'dropdown',
         type: '',
+        multi: true,
         options: companies,
         displayKey: 'CompanyName',
         returnKey: 'CompanyID'
@@ -278,7 +279,7 @@ export class FormGeneratorService {
     ];
     data = data.sort((a, b) => a.order - b.order);
     const formData = {
-      header: 'Edit Company Access',
+      header: 'EDIT COMPANY ACCESS',
       fields: data
     };
     return formData;
@@ -794,11 +795,44 @@ export class FormGeneratorService {
     return formData;
   }
 
+  editSuperAdminPassword(val) {
+    let data = [
+      {
+        value: val,
+        key: 'email',
+        label: 'Super Admin',
+        required: true,
+        order: 1,
+        controlType: 'email',
+        type: '',
+        options: '',
+        disabled: false
+      },
+      {
+        value: '',
+        key: 'password',
+        label: 'new password',
+        required: true,
+        order: 2,
+        controlType: 'textbox',
+        type: '',
+        options: ''
+      },
+    ];
+    data = data.sort((a, b) => a.order - b.order);
+    const formData = {
+      header: 'Change Credentials',
+      fields: data,
+      buttonText: 'Change'
+    };
+    return formData;
+  }
+
 
   CompanyAccessDetails(currentValuse, companies) {
     let data = [
       {
-        value: currentValuse ? currentValuse['UserID'] : '',
+        value: currentValuse ? currentValuse['user_id'] : '',
         key: 'userid',
         label: 'User ID',
         required: true,
@@ -809,12 +843,13 @@ export class FormGeneratorService {
         disabled: true
       },
       {
-        value: currentValuse ? currentValuse['CompanyID'] : '',
+        value: currentValuse['companyID']?.join(',') ?? '',
         key: 'companyid',
         label: 'Company',
         required: true,
         order: 2,
-        controlType: 'dropdown',
+        controlType: 'textbox',
+        multi: true,
         type: '',
         options: companies,
         displayKey: 'CompanyName',
@@ -823,7 +858,7 @@ export class FormGeneratorService {
     ];
     data = data.sort((a, b) => a.order - b.order);
     const formData = {
-      header: 'Company Access',
+      header: 'COMPANY ACCESS',
       fields: data
     };
     return formData;
@@ -895,6 +930,76 @@ export class FormGeneratorService {
     data = data.sort((a, b) => a.order - b.order);
     const formData = {
       header: 'User',
+      fields: data
+    };
+    return formData;
+  }
+
+  editRequests(currentValuse, companies) {
+    let data = [
+      {
+        value: currentValuse ? currentValuse['user_id'] : '',
+        key: 'userid',
+        label: 'User ID',
+        required: true,
+        order: 1,
+        controlType: 'textbox',
+        type: '',
+        options: '',
+        disabled: true
+      },
+      {
+        value: '',
+        key: 'companyid',
+        label: 'Company',
+        required: true,
+        order: 2,
+        controlType: 'dropdown',
+        type: '',
+        multi: true,
+        options: companies,
+        displayKey: 'CompanyName',
+        returnKey: 'CompanyID'
+      },
+    ];
+    data = data.sort((a, b) => a.order - b.order);
+    const formData = {
+      header: 'EDIT REQUESTS',
+      fields: data
+    };
+    return formData;
+  }
+
+  viewRequests(currentValuse, companies) {
+    let data = [
+      {
+        value: currentValuse ? currentValuse['user_id'] : '',
+        key: 'userid',
+        label: 'User ID',
+        required: true,
+        order: 1,
+        controlType: 'textbox',
+        type: '',
+        options: '',
+        disabled: true
+      },
+      {
+        value: currentValuse ? currentValuse['CompanyID'] : '',
+        key: 'companyid',
+        label: 'Company',
+        required: true,
+        order: 2,
+        controlType: 'textbox',
+        multi: true,
+        type: '',
+        options: companies,
+        displayKey: 'CompanyName',
+        returnKey: 'CompanyID'
+      },
+    ];
+    data = data.sort((a, b) => a.order - b.order);
+    const formData = {
+      header: 'REQUESTS',
       fields: data
     };
     return formData;

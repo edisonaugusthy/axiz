@@ -1,4 +1,4 @@
-import { environment } from '../../../../../../environments/environment.prod';
+
 import {
   Component,
   OnInit,
@@ -28,11 +28,10 @@ export class AddChainPopupComponent implements OnInit {
   @Output() formCancel = new EventEmitter<any>();
 
   addUserForm: FormGroup;
-  imageBase = environment.imageBase;
   isSubmitted: boolean;
   isEdit: boolean;
   fileData: any;
-  imgUrl = `${environment.imageBase}/assets/img/upload.png`;
+  imgUrl = `../assets/img/upload.png`;
   imageName: string;
   constructor(config: NgbModalConfig, private modalService: NgbModal, private formBuilder: FormBuilder) {
     config.backdrop = 'static';
@@ -52,6 +51,7 @@ export class AddChainPopupComponent implements OnInit {
       chainlogo: [('')],
     });
     this.open(this.input);
+    this.imgUrl = this.fields?.Image || `../assets/img/upload.png`;
   }
 
   open(content) {
@@ -61,7 +61,7 @@ export class AddChainPopupComponent implements OnInit {
     else {
       this.isEdit = false;
     }
-    this.modalRef = this.modalService.open(content, { size: 'lg' });
+    this.modalRef = this.modalService.open(content);
   }
   onSubmit() {
     this.isSubmitted = true;

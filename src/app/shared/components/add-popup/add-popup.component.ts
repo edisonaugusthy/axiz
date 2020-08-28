@@ -1,4 +1,4 @@
-import { environment } from './../../../../environments/environment.prod';
+
 import {
   Component,
   OnInit,
@@ -6,7 +6,8 @@ import {
   ElementRef,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  ViewEncapsulation
 } from '@angular/core';
 import { NgbModal, NgbModalRef, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
@@ -14,13 +15,12 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
   selector: 'app-add-popup',
   templateUrl: './add-popup.component.html',
   styleUrls: ['./add-popup.component.css'],
-  providers: [NgbModalConfig, NgbModal]
+  providers: [NgbModalConfig, NgbModal],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AddPopupComponent implements OnInit {
   private modalRef: NgbModalRef;
   @ViewChild('addModal', { static: true }) input: ElementRef;
-  imageBase = environment.imageBase;
-
   @Input() fields;
   @Output() formSubmitted = new EventEmitter<any>();
   @Output() formCancel = new EventEmitter<any>();
@@ -43,7 +43,7 @@ export class AddPopupComponent implements OnInit {
   }
 
   open(content) {
-    this.modalRef = this.modalService.open(content);
+    this.modalRef = this.modalService.open(content, { size: 'sm' });
   }
   onSubmit() {
     this.isSubmitted = true;

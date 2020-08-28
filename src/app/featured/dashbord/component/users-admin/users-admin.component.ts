@@ -2,7 +2,7 @@ import { AppConstants } from 'src/app/shared/constants/app-constants';
 import { DeleteMessageService } from './../../../../shared/services/delete-message.service';
 import { FormGeneratorService } from './../../../../shared/services/form-generator.service';
 import { AlertService } from './../../../../shared/services/alert.service';
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 import { DashbordService } from '../../services/dashbord.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { map, filter, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -10,7 +10,8 @@ import { Observable, Subject, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-users-admin',
   templateUrl: 'users-admin.component.html',
-  styleUrls: ['users-admin.component.scss']
+  styleUrls: ['users-admin.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class UsersAdminComponent implements OnInit, AfterViewInit {
   allUsers: any;
@@ -152,18 +153,12 @@ export class UsersAdminComponent implements OnInit, AfterViewInit {
     this.searchUser();
   }
   searchUser() {
-    fromEvent(this.SearchInput.nativeElement, 'keyup').pipe(
-      // get value
-      map((event: any) => {
-        return event.target.value;
-      }),
-      debounceTime(AppConstants.SEARCH_TIMEOUT),
-      distinctUntilChanged()
-    ).subscribe((text: string) => {
-      this.isSearching = true;
-      this.pagination.currentPage = 1;
-      this.getAllUsers(text);
-    });
+    this.dashboardSvc.searchStr.subscribe(val => {
+      if (val != null || val != undefined) {
+        this.pagination.currentPage = 1;
+        this.getAllUsers(val);
+      }
+    })
   }
   getAllCompanies() {
     this.dashboardSvc.getAllCompanies(null).subscribe((val: any) => {

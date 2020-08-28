@@ -31,6 +31,18 @@ import { AddCurrencyPopupComponent } from './component/popups/add-currency-popup
 import { CostCenterAccessDetailsComponent } from './component/details-popups/cost-center-access/cost-center-access.component';
 import { DatePipe } from '@angular/common';
 import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { AddNormalUserComponent } from './component/popups/add-normal-user/add-normal-user.component';
+import { NormalUserComponent } from './component/details-popups/normal-user/normal-user.component';
+import { ContactUsComponent } from './component/contact-us/contact-us.component';
+import { ContactUsViewComponent } from './component/details-popups/contact-us/contact-us.component';
+import { RequstsComponent } from './component/requsts/requsts.component';
+import { FaqComponent } from './component/faq/faq.component';
+import { AddFaqComponent } from './component/popups/add-faq/add-faq.component';
+import { FaqDetailsComponent } from './component/details-popups/faq-details/faq-details.component';
+
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -41,6 +53,7 @@ import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
     DashboardRoutingModule,
     MaterialModuleModule,
     MalihuScrollbarModule.forRoot(),
+    NgSelectModule
   ],
   declarations: [
     HomeComponent,
@@ -66,7 +79,15 @@ import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
     CompanyDetailsComponent,
     CostCenterAccessDetailsComponent,
     LocationDetailsComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    AddNormalUserComponent,
+    NormalUserComponent,
+    ContactUsComponent,
+    ContactUsViewComponent,
+    RequstsComponent,
+    FaqComponent,
+    AddFaqComponent,
+    FaqDetailsComponent
   ],
   providers: [
     DatePipe,

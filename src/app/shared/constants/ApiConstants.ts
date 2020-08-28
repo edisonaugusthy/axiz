@@ -8,6 +8,8 @@ export class ApiConstants {
     public static ADMIN_LOGIN = API_BASE_URL + 'user-admin/login';
     public static ADMIN_LOGOUT = API_BASE_URL + 'user-admin/logout';
     public static SECOND_LOGIN = API_BASE_URL + 'user/superadmin/secondlogin';
+    public static CHANGE_CREDENTIALS = API_BASE_URL + 'admin/change-password';
+
 
     public static SUPER_ADMIN_REGISTER_COMPANY = API_BASE_URL + 'admin/register/company';
     public static SUPER_ADMIN_DELETE_COMPANY = API_BASE_URL + 'admin/delete/company';
@@ -24,7 +26,23 @@ export class ApiConstants {
     public static SUPER_ADMIN_DELETE_COMPANY_ACCESS = API_BASE_URL + 'admin/delete/CompanyAccess';
     public static SUPER_ADMIN_COMPANY_ACCESS_TABLE = API_BASE_URL + 'admin/view/CompanyAccess';
 
+    public static VIEW_CONTACT_US = API_BASE_URL + 'admin/enquiries';
+    public static DELETE_CONTACT_US = API_BASE_URL + 'admin/enquiries-delete';
+
+    public static GET_REQUESTS = API_BASE_URL + 'admin/app-users-registration';
+    public static UPDATE_REQUESTS = API_BASE_URL + 'admin/app-users-registration-action';
+
+
+    public static GET_ALL_FAQ = API_BASE_URL + 'admin/faq';
+    public static ADD_FAQ = API_BASE_URL + 'admin/faq-add';
+    public static EDIT_FAQ = API_BASE_URL + 'admin/faq-edit';
+    public static DELETE_FAQ = API_BASE_URL + 'admin/faq-delete';
+
     // admin
+
+    public static SET_SELECTED_COMPANY = API_BASE_URL + 'user/company-session';
+
+
     public static ADD_CHAIN = API_BASE_URL + 'user/add/chain';
     public static DELETE_CHAIN = API_BASE_URL + 'user/delete/chain';
     public static UPDATE_CHAIN = API_BASE_URL + 'user/update/chain';
@@ -60,5 +78,6 @@ export class ApiConstants {
     public static GET_CHAIN_LIST = API_BASE_URL + 'user/chainlist';
     public static GET_LOCATION_LIST = API_BASE_URL + 'user/locationlist';
     public static GET_TOTAL_CURRENCY_LIST = API_BASE_URL + 'admin/currencydrop';
+    public static GET_USER_COMPANIES_LIST = API_BASE_URL + 'user/company-list';
 
 }

@@ -1,3 +1,5 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
 .po-limit{
     margin-top: 23px;
 }
@@ -11,3 +13,8 @@
     background-size: 23px;
     background-position: 50%;
 }
+.table-wrap .table-bordered th,.table-wrap .table-bordered tr{
+    background: #fff;
+    color: #444;
+}
+

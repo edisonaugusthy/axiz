@@ -1,5 +1,4 @@
 import { LoaderService } from 'src/app/shared/services/loader.service';
-import { environment } from './../../../../../../environments/environment.prod';
 import {
   Component,
   OnInit,
@@ -31,7 +30,6 @@ export class CostCenterAccessDetailsComponent implements OnInit {
   @Input() Edit;
   @Input() users;
   addUserForm: FormGroup;
-  imageBase = environment.imageBase;
   isSubmitted: boolean;
   isEdit: boolean;
   chainsList: any;
@@ -133,7 +131,7 @@ export class CostCenterAccessDetailsComponent implements OnInit {
     else {
       this.isEdit = false;
     }
-    this.modalRef = this.modalService.open(content, { size: 'lg' });
+    this.modalRef = this.modalService.open(content);
   }
   onSubmit() {
     this.addUsername();
@@ -159,7 +157,7 @@ export class CostCenterAccessDetailsComponent implements OnInit {
         return val.user_id == this.addUserForm.value.userid;
       })
       if (user && user.length > 0) {
-        this.addUserForm.patchValue({ username: user[0].user_name })
+        this.addUserForm.patchValue({ username: user[0].username })
       }
     }
   }

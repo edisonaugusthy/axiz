@@ -1,14 +1,16 @@
 <ng-template #addUserModal let-modal>
   <form (ngSubmit)="onSubmit()" [formGroup]="addUserForm">
-    <div class="main-popup currency-popup">
+    <div class="currency-popup">
       <!-- <div class="modal-dialog"> -->
       <div class="modal-content edit-user modal-content-area modal-lg">
         <div class="add-user-popup">
           <!-- Modal Header -->
-          <div class="modal-header black-header">
+          <div class="modal-header">
+            <span class="material-icons"> list </span>
             <h4 class="modal-title" *ngIf="isEdit">Edit User</h4>
             <h4 class="modal-title" *ngIf="!isEdit">Add User</h4>
-            <img class="btn-close" (click)="popupClose()" src="../assets/img/close-icon.svg">
+            <span class="material-icons btn-close curser-point" (click)="popupClose()"> highlight_off
+            </span>
           </div>
 
           <!-- Modal body -->
@@ -56,37 +58,30 @@
                 </div>
               </div>
             </div>
-            <div class="switch-wrap">
-              <label type="text" class="label">Status</label>
-              <label class="switch">
-                <input type="checkbox" [value]="true" formControlName="status" disabled>
-                <div class="slider round">
-                  <span class="on">Active</span>
-                  <span class="off">Inactive</span>
+            <div class="form-group-wrap row">
+              <div class="col col-sm-4 label astrick">
+                Status
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <select formControlName="status" class="form-control" disabled>
+                    <option *ngFor="let item of statusList" [value]="item.val">{{item.name}}
+                    </option>
+                  </select>
                 </div>
-              </label>
+              </div>
             </div>
-            <div class="table-head">Company Access</div>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let item of companyList">
-                  <td>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox" disabled [value]="item.CompanyID" [checked]="item.checked"
-                          (change)="selectCompany(item)">
-                        <span></span>
-                        {{item.CompanyName}}
-                      </label>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="form-group-wrap row">
+              <div class="col col-sm-4 label astrick">
+                Company Access
+              </div>
+              <div class="col col-sm-5">
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="companyid" disabled>
+
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <!-- Modal footer -->

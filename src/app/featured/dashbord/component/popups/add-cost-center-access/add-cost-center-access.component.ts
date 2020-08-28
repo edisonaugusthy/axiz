@@ -1,6 +1,5 @@
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { DashbordService } from './../../../services/dashbord.service';
-import { environment } from '../../../../../../environments/environment.prod';
 import {
   Component,
   OnInit,
@@ -8,7 +7,8 @@ import {
   ElementRef,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  ViewEncapsulation
 } from '@angular/core';
 import { NgbModal, NgbModalRef, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray, ValidatorFn } from '@angular/forms';
@@ -17,7 +17,8 @@ import { SubSink } from 'subsink';
 @Component({
   selector: 'app-add-cost-center-access',
   templateUrl: './add-cost-center-access.component.html',
-  styleUrls: ['./add-cost-center-access.component.scss']
+  styleUrls: ['./add-cost-center-access.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AddCostCenterAccessComponent implements OnInit {
 
@@ -31,7 +32,6 @@ export class AddCostCenterAccessComponent implements OnInit {
   @Input() Edit;
   @Input() users;
   addUserForm: FormGroup;
-  imageBase = environment.imageBase;
   isSubmitted: boolean;
   isEdit: boolean;
   chainsList: any;
@@ -59,6 +59,7 @@ export class AddCostCenterAccessComponent implements OnInit {
   activate() {
     this.formData = new FormArray(this.addControls(this.chainsList));
     this.addUserForm = this.formBuilder.group({
+      id: [(this.fields?.id || '')],
       userid: [{ value: (this.fields?.userid || ''), disabled: this.Edit }, Validators.required],
       username: [(this.fields?.username), Validators.required],
       Fullaccess: [1, Validators.required],
@@ -143,7 +144,7 @@ export class AddCostCenterAccessComponent implements OnInit {
       this.disableSelection(1);
       this.isEdit = false;
     }
-    this.modalRef = this.modalService.open(content, { size: 'lg' });
+    this.modalRef = this.modalService.open(content);
   }
   onSubmit() {
     this.addUsername();
@@ -169,7 +170,7 @@ export class AddCostCenterAccessComponent implements OnInit {
         return val.user_id == this.addUserForm.value.userid;
       })
       if (user && user.length > 0) {
-        this.addUserForm.patchValue({ username: user[0].user_name })
+        this.addUserForm.patchValue({ username: user[0].username })
       }
     }
   }

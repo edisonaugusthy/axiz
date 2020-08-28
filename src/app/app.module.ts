@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InterCeptor } from './shared/services/interCeptor';
 import { MatButtonModule } from '@angular/material/button';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     NgxSpinnerModule,
     AppRoutingModule,
     MatButtonModule,
+
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

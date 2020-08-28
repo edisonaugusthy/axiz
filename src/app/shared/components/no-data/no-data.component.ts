@@ -1,5 +1,5 @@
-import { environment } from './../../../../environments/environment';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-no-data',
@@ -7,7 +7,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./no-data.component.scss'],
 })
 export class NoDataComponent implements OnInit {
-  imageBase = environment.imageBase;
   constructor() { }
 
   ngOnInit(): void {

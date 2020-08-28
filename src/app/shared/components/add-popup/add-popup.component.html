@@ -3,8 +3,10 @@
   <!-- Modal Header -->
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
     <div class="modal-header">
+      <span class="material-icons"> list </span>
       <h4 class="modal-title">{{header}}</h4>
-      <img class="btn-close" src="../assets/img/close-icon.svg" (click)="popupClose()" />
+      <span class="material-icons btn-close curser-point" (click)="popupClose()"> highlight_off
+      </span>
     </div>
     <!-- Modal body -->
     <div class="modal-body">
@@ -25,14 +27,23 @@
             *ngSwitchCase="'password'" [formControlName]="item.key" [id]="item.key" [ngClass]="{
                                       'has-error': isSubmitted && formControls[item.key].errors
                                     }" />
+          <input type="email" class="form-control" placeholder="{{ item.label }}" *ngSwitchCase="'email'"
+            [formControlName]="item.key" [id]="item.key" [ngClass]="{
+                                                                          'has-error': isSubmitted && formControls[item.key].errors
+                                                                        }" />
 
-          <select [id]="item.key" *ngSwitchCase="'dropdown'" [formControlName]="item.key" [ngClass]="{
+          <!-- <select [id]="item.key" *ngSwitchCase="'dropdown'" [formControlName]="item.key" [ngClass]="{
               'has-error': isSubmitted && formControls[item.key].errors
             }">
             <option *ngFor="let opt of item.options" [value]="opt.key">{{
               opt.value
             }}</option>
-          </select>
+          </select> -->
+          <ng-select *ngSwitchCase="'dropdown'" [items]="item.options" bindLabel="value" bindValue="key" appendTo="body"
+            [ngClass]="{
+              'has-error': isSubmitted && formControls[item.key].errors
+            }" [formControlName]="item.key">
+          </ng-select>
         </div>
       </div>
     </div>

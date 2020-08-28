@@ -1,49 +1,19 @@
 <section class="content-wrap">
   <section class="table-heading">
-    <button mat-flat-button color="primary" class="float-right btn" (click)="openAdd()">Add New</button>
+    <app-add-button (onAdd)="openAdd()"></app-add-button>
     <div class="flex-wrap">
       <h1>Cost Center Access</h1>
-      <div class="form-group search-box search">
-        <input type="text" class="form-control" [ngClass]="{'loading':isSearching}" #SearchInput
-          placeholder="Search here...">
-      </div>
     </div>
+    <app-search-box></app-search-box>
   </section>
-
-
   <section class="table-wrap">
     <table class="table table-main-head">
       <thead>
         <tr>
-          <th (click)="sort('userid')" style="width: 20%;">
-            <span class="sort-wrap">
-              Id
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('username')" style="width: 30%;">
-            <span class="sort-wrap">
-              Name
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('fullaccess')" style="width: 30%;">
-            <span class="sort-wrap">
-              Access Type
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-
-          <th style="width: 20%;">Operation</th>
+          <th class="curser-point" (click)="sort('userid')" style="width: 20%;"> Id </th>
+          <th class="curser-point" (click)="sort('username')" style="width: 30%;"> Name </th>
+          <th class="curser-point" (click)="sort('fullaccess')" style="width: 30%;"> Access Type </th>
+          <th style="width: 10%;">Operation</th>
         </tr>
       </thead>
     </table>
@@ -55,9 +25,8 @@
             <td class="curser-point" (click)="openView(item)" style="width: 30%;">{{item.username}}</td>
             <td class="curser-point" (click)="openView(item)" style="width: 30%;">
               {{item.fullaccess ==0 ?'Custom Access':'Full Access'}}</td>
-            <td class="btn-wrap">
-              <button mat-flat-button color="primary" class="btn" (click)="openEdit(item)">Edit</button>
-              <button mat-flat-button class="btn btn-default" (click)="openDelete(item)">Remove</button>
+            <td style="width: 10%;">
+              <app-buttons [data]='item' (onRemove)="openDelete($event)" (onEdit)="openEdit($event)"></app-buttons>
             </td>
           </tr>
         </tbody>

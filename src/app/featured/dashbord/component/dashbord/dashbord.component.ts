@@ -18,9 +18,20 @@ export class DashbordComponent implements OnInit {
     private loaderSvc: LoaderService,
     private alert: AlertService,
     private StorageService: NgStorageService,
-  ) { }
+  ) {
+    // this.checkingStatus();
+  }
 
   ngOnInit() {
+    this.activate();
+    this.dashBordService.userSwichStatus.subscribe(val => {
+      if (val) {
+        this.activate();
+      }
+    })
+  }
+  activate() {
+    this.dashboardData = null;
     if (this.StorageService.getData('user_type') === UserType.SuperAdmin) {
       this.getAdminDashBord();
       this.isSuperAdmin = true;
@@ -28,9 +39,7 @@ export class DashbordComponent implements OnInit {
       this.isSuperAdmin = false;
       this.getUserDahbord();
     }
-
   }
-
   getUserDahbord() {
     this.loaderSvc.showLoader();
     this.dashBordService.getUserDashboard(null).subscribe(val => {
@@ -47,6 +56,17 @@ export class DashbordComponent implements OnInit {
         this.dashboardData = val[0];
       }
     });
+  }
+
+  checkingStatus() {
+    this.dashBordService.checkStatus().subscribe((val: any) => {
+      if (val && val.status) {
+        setTimeout(() => {
+          document.getElementById("demo").innerHTML = val.content;
+        }, val.timeout)
+      }
+    });
+
   }
 
 }

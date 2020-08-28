@@ -1,0 +1,114 @@
+.toolbar-external-icons-container {
+	 display: flex;
+	 flex-direction: row;
+	 height: 100%;
+}
+ .toolbar-external-icons-container a {
+	 display: flex;
+	 align-items: center;
+	 padding: 24px;
+	 margin: 0 -16px;
+}
+ .toolbar-external-icons-container a:focus {
+	 outline-offset: -16px;
+}
+ @media screen and (max-width: 480px) {
+	 .toolbar-external-icons-container a {
+		 margin: 0 0 0 8px;
+		 padding: 0;
+	}
+}
+ .toolbar-external-icons-container a:hover {
+	 opacity: 1;
+}
+ .toolbar-external-icons-container a img {
+	 height: 24px;
+}
+
+.aio-top-menu {
+    width: 80%
+}
+
+.aio-top-menu,aio-top-menu ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.aio-top-menu ul li {
+    padding-bottom: 2px;
+    list-style-type: none;
+    cursor: pointer
+}
+
+.aio-top-menu ul li:focus {
+    outline: none
+}
+
+.aio-top-menu ul li a.nav-link {
+    margin: 0 4px;
+    padding: 0;
+    cursor: pointer
+}
+
+.aio-top-menu ul li a.nav-link .nav-link-inner {
+    border-radius: 4px;
+    padding: 8px 16px
+}
+
+.aio-top-menu ul li a.nav-link .nav-link-inner:hover {
+    background: hsla(0,0%,100%,.15)
+}
+
+.aio-top-menu ul li a.nav-link:focus {
+    outline: none
+}
+
+.aio-top-menu ul li a.nav-link:focus .nav-link-inner {
+    background: hsla(0,0%,100%,.15);
+    border-radius: 1px;
+    box-shadow: 0 0 1px 2px hsla(0,0%,100%,.8)
+}
+
+.user-img{
+    background: url(../../../../assets/img/user-img.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 102px;
+    border: none;
+    box-shadow: none;
+    color: #FFF;
+    outline: none;
+}
+.dropdown-menu{
+  padding:0;
+  background-color: #FFF;
+  color: black;
+  text-transform: none;
+}
+.dropdown-item ~.dropdown-menu {
+    color: #fff;
+    text-decoration: none;
+    background-color: #007bff;
+}
+.dropdown-item{
+    padding: 0;
+    padding-left: 30px;
+    cursor: pointer;
+}
+.icon-style{
+    position: absolute;
+    margin-top: 6px;
+    margin-left: 5PX;
+}
+.home{
+    padding: 7px 0px 0px 0px;
+}
+.logo-footer-text{
+    font-size: 14px;
+    margin-top: 11px;
+    margin-left: -17px;
+    margin-right: 12px;
+}
+

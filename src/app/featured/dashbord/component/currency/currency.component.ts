@@ -3,10 +3,8 @@ import { AlertService } from './../../../../shared/services/alert.service';
 import { LoaderService } from './../../../../shared/services/loader.service';
 import { DeleteMessageService } from './../../../../shared/services/delete-message.service';
 import { FormGeneratorService } from "./../../../../shared/services/form-generator.service";
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from "@angular/core";
+import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { DashbordService } from "../../services/dashbord.service";
-import { map, filter, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { Observable, Subject, fromEvent } from 'rxjs';
 @Component({
   selector: "app-chain",
   templateUrl: "./currency.component.html",
@@ -29,7 +27,6 @@ export class CurrencyComponent implements OnInit, AfterViewInit {
   showDetaisl: boolean;
   public pagination: any;
   isSearching: boolean;
-  @ViewChild('SearchInput', { static: false }) SearchInput: ElementRef;
   scrollbarOptions = AppConstants.SCROLL_BAR_OPTIONS;
   constructor(
     private formGeneratorService: FormGeneratorService,
@@ -116,11 +113,12 @@ export class CurrencyComponent implements OnInit, AfterViewInit {
     this.showAdd = false;
   }
   submitAdd(val) {
-    this.showAdd = false;
+
     this.loaderSvc.showLoader();
     this.dashboardSvc.AddCurrency(val).subscribe((val: any) => {
       this.loaderSvc.hideLoader();
       if (val && val.status) {
+        this.showAdd = false;
         this.alert.showAlert({ message: val.message, type: 'success' });
       } else {
         this.alert.showAlert({ message: val.message, type: 'danger' });
@@ -129,18 +127,12 @@ export class CurrencyComponent implements OnInit, AfterViewInit {
     });
   }
   searchUser() {
-    fromEvent(this.SearchInput.nativeElement, 'keyup').pipe(
-      // get value
-      map((event: any) => {
-        return event.target.value;
-      }),
-      debounceTime(AppConstants.SEARCH_TIMEOUT),
-      distinctUntilChanged()
-    ).subscribe((text: string) => {
-      this.isSearching = true;
-      this.pagination.currentPage = 1;
-      this.getAllcurrency(text);
-    });
+    this.dashboardSvc.searchStr.subscribe(val => {
+      if (val != null || val != undefined) {
+        this.pagination.currentPage = 1;
+        this.getAllcurrency(val);
+      }
+    })
   }
 
   getAllcurrency(searchStr = '') {

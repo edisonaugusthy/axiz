@@ -1,5 +1,4 @@
 import { AlertService } from 'src/app/shared/services/alert.service';
-import { environment } from '../../../../../../environments/environment.prod';
 import {
   Component,
   OnInit,
@@ -7,7 +6,8 @@ import {
   ElementRef,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  ViewEncapsulation
 } from '@angular/core';
 import { NgbModal, NgbModalRef, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
@@ -15,7 +15,8 @@ import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms'
 @Component({
   selector: 'app-add-company-popup',
   templateUrl: './add-company-popup.component.html',
-  styleUrls: ['./add-company-popup.component.scss']
+  styleUrls: ['./add-company-popup.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AddCompanyPopupComponent implements OnInit {
 
@@ -29,11 +30,12 @@ export class AddCompanyPopupComponent implements OnInit {
   @Input() Edit;
   @Input() currency;
   addUserForm: FormGroup;
-  imageBase = environment.imageBase;
   isSubmitted: boolean;
   isEdit: boolean;
   selectedCompany: any;
   imageName: any;
+  active = 1;
+  imgUrl: any;
   constructor(
     config: NgbModalConfig,
     private modalService: NgbModal,
@@ -67,10 +69,14 @@ export class AddCompanyPopupComponent implements OnInit {
       comm: [(this.fields?.CommPath || ''), Validators.required],
       postingtype: [(this.fields?.SopPostingType || ''), Validators.required],
       qtyminor: [(this.fields?.SopQtyMinor || ''), Validators.required],
+      conhostname: [(this.fields?.conhostname || ''), Validators.required],
+      condbname: [(this.fields?.condbname || ''), Validators.required],
+      conusername: [(this.fields?.conusername || ''), Validators.required],
+      conpassword: [(this.fields?.conpassword || ''), Validators.required],
       Image: [(this.fields?.Image) || ''],
     });
     this.open(this.input);
-
+    this.imgUrl = this.fields?.CompanyLogo || `../assets/img/upload.png`;
   }
 
   open(content) {
@@ -78,13 +84,13 @@ export class AddCompanyPopupComponent implements OnInit {
     if (this.isEdit) {
       this.addUserForm.patchValue(
         {
-          qtyminor: this.fields.SopQtyMinor,
+          qtyminor: (this.fields?.SopQtyMinor || 0),
           currency: this.fields.CurrencyId,
           postingtype: this.fields.SopPostingType
         }
       );
     }
-    this.modalRef = this.modalService.open(content, { size: 'lg' });
+    this.modalRef = this.modalService.open(content);
   }
   onSubmit() {
     this.isSubmitted = true;
@@ -93,7 +99,7 @@ export class AddCompanyPopupComponent implements OnInit {
       this.modalRef.close();
       this.isSubmitted = false;
     } else {
-      this.alert.showAlert({ message: 'Please Fill Remaining fields', type: 'error' });
+      this.alert.showAlert({ message: 'Please check all tabs and Fill Remaining fields.. ', type: 'error' });
     }
   }
 
@@ -122,7 +128,6 @@ export class AddCompanyPopupComponent implements OnInit {
       this.imageName = file.name;
       reader.readAsDataURL(file);
       reader.onload = () => {
-        console.log(reader.result)
         this.addUserForm.patchValue({
           Image: reader.result,
         });

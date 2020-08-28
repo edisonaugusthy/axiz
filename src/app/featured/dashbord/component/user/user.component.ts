@@ -8,6 +8,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormGeneratorService } from 'src/app/shared/services/form-generator.service';
 import { map, filter, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Observable, Subject, fromEvent } from 'rxjs';
+import { NgStorageService } from 'ng7-storage';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -30,12 +31,14 @@ export class UserComponent implements OnInit, AfterViewInit {
   public pagination: any;
   isSearching: boolean;
   scrollbarOptions = AppConstants.SCROLL_BAR_OPTIONS;
+  allCompanies: any;
   constructor(
     private dashboardSvc: DashbordService,
     private loaderSvc: LoaderService,
     private alert: AlertService,
     private formGeneratorService: FormGeneratorService,
-    private deleteMessageSvc: DeleteMessageService
+    private deleteMessageSvc: DeleteMessageService,
+    private StorageService: NgStorageService,
   ) { }
 
   ngOnInit() {
@@ -43,6 +46,7 @@ export class UserComponent implements OnInit, AfterViewInit {
       currentPage: 1,
       totalPages: null,
     }
+    this.getAllCompanies();
     this.getAllUsers();
 
   }
@@ -57,14 +61,13 @@ export class UserComponent implements OnInit, AfterViewInit {
   }
 
   openEdit(item?) {
-    this.editFormData = this.formGeneratorService.editUser(item);
-    this.editFormData.id = item.id;
+    this.editFormData = item;
     this.showEdit = true;
   }
 
   openView(item) {
     this.showDetails = true;
-    this.detailsData = this.formGeneratorService.UserDetails(item);
+    this.detailsData = item;
   }
   cancelView(item) {
     this.showDetails = false;
@@ -108,7 +111,7 @@ export class UserComponent implements OnInit, AfterViewInit {
       if (val && val.status) {
         this.alert.showAlert({ message: val.message, type: 'success' });
       } else {
-        this.alert.showAlert({ message: val.message, type: 'danger' });
+        this.alert.showAlert({ message: val.message, type: 'error' });
       }
       this.getAllUsers();
     });
@@ -139,18 +142,12 @@ export class UserComponent implements OnInit, AfterViewInit {
     });
   }
   searchUser() {
-    fromEvent(this.SearchInput.nativeElement, 'keyup').pipe(
-      // get value
-      map((event: any) => {
-        return event.target.value;
-      }),
-      debounceTime(AppConstants.SEARCH_TIMEOUT),
-      distinctUntilChanged()
-    ).subscribe((text: string) => {
-      this.isSearching = true;
-      this.pagination.currentPage = 1;
-      this.getAllUsers(text);
-    });
+    this.dashboardSvc.searchStr.subscribe(val => {
+      if (val != null || val != undefined) {
+        this.pagination.currentPage = 1;
+        this.getAllUsers(val);
+      }
+    })
   }
   getAllUsers(searchStr = '') {
     this.loaderSvc.showLoader();
@@ -167,4 +164,11 @@ export class UserComponent implements OnInit, AfterViewInit {
 
     });
   }
+  getAllCompanies() {
+    const userInfo = this.StorageService.getData('user_details');
+    this.dashboardSvc.getUserCompanies({ userid: userInfo.user_id }).subscribe((val: any) => {
+      this.allCompanies = val.comapny_id;
+    });
+  }
+
 }

@@ -1,76 +1,25 @@
 <!--component html goes here -->
 <section class="content-wrap">
   <section class="table-heading">
-    <button class="float-right btn" mat-flat-button color="primary" (click)="openAdd()">Add New</button>
+    <app-add-button (onAdd)="openAdd()"></app-add-button>
     <div class="flex-wrap">
       <h1>User</h1>
-      <div class="form-group search-box search">
-        <input type="text" class="form-control" [ngClass]="{'loading':isSearching}" #SearchInput
-          placeholder="Search here...">
-      </div>
+
     </div>
+    <app-search-box></app-search-box>
   </section>
 
   <section class="table-wrap">
     <table class="table table-main-head">
       <thead>
         <tr>
-          <th (click)="sort('id')" style="width: 10%;">
-            <span class="sort-wrap">
-              Id
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('user_name')" style="width: 20%;">
-            <span class="sort-wrap">
-              Name
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-
-          <th (click)="sort('companyid')" style="width: 10%;">
-            <span class="sort-wrap">
-              Company
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('email')" style="width: 20%;">
-            <span class="sort-wrap">
-              Email
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('password')" style="width: 10%;">
-            <span class="sort-wrap">
-              Password
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th (click)="sort('status')" style="width: 10%;">
-            <span class="sort-wrap">
-              Status
-              <span class="sort-icons">
-                <i class="sort-up"></i>
-                <i class="sort-down"></i>
-              </span>
-            </span>
-          </th>
-          <th style="width: 20%;">Operation</th>
+          <th class="curser-point" (click)="sort('id')" style="width: 10%;">Id </th>
+          <th class="curser-point" (click)="sort('user_name')" style="width: 20%;">Name </th>
+          <th class="curser-point" (click)="sort('companyName')" style="width: 10%;">Company </th>
+          <th class="curser-point" (click)="sort('email')" style="width: 20%;">Email </th>
+          <th class="curser-point" (click)="sort('password')" style="width: 15%;">Password </th>
+          <th class="curser-point" (click)="sort('status')" style="width: 15%;">Status </th>
+          <th style="width: 10%;">Operation</th>
         </tr>
       </thead>
     </table>
@@ -80,15 +29,14 @@
           <tr *ngFor="let item of allUsers| orderBy: {property: column, direction: direction}">
             <td class="curser-point" (click)="openView(item)" style="width: 10%;">{{item.id}}</td>
             <td class="curser-point" (click)="openView(item)" style="width: 20%;">{{item.user_name}}</td>
-            <td style="width: 10%;">{{item.companyid}}</td>
+            <td style="width: 10%;">{{item?.companyName?.join(',')}}</td>
             <td style="width: 20%;">{{item.email}}</td>
-            <td style="width: 10%;"> {{item.password_ref}} </td>
-            <td style="width: 10%;" [ngStyle]="{'color':item.status==1 ? 'green' : '#c0bbc7'}">
+            <td style="width: 15%;"> {{item.password_ref}} </td>
+            <td style="width: 15%;" [ngStyle]="{'color':item.status==1 ? 'green' : '#c0bbc7'}">
               {{item.status==0?'Suspended':'Active'}}
             </td>
-            <td class="btn-wrap">
-              <button mat-flat-button color="primary" class="btn" (click)="openEdit(item)">Edit</button>
-              <button mat-flat-button class="btn btn-default" (click)="openDelete(item)">Remove</button>
+            <td style="width: 10%;">
+              <app-buttons [data]='item' (onRemove)="openDelete($event)" (onEdit)="openEdit($event)"></app-buttons>
             </td>
           </tr>
         </tbody>
