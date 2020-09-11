@@ -65,7 +65,6 @@ export class HeaderComponent implements OnInit {
       this.router.navigateByUrl('/login');
       this.loaderSvc.hideLoader();
     });
-
   }
 
 
@@ -73,7 +72,7 @@ export class HeaderComponent implements OnInit {
     this.toggleSideBar.emit(true);
   }
   openAdd() {
-    const mail = 'administor' //this.StorageService.getData('super-admin-mail');
+    const mail = 'administrator' //this.StorageService.getData('super-admin-mail');
     this.showAdd = true;
     this.addFormData = this.formGeneratorService.SuperAdminLoginForm(mail);
   }

@@ -37,8 +37,8 @@ export class InterCeptor implements HttpInterceptor {
         return next.handle(updatedRequest).pipe(
             catchError((error: HttpErrorResponse) => {
                 this.loaderSvc.hideLoader();
-                // this.router.navigateByUrl('/login');
-                this.alert.showAlert({ message: 'Something went wrong...please try later..!', type: 'danger' });
+                this.alert.showAlert({ message: 'Something went wrong...Please Login again..!', type: 'danger' });
+                this.router.navigateByUrl('/login');
                 return throwError((error))
             })
         )
